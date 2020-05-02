@@ -43,7 +43,27 @@ class ChampionInfoController: UIViewController {
                     self.championName.text = champion.name
                     self.championTitle.text = champion.title
                     self.passiveName.text = champion.passiveName
-                    self.passiveDescription.text = champion.passiveDescription
+               //     self.passiveDescription.text = champion.passiveDescription
+                    
+                    let htmlData = NSString(string: champion.passiveDescription).data(using: String.Encoding.unicode.rawValue)
+                    let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+                        NSAttributedString.DocumentType.html]
+                    if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
+                                                                             options: options,
+                                                                             documentAttributes: nil) {
+                        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range: NSMakeRange(0, attributedString.string.count))
+                        self.passiveDescription.attributedText = attributedString
+                    } else {
+                        print("nope")
+                      //  label.text = "строка"
+                    }
+                    
+                    
+                    let imagePassive = self.fetchImageForPassiveSpell(passiveImage: champion.passiveImage)
+                    
+                    if imagePassive != nil {
+                        self.passiveImage.image = imagePassive
+                    }
                 }
                
             case .failure:
@@ -78,5 +98,16 @@ class ChampionInfoController: UIViewController {
                
         return(image)
     }
+    
+    private func fetchImageForPassiveSpell(passiveImage: String) -> UIImage? {
+           var imageURL: URL?
+           var image: UIImage?
 
+           imageURL = URL(string:"https://ddragon.leagueoflegends.com/cdn/10.9.1/img/passive/\(passiveImage)")
+               guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return nil }
+                  
+               image = UIImage(data: imageData)
+                  
+           return(image)
+    }
 }
