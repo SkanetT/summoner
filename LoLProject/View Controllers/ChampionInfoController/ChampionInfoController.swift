@@ -42,37 +42,21 @@ class ChampionInfoController: UIViewController {
                 DispatchQueue.main.async {
                     self.championName.text = champion.name
                     self.championTitle.text = champion.title
+                    
                     self.passiveName.text = champion.passiveName
-               //     self.passiveDescription.text = champion.passiveDescription
-                    
-                    let htmlData = NSString(string: champion.passiveDescription).data(using: String.Encoding.unicode.rawValue)
-                    let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
-                        NSAttributedString.DocumentType.html]
-                    if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
-                                                                             options: options,
-                                                                             documentAttributes: nil) {
-                        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 11), range: NSMakeRange(0, attributedString.string.count))
-                        self.passiveDescription.attributedText = attributedString
-                    } else {
-                        print("nope")
-                      //  label.text = "строка"
+                    let passiveImage = self.fetchImageForPassiveSpell(passiveImage: champion.passiveImage)
+                    if passiveImage != nil {
+                        self.passiveImage.image = passiveImage
                     }
-                    
-                    
-                    let imagePassive = self.fetchImageForPassiveSpell(passiveImage: champion.passiveImage)
-                    
-                    if imagePassive != nil {
-                        self.passiveImage.image = imagePassive
-                    }
+                    self.gettingAttributedText(label: self.passiveDescription, text: champion.passiveDescription)
+                   
                 }
                
             case .failure:
                 print("Errort")
             }
         }
-//        championName.text = tappedChampion?.name
-//        championTitle.text = tappedChampion?.title
-        
+
         let image = fetchImage(id: id)
 
         if image != nil {
@@ -109,5 +93,18 @@ class ChampionInfoController: UIViewController {
                image = UIImage(data: imageData)
                   
            return(image)
+    }
+    
+    private func gettingAttributedText(label: UILabel, text: String) {        
+        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+            NSAttributedString.DocumentType.html]
+        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
+                                                                 options: options,
+                                                                 documentAttributes: nil) {
+            label.attributedText = attributedString
+        } else {
+            label.text = text
+        }
     }
 }
