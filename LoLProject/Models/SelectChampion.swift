@@ -11,5 +11,8 @@ import Foundation
 struct SelectedChampion {
     let name, title: String
     let passiveName, passiveImage, passiveDescription: String
-    let qName, qImage, qDescription: String
+    let qName, qImage, qDescription, qTooltip: String
+    let wName, wImage, wDescription: String
+    let eName, eImage, eDescription: String
+    let rName, rImage, rDescription: String
 }

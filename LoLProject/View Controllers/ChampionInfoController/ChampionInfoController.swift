@@ -12,13 +12,10 @@ import RealmSwift
 class ChampionInfoController: UIViewController {
 
     @IBOutlet var spellsTable: UITableView!
-    var name = "None "
     var id = "Jinx"
     
     var champion = try! Realm().objects(Champion.self)
-    
-    @IBOutlet var championName: UILabel!
-    @IBOutlet var championTitle: UILabel!
+
     @IBOutlet var championImage: UIImageView!
     
     
@@ -28,14 +25,14 @@ class ChampionInfoController: UIViewController {
         spellsTable.delegate = self
         spellsTable.dataSource = self
         spellsTable.register(UINib(nibName: "SpellsCell", bundle: nil), forCellReuseIdentifier: "spells")
+//        spellsTable.estimatedRowHeight = 250
+//        spellsTable.rowHeight = UITableView.automaticDimension
         
         getInfo(id: id) {[weak self] result in
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
-                    self?.title = champion.name
-                    self?.championName.text = champion.name
-                    self?.championTitle.text = champion.title
+                    self?.title = champion.name + " " + champion.title
                 }
             case .failure:
                 print("Errort")
@@ -66,43 +63,6 @@ class ChampionInfoController: UIViewController {
                
         return(image)
     }
-    
-    private func fetchImageForPassiveSpell(passiveImage: String) -> UIImage? {
-           var imageURL: URL?
-           var image: UIImage?
-
-           imageURL = URL(string:"https://ddragon.leagueoflegends.com/cdn/10.9.1/img/passive/\(passiveImage)")
-               guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return nil }
-                  
-               image = UIImage(data: imageData)
-                  
-           return(image)
-    }
-    
-    private func fetchImageForSpell(spellImage: String) -> UIImage? {
-           var imageURL: URL?
-           var image: UIImage?
-
-           imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spellImage)")
-               guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return nil }
-                  
-               image = UIImage(data: imageData)
-                  
-           return(image)
-    }
-    
-//    private func gettingAttributedText(label: UILabel, text: String) {
-//        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
-//        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
-//            NSAttributedString.DocumentType.html]
-//        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
-//                                                                 options: options,
-//                                                                 documentAttributes: nil) {
-//            label.attributedText = attributedString
-//        } else {
-//            label.text = text
-//        }
-//    }
 }
 
 extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
@@ -129,12 +89,12 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if indexPath.row == 1 {
-                   getInfo(id: id) {[weak cell] result in
-                       switch result {
-                       case .success(let champion):
-                           DispatchQueue.main.async {
+            getInfo(id: id) {[weak cell] result in
+                switch result {
+                    case .success(let champion):
+                        DispatchQueue.main.async {
                             cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(champion.qImage)")
-                               cell?.spellName.text = champion.qName
+                               cell?.spellName.text = "[Q] " + champion.qName
                                cell?.spellDescription.attributedText = champion.qDescription.gettingAttributedText()
                            }
                        case .failure:
@@ -142,11 +102,50 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                        }
                    }
                }
-        
+        if indexPath.row == 2 {
+                    getInfo(id: id) {[weak cell] result in
+                        switch result {
+                        case .success(let champion):
+                            DispatchQueue.main.async {
+                            cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(champion.wImage)")
+                                      cell?.spellName.text = "[W] " + champion.wName
+                                      cell?.spellDescription.attributedText = champion.wDescription.gettingAttributedText()
+                                  }
+                        case .failure:
+                                  print("error")
+                        }
+                    }
+                }
+        if indexPath.row == 3 {
+                   getInfo(id: id) {[weak cell] result in
+                       switch result {
+                       case .success(let champion):
+                           DispatchQueue.main.async {
+                            cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(champion.eImage)")
+                               cell?.spellName.text = "[E] " + champion.eName
+                               cell?.spellDescription.attributedText = champion.eDescription.gettingAttributedText()
+                           }
+                       case .failure:
+                           print("error")
+                       }
+                   }
+               }
+        if indexPath.row == 4 {
+                   getInfo(id: id) {[weak cell] result in
+                       switch result {
+                       case .success(let champion):
+                           DispatchQueue.main.async {
+                            cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(champion.rImage)")
+                               cell?.spellName.text = "[R] " + champion.rName
+                               cell?.spellDescription.attributedText = champion.rDescription.gettingAttributedText()
+                           }
+                       case .failure:
+                           print("error")
+                       }
+                   }
+               }
         return cell
     }
-
-
 }
 
 

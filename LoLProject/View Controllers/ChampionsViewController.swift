@@ -73,7 +73,6 @@ class ChampionsViewController: UICollectionViewController {
         print(champList[indexPath.row].name)
         
         let champController = ChampionInfoController()
-        champController.name = champList[indexPath.row].name
         champController.id = champList[indexPath.row].id
         let navController = UINavigationController(rootViewController: champController)
         navController.modalPresentationStyle = .fullScreen

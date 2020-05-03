@@ -161,6 +161,15 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="osy-GG-3U2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBar contentMode="scaleToFill" id="3nD-9o-c68">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <items>
+                        <tabBarItem systemItem="favorites" id="rfi-AP-glD"/>
+                        <tabBarItem systemItem="more" id="vam-vD-gPh"/>
+                    </items>
+                </tabBar>
             </objects>
             <point key="canvasLocation" x="1240.5797101449277" y="118.52678571428571"/>
         </scene>

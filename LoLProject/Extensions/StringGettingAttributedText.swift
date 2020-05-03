@@ -18,3 +18,16 @@ extension String {
                                                              documentAttributes: nil)
     }
 }
+
+//    private func gettingAttributedText(label: UILabel, text: String) {
+//        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
+//        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+//            NSAttributedString.DocumentType.html]
+//        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
+//                                                                 options: options,
+//                                                                 documentAttributes: nil) {
+//            label.attributedText = attributedString
+//        } else {
+//            label.text = text
+//        }
+//    }
