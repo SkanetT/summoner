@@ -19,11 +19,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet var verLabel: UILabel!
     
-   
 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateCurrentVersion()
+        
+    
         
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)

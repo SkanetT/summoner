@@ -11,6 +11,7 @@ import RealmSwift
 
 class ChampionInfoController: UIViewController {
 
+    @IBOutlet var spellsTable: UITableView!
     var name = "None "
     var id = "Jinx"
     
@@ -18,40 +19,24 @@ class ChampionInfoController: UIViewController {
     
     @IBOutlet var championName: UILabel!
     @IBOutlet var championTitle: UILabel!
-    
-    @IBOutlet var passiveImage: UIImageView!
-    @IBOutlet var passiveName: UILabel!
-    @IBOutlet var passiveDescription: UILabel!
-    
-    
     @IBOutlet var championImage: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passiveName.text = "passive"
+        spellsTable.delegate = self
+        spellsTable.dataSource = self
+        spellsTable.register(UINib(nibName: "SpellsCell", bundle: nil), forCellReuseIdentifier: "spells")
         
-        let tappedChampion = champion.first(where: {$0.id == "\(id)"})
-        
-        title = tappedChampion?.name
-        
-        getInfo(id: id) {result in
+        getInfo(id: id) {[weak self] result in
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
-                    self.championName.text = champion.name
-                    self.championTitle.text = champion.title
-                    
-                    self.passiveName.text = champion.passiveName
-                    let passiveImage = self.fetchImageForPassiveSpell(passiveImage: champion.passiveImage)
-                    if passiveImage != nil {
-                        self.passiveImage.image = passiveImage
-                    }
-                    self.gettingAttributedText(label: self.passiveDescription, text: champion.passiveDescription)
-                   
+                    self?.title = champion.name
+                    self?.championName.text = champion.name
+                    self?.championTitle.text = champion.title
                 }
-               
             case .failure:
                 print("Errort")
             }
@@ -62,7 +47,6 @@ class ChampionInfoController: UIViewController {
         if image != nil {
             championImage.image = image
         }
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissViewController))
     }
 
@@ -95,16 +79,75 @@ class ChampionInfoController: UIViewController {
            return(image)
     }
     
-    private func gettingAttributedText(label: UILabel, text: String) {        
-        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
-        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
-            NSAttributedString.DocumentType.html]
-        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
-                                                                 options: options,
-                                                                 documentAttributes: nil) {
-            label.attributedText = attributedString
-        } else {
-            label.text = text
-        }
+    private func fetchImageForSpell(spellImage: String) -> UIImage? {
+           var imageURL: URL?
+           var image: UIImage?
+
+           imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spellImage)")
+               guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return nil }
+                  
+               image = UIImage(data: imageData)
+                  
+           return(image)
     }
+    
+//    private func gettingAttributedText(label: UILabel, text: String) {
+//        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
+//        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+//            NSAttributedString.DocumentType.html]
+//        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
+//                                                                 options: options,
+//                                                                 documentAttributes: nil) {
+//            label.attributedText = attributedString
+//        } else {
+//            label.text = text
+//        }
+//    }
 }
+
+extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "spells", for: indexPath) as! SpellsCell
+        
+        if indexPath.row == 0 {
+            getInfo(id: id) {[weak cell] result in
+                switch result {
+                case .success(let champion):
+                    DispatchQueue.main.async {
+                        cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/passive/\(champion.passiveImage)")
+                        cell?.spellName.text = champion.passiveName
+                        cell?.spellDescription.attributedText = champion.passiveDescription.gettingAttributedText()
+                    }
+                case .failure:
+                    print("error")
+                }
+            }
+        }
+        
+        if indexPath.row == 1 {
+                   getInfo(id: id) {[weak cell] result in
+                       switch result {
+                       case .success(let champion):
+                           DispatchQueue.main.async {
+                            cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(champion.qImage)")
+                               cell?.spellName.text = champion.qName
+                               cell?.spellDescription.attributedText = champion.qDescription.gettingAttributedText()
+                           }
+                       case .failure:
+                           print("error")
+                       }
+                   }
+               }
+        
+        return cell
+    }
+
+
+}
+
+
+

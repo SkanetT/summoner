@@ -46,29 +46,26 @@ class ChampionsViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! CollectionViewControllerCellCollectionViewCell
         cell.nameLabel.text = champList[indexPath.row].name
-        
-        let image = imageForCell(index: indexPath.row)
-        
-        if image != nil {
+        cell.championImage.image = nil
+       imageForCell(index: indexPath.row, completion: { image in
             cell.championImage.image = image
-        }
-        
-
+        })
         
         return cell
     }
     
     
-    private func imageForCell(index: Int) -> UIImage? {
+    private func imageForCell(index: Int, completion: @escaping (UIImage?) -> ()) {
         var imageURL: URL?
-        var image: UIImage?
-
-        imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.8.1/img/champion/\(champList[index].id).png")
-        guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return nil }
         
-        image = UIImage(data: imageData)
+       DispatchQueue(label: "com.lolproject", qos: .background).async {
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.8.1/img/champion/\(self.champList[index].id).png")
+            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                completion(UIImage(data: imageData))
+            }
+        }
         
-        return(image)
     }
     
     

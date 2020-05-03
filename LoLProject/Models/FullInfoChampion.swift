@@ -15,11 +15,12 @@ func getInfo(id: String, completion: @escaping (Result<SelectedChampion, APIErro
     let task = session.dataTask(with: url) { data, responce, rerror in
         if let data = data {
             if let championsData = try? JSONDecoder().decode(SelectedChampionsData.self, from: data) {
-                var champion = SelectedChampion(name: "", title: "", passiveName: "", passiveImage: "", passiveDescription: "")
+                var champion = SelectedChampion(name: "", title: "", passiveName: "", passiveImage: "", passiveDescription: "", qName: "", qImage: "", qDescription: "" )
                 
                 for item in championsData.data {
                     if item.key == "\(id)" {
-                        champion = SelectedChampion(name: item.value.name, title: item.value.title, passiveName: item.value.passive.name, passiveImage: item.value.passive.image.full, passiveDescription: item.value.passive.description)
+                        champion = SelectedChampion(name: item.value.name, title: item.value.title, passiveName: item.value.passive.name, passiveImage: item.value.passive.image.full, passiveDescription: item.value.passive.description,
+                                                    qName: item.value.spells[0].name, qImage: item.value.spells[0].image.full, qDescription: item.value.spells[0].description)
                     }
                 }
                 

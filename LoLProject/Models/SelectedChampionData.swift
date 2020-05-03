@@ -21,6 +21,7 @@ struct Info: Codable {
 
 struct Spell: Codable {
     let id, name, description, tooltip: String
+    let image: Image
 }
 
 struct Passive: Codable {
