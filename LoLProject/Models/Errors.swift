@@ -12,4 +12,5 @@ enum APIErrors: Error {
     case network
     case parsing
     case unknown
+    case summonerNotFound
 }

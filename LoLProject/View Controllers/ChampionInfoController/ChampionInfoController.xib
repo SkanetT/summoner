@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-eh-y7h">
-                    <rect key="frame" x="0.0" y="289" width="414" height="607"/>
+                    <rect key="frame" x="0.0" y="250" width="414" height="646"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -30,21 +30,21 @@
                     </connections>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-Ts-YFj">
-                    <rect key="frame" x="0.0" y="44" width="414" height="237"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="198"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="237" id="UgX-gy-8rs"/>
+                        <constraint firstAttribute="height" constant="198" id="443-bw-Wch"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2lU-hz-Ddc"/>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Dh8-Sn-v4H"/>
-                <constraint firstAttribute="bottom" secondItem="FK4-eh-y7h" secondAttribute="bottom" id="bud-TQ-KUX"/>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="hmE-9H-Fsr"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kxx-aH-kph"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="pgR-21-8BY"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="top" secondItem="h8P-Ts-YFj" secondAttribute="bottom" constant="8" id="rK9-0e-WAr"/>
+                <constraint firstItem="h8P-Ts-YFj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1gI-ay-0ZE"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5Dy-k7-tsp"/>
+                <constraint firstItem="h8P-Ts-YFj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MJ2-rG-J03"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="top" secondItem="h8P-Ts-YFj" secondAttribute="bottom" constant="8" id="NZI-2K-eoO"/>
+                <constraint firstAttribute="bottom" secondItem="FK4-eh-y7h" secondAttribute="bottom" id="iDE-pc-M1k"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kQD-hw-gNo"/>
+                <constraint firstItem="h8P-Ts-YFj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qf3-Uq-Frv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="4.3478260869565224" y="101.78571428571428"/>

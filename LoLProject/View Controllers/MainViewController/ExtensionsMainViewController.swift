@@ -12,7 +12,7 @@ import RealmSwift
 extension MainViewController {
     
     func updateCurrentVersion() {
-           verifyService.fetchCurrentVersion {[weak self] result in
+        networkAPI.fetchCurrentVersion() {[weak self] result in
                guard let self = self else { return }
                switch result {
                case .success(let version):
@@ -27,7 +27,7 @@ extension MainViewController {
        }
     
     func getChampionsListRealm(){
-           networkChampionsManager.fetchCurrentChampions { result in
+        networkAPI.fetchCurrentChampionsList() { result in
                switch result {
                case .success(let championData):
                    let realm = try! Realm()
@@ -35,7 +35,7 @@ extension MainViewController {
                        let champion = Champion()
                        champion.id = item.key
                        champion.name = item.value.name
-                       champion.title = item.value.title
+                       champion.key = item.value.key
                        try! realm.write {
                            realm.add(champion)
                        }
@@ -48,7 +48,7 @@ extension MainViewController {
        }
        
     func getVersionRealm() {
-           verifyService.fetchCurrentVersion { result in
+        networkAPI.fetchCurrentVersion() { result in
                switch result {
                case .success(let lastVersion):
                    let realm = try! Realm()

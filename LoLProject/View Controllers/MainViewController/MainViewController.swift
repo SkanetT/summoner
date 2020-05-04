@@ -11,25 +11,30 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
-    let networkChampionsManager = NetworkChampionsManager()
-    let verifyService = VerifyVersion()
+    let networkAPI = NetworkAPI()
     
-       // Вот это дичь, но без этого у нас не будет сильной ссылки на верверсион, и соотвеств
-    
-    @IBOutlet weak var listButton: UIButton!
     @IBOutlet var verLabel: UILabel!
+    @IBOutlet var summonerNameTF: UITextField!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
         updateCurrentVersion()
-        
-    
-        
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)
         if let lastVersion = version.first?.lastVesion {
-            verifyService.fetchCurrentVersion {[weak self] result in
+            networkAPI.fetchCurrentVersion() {[weak self] result in
                 switch result {
                 case .success(let version):
                     if version != lastVersion {
@@ -52,6 +57,35 @@ class MainViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func searchDidTapped(_ sender: UIButton) {
+        
+        var summonerName = summonerNameTF.text
+        summonerName = summonerName?.split(separator: " ").joined(separator: "%20")
+        
+        networkAPI.seachSummoner(name: summonerName!) { result in
+            switch result {
+            case .success(let name):
+                
+                DispatchQueue.main.async {
+                    let summonerVC = SummonerViewController()
+                   // summonerVC.nameLebel.text = name
+                    self.navigationController?.pushViewController(summonerVC, animated: true)
+                }
+                
+            case.failure(let error):
+                if error == .summonerNotFound {
+                    let ac = UIAlertController(title: "Error", message: "Summoner no found", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                    ac.addAction(ok)
+                    DispatchQueue.main.async {
+                        self.present(ac, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 

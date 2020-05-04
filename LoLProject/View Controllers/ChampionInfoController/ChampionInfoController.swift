@@ -12,6 +12,9 @@ import RealmSwift
 class ChampionInfoController: UIViewController {
 
     @IBOutlet var spellsTable: UITableView!
+    
+    let networkAPI = NetworkAPI()
+    
     var id = "Jinx"
     
     var champion = try! Realm().objects(Champion.self)
@@ -21,7 +24,6 @@ class ChampionInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         spellsTable.delegate = self
         spellsTable.dataSource = self
         spellsTable.register(UINib(nibName: "SpellsCell", bundle: nil), forCellReuseIdentifier: "spells")
@@ -29,7 +31,7 @@ class ChampionInfoController: UIViewController {
 //        spellsTable.rowHeight = UITableView.automaticDimension
         
         
-        getInfo(id: id) {[weak self] result in
+        networkAPI.fetchFullInfoChampion(id: id) {[weak self] result in
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
@@ -45,12 +47,11 @@ class ChampionInfoController: UIViewController {
         if image != nil {
             championImage.image = image
         }
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(dismissViewController))
     }
 
     @objc
     private func dismissViewController() {
-        navigationController?.dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     private func fetchImage(id: String) -> UIImage? {
@@ -75,7 +76,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "spells", for: indexPath) as! SpellsCell
         
         if indexPath.row == 0 {
-            getInfo(id: id) {[weak cell] result in
+            networkAPI.fetchFullInfoChampion(id: id) {[weak cell] result in
                 switch result {
                 case .success(let champion):
                     DispatchQueue.main.async {
@@ -90,7 +91,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if indexPath.row == 1 {
-            getInfo(id: id) {[weak cell] result in
+            networkAPI.fetchFullInfoChampion(id: id) {[weak cell] result in
                 switch result {
                     case .success(let champion):
                         DispatchQueue.main.async {
@@ -104,7 +105,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                    }
                }
         if indexPath.row == 2 {
-                    getInfo(id: id) {[weak cell] result in
+            networkAPI.fetchFullInfoChampion(id: id) {[weak cell] result in
                         switch result {
                         case .success(let champion):
                             DispatchQueue.main.async {
@@ -118,7 +119,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
         if indexPath.row == 3 {
-                   getInfo(id: id) {[weak cell] result in
+            networkAPI.fetchFullInfoChampion(id: id) {[weak cell] result in
                        switch result {
                        case .success(let champion):
                            DispatchQueue.main.async {
@@ -132,7 +133,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                    }
                }
         if indexPath.row == 4 {
-                   getInfo(id: id) {[weak cell] result in
+            networkAPI.fetchFullInfoChampion(id: id) {[weak cell] result in
                        switch result {
                        case .success(let champion):
                            DispatchQueue.main.async {

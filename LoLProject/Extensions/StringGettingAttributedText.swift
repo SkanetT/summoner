@@ -31,3 +31,10 @@ extension String {
 //            label.text = text
 //        }
 //    }
+
+extension String {
+    func spaceTo20() -> String {
+       let string = self.split(separator: " ").joined(separator: "%20")
+        return string
+    }
+}

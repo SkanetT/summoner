@@ -29,31 +29,24 @@ class ChampionsViewController: UICollectionViewController {
         champList = champList.sorted(by: {$0.name < $1.name})
     }
     
-    @objc
-    private func dismissViewController() {
-        navigationController?.dismiss(animated: true)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
         championsItems()
     }
      
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         return champList.count
     }
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! CollectionViewControllerCellCollectionViewCell
         cell.nameLabel.text = champList[indexPath.row].name
         cell.championImage.image = nil
-       imageForCell(index: indexPath.row, completion: { image in
+        imageForCell(index: indexPath.row, completion: { image in
             cell.championImage.image = image
         })
         
@@ -65,7 +58,7 @@ class ChampionsViewController: UICollectionViewController {
         var imageURL: URL?
         
        DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.8.1/img/champion/\(self.champList[index].id).png")
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/\(self.champList[index].id).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
                 completion(UIImage(data: imageData))
@@ -80,9 +73,7 @@ class ChampionsViewController: UICollectionViewController {
         
         let champController = ChampionInfoController()
         champController.id = champList[indexPath.row].id
-        let navController = UINavigationController(rootViewController: champController)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
+        navigationController?.pushViewController(champController, animated: true)
     }
     
 }

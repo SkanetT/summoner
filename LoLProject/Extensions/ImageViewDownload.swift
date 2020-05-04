@@ -11,12 +11,11 @@ import UIKit
 extension UIImageView {
     func download(urlString: String) {
         var imageURL: URL?
-        var image1: UIImage?
 
         imageURL = URL(string: urlString)
         guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return (self.image = nil) }
-        image1 = UIImage(data: imageData)
+        let downloadImage = UIImage(data: imageData)
         
-        return self.image = image1
+        return self.image = downloadImage
     }
 }

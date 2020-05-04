@@ -16,3 +16,4 @@ struct SelectedChampion {
     let eName, eImage, eDescription: String
     let rName, rImage, rDescription: String
 }
+
