@@ -21,6 +21,7 @@ class ChampionsViewController: UICollectionViewController {
     var champList: [ChampionItem] = []
     
     
+    
     func championsItems() {
         for item in allChampion {
             champList.append(ChampionItem(name: item.name, id: item.id))
@@ -28,10 +29,15 @@ class ChampionsViewController: UICollectionViewController {
         champList = champList.sorted(by: {$0.name < $1.name})
     }
     
-    
+    @objc
+    private func dismissViewController() {
+        navigationController?.dismiss(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
         championsItems()
     }
      

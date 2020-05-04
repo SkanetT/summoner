@@ -12,7 +12,6 @@ import RealmSwift
 extension MainViewController {
     
     func updateCurrentVersion() {
-           // [weak self] слабый захват маст хев всегда с сетью, без него будет держатся ссылка на контроллер, пока запрос не завершит выполнение, утечка по памяти будет кароче
            verifyService.fetchCurrentVersion {[weak self] result in
                guard let self = self else { return }
                switch result {

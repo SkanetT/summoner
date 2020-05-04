@@ -28,6 +28,7 @@ class ChampionInfoController: UIViewController {
 //        spellsTable.estimatedRowHeight = 250
 //        spellsTable.rowHeight = UITableView.automaticDimension
         
+        
         getInfo(id: id) {[weak self] result in
             switch result {
             case .success(let champion):

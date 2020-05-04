@@ -21,16 +21,12 @@
 		3A8CB7212455A19C005801A8 /* VerifyVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7202455A19C005801A8 /* VerifyVersion.swift */; };
 		3A8CB7232455FE61005801A8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7222455FE61005801A8 /* Errors.swift */; };
 		3A8CB72524577396005801A8 /* ChampionAndVersionRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB72424577396005801A8 /* ChampionAndVersionRealm.swift */; };
-		3A8CB72924578462005801A8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB72724578462005801A8 /* TestViewController.swift */; };
-		3A8CB72A24578462005801A8 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB72824578462005801A8 /* TestViewController.xib */; };
 		3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */; };
 		3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */; };
 		3A8CB732245C2610005801A8 /* ExtensionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB731245C2610005801A8 /* ExtensionsMainViewController.swift */; };
 		3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB755245C7E14005801A8 /* SelectedChampionData.swift */; };
 		3A8CB75A245CA0D9005801A8 /* FullInfoChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB759245CA0D9005801A8 /* FullInfoChampion.swift */; };
 		3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */; };
-		3A8CB79F245E2C8D005801A8 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB79D245E2C8D005801A8 /* TestCell.swift */; };
-		3A8CB7A0245E2C8D005801A8 /* TestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB79E245E2C8D005801A8 /* TestCell.xib */; };
 		3A8CB7A4245E2FF1005801A8 /* StringGettingAttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A3245E2FF1005801A8 /* StringGettingAttributedText.swift */; };
 		3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A5245E3037005801A8 /* ImageViewDownload.swift */; };
 		3AA4D11B245F313700B05437 /* SpellsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D119245F313600B05437 /* SpellsCell.swift */; };
@@ -55,16 +51,12 @@
 		3A8CB7202455A19C005801A8 /* VerifyVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyVersion.swift; sourceTree = "<group>"; };
 		3A8CB7222455FE61005801A8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		3A8CB72424577396005801A8 /* ChampionAndVersionRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionAndVersionRealm.swift; sourceTree = "<group>"; };
-		3A8CB72724578462005801A8 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		3A8CB72824578462005801A8 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoController.swift; sourceTree = "<group>"; };
 		3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChampionInfoController.xib; sourceTree = "<group>"; };
 		3A8CB731245C2610005801A8 /* ExtensionsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsMainViewController.swift; sourceTree = "<group>"; };
 		3A8CB755245C7E14005801A8 /* SelectedChampionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChampionData.swift; sourceTree = "<group>"; };
 		3A8CB759245CA0D9005801A8 /* FullInfoChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoChampion.swift; sourceTree = "<group>"; };
 		3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampion.swift; sourceTree = "<group>"; };
-		3A8CB79D245E2C8D005801A8 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
-		3A8CB79E245E2C8D005801A8 /* TestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestCell.xib; sourceTree = "<group>"; };
 		3A8CB7A3245E2FF1005801A8 /* StringGettingAttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGettingAttributedText.swift; sourceTree = "<group>"; };
 		3A8CB7A5245E3037005801A8 /* ImageViewDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownload.swift; sourceTree = "<group>"; };
 		3AA4D119245F313600B05437 /* SpellsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsCell.swift; sourceTree = "<group>"; };
@@ -117,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				3A8CB7A1245E2F63005801A8 /* Extensions */,
-				3A8CB7262457843E005801A8 /* TestViewController */,
 				3A8CB6EB24549B37005801A8 /* Views */,
 				3A8CB6EC24549B5B005801A8 /* Models */,
 				3A8CB6ED24549B75005801A8 /* View Controllers */,
@@ -171,17 +162,6 @@
 				3A8CB71E24550767005801A8 /* CollectionViewControllerCellCollectionViewCell.swift */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		3A8CB7262457843E005801A8 /* TestViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A8CB72724578462005801A8 /* TestViewController.swift */,
-				3A8CB79D245E2C8D005801A8 /* TestCell.swift */,
-				3A8CB79E245E2C8D005801A8 /* TestCell.xib */,
-				3A8CB72824578462005801A8 /* TestViewController.xib */,
-			);
-			path = TestViewController;
 			sourceTree = "<group>";
 		};
 		3A8CB72B245A16A2005801A8 /* ChampionInfoController */ = {
@@ -290,11 +270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
-				3A8CB72A24578462005801A8 /* TestViewController.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */,
-				3A8CB7A0245E2C8D005801A8 /* TestCell.xib in Resources */,
 				3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */,
 				3A8CB6DE24549417005801A8 /* Main.storyboard in Resources */,
 			);
@@ -353,7 +331,6 @@
 				3A8CB7192454D0FB005801A8 /* ChampionsViewController.swift in Sources */,
 				3A8CB7A4245E2FF1005801A8 /* StringGettingAttributedText.swift in Sources */,
 				3A8CB71F24550767005801A8 /* CollectionViewControllerCellCollectionViewCell.swift in Sources */,
-				3A8CB72924578462005801A8 /* TestViewController.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3A8CB732245C2610005801A8 /* ExtensionsMainViewController.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */,
@@ -364,7 +341,6 @@
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3A8CB72524577396005801A8 /* ChampionAndVersionRealm.swift in Sources */,
-				3A8CB79F245E2C8D005801A8 /* TestCell.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */,
 				3AA4D11B245F313700B05437 /* SpellsCell.swift in Sources */,

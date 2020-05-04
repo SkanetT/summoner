@@ -52,15 +52,6 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func didTapNext(_ sender: Any) {
-        let viewController = TestViewController()
-        let navController = UINavigationController(rootViewController: viewController)
-        navController.modalPresentationStyle = .fullScreen
-        present(navController, animated: true, completion: nil)
-    }
-    
-@IBAction func cancelAction(_ segue: UIStoryboardSegue) {}
 }
 
 
