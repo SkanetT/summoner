@@ -47,15 +47,32 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpI-CE-agc">
+                    <rect key="frame" x="339" y="44" width="55" height="55"/>
+                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="V2Y-R9-KWN"/>
+                        <constraint firstAttribute="width" constant="55" id="phX-Z7-iRL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="Log off">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="logOffTaped:" destination="-1" eventType="touchUpInside" id="M88-cs-uwj"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="IBi-7C-FN8" firstAttribute="top" secondItem="ls6-En-YBj" secondAttribute="bottom" constant="47" id="Iae-sa-xeZ"/>
                 <constraint firstItem="WpB-wk-vxr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NLX-y3-wBJ"/>
+                <constraint firstItem="bpI-CE-agc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OpE-xC-t3m"/>
                 <constraint firstItem="WpB-wk-vxr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="VAK-OF-d1t"/>
                 <constraint firstItem="ls6-En-YBj" firstAttribute="leading" secondItem="WpB-wk-vxr" secondAttribute="trailing" constant="8" id="Vxy-5a-l5X"/>
                 <constraint firstItem="ls6-En-YBj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZTq-OD-8gg"/>
                 <constraint firstItem="IBi-7C-FN8" firstAttribute="leading" secondItem="WpB-wk-vxr" secondAttribute="trailing" constant="8" id="hje-wa-K93"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bpI-CE-agc" secondAttribute="trailing" constant="20" id="jI5-7L-MQv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="128.57142857142856"/>

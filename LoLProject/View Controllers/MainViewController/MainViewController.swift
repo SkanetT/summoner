@@ -13,6 +13,9 @@ class MainViewController: UIViewController {
     
     let networkAPI = NetworkAPI()
     
+    let realm = try! Realm()
+    let foundSummoner = try! Realm().objects(FoundSummoner.self)
+    
     @IBOutlet var verLabel: UILabel!
     @IBOutlet var summonerNameTF: UITextField!
     
@@ -56,7 +59,13 @@ class MainViewController: UIViewController {
                 self.getChampionsListRealm()
             }
         }
+        
+        if !foundSummoner.isEmpty {
+            let summonerVC = SummonerViewController()
+            navigationController?.pushViewController(summonerVC, animated:  true)
+        }
     }
+    
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
@@ -67,17 +76,28 @@ class MainViewController: UIViewController {
             switch result {
             case .success(let summoner):
                 
+
+                let realm = try! Realm()
+                let foundSummoner = FoundSummoner()
+                
+                foundSummoner.name = summoner.name
+                foundSummoner.id = summoner.id
+                foundSummoner.accountId = summoner.accountId
+                foundSummoner.puuid = summoner.puuid
+                foundSummoner.profileIconId = summoner.profileIconId
+                foundSummoner.summonerLevel = summoner.summonerLevel
+                
+                try! realm.write {
+                    realm.add(foundSummoner)
+                }
                 DispatchQueue.main.async {
                     let summonerVC = SummonerViewController()
-                    summonerVC.name = summoner.name
-                    summonerVC.profileIconId = summoner.profileIconId
-                    summonerVC.summonerLevel = summoner.summonerLevel
                     self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
             case.failure(let error):
                 if error == .summonerNotFound {
-                    let ac = UIAlertController(title: "Error", message: "Summoner no found", preferredStyle: .alert)
+                    let ac = UIAlertController(title: "Summoner not found", message: nil, preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
                     ac.addAction(ok)
                     DispatchQueue.main.async {
