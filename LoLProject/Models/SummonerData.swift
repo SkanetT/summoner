@@ -9,14 +9,7 @@
 import Foundation
 
 struct SummonerData: Codable {
-    let id, accountID, puuid, name: String
-    let profileIconID, revisionDate, summonerLevel: Int
+    let id, accountId, puuid, name: String
+    let profileIconId, revisionDate, summonerLevel: Int
 
-    enum CodingKeys: String, CodingKey {
-        case id
-        case accountID = "accountId"
-        case puuid, name
-        case profileIconID = "profileIconId"
-        case revisionDate, summonerLevel
-    }
 }

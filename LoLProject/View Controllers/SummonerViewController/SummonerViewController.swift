@@ -14,10 +14,16 @@ class SummonerViewController: UIViewController {
     @IBOutlet var nameLebel: UILabel!
     @IBOutlet var lvlLabel: UILabel!
     
-
+    var name = ""
+    var profileIconId = 0
+    var summonerLevel = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        nameLebel.text = name
+        lvlLabel.text = "Lvl: \(summonerLevel) "
+        summonerIconImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/profileicon/\(String(profileIconId)).png")
        
     }
 

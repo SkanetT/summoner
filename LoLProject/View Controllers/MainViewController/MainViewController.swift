@@ -65,11 +65,13 @@ class MainViewController: UIViewController {
         
         networkAPI.seachSummoner(name: summonerName!) { result in
             switch result {
-            case .success(let name):
+            case .success(let summoner):
                 
                 DispatchQueue.main.async {
                     let summonerVC = SummonerViewController()
-                   // summonerVC.nameLebel.text = name
+                    summonerVC.name = summoner.name
+                    summonerVC.profileIconId = summoner.profileIconId
+                    summonerVC.summonerLevel = summoner.summonerLevel
                     self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
