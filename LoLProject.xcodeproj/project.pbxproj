@@ -11,6 +11,7 @@
 		3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerViewController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
+		3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */; };
 		3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D624549417005801A8 /* AppDelegate.swift */; };
 		3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D824549417005801A8 /* SceneDelegate.swift */; };
 		3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* MainViewController.swift */; };
@@ -44,6 +45,7 @@
 		3A6366FB2460C769004C76D0 /* SummonerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerViewController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
+		3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedChampionsData.swift; sourceTree = "<group>"; };
 		3A8CB6D324549417005801A8 /* LoLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CB6D624549417005801A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8CB6D824549417005801A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */,
 				3A8CB7222455FE61005801A8 /* Errors.swift */,
 				3A9F8569246084C70090BBAF /* SummonerData.swift */,
+				3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				3A8CB732245C2610005801A8 /* ExtensionsMainViewController.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */,
+				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,

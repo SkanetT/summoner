@@ -70,7 +70,8 @@ class MainViewController: UIViewController {
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
         var summonerName = summonerNameTF.text
-        summonerName = summonerName?.split(separator: " ").joined(separator: "%20")
+       // summonerName = summonerName?.split(separator: " ").joined(separator: "%20")
+        summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
         networkAPI.seachSummoner(name: summonerName!) { result in
             switch result {

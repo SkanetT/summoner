@@ -6,7 +6,7 @@
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkAPI {
     
@@ -76,6 +76,19 @@ class NetworkAPI {
         task.resume()
     }
     
+    func fetchImageToChampionIcon(championId: String, completion: @escaping (UIImage?) -> ()) {
+        var imageURL: URL?
+        
+       DispatchQueue(label: "com.lolproject", qos: .background).async {
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/\(championId).png")
+            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                completion(UIImage(data: imageData))
+            }
+        }
+        
+    }
+    
     let globalConstans = GlobalConstants()
     func seachSummoner(name:String, completion: @escaping (Result<SummonerData, APIErrors>) -> () ) {
         let apiKey = globalConstans.apiKey
@@ -101,7 +114,22 @@ class NetworkAPI {
             
         }
         task.resume()
-        
-        // some changes
+    }
+    
+    func fetchMostPlayedChampions(summonerId: String, completion: @escaping (Result<MostPlayedChampionsData, APIErrors>) -> () ) {
+        let apiKey = globalConstans.apiKey
+        let urlString = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)?api_key=\(apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let mostPlayedChampions = try? JSONDecoder().decode(MostPlayedChampionsData.self, from: data) {
+                    completion(.success(mostPlayedChampions))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
     }
 }

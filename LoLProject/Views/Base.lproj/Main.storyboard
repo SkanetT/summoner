@@ -20,7 +20,7 @@
                                 <rect key="frame" x="244" y="783" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1Jp-rq-VK4"/>
-                                    <constraint firstAttribute="width" constant="150" id="Jp6-t3-EN6"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Jp6-t3-EN6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -139,7 +139,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbT-2g-mtw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2063.768115942029" y="867.85714285714278"/>
+            <point key="canvasLocation" x="1145" y="865"/>
         </scene>
         <!--Info-->
         <scene sceneID="SDe-PB-Xnr">
@@ -178,35 +178,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQa-BZ-NSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="234.78260869565219" y="847.76785714285711"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="VSs-nO-vYr">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Fqh-mE-bG4" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="uu6-Un-zdZ"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GDe-F9-g8N">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0k0-Md-l8m" kind="relationship" relationship="rootViewController" id="zQz-BH-0dz"/>
-                    </connections>
-                </navigationController>
-                <tabBar contentMode="scaleToFill" id="3nD-9o-c68">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <items>
-                        <tabBarItem systemItem="favorites" id="rfi-AP-glD"/>
-                        <tabBarItem systemItem="more" id="vam-vD-gPh"/>
-                    </items>
-                </tabBar>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="osy-GG-3U2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1192.753623188406" y="867.85714285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SSQ-wC-Ylz">
