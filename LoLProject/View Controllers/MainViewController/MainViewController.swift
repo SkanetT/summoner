@@ -21,6 +21,10 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if !foundSummoner.isEmpty {
+            let summonerVC = SummonerViewController()
+            navigationController?.pushViewController(summonerVC, animated:  false)
+        }
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -31,6 +35,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tabBarController?.delegate = self
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         updateCurrentVersion()
@@ -60,10 +65,7 @@ class MainViewController: UIViewController {
             }
         }
         
-        if !foundSummoner.isEmpty {
-            let summonerVC = SummonerViewController()
-            navigationController?.pushViewController(summonerVC, animated:  true)
-        }
+
     }
     
     
@@ -111,4 +113,9 @@ class MainViewController: UIViewController {
     
 }
 
-
+//extension MainViewController: UITabBarControllerDelegate {
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//        return (viewController as? UINavigationController).
+//    }
+//}
+//

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5AE7432464876400E80092 /* LeagueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7422464876300E80092 /* LeagueData.swift */; };
 		3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366F82460B75E004C76D0 /* InfoViewController.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerViewController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5AE7422464876300E80092 /* LeagueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueData.swift; sourceTree = "<group>"; };
 		3A6366F82460B75E004C76D0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerViewController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				3A8CB7222455FE61005801A8 /* Errors.swift */,
 				3A9F8569246084C70090BBAF /* SummonerData.swift */,
 				3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */,
+				3A5AE7422464876300E80092 /* LeagueData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
+				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */,

@@ -132,4 +132,21 @@ class NetworkAPI {
         }
         task.resume()
     }
+    
+    func fetchLeagues(summonerId: String, completion: @escaping (Result<LeagueData, APIErrors>) -> () ) {
+        let apiKey = globalConstans.apiKey
+        let urlString = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/\(summonerId)?api_key=\(apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let leagueData = try? JSONDecoder().decode(LeagueData.self, from: data) {
+                    completion(.success(leagueData))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
+    }
 }

@@ -14,6 +14,7 @@ class SummonerViewController: UIViewController {
     @IBOutlet var summonerIconImage: UIImageView!
     @IBOutlet var nameLebel: UILabel!
     @IBOutlet var lvlLabel: UILabel!
+    
     @IBOutlet var firstMostPlayedChampionImage: UIImageView!
     @IBOutlet var firstmostPlayedChampionNameLvl: UILabel!
     @IBOutlet var firstMostPlayedChampionPts: UILabel!
@@ -23,6 +24,11 @@ class SummonerViewController: UIViewController {
     @IBOutlet var thidMostPlayedChampionImage: UIImageView!
     @IBOutlet var thidMostPlayedChampionNameLvl: UILabel!
     @IBOutlet var thidMostPlayedChampionPts: UILabel!
+    
+    @IBOutlet var flexRang: UILabel!
+    @IBOutlet var flexImage: UIImageView!
+    @IBOutlet var soloRang: UILabel!
+    @IBOutlet var soloImage: UIImageView!
     
     
     let networkAPI = NetworkAPI()
@@ -42,16 +48,54 @@ class SummonerViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         let summoner = try! Realm().objects(FoundSummoner.self)
-        let foundSummoner = summoner.first!
+        guard let foundSummoner = summoner.first else { return }
         nameLebel.text = foundSummoner.name
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
         summonerIconImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/profileicon/\(String(foundSummoner.profileIconId)).png")
        
        
+        networkAPI.fetchLeagues(summonerId: foundSummoner.id) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let leagueData):
+                if let soloRangData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
+                    
+                    DispatchQueue.main.async {
+                        self.soloRang.text = soloRangData.tier + " " + soloRangData.rank
+                        switch soloRangData.tier {
+                        case "BRONZE":
+                            self.soloImage.image = #imageLiteral(resourceName: "Untitled 2")
+                        case "SILVER":
+                            self.soloImage.image = #imageLiteral(resourceName: "Silver")
+                        case "GOLD":
+                            self.soloImage.image = #imageLiteral(resourceName: "Gold")
+                        default:
+                            self.soloImage.image = #imageLiteral(resourceName: "Unranked")
+                        }
+                    }
+                }
+                if let flexRangData = leagueData.first(where: {$0.queueType == "RANKED_FLEX_SR"}) {
+                    DispatchQueue.main.async {
+                        self.flexRang.text = flexRangData.tier + " " + flexRangData.rank
+                        switch flexRangData.tier {
+                        case "BRONZE":
+                            self.flexImage.image = #imageLiteral(resourceName: "Untitled 2")
+                        case "SILVER":
+                            self.flexImage.image = #imageLiteral(resourceName: "Silver")
+                        case "GOLD":
+                            self.flexImage.image = #imageLiteral(resourceName: "Gold")
+                        default:
+                            self.flexImage.image = #imageLiteral(resourceName: "Unranked")
+                        }
+                    }
+                }
+            case .failure:
+                print("no league")
+            }
+        }
         
-     //   let chammpion = champions.first(where: {$0.key == "67"})
-   //     print(chammpion?.name)
-        networkAPI.fetchMostPlayedChampions(summonerId: foundSummoner.id) { result in
+        networkAPI.fetchMostPlayedChampions(summonerId: foundSummoner.id) {[weak self] result in
+            guard let self = self else { return }
             switch result {
             case.success(let mostPlayedChampions):
                 DispatchQueue.main.async {
