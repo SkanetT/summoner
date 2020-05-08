@@ -11,6 +11,7 @@ import UIKit
 class InfoViewController: UIViewController {
     
     @IBOutlet weak var championListButton: UIButton!
+    @IBOutlet weak var itemListButton: UIButton!
    
     override func viewDidLoad() {
         super.viewDidLoad()
