@@ -52,6 +52,8 @@ class MainViewController: UIViewController {
                             }
                             self?.getVersionRealm()
                             self?.getChampionsListRealm()
+                            self?.getItemsListRealm()
+                            self?.getSpellsListRealm()
                         }
                     }
                 case.failure:
@@ -62,6 +64,8 @@ class MainViewController: UIViewController {
             DispatchQueue.main.async {
                 self.getVersionRealm()
                 self.getChampionsListRealm()
+                self.getItemsListRealm()
+                self.getSpellsListRealm()
             }
         }
         

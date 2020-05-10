@@ -173,15 +173,30 @@
                                     <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68u-nZ-WEs">
+                                <rect key="frame" x="20" y="364" width="374" height="130"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="X3P-zY-WZX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Spells">
+                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="68u-nZ-WEs" secondAttribute="trailing" constant="20" id="0M9-fS-Sjp"/>
                             <constraint firstItem="sLy-z1-8ji" firstAttribute="top" secondItem="AWl-QJ-hfL" secondAttribute="bottom" constant="8" id="1Mk-e1-hHZ"/>
                             <constraint firstItem="sLy-z1-8ji" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="QUr-JS-qRZ"/>
                             <constraint firstItem="AWl-QJ-hfL" firstAttribute="top" secondItem="7eD-nj-Who" secondAttribute="top" id="R9M-iU-zGn"/>
+                            <constraint firstItem="68u-nZ-WEs" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="SVu-wt-RRO"/>
                             <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="sLy-z1-8ji" secondAttribute="trailing" constant="20" id="UPp-qw-yOB"/>
                             <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="AWl-QJ-hfL" secondAttribute="trailing" constant="20" id="X4y-Jj-LDl"/>
                             <constraint firstItem="AWl-QJ-hfL" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="bJc-2U-fzN"/>
+                            <constraint firstItem="68u-nZ-WEs" firstAttribute="top" secondItem="sLy-z1-8ji" secondAttribute="bottom" constant="8" id="nd3-DN-ovo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7eD-nj-Who"/>
                     </view>
@@ -189,6 +204,7 @@
                     <connections>
                         <outlet property="championListButton" destination="AWl-QJ-hfL" id="90G-pk-Qgq"/>
                         <outlet property="itemListButton" destination="sLy-z1-8ji" id="bmm-Dj-x74"/>
+                        <outlet property="spellsListButtom" destination="68u-nZ-WEs" id="TPA-rG-K6B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQa-BZ-NSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

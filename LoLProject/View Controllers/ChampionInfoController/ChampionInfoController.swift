@@ -16,8 +16,6 @@ class ChampionInfoController: UIViewController {
     let networkAPI = NetworkAPI()
     
     var id = "Jinx"
-    
-    var champion = try! Realm().objects(Champion.self)
 
     @IBOutlet var championImage: UIImageView!
     

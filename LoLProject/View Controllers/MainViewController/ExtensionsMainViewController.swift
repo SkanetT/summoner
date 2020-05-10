@@ -46,6 +46,51 @@ extension MainViewController {
                }
            }
        }
+    
+    func getItemsListRealm(){
+           networkAPI.fetchCurrentItemsList() { result in
+                  switch result {
+                  case .success(let itemData):
+                      let realm = try! Realm()
+                      for item in itemData.data {
+                        let lolItem = Item()
+                        lolItem.id = item.key
+                        lolItem.name = item.value.name
+                        lolItem.colloq = item.value.colloq
+                        lolItem.itemDescription = item.value.description
+                        lolItem.plaintext = item.value.plaintext
+                          try! realm.write {
+                              realm.add(lolItem)
+                          }
+                      }
+                     
+                  case.failure(let error):
+                      print(error)
+                  }
+              }
+          }
+    
+    func getSpellsListRealm() {
+        networkAPI.fetchCurrentSpellsList() { result in
+            switch result {
+            case.success(let spellsData):
+                let realm = try! Realm()
+                for item in spellsData.data {
+                    let spell = SummonerSpell()
+                    spell.id = item.key
+                    spell.name = item.value.name
+                    spell.key = item.value.key
+                    spell.spellDescription = item.value.description
+                    spell.tooltip = item.value.tooltip
+                    try! realm.write {
+                        realm.add(spell)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
        
     func getVersionRealm() {
         networkAPI.fetchCurrentVersion() { result in

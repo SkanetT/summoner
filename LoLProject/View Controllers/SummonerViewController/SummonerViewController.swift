@@ -172,13 +172,20 @@ class SummonerViewController: UIViewController {
     }
 
     @IBAction func logOffTaped(_ sender: UIButton) {
-        let realm = try! Realm()
-        let summoner = try! Realm().objects(FoundSummoner.self)
-        try! realm.write {
-            realm.delete(summoner)
+        let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
+        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {_ in
+            let realm = try! Realm()
+            let summoner = try! Realm().objects(FoundSummoner.self)
+            try! realm.write {
+                realm.delete(summoner)
+            }
+            self.navigationController?.popViewController(animated: true)
         }
-        navigationController?.popViewController(animated: true)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
+        ac.addAction(logOut)
+        ac.addAction(cancel)
+        present(ac, animated: true)
     }
     
 }

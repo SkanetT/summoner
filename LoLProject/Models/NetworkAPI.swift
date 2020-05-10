@@ -26,6 +26,38 @@ class NetworkAPI {
          task.resume()
      }
      
+    func fetchCurrentItemsList( completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
+       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/item.json"
+       guard let url = URL(string: urlString) else { return }
+       let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let itemsData = try? JSONDecoder().decode(ItemsData.self, from: data) {
+                    completion(.success(itemsData))
+                } else {
+                    completion(.failure(.network))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchCurrentSpellsList( completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
+       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/summoner.json"
+       guard let url = URL(string: urlString) else { return }
+       let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let summonerSpellsData = try? JSONDecoder().decode(SummonerSpellsData.self, from: data) {
+                    completion(.success(summonerSpellsData))
+                } else {
+                    completion(.failure(.network))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func fetchCurrentVersion(completion: @escaping (Result<String, APIErrors>) -> () ) {
          let urlString = "https://ddragon.leagueoflegends.com/api/versions.json"
          guard let url = URL(string: urlString) else { return }

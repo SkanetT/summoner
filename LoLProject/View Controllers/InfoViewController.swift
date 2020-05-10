@@ -12,11 +12,13 @@ class InfoViewController: UIViewController {
     
     @IBOutlet weak var championListButton: UIButton!
     @IBOutlet weak var itemListButton: UIButton!
+    @IBOutlet weak var spellsListButtom: UIButton!
    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         championListButton.addTarget(self, action: #selector(didTapChampionList), for: .touchUpInside)
+        spellsListButtom.addTarget(self, action: #selector(didTapSpellList), for: .touchUpInside)
     }
    
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,11 @@ class InfoViewController: UIViewController {
 //        let viewController = ChampionsViewController()
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    @objc private func didTapSpellList() {
+        let vc = SpellsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

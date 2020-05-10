@@ -22,7 +22,7 @@ class ChampionsViewController: UICollectionViewController {
     
     
     
-    func championsItems() {
+   private func championsItems() {
         for item in allChampion {
             champList.append(ChampionItem(name: item.name, id: item.id))
         }
@@ -31,7 +31,7 @@ class ChampionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "Champions"
        
 //        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
         championsItems()
