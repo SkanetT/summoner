@@ -27,6 +27,7 @@ class ChampionInfoController: UIViewController {
         spellsTable.register(UINib(nibName: "SpellsCell", bundle: nil), forCellReuseIdentifier: "spells")
 //        spellsTable.estimatedRowHeight = 250
 //        spellsTable.rowHeight = UITableView.automaticDimension
+       
         
         
         networkAPI.fetchFullInfoChampion(id: id) {[weak self] result in

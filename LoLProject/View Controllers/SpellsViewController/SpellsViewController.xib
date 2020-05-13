@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sxx-8R-rcx">
-                    <rect key="frame" x="20" y="0.0" width="374" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
@@ -30,10 +30,10 @@
             </subviews>
             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sxx-8R-rcx" secondAttribute="trailing" constant="20" id="5wC-8K-N87"/>
-                <constraint firstItem="sxx-8R-rcx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Vie-9I-cgx"/>
-                <constraint firstItem="sxx-8R-rcx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="csd-NK-jJP"/>
-                <constraint firstAttribute="bottom" secondItem="sxx-8R-rcx" secondAttribute="bottom" id="ncw-II-QY6"/>
+                <constraint firstItem="sxx-8R-rcx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TIw-Vg-9sd"/>
+                <constraint firstAttribute="bottom" secondItem="sxx-8R-rcx" secondAttribute="bottom" id="fA8-pj-uVb"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sxx-8R-rcx" secondAttribute="trailing" id="hcQ-74-1Fo"/>
+                <constraint firstItem="sxx-8R-rcx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pHW-y2-YGB"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>

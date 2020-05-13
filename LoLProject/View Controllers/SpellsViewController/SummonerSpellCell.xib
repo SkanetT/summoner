@@ -25,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEX-Wu-KVG">
-                        <rect key="frame" x="0.0" y="65" width="320" height="71"/>
+                        <rect key="frame" x="8" y="65" width="304" height="71"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -43,14 +43,14 @@
                 </subviews>
                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="KEX-Wu-KVG" firstAttribute="top" secondItem="1Xa-D5-mTy" secondAttribute="bottom" constant="10" id="0Lm-A2-iYq"/>
+                    <constraint firstAttribute="trailing" secondItem="KEX-Wu-KVG" secondAttribute="trailing" constant="8" id="DbS-o6-ZMy"/>
                     <constraint firstItem="Mxg-0z-cNa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="GzZ-Nz-Try"/>
                     <constraint firstItem="1Xa-D5-mTy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Hq5-Qa-xe9"/>
-                    <constraint firstAttribute="trailing" secondItem="KEX-Wu-KVG" secondAttribute="trailing" id="JOO-pI-EQ2"/>
                     <constraint firstItem="Mxg-0z-cNa" firstAttribute="leading" secondItem="1Xa-D5-mTy" secondAttribute="trailing" constant="15" id="VOD-CK-e7M"/>
                     <constraint firstItem="1Xa-D5-mTy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="75" id="Vhb-cl-QDB"/>
-                    <constraint firstItem="KEX-Wu-KVG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Y27-Fw-c7N"/>
-                    <constraint firstAttribute="bottom" secondItem="KEX-Wu-KVG" secondAttribute="bottom" constant="10" id="iLX-GV-azm"/>
-                    <constraint firstItem="KEX-Wu-KVG" firstAttribute="top" secondItem="1Xa-D5-mTy" secondAttribute="bottom" constant="10" id="px5-Yw-u1u"/>
+                    <constraint firstItem="KEX-Wu-KVG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="YFQ-aG-2a9"/>
+                    <constraint firstAttribute="bottom" secondItem="KEX-Wu-KVG" secondAttribute="bottom" constant="10" id="vnb-wl-3En"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
