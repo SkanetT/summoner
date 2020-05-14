@@ -47,6 +47,7 @@
 		3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322F2468878900100FF8 /* MatchHistory.swift */; };
 		3AAA325B246A0A9700100FF8 /* MachHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */; };
 		3AAA325C246A0A9700100FF8 /* MachHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */; };
+		3AAA325E246DE81700100FF8 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325D246DE81700100FF8 /* RankView.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		A53DD373CF2CC798505F6159 /* Pods_LoLProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */; };
@@ -95,6 +96,7 @@
 		3AAA322F2468878900100FF8 /* MatchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistory.swift; sourceTree = "<group>"; };
 		3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachHistoryCell.swift; sourceTree = "<group>"; };
 		3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachHistoryCell.xib; sourceTree = "<group>"; };
+		3AAA325D246DE81700100FF8 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		A15E66B7F61071E6875938AF /* Pods-LoLProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.release.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				3A6366FC2460C769004C76D0 /* SummonerViewController.xib */,
 				3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */,
 				3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */,
+				3AAA325D246DE81700100FF8 /* RankView.swift */,
 			);
 			path = SummonerViewController;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				3AA4D11B245F313700B05437 /* SpellsCell.swift in Sources */,
 				3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
+				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AAA322924684A1100100FF8 /* SpellsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
