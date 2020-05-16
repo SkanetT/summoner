@@ -12,13 +12,13 @@ import RealmSwift
 class SummonerViewController: UIViewController {
     
     
-    
+    @IBOutlet var mostPlayed: UIView!
     @IBOutlet var summonerIconImage: UIImageView!
     @IBOutlet var nameLebel: UILabel!
     @IBOutlet var lvlLabel: UILabel!
     
     @IBOutlet var firstMostPlayedChampionImage: UIImageView!
-    @IBOutlet var firstmostPlayedChampionNameLvl: UILabel!
+    @IBOutlet var firstMostPlayedChampionNameLvl: UILabel!
     @IBOutlet var firstMostPlayedChampionPts: UILabel!
     @IBOutlet var secondMostPlayedChampionImage: UIImageView!
     @IBOutlet var secondMostPlayedChampionNameLvl: UILabel!
@@ -28,7 +28,7 @@ class SummonerViewController: UIViewController {
     @IBOutlet var thidMostPlayedChampionPts: UILabel!
     
     
-    @IBOutlet var machHistoryLabel: UITableView!
+    @IBOutlet var machHistory: UITableView!
     
     let networkAPI = NetworkAPI()
 
@@ -47,11 +47,11 @@ class SummonerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        machHistoryLabel.delegate = self
-        machHistoryLabel.dataSource = self
+        machHistory.delegate = self
+        machHistory.dataSource = self
         
         
-        machHistoryLabel.register(UINib(nibName: "MachHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
+        machHistory.register(UINib(nibName: "MachHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         
         
         
@@ -69,31 +69,27 @@ class SummonerViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case.success(let mostPlayedChampions):
-                DispatchQueue.main.async {
-                    let champions = try! Realm().objects(Champion.self)
-                    if mostPlayedChampions.count >= 3 {
-                        if let firstChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[0].championId)"}), let secondChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[1].championId)"}), let thidChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[2].championId)"}) {
-                            self.firstmostPlayedChampionNameLvl.text = firstChampion.name + " " + String(mostPlayedChampions[0].championLevel) + " lvl"
-                            self.firstMostPlayedChampionPts.text = "pts " + String(mostPlayedChampions[0].championPoints)
-                            self.networkAPI.fetchImageToChampionIcon(championId: firstChampion.id) { image in
-                                self.firstMostPlayedChampionImage.image = image
-                            }
-                            
-                            self.secondMostPlayedChampionNameLvl.text = secondChampion.name + " " + String(mostPlayedChampions[1].championLevel) + " lvl"
-                            self.secondMostPlayedChampionPts.text = "pts " + String(mostPlayedChampions[1].championPoints)
-                            self.networkAPI.fetchImageToChampionIcon(championId: secondChampion.id) { image in
-                                self.secondMostPlayedChampionImage.image = image
-                            }
-                                
-                            self.thidMostPlayedChampionNameLvl.text = thidChampion.name + " " + String(mostPlayedChampions[2].championLevel) + " lvl"
-                            self.thidMostPlayedChampionPts.text = "pts " + String(mostPlayedChampions[2].championPoints)
-                            self.networkAPI.fetchImageToChampionIcon(championId: thidChampion.id) { image in
-                                self.thidMostPlayedChampionImage.image = image
-                            }
-                        }
+                if mostPlayedChampions.count >= 3 {
+                    DispatchQueue.main.async {
+                        let mostView = MostPlayedView()
+                        mostView.setData(mostPlayedChampions: mostPlayedChampions)
+                        self.mostPlayed.addSubview(mostView)
+                        mostView.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
+                        mostView.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
+                        mostView.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
+                        mostView.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let noData = NoMostPlayedView()
+                        self.mostPlayed.addSubview(noData)
+                        noData.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
+                        noData.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
+                        noData.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
+                        noData.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
                     }
                 }
-
+                
             case.failure:
                 print("????")
             }

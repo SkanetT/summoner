@@ -127,9 +127,9 @@ class RankView: UIView {
     
     func setData(leagueData: LeagueData) {
         if let flexRankData = leagueData.first(where: {$0.queueType == "RANKED_FLEX_SR"}) {
-                let wrFlex :Double
-                wrFlex = Double(flexRankData.wins) / (Double(flexRankData.wins) + Double(flexRankData.losses)) * 100
-                DispatchQueue.main.async {
+            let wrFlex :Double
+            wrFlex = Double(flexRankData.wins) / (Double(flexRankData.wins) + Double(flexRankData.losses)) * 100
+            DispatchQueue.main.async {
                     self.flexRank.text = "\(flexRankData.tier) \(flexRankData.rank) (LP \(flexRankData.leaguePoints))"
                     if wrFlex < 50 {
                         self.flexWr.textColor = .red
@@ -161,7 +161,7 @@ class RankView: UIView {
                     }
                 }
             }
-                if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
+            if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
                     let wrSolo :Double
                     wrSolo = Double(soloRankData.wins) / (Double(soloRankData.wins) + Double(soloRankData.losses)) * 100
                     DispatchQueue.main.async {

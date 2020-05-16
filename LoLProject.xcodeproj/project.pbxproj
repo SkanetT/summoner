@@ -48,8 +48,13 @@
 		3AAA325B246A0A9700100FF8 /* MachHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */; };
 		3AAA325C246A0A9700100FF8 /* MachHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */; };
 		3AAA325E246DE81700100FF8 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325D246DE81700100FF8 /* RankView.swift */; };
+		3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
+		3AFED4DC246F5ACB00D8AA40 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DB246F5ACB00D8AA40 /* TestView.swift */; };
+		3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4DD246F5AD700D8AA40 /* TestView.xib */; };
+		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
+		3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */; };
 		A53DD373CF2CC798505F6159 /* Pods_LoLProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,8 +102,13 @@
 		3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachHistoryCell.swift; sourceTree = "<group>"; };
 		3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachHistoryCell.xib; sourceTree = "<group>"; };
 		3AAA325D246DE81700100FF8 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
+		3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedView.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		3AFED4DB246F5ACB00D8AA40 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		3AFED4DD246F5AD700D8AA40 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
+		3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMostPlayedView.swift; sourceTree = "<group>"; };
 		A15E66B7F61071E6875938AF /* Pods-LoLProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.release.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.release.xcconfig"; sourceTree = "<group>"; };
 		A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoLProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EDD9FC2E11CB9D000CEFD /* Pods-LoLProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.debug.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +142,8 @@
 				3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */,
 				3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */,
 				3AAA325D246DE81700100FF8 /* RankView.swift */,
+				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
+				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
 			);
 			path = SummonerViewController;
 			sourceTree = "<group>";
@@ -177,6 +189,7 @@
 				3A8CB6D824549417005801A8 /* SceneDelegate.swift */,
 				3A8CB6DF24549419005801A8 /* Assets.xcassets */,
 				3A8CB6E424549419005801A8 /* Info.plist */,
+				3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -254,6 +267,8 @@
 		3A8CB7A2245E2F8B005801A8 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				3AFED4DB246F5ACB00D8AA40 /* TestView.swift */,
+				3AFED4DD246F5AD700D8AA40 /* TestView.xib */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -362,6 +377,7 @@
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
 				3AAA325C246A0A9700100FF8 /* MachHistoryCell.xib in Resources */,
+				3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
 				3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */,
@@ -421,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8CB7192454D0FB005801A8 /* ChampionsViewController.swift in Sources */,
+				3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */,
 				3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */,
 				3A8CB7A4245E2FF1005801A8 /* StringGettingAttributedText.swift in Sources */,
 				3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */,
@@ -430,6 +447,7 @@
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
+				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
@@ -440,10 +458,12 @@
 				3AAA325B246A0A9700100FF8 /* MachHistoryCell.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
+				3AFED4DC246F5ACB00D8AA40 /* TestView.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
 				3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */,
+				3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */,
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,

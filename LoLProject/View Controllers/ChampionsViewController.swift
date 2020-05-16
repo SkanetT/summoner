@@ -58,7 +58,7 @@ class ChampionsViewController: UICollectionViewController {
         var imageURL: URL?
         
        DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/\(self.champList[index].id).png")
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/\(self.champList[index].id).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
                 completion(UIImage(data: imageData))

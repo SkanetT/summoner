@@ -79,7 +79,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                 switch result {
                 case .success(let champion):
                     DispatchQueue.main.async {
-                        cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/passive/\(champion.passiveImage)")
+                        cell?.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/passive/\(champion.passiveImage)")
                         cell?.spellName.text = champion.passiveName
                         cell?.spellDescription.attributedText = champion.passiveDescription.gettingAttributedText()
                     }
