@@ -55,6 +55,9 @@
 		3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4DD246F5AD700D8AA40 /* TestView.xib */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
 		3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */; };
+		3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */; };
+		3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */; };
+		3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */; };
 		A53DD373CF2CC798505F6159 /* Pods_LoLProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +112,9 @@
 		3AFED4DD246F5AD700D8AA40 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
 		3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMostPlayedView.swift; sourceTree = "<group>"; };
+		3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFooterView.swift; sourceTree = "<group>"; };
+		3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoCell.swift; sourceTree = "<group>"; };
+		3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoCell.xib; sourceTree = "<group>"; };
 		A15E66B7F61071E6875938AF /* Pods-LoLProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.release.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.release.xcconfig"; sourceTree = "<group>"; };
 		A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoLProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EDD9FC2E11CB9D000CEFD /* Pods-LoLProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.debug.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,9 +147,12 @@
 				3A6366FC2460C769004C76D0 /* SummonerViewController.xib */,
 				3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */,
 				3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */,
+				3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */,
+				3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */,
 				3AAA325D246DE81700100FF8 /* RankView.swift */,
 				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
 				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
+				3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */,
 			);
 			path = SummonerViewController;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
@@ -472,6 +482,8 @@
 				3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
+				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
+				3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */,
 				3AAA322924684A1100100FF8 /* SpellsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

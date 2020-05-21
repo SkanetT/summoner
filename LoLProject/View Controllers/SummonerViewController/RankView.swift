@@ -59,7 +59,7 @@ class RankView: UIView {
         flexRank.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(flexRank)
         
-        flexRank.font = UIFont(name: "Avenir", size: 17)
+        flexRank.font = UIFont(name: "Avenir-Heavy", size: 17)
         flexRank.textAlignment = .center
         flexRank.text = "Unranked"
         flexRank.textColor = .black
@@ -71,7 +71,7 @@ class RankView: UIView {
         soloRank.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(soloRank)
         
-        soloRank.font = UIFont(name: "Avenir", size: 17)
+        soloRank.font = UIFont(name: "Avenir-Heavy", size: 17)
         soloRank.textAlignment = .center
         soloRank.text = "Unranked"
         soloRank.textColor = .black

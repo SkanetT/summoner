@@ -10,10 +10,17 @@ import Foundation
 
 
 struct MatchHistory: Codable {
-    let matches: [Match]
+    var matches: [Match]
 }
 
 struct Match: Codable {
     let gameId, champion, queue, season: Int
     let timestamp: Int
 }
+
+struct ExpandableMathHistory {
+    var isExpanded = false
+    let match: Match
+}
+
+

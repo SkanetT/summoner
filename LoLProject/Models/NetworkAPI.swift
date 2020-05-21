@@ -181,4 +181,21 @@ class NetworkAPI {
         }
         task.resume()
     }
+    
+    func fetchMatchHistory(accountId: String, completion: @escaping (Result<MatchHistory, APIErrors>) -> () ) {
+        let apiKey = globalConstans.apiKey
+        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/\(accountId)?api_key=\(apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let matchHistory = try? JSONDecoder().decode(MatchHistory.self, from: data) {
+                    completion(.success(matchHistory))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
+    }
 }
