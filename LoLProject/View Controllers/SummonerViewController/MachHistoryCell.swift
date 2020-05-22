@@ -14,6 +14,23 @@ class MachHistoryCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var championIcon: UIImageView!
+    @IBOutlet weak var winOrLose: UIView!
+    @IBOutlet weak var kda: UILabel!
+    @IBOutlet weak var timeAndDate: UILabel!
+    
+    @IBOutlet weak var Spell1: UIImageView!
+    @IBOutlet weak var Spell2: UIImageView!
+    
+    @IBOutlet weak var item0: UIImageView!
+    @IBOutlet weak var item1: UIImageView!
+    @IBOutlet weak var item2: UIImageView!
+    @IBOutlet weak var item3: UIImageView!
+    @IBOutlet weak var item4: UIImageView!
+    @IBOutlet weak var item5: UIImageView!
+
+    @IBOutlet weak var item6: UIImageView!
+
+
     
     var tapHandler: ( ()->() )?
     

@@ -28,6 +28,7 @@ class SummonerViewController: UIViewController {
     
     var matchsArray: [ExpandableMathHistory] = []
     let champions = try! Realm().objects(Champion.self)
+    let spells = try! Realm().objects(SummonerSpell.self)
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,13 +145,75 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         let moreCell = tableView.dequeueReusableCell(withIdentifier: "moreInfo", for: indexPath) as! MoreInfoCell
         let championKey = String(self.matchsArray[indexPath.section].match.champion)
         
-//        let time = matchsArray[indexPath.section].match.timestamp
-//        let date = Date(timeIntervalSince1970: Double(time))
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-//        dateFormatter.locale = NSLocale.current
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        let strDate = dateFormatter.string(from: date)
+        
+        let summoner = try! Realm().objects(FoundSummoner.self)
+        guard let foundSummoner = summoner.first else { return matchCell }
+        
+        let matchId = self.matchsArray[indexPath.section].match.gameId
+        
+        
+        networkAPI.fetchFullInfoMatch(matchId: matchId) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case.success(let fullInfoMatch):
+                
+                DispatchQueue.main.async {
+                    
+                    
+                    if let myPlayerIdentities = fullInfoMatch.participantIdentities.first(where: {$0.player.summonerName == foundSummoner.name}) {
+                        let myIdInGame = myPlayerIdentities.participantId
+                        if let myPlayer = fullInfoMatch.participants.first(where: {$0.participantId == myIdInGame}) {
+                            
+                            if let spell1 = self.spells.first(where: {$0.key == String(myPlayer.spell1Id)}), let spell2 = self.spells.first(where: {$0.key == String(myPlayer.spell2Id)}) {
+                                matchCell.Spell1.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell1.id).png")
+                                matchCell.Spell2.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell2.id).png")
+                                
+                            }
+                            
+
+
+                            imageForItem(item: myPlayer.stats.item0) { imageData in
+                                matchCell.item0.image = imageData
+                            }
+                            imageForItem(item: myPlayer.stats.item1) { imageData in
+                                matchCell.item1.image = imageData
+                            }
+                            imageForItem(item: myPlayer.stats.item2) { imageData in
+                                matchCell.item2.image = imageData
+                            }
+                            imageForItem(item: myPlayer.stats.item3) { imageData in
+                                matchCell.item3.image = imageData
+                            }
+                            imageForItem(item: myPlayer.stats.item4) { imageData in
+                                matchCell.item4.image = imageData
+                            }
+                            imageForItem(item: myPlayer.stats.item5) { imageData in
+                                matchCell.item5.image = imageData
+                            }
+                            
+                            
+                            imageForItem(item: myPlayer.stats.item6) { imageData in
+                                matchCell.item6.image = imageData
+                            }
+                            
+
+                            matchCell.timeAndDate.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation))"
+                            matchCell.kda.text = "\(myPlayer.stats.kills) / \(myPlayer.stats.deaths) / \(myPlayer.stats.assists)"
+                            if myPlayer.stats.win == true {
+                                matchCell.winOrLose.backgroundColor = .green
+                            } else {
+                                matchCell.winOrLose.backgroundColor = .red
+                            }
+                        }
+                    }
+                }
+                
+            case .failure:
+                print("No full info")
+            }
+        }
+        
+        
         
         if indexPath.row == 0 {
             DispatchQueue.main.async {
@@ -174,7 +237,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             if let champion = self.champions.first(where: {$0.key == championKey}) {
                 DispatchQueue.main.async {
-                    moreCell.testLeb.text = "Info for \(champion.name)"
+                    moreCell.testLeb.text = dateFromGameCreation(time: self.matchsArray[indexPath.section].match.timestamp)
                 }
             
             }
@@ -228,7 +291,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
 //    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -238,3 +301,27 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 // flow: offset - текущий сдвиг по элементам с бека
+
+private func dateFromGameCreation(time: Int) -> String {
+    let realTime = round(Double(time/1000))
+    let date = Date(timeIntervalSince1970: realTime)
+    let dateFormatter = DateFormatter()
+    dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+    dateFormatter.locale = NSLocale.current
+    dateFormatter.dateFormat = "dd/MM/yyyy"
+    let strDate = dateFormatter.string(from: date)
+    return strDate
+}
+
+private func imageForItem(item: Int, completion: @escaping (UIImage?) -> ()) {
+ var imageURL: URL?
+ 
+DispatchQueue(label: "com.lolproject", qos: .background).async {
+     imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(item).png")
+     guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+     DispatchQueue.main.async {
+         completion(UIImage(data: imageData))
+     }
+ }
+}
+ 

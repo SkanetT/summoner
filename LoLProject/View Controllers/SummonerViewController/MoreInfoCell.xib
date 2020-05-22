@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="Yaw-o3-Rtc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="67" id="EuI-cB-OAc"/>
                     <constraint firstAttribute="bottom" secondItem="Yaw-o3-Rtc" secondAttribute="bottom" constant="67" id="ljp-L0-drs"/>

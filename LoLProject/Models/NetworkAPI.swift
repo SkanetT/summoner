@@ -198,4 +198,22 @@ class NetworkAPI {
         }
         task.resume()
     }
+    
+    func fetchFullInfoMatch(matchId: Int, completion: @escaping (Result<FullInfoMatch, APIErrors>) -> () ) {
+        let apiKey = globalConstans.apiKey
+        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let fullInfoMatch = try? JSONDecoder().decode(FullInfoMatch.self, from: data) {
+                    completion(.success(fullInfoMatch))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
+    }
+    
 }
