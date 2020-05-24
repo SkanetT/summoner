@@ -35,8 +35,20 @@
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7c-ap-DUN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZPK-tM-wtz">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="ZPK-tM-wtz" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="top" id="1Qe-eg-Qnh"/>
+                            <constraint firstAttribute="trailing" secondItem="ZPK-tM-wtz" secondAttribute="trailing" id="Fdt-zg-H0h"/>
+                            <constraint firstAttribute="bottom" secondItem="ZPK-tM-wtz" secondAttribute="bottom" id="HYn-Qd-1Of"/>
+                            <constraint firstItem="ZPK-tM-wtz" firstAttribute="leading" secondItem="W7c-ap-DUN" secondAttribute="leading" id="Yh4-Uc-j9u"/>
                             <constraint firstAttribute="height" constant="18" id="tW9-3O-Rx6"/>
                         </constraints>
                     </view>
@@ -108,12 +120,6 @@
                             <constraint firstAttribute="width" constant="35" id="Yuj-vs-zrK"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPK-tM-wtz">
-                        <rect key="frame" x="110" y="104" width="148" height="12"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xDm-ed-eQV">
                         <rect key="frame" x="266" y="43" width="35" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,12 +143,9 @@
                     <constraint firstItem="6Ix-f5-MdS" firstAttribute="top" secondItem="3f3-uD-LrB" secondAttribute="bottom" id="FzM-gD-CAg"/>
                     <constraint firstItem="3f3-uD-LrB" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="bottom" constant="8" id="Iao-8I-cfk"/>
                     <constraint firstAttribute="trailing" secondItem="W7c-ap-DUN" secondAttribute="trailing" id="KZv-Vy-RRE"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="ZPK-tM-wtz" secondAttribute="trailing" constant="46" id="Kgn-Zn-TCu"/>
-                    <constraint firstItem="nsr-XB-e4y" firstAttribute="top" secondItem="ZPK-tM-wtz" secondAttribute="bottom" constant="8" id="LYi-rp-xgB"/>
                     <constraint firstItem="xDm-ed-eQV" firstAttribute="leading" secondItem="XFX-RN-gqo" secondAttribute="trailing" constant="8" id="MWt-Gf-MQK"/>
                     <constraint firstItem="nsr-XB-e4y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NYw-gE-9ny"/>
                     <constraint firstItem="5ee-sh-HD9" firstAttribute="leading" secondItem="6Ix-f5-MdS" secondAttribute="trailing" id="QhZ-fD-uFd"/>
-                    <constraint firstItem="ZPK-tM-wtz" firstAttribute="leading" secondItem="kBQ-Ws-Jfo" secondAttribute="trailing" constant="20" id="Wvw-CG-0X4"/>
                     <constraint firstItem="3f3-uD-LrB" firstAttribute="leading" secondItem="FVG-ja-OGZ" secondAttribute="trailing" id="YEl-B3-cM5"/>
                     <constraint firstItem="4uY-MA-bS1" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="bottom" constant="8" id="aqi-tS-ey8"/>
                     <constraint firstItem="nsr-XB-e4y" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="bottom" constant="106" id="b7u-4y-CTH"/>
@@ -157,7 +160,6 @@
                     <constraint firstItem="GAP-HS-GbC" firstAttribute="top" secondItem="4uY-MA-bS1" secondAttribute="bottom" id="sWz-bH-dkn"/>
                     <constraint firstItem="XFX-RN-gqo" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="bottom" constant="8" id="vaR-bb-Dlq"/>
                     <constraint firstItem="a9V-TM-at4" firstAttribute="top" secondItem="W7c-ap-DUN" secondAttribute="bottom" id="w9F-ou-lqp"/>
-                    <constraint firstItem="ZPK-tM-wtz" firstAttribute="top" secondItem="5ee-sh-HD9" secondAttribute="bottom" constant="8" id="zMe-fC-R2c"/>
                     <constraint firstItem="6Ix-f5-MdS" firstAttribute="leading" secondItem="M6N-ND-ZNT" secondAttribute="trailing" id="zbn-Nt-CXW"/>
                 </constraints>
             </tableViewCellContentView>

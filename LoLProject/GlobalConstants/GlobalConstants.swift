@@ -9,5 +9,5 @@
 import Foundation
 
 class GlobalConstants {
-    let apiKey = "RGAPI-5755b06f-0c04-4826-820c-98b08ae6a227"
+    let apiKey = "RGAPI-80d71ece-b050-4909-a2d2-5ec0f9e58862"
 }

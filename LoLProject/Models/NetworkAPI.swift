@@ -11,7 +11,7 @@ import UIKit
 class NetworkAPI {
     
     func fetchCurrentChampionsList( completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/champion.json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/champion.json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
          let task = session.dataTask(with: url) { data, response, rerror in
@@ -27,7 +27,7 @@ class NetworkAPI {
      }
      
     func fetchCurrentItemsList( completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
-       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/item.json"
+       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/item.json"
        guard let url = URL(string: urlString) else { return }
        let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -43,7 +43,7 @@ class NetworkAPI {
     }
     
     func fetchCurrentSpellsList( completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
-       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/summoner.json"
+       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/summoner.json"
        guard let url = URL(string: urlString) else { return }
        let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -75,7 +75,7 @@ class NetworkAPI {
      }
     
     func fetchFullInfoChampion(id: String, completion: @escaping (Result<SelectedChampion, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.9.1/data/en_US/champion/\(id).json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/champion/\(id).json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -92,7 +92,6 @@ class NetworkAPI {
                         }
                     }
                     
-                    #warning("remove")
 //                    
 //                    if let championData = championsData.data["\(id)"] {
 //                       
@@ -112,7 +111,7 @@ class NetworkAPI {
         var imageURL: URL?
         
        DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/champion/\(championId).png")
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/champion/\(championId).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
                 completion(UIImage(data: imageData))
@@ -209,6 +208,7 @@ class NetworkAPI {
                 if let fullInfoMatch = try? JSONDecoder().decode(FullInfoMatch.self, from: data) {
                     completion(.success(fullInfoMatch))
                 } else {
+                    
                     completion(.failure(.parsing))
                 }
             }

@@ -59,6 +59,8 @@
 		3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */; };
 		3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */; };
 		3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */; };
+		3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */; };
+		3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */; };
 		A53DD373CF2CC798505F6159 /* Pods_LoLProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +119,8 @@
 		3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoCell.swift; sourceTree = "<group>"; };
 		3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoCell.xib; sourceTree = "<group>"; };
 		3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoMatch.swift; sourceTree = "<group>"; };
+		3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantInfo.swift; sourceTree = "<group>"; };
+		3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantInfo.xib; sourceTree = "<group>"; };
 		A15E66B7F61071E6875938AF /* Pods-LoLProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.release.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.release.xcconfig"; sourceTree = "<group>"; };
 		A646B19931C5ECA45F2A1887 /* Pods_LoLProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoLProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F17EDD9FC2E11CB9D000CEFD /* Pods-LoLProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.debug.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 				3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */,
 				3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */,
 				3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */,
+				3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */,
+				3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */,
 				3AAA325D246DE81700100FF8 /* RankView.swift */,
 				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
 				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
@@ -386,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
+				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
@@ -465,6 +472,7 @@
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
+				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,

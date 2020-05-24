@@ -39,22 +39,20 @@ struct Stats: Codable {
     let goldSpent, turretKills, inhibitorKills, totalMinionsKilled: Int
     let neutralMinionsKilled, neutralMinionsKilledTeamJungle, neutralMinionsKilledEnemyJungle, totalTimeCrowdControlDealt: Int
     let champLevel, visionWardsBoughtInGame, sightWardsBoughtInGame, wardsPlaced: Int
-    let wardsKilled: Int
-    let firstBloodKill, firstBloodAssist, firstTowerKill, firstTowerAssist: Bool
-    let firstInhibitorKill, firstInhibitorAssist: Bool
-    let combatPlayerScore, objectivePlayerScore, totalPlayerScore, totalScoreRank: Int
-    let playerScore0, playerScore1, playerScore2, playerScore3: Int
-    let playerScore4, playerScore5, playerScore6, playerScore7: Int
-    let playerScore8, playerScore9, perk0, perk0Var1: Int
-    let perk0Var2, perk0Var3, perk1, perk1Var1: Int
-    let perk1Var2, perk1Var3, perk2, perk2Var1: Int
-    let perk2Var2, perk2Var3, perk3, perk3Var1: Int
-    let perk3Var2, perk3Var3, perk4, perk4Var1: Int
-    let perk4Var2, perk4Var3, perk5, perk5Var1: Int
-    let perk5Var2, perk5Var3, perkPrimaryStyle, perkSubStyle: Int
-    let statPerk0, statPerk1, statPerk2: Int
-
-    
+    let wardsKilled: Int?
+    let firstBloodKill, firstBloodAssist, firstTowerKill, firstTowerAssist: Bool?
+    let firstInhibitorKill, firstInhibitorAssist: Bool?
+    let combatPlayerScore, objectivePlayerScore, totalPlayerScore, totalScoreRank: Int?
+    let playerScore0, playerScore1, playerScore2, playerScore3: Int?
+    let playerScore4, playerScore5, playerScore6, playerScore7: Int?
+    let playerScore8, playerScore9, perk0, perk0Var1: Int?
+    let perk0Var2, perk0Var3, perk1, perk1Var1: Int?
+    let perk1Var2, perk1Var3, perk2, perk2Var1: Int?
+    let perk2Var2, perk2Var3, perk3, perk3Var1: Int?
+    let perk3Var2, perk3Var3, perk4, perk4Var1: Int?
+    let perk4Var2, perk4Var3, perk5, perk5Var1: Int?
+    let perk5Var2, perk5Var3, perkPrimaryStyle, perkSubStyle: Int?
+    let statPerk0, statPerk1, statPerk2: Int?
 }
 
 struct ParticipantIdentity: Codable {

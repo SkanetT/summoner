@@ -63,8 +63,6 @@ class SummonerViewController: UIViewController {
             switch result {
             case .success(let matchs):
                 self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
-//                self.limit = 10
-//                self.typeMatch = 1
                 DispatchQueue.main.async {
                     self.matchHistory.reloadData()
                 }
@@ -158,19 +156,116 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
             case.success(let fullInfoMatch):
                 
                 DispatchQueue.main.async {
-                    
-                    
                     if let myPlayerIdentities = fullInfoMatch.participantIdentities.first(where: {$0.player.summonerName == foundSummoner.name}) {
                         let myIdInGame = myPlayerIdentities.participantId
                         if let myPlayer = fullInfoMatch.participants.first(where: {$0.participantId == myIdInGame}) {
                             
-                            if let spell1 = self.spells.first(where: {$0.key == String(myPlayer.spell1Id)}), let spell2 = self.spells.first(where: {$0.key == String(myPlayer.spell2Id)}) {
-                                matchCell.Spell1.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell1.id).png")
-                                matchCell.Spell2.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell2.id).png")
+                            
+                            switch myIdInGame {
+                            case 1:
+                                moreCell.participant1.thisView.backgroundColor = .yellow
+                            case 2:
+                                moreCell.participant2.thisView.backgroundColor = .yellow
+                            case 3:
+                                moreCell.participant3.thisView.backgroundColor = .yellow
+                            case 4:
+                                moreCell.participant4.thisView.backgroundColor = .yellow
+                            case 5:
+                                moreCell.participant5.thisView.backgroundColor = .yellow
+                            case 6:
+                                moreCell.participant6.thisView.backgroundColor = .yellow
+                            case 7:
+                                moreCell.participant7.thisView.backgroundColor = .yellow
+                            case 8:
+                                moreCell.participant8.thisView.backgroundColor = .yellow
+                            case 9:
+                                moreCell.participant9.thisView.backgroundColor = .yellow
+                            case 10:
+                                moreCell.participant10.thisView.backgroundColor = .yellow
+                            default:
+                                print()
+                            }
+                            
+                            if let participant1 = fullInfoMatch.participants.first(where: {$0.participantId == 1}), let participant1Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 1}) {
+                                let participant1Name = participant1Identities.player.summonerName
+                                moreCell.participant1.setData(participant: participant1, participantName: participant1Name)
+                                if participant1.stats.win == true {
+                                    moreCell.team1.backgroundColor = .green
+                                    moreCell.team1Win.textColor = .green
+                                    moreCell.team2.backgroundColor = .red
+                                    moreCell.team2Win.textColor = .red
+                                    moreCell.team1Win.text = "Win"
+                                    moreCell.team2Win.text = "Defeat"
+                                } else {
+                                    moreCell.team1.backgroundColor = .red
+                                    moreCell.team1Win.textColor = .red
+                                    moreCell.team2.backgroundColor = .green
+                                    moreCell.team2Win.textColor = .green
+                                    moreCell.team1Win.text = "Defeat"
+                                    moreCell.team2Win.text = "Win"
+                                }
                                 
                             }
                             
-
+                            if let participant2 = fullInfoMatch.participants.first(where: {$0.participantId == 2}), let participant2Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 2}) {
+                                let participant2Name = participant2Identities.player.summonerName
+                                moreCell.participant2.setData(participant: participant2, participantName: participant2Name)
+                                
+                            }
+                            
+                            if let participant3 = fullInfoMatch.participants.first(where: {$0.participantId == 3}), let participant3Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 3}) {
+                                let participant3Name = participant3Identities.player.summonerName
+                                moreCell.participant3.setData(participant: participant3, participantName: participant3Name)
+                                
+                            }
+                            
+                            if let participant4 = fullInfoMatch.participants.first(where: {$0.participantId == 4}), let participant4Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 4}) {
+                                let participant4Name = participant4Identities.player.summonerName
+                                moreCell.participant4.setData(participant: participant4, participantName: participant4Name)
+                                
+                            }
+                            
+                            if let participant5 = fullInfoMatch.participants.first(where: {$0.participantId == 5}), let participant5Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 5}) {
+                                let participant5Name = participant5Identities.player.summonerName
+                                moreCell.participant5.setData(participant: participant5, participantName: participant5Name)
+                                
+                            }
+                            
+                            if let participant6 = fullInfoMatch.participants.first(where: {$0.participantId == 6}), let participant6Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 6}) {
+                                let participant6Name = participant6Identities.player.summonerName
+                                moreCell.participant6.setData(participant: participant6, participantName: participant6Name)
+                                
+                            }
+                            
+                            if let participant7 = fullInfoMatch.participants.first(where: {$0.participantId == 7}), let participant7Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 7}) {
+                                let participant7Name = participant7Identities.player.summonerName
+                                moreCell.participant7.setData(participant: participant7, participantName: participant7Name)
+                                
+                            }
+                            
+                            if let participant8 = fullInfoMatch.participants.first(where: {$0.participantId == 8}), let participant8Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 8}) {
+                                let participant8Name = participant8Identities.player.summonerName   
+                                moreCell.participant8.setData(participant: participant8, participantName: participant8Name)
+                                
+                            }
+                            
+                            if let participant9 = fullInfoMatch.participants.first(where: {$0.participantId == 9}), let participant9Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 9}) {
+                                let participant9Name = participant9Identities.player.summonerName
+                                moreCell.participant9.setData(participant: participant9, participantName: participant9Name)
+                                
+                            }
+                            
+                            if let participant10 = fullInfoMatch.participants.first(where: {$0.participantId == 10}), let participant10Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 10}) {
+                                let participant10Name = participant10Identities.player.summonerName
+                                moreCell.participant10.setData(participant: participant10, participantName: participant10Name)
+                                
+                            }
+                            
+                            if let spell1 = self.spells.first(where: {$0.key == String(myPlayer.spell1Id)}), let spell2 = self.spells.first(where: {$0.key == String(myPlayer.spell2Id)}) {
+                                matchCell.Spell1.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell1.id).png")
+                                matchCell.Spell2.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell2.id).png")
+                            }
+                            
 
                             imageForItem(item: myPlayer.stats.item0) { imageData in
                                 matchCell.item0.image = imageData
@@ -196,12 +291,27 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                                 matchCell.item6.image = imageData
                             }
                             
-
-                            matchCell.timeAndDate.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation))"
+                            var matchType = "Type"
+                            switch fullInfoMatch.queueId {
+                            case 400:
+                                matchType = "Normal (Draft Pick)"
+                            case 420:
+                                matchType = "Ranked Solo/Duo"
+                            case 430:
+                                matchType = "Normal (Blind Pick)"
+                            case 440:
+                                matchType = "Ranked Flex"
+                            default:
+                                matchType = "Error type"
+                            }
+                            
+                            matchCell.timeAndDate.text = "\(matchType) \(dateFromGameCreation(time: fullInfoMatch.gameCreation))"
                             matchCell.kda.text = "\(myPlayer.stats.kills) / \(myPlayer.stats.deaths) / \(myPlayer.stats.assists)"
                             if myPlayer.stats.win == true {
+                                matchCell.winOrLose.alpha = 0.75
                                 matchCell.winOrLose.backgroundColor = .green
                             } else {
+                                matchCell.winOrLose.alpha = 0.75
                                 matchCell.winOrLose.backgroundColor = .red
                             }
                         }
@@ -209,7 +319,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 
             case .failure:
-                print("No full info")
+                
+                print("No full info for \(indexPath.section), matchID \(matchId)")
             }
         }
         
@@ -223,8 +334,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 }
                 
-//                matchCell.dateLabel.text = strDate
-                
                 if let champion = self.champions.first(where: {$0.key == championKey}) {
                 
                     self.networkAPI.fetchImageToChampionIcon(championId: champion.id) { icon in
@@ -235,13 +344,12 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return matchCell
         } else {
-            if let champion = self.champions.first(where: {$0.key == championKey}) {
-                DispatchQueue.main.async {
-                    moreCell.testLeb.text = dateFromGameCreation(time: self.matchsArray[indexPath.section].match.timestamp)
+            DispatchQueue.main.async {
+            moreCell.tapHandler = { [weak self]  in
+                self?.matchsArray[indexPath.section].isExpanded.toggle()
+                self?.matchHistory.reloadSections([indexPath.section], with: .fade)
                 }
-            
             }
-            
         return moreCell
         }
     }
@@ -270,26 +378,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 260 : 0
     }
-//
-//    @objc func moreButtonTap() {
-//        limit += 10
-//        DispatchQueue.main.async {
-//            self.matchHistory.reloadData()
-//        }
-//    }
-    
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        footer.moreButton.addTarget(self, action: #selector(moreButtonTap), for: .touchUpInside)
-//
-//
-//       return footer
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 25
-//    }
-    
+
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
