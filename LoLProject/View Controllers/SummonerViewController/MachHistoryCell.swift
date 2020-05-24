@@ -16,7 +16,8 @@ class MachHistoryCell: UITableViewCell {
     @IBOutlet weak var championIcon: UIImageView!
     @IBOutlet weak var winOrLose: UIView!
     @IBOutlet weak var kda: UILabel!
-    @IBOutlet weak var timeAndDate: UILabel!
+    @IBOutlet weak var typeAndWin: UILabel!
+    @IBOutlet weak var dateAndTime: UILabel!
     
     @IBOutlet weak var Spell1: UIImageView!
     @IBOutlet weak var Spell2: UIImageView!

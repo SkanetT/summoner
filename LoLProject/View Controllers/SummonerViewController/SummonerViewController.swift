@@ -305,7 +305,15 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                                 matchType = "Error type"
                             }
                             
-                            matchCell.timeAndDate.text = "\(matchType) \(dateFromGameCreation(time: fullInfoMatch.gameCreation))"
+                            
+                            let timeMatch = fullInfoMatch.gameDuration / 60
+                            let timeMatchSec = fullInfoMatch.gameDuration % 60
+                            matchCell.typeAndWin.text = "\(matchType)"
+                            if timeMatchSec < 10 {
+                                matchCell.dateAndTime.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation)) \(timeMatch):0\(timeMatchSec)"
+                            } else {
+                                matchCell.dateAndTime.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation)) \(timeMatch):\(timeMatchSec)"
+                            }
                             matchCell.kda.text = "\(myPlayer.stats.kills) / \(myPlayer.stats.deaths) / \(myPlayer.stats.assists)"
                             if myPlayer.stats.win == true {
                                 matchCell.winOrLose.alpha = 0.75

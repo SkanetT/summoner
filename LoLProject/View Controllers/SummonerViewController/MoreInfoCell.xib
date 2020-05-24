@@ -9,95 +9,95 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfo" rowHeight="627" id="KGk-i7-Jjw" customClass="MoreInfoCell" customModule="LoLProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="627"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfo" rowHeight="828" id="KGk-i7-Jjw" customClass="MoreInfoCell" customModule="LoLProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="828"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="627"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="828"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-sP-IIm">
-                        <rect key="frame" x="0.0" y="304" width="320" height="296"/>
+                        <rect key="frame" x="0.0" y="404" width="320" height="396"/>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="296" id="hMY-do-zwn"/>
+                            <constraint firstAttribute="height" constant="396" id="hMY-do-zwn"/>
                         </constraints>
                     </view>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zax-LB-7xK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="298"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="404"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="298" id="E36-VV-T10"/>
+                            <constraint firstAttribute="height" constant="404" id="E36-VV-T10"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bif-79-hKb" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="22" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="22" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Rie-rQ-KEM"/>
+                            <constraint firstAttribute="height" constant="70" id="Rie-rQ-KEM"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="slv-QX-9O4" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="80" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="100" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="ZPV-7j-Wi8"/>
+                            <constraint firstAttribute="height" constant="70" id="ZPV-7j-Wi8"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQH-7K-OSL" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="138" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="178" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="y3x-KZ-nKm"/>
+                            <constraint firstAttribute="height" constant="70" id="y3x-KZ-nKm"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7vp-Jv-lHE" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="196" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="256" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="507-vv-zfF"/>
+                            <constraint firstAttribute="height" constant="70" id="507-vv-zfF"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKr-Vd-Wf2" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="254" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="334" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="vw2-c5-pUQ"/>
+                            <constraint firstAttribute="height" constant="70" id="vw2-c5-pUQ"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejd-ED-Z1L" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="326" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="426" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="QbM-9y-saw"/>
+                            <constraint firstAttribute="height" constant="70" id="QbM-9y-saw"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVT-6O-2IC" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="384" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="504" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="L2g-v7-s2Z"/>
+                            <constraint firstAttribute="height" constant="70" id="L2g-v7-s2Z"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pcx-su-NL9" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="442" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="582" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="51P-6V-Hb0"/>
+                            <constraint firstAttribute="height" constant="70" id="51P-6V-Hb0"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3S-yL-uID" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="500" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="660" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="L1s-Wn-7eE"/>
+                            <constraint firstAttribute="height" constant="70" id="L1s-Wn-7eE"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbV-Sh-3Q9" customClass="ParticipantInfo" customModule="LoLProject" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="558" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="738" width="320" height="70"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Fpy-vH-AeZ"/>
+                            <constraint firstAttribute="height" constant="70" id="Fpy-vH-AeZ"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7P-Im-Jwk">
@@ -107,13 +107,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EzV-9S-2GR">
-                        <rect key="frame" x="0.0" y="304" width="320" height="22"/>
+                        <rect key="frame" x="0.0" y="404" width="320" height="22"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-r2-Ge7">
-                        <rect key="frame" x="0.0" y="608" width="320" height="18"/>
+                        <rect key="frame" x="0.0" y="808" width="320" height="18"/>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="9GF-CC-tWX"/>
@@ -193,7 +193,7 @@
                 <outlet property="team2" destination="b3H-sP-IIm" id="oI9-ke-JUo"/>
                 <outlet property="team2Win" destination="EzV-9S-2GR" id="pEW-PK-dSz"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="278.90625"/>
+            <point key="canvasLocation" x="137.68115942028987" y="345.53571428571428"/>
         </tableViewCell>
     </objects>
 </document>

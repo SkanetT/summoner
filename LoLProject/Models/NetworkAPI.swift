@@ -117,7 +117,30 @@ class NetworkAPI {
                 completion(UIImage(data: imageData))
             }
         }
+    }
+    
+    func fetchImageToSummonerSpell(spellId: String, completion: @escaping (UIImage?) -> ()) {
+        var imageURL: URL?
         
+       DispatchQueue(label: "com.lolproject", qos: .background).async {
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/spell/\(spellId).png")
+            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                completion(UIImage(data: imageData))
+            }
+        }
+    }
+    
+    func fetchImageToItem(itemId: String, completion: @escaping (UIImage?) -> ()) {
+        var imageURL: URL?
+        
+       DispatchQueue(label: "com.lolproject", qos: .background).async {
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png")
+            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                completion(UIImage(data: imageData))
+            }
+        }
     }
     
     let globalConstans = GlobalConstants()
