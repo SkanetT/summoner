@@ -42,6 +42,15 @@ class MoreInfoCell: UITableViewCell {
         tapHandler?()
     }
     
+    override func prepareForReuse() {
+        let images = contentView.subviews.filter({ $0 is UIImageView })
+        images.forEach {
+            if let imageView = $0 as? UIImageView {
+                imageView.image = nil
+            }
+        }
+    }
+    
     func setDataForEnvironment(summonerIdInGame: Int, win : Bool) {
         switch summonerIdInGame {
         case 1:

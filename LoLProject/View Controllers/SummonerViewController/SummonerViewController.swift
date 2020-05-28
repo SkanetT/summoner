@@ -62,14 +62,21 @@ class SummonerViewController: UIViewController {
         let summoner = try! Realm().objects(FoundSummoner.self)
         guard let foundSummoner = summoner.first else { return }
         let summonerName = foundSummoner.name
-
+        
+        nameLebel.text = foundSummoner.name
+        lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
+        
+        networkAPI.fetchImageToSummonerIcon(iconId: String(foundSummoner.profileIconId)) {[weak self] icon in
+             self?.summonerIconImage.image = icon
+         }
+         
         let disGroup = DispatchGroup()
             networkAPI.fetchMatchHistory(accountId: foundSummoner.accountId) {[weak self] result in
                 guard let self = self else{ return }
                 switch result {
                 case .success(let matchs):
                         self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
-                        for i in 0...2 {
+                        for i in 0...15 {
                             disGroup.enter()
                             self.networkAPI.fetchFullInfoMatch(matchId: self.matchsArray[i].match.gameId) {[weak self] result in
                                 guard let self = self else { return }
@@ -129,14 +136,6 @@ class SummonerViewController: UIViewController {
                 print("No most Played")
             }
         }
-        
-        
-        
-        nameLebel.text = foundSummoner.name
-        lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
-        summonerIconImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/profileicon/\(String(foundSummoner.profileIconId)).png")
-       
-        
     }
 
     @IBAction func logOffTaped(_ sender: UIButton) {

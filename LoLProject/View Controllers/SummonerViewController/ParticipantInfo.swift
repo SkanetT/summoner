@@ -61,29 +61,73 @@ class ParticipantInfo: XibBasedView {
             }
         }
         
+        setImage(imageView: item0, icondId: member.firstItemId, type: .itemId)
+        setImage(imageView: item1, icondId: member.secondItemId, type: .itemId)
+        setImage(imageView: item2, icondId: member.thirdItemId, type: .itemId)
+        setImage(imageView: item3, icondId: member.fourthItemId, type: .itemId)
+        setImage(imageView: item4, icondId: member.fifthItemId, type: .itemId)
+        setImage(imageView: item5, icondId: member.sixthItemId, type: .itemId)
+        setImage(imageView: item6, icondId: member.wardId, type: .itemId)
+
+
+
+//        networkAPI.fetchImageToItem(itemId: member.firstItemId) {[weak self] icon,id in
+//            if member.fifthItemId == id {
+//                DispatchQueue.main.async {
+//                    self?.item0.image = icon
+//                }
+//            }
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.secondItemId) {[weak self] icon in
+//            self?.item1.image = icon
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.thirdItemId) {[weak self] icon in
+//            self?.item2.image = icon
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.fourthItemId) {[weak self] icon in
+//            self?.item3.image = icon
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.fifthItemId) {[weak self] icon in
+//            self?.item4.image = icon
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.sixthItemId) {[weak self] icon in
+//            self?.item5.image = icon
+//        }
+//        networkAPI.fetchImageToItem(itemId: member.wardId) {[weak self] icon in
+//            self?.item6.image = icon
+//        }
         
-        networkAPI.fetchImageToItem(itemId: member.firstItemId) {[weak self] icon in
-            self?.item0.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.secondItemId) {[weak self] icon in
-            self?.item1.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.thirdItemId) {[weak self] icon in
-            self?.item2.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.fourthItemId) {[weak self] icon in
-            self?.item3.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.fifthItemId) {[weak self] icon in
-            self?.item4.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.sixthItemId) {[weak self] icon in
-            self?.item5.image = icon
-        }
-        networkAPI.fetchImageToItem(itemId: member.wardId) {[weak self] icon in
-            self?.item6.image = icon
-        }
+
 
     }
+    
+    private func setImage(imageView: UIImageView, icondId: String, type: ImageTypes) {
+        switch type {
+        case .itemId:
+            NetworkAPI.shared.fetchImageToItem(itemId: icondId) {[imageView] icon,id in
+                if icondId == id {
+                    DispatchQueue.main.async {
+                        imageView.image = icon
+                    }
+                } else {
+                    print("SOme wrong")
+                }
+            }
+        default:
+            break
+        }
+//        networkAPI.fetchImageToItem(itemId: icondId) {[weak self] icon,id in
+//            if member.fifthItemId == id {
+//                DispatchQueue.main.async {
+//                    imageView.image = icon
+//                }
+//            }
+//        }
+    }
 
+}
+
+enum ImageTypes {
+    case itemId
+    case summonerId
 }

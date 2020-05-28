@@ -10,6 +10,10 @@ import UIKit
 
 class NetworkAPI {
     
+    static let shared = NetworkAPI()
+    static let que = DispatchQueue.init(label: "com.imageloader", qos: .utility, attributes: .concurrent)
+
+    
     func fetchCurrentChampionsList( completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
         let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/champion.json"
         guard let url = URL(string: urlString) else { return }
@@ -92,11 +96,6 @@ class NetworkAPI {
                         }
                     }
                     
-//                    
-//                    if let championData = championsData.data["\(id)"] {
-//                       
-//                    }
-                    
                     completion(.success(champion))
                 } else {
                     completion(.failure(.network))
@@ -135,11 +134,33 @@ class NetworkAPI {
         }
     }
     
+    func fetchImageToItem(itemId: String, completion: @escaping (UIImage?,String) -> ()) {
+        NetworkAPI.que.async {
+            guard let url = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png"), let imageData = try? Data(contentsOf: url) else {
+                    return
+            }
+            completion(UIImage(data: imageData),itemId)
+        }
+        
+    }
+    
     func fetchImageToItem(itemId: String, completion: @escaping (UIImage?) -> ()) {
+        NetworkAPI.que.async {
+            guard let url = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png"), let imageData = try? Data(contentsOf: url) else {
+                    return
+            }
+            DispatchQueue.main.async {
+                completion(UIImage(data: imageData))
+            }
+        }
+        
+    }
+    
+    func fetchImageToSummonerIcon(iconId: String, completion: @escaping (UIImage?) -> ()) {
         var imageURL: URL?
         
        DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png")
+            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/profileicon/\(iconId).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
                  if url == imageURL {
