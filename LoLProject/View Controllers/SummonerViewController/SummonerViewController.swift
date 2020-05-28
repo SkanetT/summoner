@@ -18,18 +18,105 @@ class SummonerViewController: UIViewController {
     @IBOutlet var lvlLabel: UILabel!
     @IBOutlet var matchHistory: UITableView!
     
+    let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
+    
     let networkAPI = NetworkAPI()
 
     let header = RankView()
     let footer = MoreFooterView()
     
-//    var limit = 0
-//    var typeMatch = 0
-    
     var matchsArray: [ExpandableMathHistory] = []
+
+    struct MatchModel {
+        let matchType: String
+        let date: String
+        let dateCreation: Int
+        let time: String
+        var win: Bool = false
+        var summonerIdInMatch = 0
+        
+        var summonerChampionKey: String = ""
+        var summonerKda: String = ""
+        var summonerSpellKey1: String = ""
+        var summonerSpellKey2: String = ""
+        var summonerWardId: String = ""
+        var summonerFirstItemId: String = ""
+        var summonerSecondItemId: String = ""
+        var summonerThirdItemId: String = ""
+        var summonerFourthItemId: String = ""
+        var summonerFifthItemId: String = ""
+        var summonerSixthItemId: String = ""
+        
+        var members: [Member] = []
+        
+        
+        init(match: FullInfoMatch, summonerName: String) {
+            
+            dateCreation = match.gameCreation
+            
+            switch match.queueId {
+            case 400:
+                matchType = "Normal (Draft Pick)"
+            case 420:
+                matchType = "Ranked Solo/Duo"
+            case 430:
+                matchType = "Normal (Blind Pick)"
+            case 440:
+                matchType = "Ranked Flex"
+            default:
+                matchType = "Error type"
+            }
+            
+            date = dateFromGameCreation(time: match.gameCreation)
+            time = timeOfMatc(time: match.gameDuration)
+            
+            if let myPlayerIdentities = match.participantIdentities.first(where: { $0.player.summonerName == summonerName }){
+                summonerIdInMatch = myPlayerIdentities.participantId
+                if let myPlayer = match.participants.first(where: { $0.participantId == summonerIdInMatch }) {
+                    win = myPlayer.stats.win
+                    summonerChampionKey = String(myPlayer.championId)
+                    summonerKda = "\(myPlayer.stats.kills) / \(myPlayer.stats.deaths) / \(myPlayer.stats.assists)"
+                    summonerSpellKey1 = String(myPlayer.spell1Id)
+                    summonerSpellKey2 = String(myPlayer.spell2Id)
+                    summonerWardId = String(myPlayer.stats.item6)
+                    summonerFirstItemId = String(myPlayer.stats.item0)
+                    summonerSecondItemId = String(myPlayer.stats.item1)
+                    summonerThirdItemId = String(myPlayer.stats.item2)
+                    summonerFourthItemId = String(myPlayer.stats.item3)
+                    summonerFifthItemId = String(myPlayer.stats.item4)
+                    summonerSixthItemId = String(myPlayer.stats.item5)
+                }
+            }
+            
+            for id in 1...match.participantIdentities.count {
+                if let member = match.participants.first(where: { $0.participantId == id }), let memberIdentities = match.participantIdentities.first(where: { $0.participantId == id }) {
+                    
+                    var memberData = Member()
+                    memberData.name = memberIdentities.player.summonerName
+                    memberData.championKey = String(member.championId)
+                    memberData.kda = "\(member.stats.kills) / \(member.stats.deaths) / \(member.stats.assists)"
+                    memberData.spellKey1 = String(member.spell1Id)
+                    memberData.spellKey2 = String(member.spell2Id)
+                    memberData.wardId = String(member.stats.item6)
+                    memberData.firstItemId = String(member.stats.item0)
+                    memberData.secondItemId = String(member.stats.item1)
+                    memberData.thirdItemId = String(member.stats.item2)
+                    memberData.fourthItemId =  String(member.stats.item3)
+                    memberData.fifthItemId = String(member.stats.item4)
+                    memberData.sixthItemId = String(member.stats.item5)
+                    
+                    members.append(memberData)
+                    
+                }
+            }
+            
+        }
+    }
+    
     let champions = try! Realm().objects(Champion.self)
     let spells = try! Realm().objects(SummonerSpell.self)
     
+    var matchModel: [MatchModel] = []
     
     override func viewWillAppear(_ animated: Bool) {
            super.viewWillAppear(animated)
@@ -41,9 +128,10 @@ class SummonerViewController: UIViewController {
            navigationController?.setNavigationBarHidden(false, animated: true)
        }
     
+    
+    //MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         
         matchHistory.delegate = self
@@ -56,26 +144,8 @@ class SummonerViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         let summoner = try! Realm().objects(FoundSummoner.self)
         guard let foundSummoner = summoner.first else { return }
+        let summonerName = foundSummoner.name
         
-        
-        
-        networkAPI.fetchMatchHistory(accountId: foundSummoner.accountId) { result in
-            switch result {
-            case .success(let matchs):
-                self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
-                DispatchQueue.main.async {
-                    self.matchHistory.reloadData()
-                }
-
-            case .failure:
-                print("Error matchs")
-            }
-        }
-        
-        nameLebel.text = foundSummoner.name
-        lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
-        summonerIconImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/profileicon/\(String(foundSummoner.profileIconId)).png")
-       
         networkAPI.fetchMostPlayedChampions(summonerId: foundSummoner.id) {[weak self] result in
             guard let self = self else { return }
             switch result {
@@ -102,9 +172,57 @@ class SummonerViewController: UIViewController {
                 }
                 
             case.failure:
-                print("????")
+                print("No most Played")
             }
         }
+        
+        let disGroup = DispatchGroup()
+        
+        
+        networkAPI.fetchMatchHistory(accountId: foundSummoner.accountId) {[weak self] result in
+            guard let self = self else{ return }
+            switch result {
+            case .success(let matchs):
+                    self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
+                    for i in 0...3 {
+                        disGroup.enter()
+                        self.networkAPI.fetchFullInfoMatch(matchId: self.matchsArray[i].match.gameId) {[weak self] result in
+                            guard let self = self else { return }
+                            defer { disGroup.leave() }
+                            self.dataQueue.sync(flags:.barrier) {
+                            switch result {
+                            case.success(let fullMatchHistory):
+                                let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
+                                self.matchModel.append(match)
+    
+                            case.failure:
+                                print("!")
+                            }
+                               
+                        }
+                            
+                    }
+                }
+                    
+                    disGroup.notify(queue: .main) {
+                        print(self.matchModel.count)
+                        self.matchModel.sort { (lhs, rhs) -> Bool in
+                            return lhs.dateCreation > rhs.dateCreation
+                        }
+                        
+                        self.matchHistory.reloadData()
+                    }
+
+            case .failure:
+                print("Error matchs")
+            }
+        }
+        
+        nameLebel.text = foundSummoner.name
+        lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
+        summonerIconImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/profileicon/\(String(foundSummoner.profileIconId)).png")
+       
+        
     }
 
     @IBAction func logOffTaped(_ sender: UIButton) {
@@ -133,7 +251,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return matchsArray.count
+        matchModel.count
     }
     
     
@@ -143,203 +261,132 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         let moreCell = tableView.dequeueReusableCell(withIdentifier: "moreInfo", for: indexPath) as! MoreInfoCell
         let championKey = String(self.matchsArray[indexPath.section].match.champion)
         
+        let spells = try! Realm().objects(SummonerSpell.self)
         
-        let summoner = try! Realm().objects(FoundSummoner.self)
-        guard let foundSummoner = summoner.first else { return matchCell }
+        let thisMatch = matchModel[indexPath.section]
         
-        let matchId = self.matchsArray[indexPath.section].match.gameId
+        matchCell.kda.text = thisMatch.summonerKda
         
+        matchCell.typeAndWin.text = thisMatch.matchType
         
-        networkAPI.fetchFullInfoMatch(matchId: matchId) {[weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.success(let fullInfoMatch):
-                
-                DispatchQueue.main.async {
-                    if let myPlayerIdentities = fullInfoMatch.participantIdentities.first(where: {$0.player.summonerName == foundSummoner.name}) {
-                        let myIdInGame = myPlayerIdentities.participantId
-                        if let myPlayer = fullInfoMatch.participants.first(where: {$0.participantId == myIdInGame}) {
-                            
-                            
-                            switch myIdInGame {
-                            case 1:
-                                moreCell.participant1.thisView.backgroundColor = .yellow
-                            case 2:
-                                moreCell.participant2.thisView.backgroundColor = .yellow
-                            case 3:
-                                moreCell.participant3.thisView.backgroundColor = .yellow
-                            case 4:
-                                moreCell.participant4.thisView.backgroundColor = .yellow
-                            case 5:
-                                moreCell.participant5.thisView.backgroundColor = .yellow
-                            case 6:
-                                moreCell.participant6.thisView.backgroundColor = .yellow
-                            case 7:
-                                moreCell.participant7.thisView.backgroundColor = .yellow
-                            case 8:
-                                moreCell.participant8.thisView.backgroundColor = .yellow
-                            case 9:
-                                moreCell.participant9.thisView.backgroundColor = .yellow
-                            case 10:
-                                moreCell.participant10.thisView.backgroundColor = .yellow
-                            default:
-                                print()
-                            }
-                            
-                            if let participant1 = fullInfoMatch.participants.first(where: {$0.participantId == 1}), let participant1Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 1}) {
-                                let participant1Name = participant1Identities.player.summonerName
-                                moreCell.participant1.setData(participant: participant1, participantName: participant1Name)
-                                if participant1.stats.win == true {
-                                    moreCell.team1.backgroundColor = .green
-                                    moreCell.team1Win.textColor = .green
-                                    moreCell.team2.backgroundColor = .red
-                                    moreCell.team2Win.textColor = .red
-                                    moreCell.team1Win.text = "Win"
-                                    moreCell.team2Win.text = "Defeat"
-                                } else {
-                                    moreCell.team1.backgroundColor = .red
-                                    moreCell.team1Win.textColor = .red
-                                    moreCell.team2.backgroundColor = .green
-                                    moreCell.team2Win.textColor = .green
-                                    moreCell.team1Win.text = "Defeat"
-                                    moreCell.team2Win.text = "Win"
-                                }
-                                
-                            }
-                            
-                            if let participant2 = fullInfoMatch.participants.first(where: {$0.participantId == 2}), let participant2Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 2}) {
-                                let participant2Name = participant2Identities.player.summonerName
-                                moreCell.participant2.setData(participant: participant2, participantName: participant2Name)
-                                
-                            }
-                            
-                            if let participant3 = fullInfoMatch.participants.first(where: {$0.participantId == 3}), let participant3Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 3}) {
-                                let participant3Name = participant3Identities.player.summonerName
-                                moreCell.participant3.setData(participant: participant3, participantName: participant3Name)
-                                
-                            }
-                            
-                            if let participant4 = fullInfoMatch.participants.first(where: {$0.participantId == 4}), let participant4Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 4}) {
-                                let participant4Name = participant4Identities.player.summonerName
-                                moreCell.participant4.setData(participant: participant4, participantName: participant4Name)
-                                
-                            }
-                            
-                            if let participant5 = fullInfoMatch.participants.first(where: {$0.participantId == 5}), let participant5Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 5}) {
-                                let participant5Name = participant5Identities.player.summonerName
-                                moreCell.participant5.setData(participant: participant5, participantName: participant5Name)
-                                
-                            }
-                            
-                            if let participant6 = fullInfoMatch.participants.first(where: {$0.participantId == 6}), let participant6Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 6}) {
-                                let participant6Name = participant6Identities.player.summonerName
-                                moreCell.participant6.setData(participant: participant6, participantName: participant6Name)
-                                
-                            }
-                            
-                            if let participant7 = fullInfoMatch.participants.first(where: {$0.participantId == 7}), let participant7Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 7}) {
-                                let participant7Name = participant7Identities.player.summonerName
-                                moreCell.participant7.setData(participant: participant7, participantName: participant7Name)
-                                
-                            }
-                            
-                            if let participant8 = fullInfoMatch.participants.first(where: {$0.participantId == 8}), let participant8Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 8}) {
-                                let participant8Name = participant8Identities.player.summonerName   
-                                moreCell.participant8.setData(participant: participant8, participantName: participant8Name)
-                                
-                            }
-                            
-                            if let participant9 = fullInfoMatch.participants.first(where: {$0.participantId == 9}), let participant9Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 9}) {
-                                let participant9Name = participant9Identities.player.summonerName
-                                moreCell.participant9.setData(participant: participant9, participantName: participant9Name)
-                                
-                            }
-                            
-                            if let participant10 = fullInfoMatch.participants.first(where: {$0.participantId == 10}), let participant10Identities = fullInfoMatch.participantIdentities.first(where: {$0.participantId == 10}) {
-                                let participant10Name = participant10Identities.player.summonerName
-                                moreCell.participant10.setData(participant: participant10, participantName: participant10Name)
-                                
-                            }
-                            
-                            if let spell1 = self.spells.first(where: {$0.key == String(myPlayer.spell1Id)}), let spell2 = self.spells.first(where: {$0.key == String(myPlayer.spell2Id)}) {
-                                matchCell.Spell1.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell1.id).png")
-                                matchCell.Spell2.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell2.id).png")
-                            }
-                            
+        if thisMatch.win == true {
+            matchCell.typeAndWin.backgroundColor = .green
+        } else {
+            matchCell.typeAndWin.backgroundColor = .red
 
-                            imageForItem(item: myPlayer.stats.item0) { imageData in
-                                matchCell.item0.image = imageData
-                            }
-                            imageForItem(item: myPlayer.stats.item1) { imageData in
-                                matchCell.item1.image = imageData
-                            }
-                            imageForItem(item: myPlayer.stats.item2) { imageData in
-                                matchCell.item2.image = imageData
-                            }
-                            imageForItem(item: myPlayer.stats.item3) { imageData in
-                                matchCell.item3.image = imageData
-                            }
-                            imageForItem(item: myPlayer.stats.item4) { imageData in
-                                matchCell.item4.image = imageData
-                            }
-                            imageForItem(item: myPlayer.stats.item5) { imageData in
-                                matchCell.item5.image = imageData
-                            }
-                            
-                            
-                            imageForItem(item: myPlayer.stats.item6) { imageData in
-                                matchCell.item6.image = imageData
-                            }
-                            
-                            var matchType = "Type"
-                            switch fullInfoMatch.queueId {
-                            case 400:
-                                matchType = "Normal (Draft Pick)"
-                            case 420:
-                                matchType = "Ranked Solo/Duo"
-                            case 430:
-                                matchType = "Normal (Blind Pick)"
-                            case 440:
-                                matchType = "Ranked Flex"
-                            default:
-                                matchType = "Error type"
-                            }
-                            
-                            
-                            let timeMatch = fullInfoMatch.gameDuration / 60
-                            let timeMatchSec = fullInfoMatch.gameDuration % 60
-                            matchCell.typeAndWin.text = "\(matchType)"
-                            if timeMatchSec < 10 {
-                                matchCell.dateAndTime.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation)) \(timeMatch):0\(timeMatchSec)"
-                            } else {
-                                matchCell.dateAndTime.text = "\(dateFromGameCreation(time: fullInfoMatch.gameCreation)) \(timeMatch):\(timeMatchSec)"
-                            }
-                            matchCell.kda.text = "\(myPlayer.stats.kills) / \(myPlayer.stats.deaths) / \(myPlayer.stats.assists)"
-                            if myPlayer.stats.win == true {
-                                matchCell.winOrLose.alpha = 0.75
-                                matchCell.winOrLose.backgroundColor = .green
-                            } else {
-                                matchCell.winOrLose.alpha = 0.75
-                                matchCell.winOrLose.backgroundColor = .red
-                            }
-                        }
-                    }
-                }
-                
-            case .failure:
-                
-                print("No full info for \(indexPath.section), matchID \(matchId)")
+        }
+        
+        matchCell.dateAndTime.text = "\(thisMatch.date) \(thisMatch.time) "
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerFirstItemId) { icon in
+            matchCell.item0.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerSecondItemId) { icon in
+            matchCell.item1.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerThirdItemId) { icon in
+            matchCell.item2.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerFourthItemId) { icon in
+            matchCell.item3.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerFifthItemId) { icon in
+            matchCell.item4.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerSixthItemId) { icon in
+            matchCell.item5.image = icon
+        }
+        
+        networkAPI.fetchImageToItem(itemId: thisMatch.summonerWardId) { icon in
+            matchCell.item6.image = icon
+        }
+        
+        if let spell1 = spells.first(where: { $0.key == thisMatch.summonerSpellKey1 }), let spell2 = spells.first(where: { $0.key == thisMatch.summonerSpellKey2 }){
+            networkAPI.fetchImageToSummonerSpell(spellId: spell1.id) { icon in
+                matchCell.Spell1.image = icon
+            }
+            networkAPI.fetchImageToSummonerSpell(spellId: spell2.id) { icon in
+                matchCell.Spell2.image = icon
             }
         }
         
-        
+        if thisMatch.members.count == 10 {
+            switch thisMatch.summonerIdInMatch {
+                case 1:
+                    moreCell.participant1.thisView.backgroundColor = .yellow
+                case 2:
+                    moreCell.participant2.thisView.backgroundColor = .yellow
+                case 3:
+                    moreCell.participant3.thisView.backgroundColor = .yellow
+                case 4:
+                    moreCell.participant4.thisView.backgroundColor = .yellow
+                case 5:
+                    moreCell.participant5.thisView.backgroundColor = .yellow
+                case 6:
+                    moreCell.participant6.thisView.backgroundColor = .yellow
+                case 7:
+                    moreCell.participant7.thisView.backgroundColor = .yellow
+                case 8:
+                    moreCell.participant8.thisView.backgroundColor = .yellow
+                case 9:
+                 moreCell.participant9.thisView.backgroundColor = .yellow
+                case 10:
+                    moreCell.participant10.thisView.backgroundColor = .yellow
+                default:
+                print()
+            }
+            
+            if thisMatch.win == true {
+                if thisMatch.summonerIdInMatch <= 5 {
+                    moreCell.team1.backgroundColor = .green
+                    moreCell.team1Win.text = "Win"
+                    moreCell.team2.backgroundColor = .red
+                    moreCell.team2Win.text = "Defeat"
+                } else {
+                    moreCell.team1.backgroundColor = .red
+                    moreCell.team1Win.text = "Defeat"
+                    moreCell.team2.backgroundColor = .green
+                    moreCell.team2Win.text = "Win"
+                }
+            } else {
+                if thisMatch.summonerIdInMatch <= 5 {
+                    moreCell.team1.backgroundColor = .red
+                    moreCell.team1Win.text = "Defeat"
+                    moreCell.team2.backgroundColor = .green
+                    moreCell.team2Win.text = "Win"
+                } else {
+                    moreCell.team1.backgroundColor = .green
+                    moreCell.team1Win.text = "Win"
+                    moreCell.team2.backgroundColor = .red
+                    moreCell.team2Win.text = "Defeat"
+                }
+            }
+            
+            moreCell.participant1.setData(member: thisMatch.members[0])
+            moreCell.participant2.setData(member: thisMatch.members[1])
+            moreCell.participant3.setData(member: thisMatch.members[2])
+            moreCell.participant4.setData(member: thisMatch.members[3])
+            moreCell.participant5.setData(member: thisMatch.members[4])
+            moreCell.participant6.setData(member: thisMatch.members[5])
+            moreCell.participant7.setData(member: thisMatch.members[6])
+            moreCell.participant8.setData(member: thisMatch.members[7])
+            moreCell.participant9.setData(member: thisMatch.members[8])
+            moreCell.participant10.setData(member: thisMatch.members[9])
+
+
+        }
+            
         
         if indexPath.row == 0 {
             DispatchQueue.main.async {
                 matchCell.tapHandler = { [weak self]  in
                     self?.matchsArray[indexPath.section].isExpanded.toggle()
                     self?.matchHistory.reloadSections([indexPath.section], with: .fade)
-                    
                 }
                 
                 if let champion = self.champions.first(where: {$0.key == championKey}) {
@@ -361,8 +408,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         return moreCell
         }
     }
-    
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -392,12 +437,10 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print(indexPath)
+        
+        
     }
 }
-
-
-// flow: offset - текущий сдвиг по элементам с бека
 
 private func dateFromGameCreation(time: Int) -> String {
     let realTime = round(Double(time/1000))
@@ -410,6 +453,18 @@ private func dateFromGameCreation(time: Int) -> String {
     return strDate
 }
 
+private func timeOfMatc(time: Int) -> String {
+    let timeMatch = time / 60
+    let timeMatchSec = time % 60
+    var result: String = ""
+    if timeMatchSec < 10 {
+        result = "\(timeMatch):0\(timeMatchSec)"
+    } else {
+        result = "\(timeMatch):\(timeMatchSec)"
+    }
+    return result
+}
+
 private func imageForItem(item: Int, completion: @escaping (UIImage?) -> ()) {
  var imageURL: URL?
  
@@ -417,8 +472,10 @@ DispatchQueue(label: "com.lolproject", qos: .background).async {
      imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(item).png")
      guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
      DispatchQueue.main.async {
-         completion(UIImage(data: imageData))
+        if url == imageURL {
+            completion(UIImage(data: imageData))
+        }
      }
- }
+  }
 }
  

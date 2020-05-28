@@ -38,10 +38,10 @@ class ParticipantInfo: XibBasedView {
     @IBOutlet weak var item6: UIImageView!
 
 
-    func setData(participant: Participant, participantName: String) -> () {
-        participantNameLabel.text = "\(participantName)"
-        kda.text = "\(participant.stats.kills)/\(participant.stats.deaths)/\(participant.stats.assists)"
-        if let champion = champions.first(where: { $0.key == String(participant.championId) }) {
+    func setData(member: Member) -> () {
+        participantNameLabel.text = member.name
+        kda.text = member.kda
+        if let champion = champions.first(where: { $0.key == member.championKey }) {
             let championId = champion.id
             networkAPI.fetchImageToChampionIcon(championId: championId) {[weak self] icon in
                 guard let self = self else { return }
@@ -49,7 +49,7 @@ class ParticipantInfo: XibBasedView {
             }
         }
         
-        if let spell1 = spells.first(where: { $0.key == String(participant.spell1Id) }), let spell2 = spells.first(where: { $0.key == String(participant.spell2Id) }) {
+        if let spell1 = spells.first(where: { $0.key == member.spellKey1 }), let spell2 = spells.first(where: { $0.key == member.spellKey2 }) {
             let spell1Id = spell1.id
             let spell2Id = spell2.id
             networkAPI.fetchImageToSummonerSpell(spellId: spell1Id) {[weak self] icon in
@@ -62,25 +62,25 @@ class ParticipantInfo: XibBasedView {
         }
         
         
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item0)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.firstItemId) {[weak self] icon in
             self?.item0.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item1)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.secondItemId) {[weak self] icon in
             self?.item1.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item2)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.thirdItemId) {[weak self] icon in
             self?.item2.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item3)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.fourthItemId) {[weak self] icon in
             self?.item3.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item4)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.fifthItemId) {[weak self] icon in
             self?.item4.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item5)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.sixthItemId) {[weak self] icon in
             self?.item5.image = icon
         }
-        networkAPI.fetchImageToItem(itemId: String(participant.stats.item6)) {[weak self] icon in
+        networkAPI.fetchImageToItem(itemId: member.wardId) {[weak self] icon in
             self?.item6.image = icon
         }
 

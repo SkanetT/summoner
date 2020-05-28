@@ -114,7 +114,9 @@ class NetworkAPI {
             imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/champion/\(championId).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
-                completion(UIImage(data: imageData))
+                if url == imageURL {
+                    completion(UIImage(data: imageData))
+                }
             }
         }
     }
@@ -126,7 +128,9 @@ class NetworkAPI {
             imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/spell/\(spellId).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
-                completion(UIImage(data: imageData))
+                 if url == imageURL {
+                    completion(UIImage(data: imageData))
+                }
             }
         }
     }
@@ -138,7 +142,9 @@ class NetworkAPI {
             imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png")
             guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
             DispatchQueue.main.async {
-                completion(UIImage(data: imageData))
+                 if url == imageURL {
+                    completion(UIImage(data: imageData))
+                }
             }
         }
     }
