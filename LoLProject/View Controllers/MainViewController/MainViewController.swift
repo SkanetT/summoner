@@ -79,7 +79,7 @@ class MainViewController: UIViewController {
        // summonerName = summonerName?.split(separator: " ").joined(separator: "%20")
         summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
-        networkAPI.seachSummoner(name: summonerName!) { result in
+        networkAPI.seachSummoner(name: summonerName!) {[weak self] result in
             switch result {
             case .success(let summoner):
                 
@@ -99,7 +99,7 @@ class MainViewController: UIViewController {
                 }
                 DispatchQueue.main.async {
                     let summonerVC = SummonerViewController()
-                    self.navigationController?.pushViewController(summonerVC, animated: true)
+                    self?.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
             case.failure(let error):
@@ -108,7 +108,7 @@ class MainViewController: UIViewController {
                     let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
                     ac.addAction(ok)
                     DispatchQueue.main.async {
-                        self.present(ac, animated: true)
+                        self?.present(ac, animated: true)
                     }
                 }
             }
@@ -117,9 +117,3 @@ class MainViewController: UIViewController {
     
 }
 
-//extension MainViewController: UITabBarControllerDelegate {
-//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-//        return (viewController as? UINavigationController).
-//    }
-//}
-//

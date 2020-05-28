@@ -12,7 +12,7 @@
 		3A5AE7472466FA1200E80092 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7462466FA1200E80092 /* Item.swift */; };
 		3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE74824675D8200E80092 /* SummonerSpellsData.swift */; };
 		3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE74A2467620C00E80092 /* SummonerSpell.swift */; };
-		3A5BB736247F3450002417B4 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5BB735247F3450002417B4 /* Member.swift */; };
+		3A5BB736247F3450002417B4 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5BB735247F3450002417B4 /* MatchModel.swift */; };
 		3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366F82460B75E004C76D0 /* InfoViewController.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerViewController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
@@ -46,8 +46,8 @@
 		3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322B24684F7000100FF8 /* SummonerSpellCell.swift */; };
 		3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA322C24684F7000100FF8 /* SummonerSpellCell.xib */; };
 		3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322F2468878900100FF8 /* MatchHistory.swift */; };
-		3AAA325B246A0A9700100FF8 /* MachHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */; };
-		3AAA325C246A0A9700100FF8 /* MachHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */; };
+		3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA3259246A0A9700100FF8 /* MatchHistoryCell.swift */; };
+		3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */; };
 		3AAA325E246DE81700100FF8 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325D246DE81700100FF8 /* RankView.swift */; };
 		3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
@@ -71,7 +71,7 @@
 		3A5AE7462466FA1200E80092 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3A5AE74824675D8200E80092 /* SummonerSpellsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpellsData.swift; sourceTree = "<group>"; };
 		3A5AE74A2467620C00E80092 /* SummonerSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpell.swift; sourceTree = "<group>"; };
-		3A5BB735247F3450002417B4 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		3A5BB735247F3450002417B4 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
 		3A6366F82460B75E004C76D0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerViewController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 		3AAA322B24684F7000100FF8 /* SummonerSpellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpellCell.swift; sourceTree = "<group>"; };
 		3AAA322C24684F7000100FF8 /* SummonerSpellCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerSpellCell.xib; sourceTree = "<group>"; };
 		3AAA322F2468878900100FF8 /* MatchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistory.swift; sourceTree = "<group>"; };
-		3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachHistoryCell.swift; sourceTree = "<group>"; };
-		3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachHistoryCell.xib; sourceTree = "<group>"; };
+		3AAA3259246A0A9700100FF8 /* MatchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryCell.swift; sourceTree = "<group>"; };
+		3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchHistoryCell.xib; sourceTree = "<group>"; };
 		3AAA325D246DE81700100FF8 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedView.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
@@ -153,8 +153,8 @@
 			children = (
 				3A6366FB2460C769004C76D0 /* SummonerViewController.swift */,
 				3A6366FC2460C769004C76D0 /* SummonerViewController.xib */,
-				3AAA3259246A0A9700100FF8 /* MachHistoryCell.swift */,
-				3AAA325A246A0A9700100FF8 /* MachHistoryCell.xib */,
+				3AAA3259246A0A9700100FF8 /* MatchHistoryCell.swift */,
+				3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */,
 				3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */,
 				3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */,
 				3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */,
@@ -237,7 +237,7 @@
 				3A5AE74824675D8200E80092 /* SummonerSpellsData.swift */,
 				3AAA322F2468878900100FF8 /* MatchHistory.swift */,
 				3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */,
-				3A5BB735247F3450002417B4 /* Member.swift */,
+				3A5BB735247F3450002417B4 /* MatchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -399,7 +399,7 @@
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
-				3AAA325C246A0A9700100FF8 /* MachHistoryCell.xib in Resources */,
+				3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */,
 				3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
@@ -478,9 +478,9 @@
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
-				3A5BB736247F3450002417B4 /* Member.swift in Sources */,
+				3A5BB736247F3450002417B4 /* MatchModel.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,
-				3AAA325B246A0A9700100FF8 /* MachHistoryCell.swift in Sources */,
+				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3AFED4DC246F5ACB00D8AA40 /* TestView.swift in Sources */,
