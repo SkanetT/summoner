@@ -20,7 +20,6 @@ class SummonerViewController: UIViewController {
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
-    let networkAPI = NetworkAPI()
 
     let header = RankView()
     let footer = MoreFooterView()
@@ -66,19 +65,17 @@ class SummonerViewController: UIViewController {
         nameLebel.text = foundSummoner.name
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
         
-        networkAPI.fetchImageToSummonerIcon(iconId: String(foundSummoner.profileIconId)) {[weak self] icon in
-             self?.summonerIconImage.image = icon
-         }
+        summonerIconImage.downloadSD(type: .profileIcon(id: String(foundSummoner.profileIconId)))
          
         let disGroup = DispatchGroup()
-            networkAPI.fetchMatchHistory(accountId: foundSummoner.accountId) {[weak self] result in
+            NetworkAPI.shared.fetchMatchHistory(accountId: foundSummoner.accountId) {[weak self] result in
                 guard let self = self else{ return }
                 switch result {
                 case .success(let matchs):
                         self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
-                        for i in 0...15 {
+                        for i in 0...self.matchsArray.count / 2 {
                             disGroup.enter()
-                            self.networkAPI.fetchFullInfoMatch(matchId: self.matchsArray[i].match.gameId) {[weak self] result in
+                            NetworkAPI.shared.fetchFullInfoMatch(matchId: self.matchsArray[i].match.gameId) {[weak self] result in
                                 guard let self = self else { return }
                                 defer { disGroup.leave() }
                                 self.dataQueue.sync(flags:.barrier) {
@@ -107,7 +104,7 @@ class SummonerViewController: UIViewController {
                 }
             }
         
-        networkAPI.fetchMostPlayedChampions(summonerId: foundSummoner.id) {[weak self] result in
+        NetworkAPI.shared.fetchMostPlayedChampions(summonerId: foundSummoner.id) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case.success(let mostPlayedChampions):
@@ -209,7 +206,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         let summoner = try! Realm().objects(FoundSummoner.self)
         guard let foundSummoner = summoner.first else { return nil }
         if section == 0 {
-            networkAPI.fetchLeagues(summonerId: foundSummoner.id) {[weak self] result in
+            NetworkAPI.shared.fetchLeagues(summonerId: foundSummoner.id) {[weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case.success(let leagueData):

@@ -31,7 +31,6 @@
 		3A8CB7232455FE61005801A8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7222455FE61005801A8 /* Errors.swift */; };
 		3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */; };
 		3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */; };
-		3A8CB732245C2610005801A8 /* ExtensionsMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB731245C2610005801A8 /* ExtensionsMainViewController.swift */; };
 		3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB755245C7E14005801A8 /* SelectedChampionData.swift */; };
 		3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */; };
 		3A8CB7A4245E2FF1005801A8 /* StringGettingAttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A3245E2FF1005801A8 /* StringGettingAttributedText.swift */; };
@@ -92,7 +91,6 @@
 		3A8CB7222455FE61005801A8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoController.swift; sourceTree = "<group>"; };
 		3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChampionInfoController.xib; sourceTree = "<group>"; };
-		3A8CB731245C2610005801A8 /* ExtensionsMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsMainViewController.swift; sourceTree = "<group>"; };
 		3A8CB755245C7E14005801A8 /* SelectedChampionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChampionData.swift; sourceTree = "<group>"; };
 		3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampion.swift; sourceTree = "<group>"; };
 		3A8CB7A3245E2FF1005801A8 /* StringGettingAttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringGettingAttributedText.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				3A8CB6DA24549417005801A8 /* MainViewController.swift */,
-				3A8CB731245C2610005801A8 /* ExtensionsMainViewController.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -466,7 +463,6 @@
 				3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */,
 				3A8CB71F24550767005801A8 /* CollectionViewControllerCellCollectionViewCell.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
-				3A8CB732245C2610005801A8 /* ExtensionsMainViewController.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,

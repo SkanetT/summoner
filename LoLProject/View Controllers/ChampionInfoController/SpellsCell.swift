@@ -23,4 +23,22 @@ class SpellsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func setData(isPassive: Bool, image: String, name: String, description: String) {
+        
+        if isPassive {
+            spellImage.downloadSD(type: .passiveSkillImage(name: image))
+        } else {
+            spellImage.downloadSD(type: .skillImage(name: image))
+        }
+        
+        
+        DispatchQueue.main.async {
+            self.spellName.text = name
+            
+            self.spellDescription.attributedText = description.gettingAttributedText()
+        }
+        
+        
+        
+    }
 }

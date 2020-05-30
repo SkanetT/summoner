@@ -11,13 +11,19 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
-    let networkAPI = NetworkAPI()
-    
     let realm = try! Realm()
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
     
     @IBOutlet var verLabel: UILabel!
     @IBOutlet var summonerNameTF: UITextField!
+    @IBOutlet var serverLabel: UILabel!
+    
+    @IBOutlet var picker: UIPickerView!
+    
+    @IBOutlet var serverButton: UIButton!
+    
+    
+    let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan" ]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,17 +38,29 @@ class MainViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tabBarController?.delegate = self
+
+        
+        picker.delegate = self
+        picker.dataSource = self
+        
+        
+        
+        DispatchQueue.main.async {
+            self.serverLabel.text = self.servers.first
+        }
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         updateCurrentVersion()
+        
+        
+        
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)
         if let lastVersion = version.first?.lastVesion {
-            networkAPI.fetchCurrentVersion() {[weak self] result in
+            NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
                 switch result {
                 case .success(let version):
                     if version != lastVersion {
@@ -54,10 +72,11 @@ class MainViewController: UIViewController {
                             self?.getChampionsListRealm()
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
+                            self?.updateCurrentVersion()
                         }
                     }
                 case.failure:
-                print("error")
+                    print("error")
                 }
             }
         } else {
@@ -66,33 +85,54 @@ class MainViewController: UIViewController {
                 self.getChampionsListRealm()
                 self.getItemsListRealm()
                 self.getSpellsListRealm()
+
             }
+            updateCurrentVersion()
+
         }
         
-
+        
+         
+        
+    }
+    
+    
+    @IBAction func regionDidTap(_ sender: UIButton) {
+        picker.isHidden.toggle()
     }
     
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
+        picker.isHidden = true
+        
         var summonerName = summonerNameTF.text
-       // summonerName = summonerName?.split(separator: " ").joined(separator: "%20")
         summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
-        networkAPI.seachSummoner(name: summonerName!) {[weak self] result in
+        var region: String
+        
+        switch serverLabel.text {
+        case "Europe West":
+            region = "euw1"
+        case "Europe Nordic & East":
+            region = "eun1"
+        default:
+            region = "ru"
+        }
+        
+        NetworkAPI.shared.seachSummoner(region: region,name: summonerName!) {[weak self] result in
             switch result {
             case .success(let summoner):
-                
-
                 let realm = try! Realm()
                 let foundSummoner = FoundSummoner()
-                
                 foundSummoner.name = summoner.name
                 foundSummoner.id = summoner.id
                 foundSummoner.accountId = summoner.accountId
                 foundSummoner.puuid = summoner.puuid
                 foundSummoner.profileIconId = summoner.profileIconId
                 foundSummoner.summonerLevel = summoner.summonerLevel
+                foundSummoner.region = region
+                
                 
                 try! realm.write {
                     realm.add(foundSummoner)
@@ -115,5 +155,132 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func updateCurrentVersion() {
+        
+        let versions = try! Realm().objects(Version.self)
+        if let versin = versions.first {
+            DispatchQueue.main.async {
+                self.verLabel.text = versin.lastVesion
+            }
+        }
+//        NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let version):
+//
+//                DispatchQueue.main.async {
+//                    self.verLabel.text = version
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+    }
+    
+    private func getChampionsListRealm(){
+        NetworkAPI.shared.fetchCurrentChampionsList() { result in
+            switch result {
+            case .success(let championData):
+                let realm = try! Realm()
+                for item in championData.data {
+                    let champion = Champion()
+                    champion.id = item.key
+                    champion.name = item.value.name
+                    champion.key = item.value.key
+                    try! realm.write {
+                        realm.add(champion)
+                    }
+                }
+                
+            case.failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getItemsListRealm(){
+        NetworkAPI.shared.fetchCurrentItemsList() { result in
+            switch result {
+            case .success(let itemData):
+                let realm = try! Realm()
+                for item in itemData.data {
+                    let lolItem = Item()
+                    lolItem.id = item.key
+                    lolItem.name = item.value.name
+                    lolItem.colloq = item.value.colloq
+                    lolItem.itemDescription = item.value.description
+                    lolItem.plaintext = item.value.plaintext
+                    try! realm.write {
+                        realm.add(lolItem)
+                    }
+                }
+                
+            case.failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func getSpellsListRealm() {
+        NetworkAPI.shared.fetchCurrentSpellsList() { result in
+            switch result {
+            case.success(let spellsData):
+                let realm = try! Realm()
+                for item in spellsData.data {
+                    let spell = SummonerSpell()
+                    
+                    if item.key != "SummonerSnowURFSnowball_Mark"
+                    {
+                        spell.id = item.key
+                        spell.name = item.value.name
+                        spell.key = item.value.key
+                        spell.spellDescription = item.value.description
+                        spell.tooltip = item.value.tooltip
+                        try! realm.write {
+                            realm.add(spell)
+                        }
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private  func getVersionRealm() {
+        NetworkAPI.shared.fetchCurrentVersion() { result in
+            switch result {
+            case .success(let lastVersion):
+                let realm = try! Realm()
+                let version = Version()
+                version.lastVesion = lastVersion
+                try! realm.write {
+                    realm.add(version)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
+extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        servers.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return servers[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        DispatchQueue.main.async {
+            self.serverLabel.text = self.servers[row]
+        }
+    }
+    
+}

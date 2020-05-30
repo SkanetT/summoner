@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SDWebImage
 
 class MatchHistoryCell: UITableViewCell {
     @IBOutlet var test: UILabel!
@@ -53,6 +54,7 @@ class MatchHistoryCell: UITableViewCell {
         let images = contentView.subviews.filter({ $0 is UIImageView })
         images.forEach {
             if let imageView = $0 as? UIImageView {
+                imageView.sd_cancelCurrentImageLoad()
                 imageView.image = nil
             }
         }
@@ -74,52 +76,30 @@ class MatchHistoryCell: UITableViewCell {
         
         if let champion = champions.first(where: {$0.key == summonerInMatch.championKey}) {
         
-            NetworkAPI.shared.fetchImageToChampionIcon(championId: champion.id) {[weak self] icon in
-                self?.championIcon.image = icon
-            
-            }
+            championIcon.downloadSD(type: .championIcon(id: champion.id))
         }
         
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.firstItemId) {[weak self] icon in
-            self?.item0.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.secondItemId) {[weak self] icon in
-            self?.item1.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.thirdItemId) {[weak self] icon in
-            self?.item2.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.fourthItemId) {[weak self] icon in
-            self?.item3.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.fifthItemId) {[weak self] icon in
-            self?.item4.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.sixthItemId) {[weak self] icon in
-            self?.item5.image = icon
-        }
-               
-        NetworkAPI.shared.fetchImageToItem(itemId: summonerInMatch.wardId) {[weak self] icon in
-            self?.item6.image = icon
-        }
         
+        item0.downloadSD(type: .itemIcon(id: summonerInMatch.firstItemId))
+        item1.downloadSD(type: .itemIcon(id: summonerInMatch.secondItemId))
+        item2.downloadSD(type: .itemIcon(id: summonerInMatch.thirdItemId))
+        item3.downloadSD(type: .itemIcon(id: summonerInMatch.fourthItemId))
+        item4.downloadSD(type: .itemIcon(id: summonerInMatch.fifthItemId))
+        item5.downloadSD(type: .itemIcon(id: summonerInMatch.sixthItemId))
+        item6.downloadSD(type: .itemIcon(id: summonerInMatch.wardId))
+
+
+
+
         let spells = try! Realm().objects(SummonerSpell.self)
-        
-        
+
+
         if let spell1 = spells.first(where: { $0.key == summonerInMatch.spellKey1 }), let spell2 = spells.first(where: { $0.key == summonerInMatch.spellKey2 }) {
-            NetworkAPI.shared.fetchImageToSummonerSpell(spellId: spell1.id) {[weak self] icon in
-                self?.Spell1.image = icon
-            }
-            NetworkAPI.shared.fetchImageToSummonerSpell(spellId: spell2.id) {[weak self] icon in
-                self?.Spell2.image = icon
-            }
+            Spell1.downloadSD(type: .spellIcon(id: spell1.id))
+            Spell2.downloadSD(type: .spellIcon(id: spell2.id))
+
         }
-        
+       
     }
     
 }

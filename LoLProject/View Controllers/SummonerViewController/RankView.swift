@@ -46,7 +46,7 @@ class RankView: UIView {
         
         soloName.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(soloName)
-               
+        
         soloName.font = UIFont(name: "Avenir-Heavy", size: 22)
         soloName.textAlignment = .center
         soloName.text = "Solo"
@@ -82,7 +82,7 @@ class RankView: UIView {
         
         flexImage.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(flexImage)
-               
+        
         flexImage.image = #imageLiteral(resourceName: "Unranked")
         flexImage.contentMode = .scaleAspectFit
         flexImage.topAnchor.constraint(equalTo: flexRank.bottomAnchor, constant: 8).isActive = true
@@ -130,72 +130,72 @@ class RankView: UIView {
             let wrFlex :Double
             wrFlex = Double(flexRankData.wins) / (Double(flexRankData.wins) + Double(flexRankData.losses)) * 100
             DispatchQueue.main.async {
-                    self.flexRank.text = "\(flexRankData.tier) \(flexRankData.rank) (LP \(flexRankData.leaguePoints))"
-                    if wrFlex < 50 {
-                        self.flexWr.textColor = .red
-                    } else {
-                        self.flexWr.textColor = .green
-                    }
-                    self.flexWr.text = "WR \(round(10*wrFlex)/10)%"
-                    switch flexRankData.tier {
-                    case "IRON":
-                        self.flexImage.image = #imageLiteral(resourceName: "Iron")
-                    case "BRONZE":
-                        self.flexImage.image = #imageLiteral(resourceName: "Bronze")
-                    case "SILVER":
-                        self.flexImage.image = #imageLiteral(resourceName: "Silver")
-                    case "GOLD":
-                        self.flexImage.image = #imageLiteral(resourceName: "Gold")
-                    case "PLATINUM":
-                        self.flexImage.image = #imageLiteral(resourceName: "Platinum")
-                    case "DIAMOND":
-                        self.flexImage.image = #imageLiteral(resourceName: "Diamond")
-                    case "CHALLENGER":
-                        self.flexImage.image = #imageLiteral(resourceName: "Challenger")
-                    case "MASTER":
-                        self.flexImage.image = #imageLiteral(resourceName: "Master")
-                    case "GRANDMASTER":
-                        self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
-                    default:
-                        self.flexImage.image = #imageLiteral(resourceName: "Unranked")
-                    }
+                self.flexRank.text = "\(flexRankData.tier) \(flexRankData.rank) (LP \(flexRankData.leaguePoints))"
+                if wrFlex < 50 {
+                    self.flexWr.textColor = .red
+                } else {
+                    self.flexWr.textColor = .green
+                }
+                self.flexWr.text = "WR \(round(10*wrFlex)/10)%"
+                switch flexRankData.tier {
+                case "IRON":
+                    self.flexImage.image = #imageLiteral(resourceName: "Iron")
+                case "BRONZE":
+                    self.flexImage.image = #imageLiteral(resourceName: "Bronze")
+                case "SILVER":
+                    self.flexImage.image = #imageLiteral(resourceName: "Silver")
+                case "GOLD":
+                    self.flexImage.image = #imageLiteral(resourceName: "Gold")
+                case "PLATINUM":
+                    self.flexImage.image = #imageLiteral(resourceName: "Platinum")
+                case "DIAMOND":
+                    self.flexImage.image = #imageLiteral(resourceName: "Diamond")
+                case "CHALLENGER":
+                    self.flexImage.image = #imageLiteral(resourceName: "Challenger")
+                case "MASTER":
+                    self.flexImage.image = #imageLiteral(resourceName: "Master")
+                case "GRANDMASTER":
+                    self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
+                default:
+                    self.flexImage.image = #imageLiteral(resourceName: "Unranked")
                 }
             }
-            if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
-                    let wrSolo :Double
-                    wrSolo = Double(soloRankData.wins) / (Double(soloRankData.wins) + Double(soloRankData.losses)) * 100
-                    DispatchQueue.main.async {
-                        if wrSolo < 50 {
-                            self.soloWr.textColor = .red
-                        } else {
-                            self.soloWr.textColor = .green
-                        }
-                        self.soloWr.text = "WR \(round(10*wrSolo)/10)%"
-                        self.soloRank.text = "\(soloRankData.tier) \(soloRankData.rank) (LP \(soloRankData.leaguePoints))"
-                        switch soloRankData.tier {
-                        case "IRON":
-                            self.soloImage.image = #imageLiteral(resourceName: "Iron")
-                        case "BRONZE":
-                            self.soloImage.image = #imageLiteral(resourceName: "Bronze")
-                        case "SILVER":
-                            self.soloImage.image = #imageLiteral(resourceName: "Silver")
-                        case "GOLD":
-                            self.soloImage.image = #imageLiteral(resourceName: "Gold")
-                        case "PLATINUM":
-                            self.soloImage.image = #imageLiteral(resourceName: "Platinum")
-                        case "DIAMOND":
-                            self.soloImage.image = #imageLiteral(resourceName: "Diamond")
-                        case "CHALLENGER":
-                            self.soloImage.image = #imageLiteral(resourceName: "Challenger")
-                        case "MASTER":
-                            self.soloImage.image = #imageLiteral(resourceName: "Master")
-                        case "GRANDMASTER":
-                            self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
-                        default:
-                            self.soloImage.image = #imageLiteral(resourceName: "Unranked")
-                        }
-                    }
-                }
         }
+        if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
+            let wrSolo :Double
+            wrSolo = Double(soloRankData.wins) / (Double(soloRankData.wins) + Double(soloRankData.losses)) * 100
+            DispatchQueue.main.async {
+                if wrSolo < 50 {
+                    self.soloWr.textColor = .red
+                } else {
+                    self.soloWr.textColor = .green
+                }
+                self.soloWr.text = "WR \(round(10*wrSolo)/10)%"
+                self.soloRank.text = "\(soloRankData.tier) \(soloRankData.rank) (LP \(soloRankData.leaguePoints))"
+                switch soloRankData.tier {
+                case "IRON":
+                    self.soloImage.image = #imageLiteral(resourceName: "Iron")
+                case "BRONZE":
+                    self.soloImage.image = #imageLiteral(resourceName: "Bronze")
+                case "SILVER":
+                    self.soloImage.image = #imageLiteral(resourceName: "Silver")
+                case "GOLD":
+                    self.soloImage.image = #imageLiteral(resourceName: "Gold")
+                case "PLATINUM":
+                    self.soloImage.image = #imageLiteral(resourceName: "Platinum")
+                case "DIAMOND":
+                    self.soloImage.image = #imageLiteral(resourceName: "Diamond")
+                case "CHALLENGER":
+                    self.soloImage.image = #imageLiteral(resourceName: "Challenger")
+                case "MASTER":
+                    self.soloImage.image = #imageLiteral(resourceName: "Master")
+                case "GRANDMASTER":
+                    self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
+                default:
+                    self.soloImage.image = #imageLiteral(resourceName: "Unranked")
+                }
+            }
+        }
+    }
 }
 

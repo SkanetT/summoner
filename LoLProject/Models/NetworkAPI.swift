@@ -7,33 +7,39 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class NetworkAPI {
     
     static let shared = NetworkAPI()
     static let que = DispatchQueue.init(label: "com.imageloader", qos: .utility, attributes: .concurrent)
-
     
-    func fetchCurrentChampionsList( completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/champion.json"
+    
+    func fetchCurrentChampionsList(completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
+//        let versions = try! Realm().objects(Version.self)
+//        guard let version = versions.first?.lastVesion else { return }
+//        let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/champion.json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion.json"
+
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
-         let task = session.dataTask(with: url) { data, response, rerror in
-             if let data = data {
-                 if let championsData = try? JSONDecoder().decode(ChampionsData.self, from: data) {
-                     completion(.success(championsData))
-                 } else {
-                     completion(.failure(.network))
-                 }
-             }
-         }
-         task.resume()
-     }
-     
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let championsData = try? JSONDecoder().decode(ChampionsData.self, from: data) {
+                    completion(.success(championsData))
+                } else {
+                    completion(.failure(.network))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func fetchCurrentItemsList( completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
-       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/item.json"
-       guard let url = URL(string: urlString) else { return }
-       let session = URLSession(configuration: .default)
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/item.json"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
             if let data = data {
                 if let itemsData = try? JSONDecoder().decode(ItemsData.self, from: data) {
@@ -47,9 +53,9 @@ class NetworkAPI {
     }
     
     func fetchCurrentSpellsList( completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
-       let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/summoner.json"
-       guard let url = URL(string: urlString) else { return }
-       let session = URLSession(configuration: .default)
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/summoner.json"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
             if let data = data {
                 if let summonerSpellsData = try? JSONDecoder().decode(SummonerSpellsData.self, from: data) {
@@ -63,118 +69,47 @@ class NetworkAPI {
     }
     
     func fetchCurrentVersion(completion: @escaping (Result<String, APIErrors>) -> () ) {
-         let urlString = "https://ddragon.leagueoflegends.com/api/versions.json"
-         guard let url = URL(string: urlString) else { return }
-         let session = URLSession(configuration: .default)
-         let task = session.dataTask(with: url) { data, response, rerror in
-             if let data = data {
-                 if let version = try? JSONDecoder().decode(VersionData.self, from: data), let currentVersion = version.first {
-                     completion(.success(currentVersion))
-                 } else {
-                     completion(.failure(.parsing))
-                 }
-             }
-         }
-         task.resume()
-     }
+        let urlString = "https://ddragon.leagueoflegends.com/api/versions.json"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let version = try? JSONDecoder().decode(VersionData.self, from: data), let currentVersion = version.first {
+                    completion(.success(currentVersion))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
+    }
     
     func fetchFullInfoChampion(id: String, completion: @escaping (Result<SelectedChampion, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/en_US/champion/\(id).json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion/\(id).json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
             if let data = data {
                 
                 if let championsData = try? JSONDecoder().decode(SelectedChampionsData.self, from: data) {
-                    var champion = SelectedChampion(name: "", title: "", passiveName: "", passiveImage: "", passiveDescription: "", qName: "", qImage: "", qDescription: "", qTooltip: "",
-                                                    wName: "", wImage: "", wDescription: "", eName: "", eImage: "", eDescription: "", rName: "", rImage: "", rDescription: "")
-                    for item in championsData.data {
-                        if item.key == "\(id)" {
-                            champion = SelectedChampion(name: item.value.name, title: item.value.title, passiveName: item.value.passive.name, passiveImage: item.value.passive.image.full, passiveDescription: item.value.passive.description,
-                                                        qName: item.value.spells[0].name, qImage: item.value.spells[0].image.full, qDescription: item.value.spells[0].description, qTooltip: item.value.spells[0].tooltip,
-                                wName: item.value.spells[1].name, wImage: item.value.spells[1].image.full, wDescription: item.value.spells[1].description, eName: item.value.spells[2].name, eImage: item.value.spells[2].image.full, eDescription: item.value.spells[2].description, rName: item.value.spells[3].name, rImage: item.value.spells[3].image.full, rDescription: item.value.spells[3].description )
-                        }
-                    }
                     
-                    completion(.success(champion))
+                    if let champion = championsData.data.first(where: { $0.key == "\(id)" }) {
+                        let selectedChampion = SelectedChampion.init(item: champion)
+                        completion(.success(selectedChampion))
+                    }
+    
                 } else {
                     completion(.failure(.network))
                 }
-        
+                
             }
         }
         task.resume()
     }
     
-    func fetchImageToChampionIcon(championId: String, completion: @escaping (UIImage?) -> ()) {
-        var imageURL: URL?
+    func seachSummoner(region:String, name:String, completion: @escaping (Result<SummonerData, APIErrors>) -> () ) {
         
-       DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/champion/\(championId).png")
-            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                if url == imageURL {
-                    completion(UIImage(data: imageData))
-                }
-            }
-        }
-    }
-    
-    func fetchImageToSummonerSpell(spellId: String, completion: @escaping (UIImage?) -> ()) {
-        var imageURL: URL?
-        
-       DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/spell/\(spellId).png")
-            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                 if url == imageURL {
-                    completion(UIImage(data: imageData))
-                }
-            }
-        }
-    }
-    
-    func fetchImageToItem(itemId: String, completion: @escaping (UIImage?,String) -> ()) {
-        NetworkAPI.que.async {
-            guard let url = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png"), let imageData = try? Data(contentsOf: url) else {
-                    return
-            }
-            completion(UIImage(data: imageData),itemId)
-        }
-        
-    }
-    
-    func fetchImageToItem(itemId: String, completion: @escaping (UIImage?) -> ()) {
-        NetworkAPI.que.async {
-            guard let url = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/\(itemId).png"), let imageData = try? Data(contentsOf: url) else {
-                    return
-            }
-            DispatchQueue.main.async {
-                completion(UIImage(data: imageData))
-            }
-        }
-        
-    }
-    
-    func fetchImageToSummonerIcon(iconId: String, completion: @escaping (UIImage?) -> ()) {
-        var imageURL: URL?
-        
-       DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/profileicon/\(iconId).png")
-            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                 if url == imageURL {
-                    completion(UIImage(data: imageData))
-                }
-            }
-        }
-    }
-    
-    let globalConstans = GlobalConstants()
-    func seachSummoner(name:String, completion: @escaping (Result<SummonerData, APIErrors>) -> () ) {
-        let apiKey = globalConstans.apiKey
-
-        let urlString = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/\(name)?api_key=\(apiKey)"
+        let urlString = "https://\(region).api.riotgames.com/lol/summoner/v4/summoners/by-name/\(name)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -198,8 +133,7 @@ class NetworkAPI {
     }
     
     func fetchMostPlayedChampions(summonerId: String, completion: @escaping (Result<MostPlayedChampionsData, APIErrors>) -> () ) {
-        let apiKey = globalConstans.apiKey
-        let urlString = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)?api_key=\(apiKey)"
+        let urlString = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -215,8 +149,7 @@ class NetworkAPI {
     }
     
     func fetchLeagues(summonerId: String, completion: @escaping (Result<LeagueData, APIErrors>) -> () ) {
-        let apiKey = globalConstans.apiKey
-        let urlString = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/\(summonerId)?api_key=\(apiKey)"
+        let urlString = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -232,8 +165,7 @@ class NetworkAPI {
     }
     
     func fetchMatchHistory(accountId: String, completion: @escaping (Result<MatchHistory, APIErrors>) -> () ) {
-        let apiKey = globalConstans.apiKey
-        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/\(accountId)?api_key=\(apiKey)"
+        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/\(accountId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -249,8 +181,7 @@ class NetworkAPI {
     }
     
     func fetchFullInfoMatch(matchId: Int, completion: @escaping (Result<FullInfoMatch, APIErrors>) -> () ) {
-        let apiKey = globalConstans.apiKey
-        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(apiKey)"
+        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in

@@ -30,8 +30,12 @@ struct MatchModel {
             summonerInMatch.matchType = "Normal (Blind Pick)"
         case 440:
             summonerInMatch.matchType = "Ranked Flex"
+        case 700:
+            summonerInMatch.matchType = "Clash"
+        case 1020:
+            summonerInMatch.matchType = "One for All"
         default:
-            summonerInMatch.matchType = "Error type"
+            summonerInMatch.matchType = "Error type \(match.queueId)"
         }
         
         

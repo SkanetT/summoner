@@ -11,9 +11,10 @@ import RealmSwift
 
 class FoundSummoner: Object {
     @objc dynamic var id = ""
+    @objc dynamic var name = ""
+    @objc dynamic var region = ""
     @objc dynamic var accountId = ""
     @objc dynamic var puuid = ""
-    @objc dynamic var name = ""
     @objc dynamic var profileIconId = 0
     @objc dynamic var revisionDate = 0
     @objc dynamic var summonerLevel = 0

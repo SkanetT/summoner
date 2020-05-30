@@ -46,9 +46,8 @@ extension SpellsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = spellList[indexPath.row]
         if let spell = allSpells.first(where: {$0.name == spellList[indexPath.row]}) {
             cell.descriptionLabel.text = spell.spellDescription
-            DispatchQueue.main.async {
-                cell.spellImage.download(urlString: "https://ddragon.leagueoflegends.com/cdn/10.9.1/img/spell/\(spell.id).png")
-            }
+            
+            cell.spellImage.downloadSD(type: .spellIcon(id: spell.id))
           
         }
         return cell

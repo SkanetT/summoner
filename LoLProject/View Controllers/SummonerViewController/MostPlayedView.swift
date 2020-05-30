@@ -11,8 +11,6 @@ import RealmSwift
 
 class MostPlayedView: UIView {
     
-    let networkAPI = NetworkAPI()
-    
     let firstMostPlayedChampionImage = UIImageView()
     let firstMostPlayedChampionNameLvl = UILabel()
     let firstMostPlayedChampionPts = UILabel()
@@ -120,25 +118,26 @@ class MostPlayedView: UIView {
     }
     
     func setData(mostPlayedChampions: MostPlayedChampionsData) {
-            let champions = try! Realm().objects(Champion.self)
-                if let firstChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[0].championId)"}), let secondChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[1].championId)"}), let thidChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[2].championId)"}) {
-                    self.firstMostPlayedChampionNameLvl.text = "\(firstChampion.name) \(mostPlayedChampions[0].championLevel) lvl"
-                    self.firstMostPlayedChampionPts.text = "\(mostPlayedChampions[0].championPoints) pts"
-                    self.networkAPI.fetchImageToChampionIcon(championId: firstChampion.id) { image in
-                        self.firstMostPlayedChampionImage.image = image
-                    }
-                    
-                    self.secondMostPlayedChampionNameLvl.text = "\(secondChampion.name) \(mostPlayedChampions[1].championLevel) lvl"
-                    self.secondMostPlayedChampionPts.text = "\(mostPlayedChampions[1].championPoints) pts"
-                    self.networkAPI.fetchImageToChampionIcon(championId: secondChampion.id) { image in
-                        self.secondMostPlayedChampionImage.image = image
-                    }
-                        
-                    self.thidMostPlayedChampionNameLvl.text = "\(thidChampion.name) \(mostPlayedChampions[2].championLevel) lvl"
-                    self.thidMostPlayedChampionPts.text = "\(mostPlayedChampions[2].championPoints) pts"
-                    self.networkAPI.fetchImageToChampionIcon(championId: thidChampion.id) { image in
-                        self.thidMostPlayedChampionImage.image = image
-                    }
-                }
-            }
+        let champions = try! Realm().objects(Champion.self)
+        if let firstChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[0].championId)"}), let secondChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[1].championId)"}), let thidChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[2].championId)"}) {
+            self.firstMostPlayedChampionNameLvl.text = "\(firstChampion.name) \(mostPlayedChampions[0].championLevel) lvl"
+            self.firstMostPlayedChampionPts.text = "\(mostPlayedChampions[0].championPoints) pts"
+            
+            self.firstMostPlayedChampionImage.downloadSD(type: .championIcon(id: firstChampion.id))
+           
+            
+            self.secondMostPlayedChampionNameLvl.text = "\(secondChampion.name) \(mostPlayedChampions[1].championLevel) lvl"
+            self.secondMostPlayedChampionPts.text = "\(mostPlayedChampions[1].championPoints) pts"
+            
+            self.secondMostPlayedChampionImage.downloadSD(type: .championIcon(id: secondChampion.id))
+           
+            
+            self.thidMostPlayedChampionNameLvl.text = "\(thidChampion.name) \(mostPlayedChampions[2].championLevel) lvl"
+            self.thidMostPlayedChampionPts.text = "\(mostPlayedChampions[2].championPoints) pts"
+            
+            self.thidMostPlayedChampionImage.downloadSD(type: .championIcon(id: thidChampion.id))
+        
+        }
+    }
 }
+

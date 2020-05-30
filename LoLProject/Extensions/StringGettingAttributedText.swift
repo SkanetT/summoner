@@ -6,35 +6,25 @@
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     func gettingAttributedText() -> NSAttributedString?{
+    
+
     let htmlData = NSString(string: self).data(using: String.Encoding.unicode.rawValue)
+        
     let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
         NSAttributedString.DocumentType.html]
-    return try? NSMutableAttributedString(data: htmlData ?? Data(),
-                                                             options: options,
-                                                             documentAttributes: nil)
+        
+     let result = try? NSMutableAttributedString(data: htmlData ?? Data(),
+     options: options,
+     documentAttributes: nil)
+        
+    result?.addAttributes([NSAttributedString.Key.font:UIFont(name: "Apple SD Gothic Neo", size: 17.0)!], range:   NSRange(location:0 , length: result!.length))
+
+    return result
     }
 }
 
-//    private func gettingAttributedText(label: UILabel, text: String) {
-//        let htmlData = NSString(string: text).data(using: String.Encoding.unicode.rawValue)
-//        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
-//            NSAttributedString.DocumentType.html]
-//        if let attributedString = try? NSMutableAttributedString(data: htmlData ?? Data(),
-//                                                                 options: options,
-//                                                                 documentAttributes: nil) {
-//            label.attributedText = attributedString
-//        } else {
-//            label.text = text
-//        }
-//    }
 
-extension String {
-    func spaceTo20() -> String {
-       let string = self.split(separator: " ").joined(separator: "%20")
-        return string
-    }
-}

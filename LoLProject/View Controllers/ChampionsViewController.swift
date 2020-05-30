@@ -33,7 +33,6 @@ class ChampionsViewController: UICollectionViewController {
         super.viewDidLoad()
         title = "Champions"
        
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissViewController))
         championsItems()
     }
      
@@ -45,29 +44,12 @@ class ChampionsViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! CollectionViewControllerCellCollectionViewCell
         cell.nameLabel.text = champList[indexPath.row].name
-        cell.championImage.image = nil
-        imageForCell(index: indexPath.row, completion: { image in
-            cell.championImage.image = image
-        })
+        
+        cell.championImage.downloadSD(type: .championIcon(id: champList[indexPath.row].id))
         
         return cell
     }
     
-    
-    private func imageForCell(index: Int, completion: @escaping (UIImage?) -> ()) {
-        var imageURL: URL?
-        
-       DispatchQueue(label: "com.lolproject", qos: .background).async {
-            imageURL = URL(string: "https://ddragon.leagueoflegends.com/cdn/10.10.3208608/img/champion/\(self.champList[index].id).png")
-            guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                if url == imageURL {
-                    completion(UIImage(data: imageData))
-                }
-            }
-        }
-        
-    }
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
