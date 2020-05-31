@@ -12,6 +12,7 @@ import Foundation
 
 struct MatchModel {
     
+    let version: String
     var summonerInMatch: SummonerInMatch = .init()
     
     var members: [Member] = []
@@ -20,6 +21,8 @@ struct MatchModel {
     init(match: FullInfoMatch, summonerName: String) {
         
         summonerInMatch.dateCreation = match.gameCreation
+        
+        version = match.gameVersion
         
         switch match.queueId {
         case 400:
@@ -30,6 +33,10 @@ struct MatchModel {
             summonerInMatch.matchType = "Normal (Blind Pick)"
         case 440:
             summonerInMatch.matchType = "Ranked Flex"
+        case 450:
+            summonerInMatch.matchType = "ARAM"
+        case 900:
+            summonerInMatch.matchType = "Ultra Rapid Fire"
         case 700:
             summonerInMatch.matchType = "Clash"
         case 1020:

@@ -18,6 +18,7 @@
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
 		3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */; };
+		3A8790DC2483173300499C5E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790DB2483173300499C5E /* Reachability.swift */; };
 		3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D624549417005801A8 /* AppDelegate.swift */; };
 		3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D824549417005801A8 /* SceneDelegate.swift */; };
 		3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* MainViewController.swift */; };
@@ -37,8 +38,8 @@
 		3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A5245E3037005801A8 /* ImageViewDownload.swift */; };
 		3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F8569246084C70090BBAF /* SummonerData.swift */; };
 		3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F856C246086F80090BBAF /* GlobalConstants.swift */; };
-		3AA4D11B245F313700B05437 /* SpellsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D119245F313600B05437 /* SpellsCell.swift */; };
-		3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA4D11A245F313700B05437 /* SpellsCell.xib */; };
+		3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D119245F313600B05437 /* SkillCell.swift */; };
+		3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA4D11A245F313700B05437 /* SkillCell.xib */; };
 		3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D13D246045AF00B05437 /* NetworkAPI.swift */; };
 		3AAA322924684A1100100FF8 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322724684A1100100FF8 /* SpellsViewController.swift */; };
 		3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA322824684A1100100FF8 /* SpellsViewController.xib */; };
@@ -76,6 +77,7 @@
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
 		3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedChampionsData.swift; sourceTree = "<group>"; };
+		3A8790DB2483173300499C5E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3A8CB6D324549417005801A8 /* LoLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CB6D624549417005801A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8CB6D824549417005801A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,8 +99,8 @@
 		3A8CB7A5245E3037005801A8 /* ImageViewDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownload.swift; sourceTree = "<group>"; };
 		3A9F8569246084C70090BBAF /* SummonerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerData.swift; sourceTree = "<group>"; };
 		3A9F856C246086F80090BBAF /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
-		3AA4D119245F313600B05437 /* SpellsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsCell.swift; sourceTree = "<group>"; };
-		3AA4D11A245F313700B05437 /* SpellsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellsCell.xib; sourceTree = "<group>"; };
+		3AA4D119245F313600B05437 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
+		3AA4D11A245F313700B05437 /* SkillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillCell.xib; sourceTree = "<group>"; };
 		3AA4D13D246045AF00B05437 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		3AAA322724684A1100100FF8 /* SpellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
 		3AAA322824684A1100100FF8 /* SpellsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellsViewController.xib; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				3A8CB7A2245E2F8B005801A8 /* New Group */,
 				3A8CB6D624549417005801A8 /* AppDelegate.swift */,
+				3A8790DB2483173300499C5E /* Reachability.swift */,
 				3A8CB6D824549417005801A8 /* SceneDelegate.swift */,
 				3A8CB6DF24549419005801A8 /* Assets.xcassets */,
 				3A8CB6E424549419005801A8 /* Info.plist */,
@@ -259,8 +262,8 @@
 			children = (
 				3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */,
 				3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */,
-				3AA4D119245F313600B05437 /* SpellsCell.swift */,
-				3AA4D11A245F313700B05437 /* SpellsCell.xib */,
+				3AA4D119245F313600B05437 /* SkillCell.swift */,
+				3AA4D11A245F313700B05437 /* SkillCell.xib */,
 			);
 			path = ChampionInfoController;
 			sourceTree = "<group>";
@@ -395,7 +398,7 @@
 				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
-				3AA4D11C245F313700B05437 /* SpellsCell.xib in Resources */,
+				3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */,
 				3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */,
 				3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
@@ -470,6 +473,7 @@
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
+				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
@@ -490,7 +494,7 @@
 				3A8CB7A6245E3037005801A8 /* ImageViewDownload.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,
 				3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */,
-				3AA4D11B245F313700B05437 /* SpellsCell.swift in Sources */,
+				3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */,
 				3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,

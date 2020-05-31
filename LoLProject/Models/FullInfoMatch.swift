@@ -11,6 +11,7 @@ import Foundation
 struct FullInfoMatch: Codable {
     
     let gameCreation, gameDuration, queueId, mapId: Int
+    let gameVersion: String
     let participants: [Participant]
     let participantIdentities: [ParticipantIdentity]
 
@@ -28,17 +29,18 @@ struct Stats: Codable {
     let win: Bool
     let item0, item1, item2, item3: Int
     let item4, item5, item6, kills: Int
-    let deaths, assists, largestKillingSpree, largestMultiKill: Int
-    let killingSprees, longestTimeSpentLiving, doubleKills, tripleKills: Int
-    let quadraKills, pentaKills, unrealKills, totalDamageDealt: Int
-    let magicDamageDealt, physicalDamageDealt, trueDamageDealt, largestCriticalStrike: Int
-    let totalDamageDealtToChampions, magicDamageDealtToChampions, physicalDamageDealtToChampions, trueDamageDealtToChampions: Int
-    let totalHeal, totalUnitsHealed, damageSelfMitigated, damageDealtToObjectives: Int
-    let damageDealtToTurrets, visionScore, timeCCingOthers, totalDamageTaken: Int
-    let magicalDamageTaken, physicalDamageTaken, trueDamageTaken, goldEarned: Int
-    let goldSpent, turretKills, inhibitorKills, totalMinionsKilled: Int
-    let neutralMinionsKilled, neutralMinionsKilledTeamJungle, neutralMinionsKilledEnemyJungle, totalTimeCrowdControlDealt: Int
-    let champLevel, visionWardsBoughtInGame, sightWardsBoughtInGame, wardsPlaced: Int
+    let deaths, assists: Int
+    let largestKillingSpree, largestMultiKill: Int?
+    let killingSprees, longestTimeSpentLiving, doubleKills, tripleKills: Int?
+    let quadraKills, pentaKills, unrealKills, totalDamageDealt: Int?
+    let magicDamageDealt, physicalDamageDealt, trueDamageDealt, largestCriticalStrike: Int?
+    let totalDamageDealtToChampions, magicDamageDealtToChampions, physicalDamageDealtToChampions, trueDamageDealtToChampions: Int?
+    let totalHeal, totalUnitsHealed, damageSelfMitigated, damageDealtToObjectives: Int?
+    let damageDealtToTurrets, visionScore, timeCCingOthers, totalDamageTaken: Int?
+    let magicalDamageTaken, physicalDamageTaken, trueDamageTaken, goldEarned: Int?
+    let goldSpent, turretKills, inhibitorKills, totalMinionsKilled: Int?
+    let neutralMinionsKilled, neutralMinionsKilledTeamJungle, neutralMinionsKilledEnemyJungle, totalTimeCrowdControlDealt: Int?
+    let champLevel, visionWardsBoughtInGame, sightWardsBoughtInGame, wardsPlaced: Int?
     let wardsKilled: Int?
     let firstBloodKill, firstBloodAssist, firstTowerKill, firstTowerAssist: Bool?
     let firstInhibitorKill, firstInhibitorAssist: Bool?
@@ -61,7 +63,8 @@ struct ParticipantIdentity: Codable {
 }
 
 struct Player: Codable {
-    let accountId, summonerName, summonerId: String
-    let profileIcon: Int
+    let summonerName: String
+    let accountId, summonerId: String?
+    let profileIcon: Int?
 
 }

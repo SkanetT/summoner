@@ -11,7 +11,7 @@ import RealmSwift
 
 class ChampionInfoController: UIViewController {
     
-    @IBOutlet var spellsTable: UITableView!
+    @IBOutlet var skillsTable: UITableView!
     
     
     var id = "Jinx"
@@ -21,10 +21,12 @@ class ChampionInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spellsTable.delegate = self
-        spellsTable.dataSource = self
-        spellsTable.register(UINib(nibName: "SpellsCell", bundle: nil), forCellReuseIdentifier: "spells")
+        skillsTable.delegate = self
+        skillsTable.dataSource = self
         
+        skillsTable.allowsSelection = false
+        
+        skillsTable.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
         
         NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
             switch result {
@@ -53,7 +55,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "spells", for: indexPath) as! SpellsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "skill", for: indexPath) as! SpellsCell
         
         
         

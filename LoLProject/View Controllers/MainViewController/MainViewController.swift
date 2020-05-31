@@ -23,7 +23,11 @@ class MainViewController: UIViewController {
     @IBOutlet var serverButton: UIButton!
     
     
-    let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan" ]
+    let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan", "Republic of Korea"]
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,10 +45,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         picker.delegate = self
         picker.dataSource = self
+        
         
         
         
@@ -60,20 +65,28 @@ class MainViewController: UIViewController {
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)
         if let lastVersion = version.first?.lastVesion {
+            // show
+            // create grou
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
+                // hide
                 switch result {
+                    
                 case .success(let version):
                     if version != lastVersion {
                         DispatchQueue.main.async {
                             try! realm.write {
                                 realm.deleteAll()
                             }
-                            self?.getVersionRealm()
-                            self?.getChampionsListRealm()
+                            //diente
+                            self?.getVersionRealm() // disleave
+                            //disenter
+                            self?.getChampionsListRealm() // dislo
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
                         }
+                        
+                        //disnorif hide loader
                     }
                 case.failure:
                     print("error")
@@ -85,14 +98,14 @@ class MainViewController: UIViewController {
                 self.getChampionsListRealm()
                 self.getItemsListRealm()
                 self.getSpellsListRealm()
-
+                
             }
             updateCurrentVersion()
-
+            
         }
         
         
-         
+        
         
     }
     
@@ -106,6 +119,8 @@ class MainViewController: UIViewController {
         
         picker.isHidden = true
         
+        guard  !summonerNameTF.text!.isEmpty else {return}
+        
         var summonerName = summonerNameTF.text
         summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
@@ -116,11 +131,30 @@ class MainViewController: UIViewController {
             region = "euw1"
         case "Europe Nordic & East":
             region = "eun1"
-        default:
+        case "Brazil":
+            region = "br1"
+        case "Latin America North":
+            region = "la1"
+        case "Latin America South":
+            region = "la2"
+        case "North America":
+            region = "na1"
+        case "Oceania":
+            region = "oc1"
+        case "Russia":
             region = "ru"
+        case "Turkey":
+            region = "tr1"
+        case "Japan":
+            region = "jp1"
+        case "Republic of Korea":
+            region = "kr"
+        default:
+            region = ""
         }
         
         NetworkAPI.shared.seachSummoner(region: region,name: summonerName!) {[weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let summoner):
                 let realm = try! Realm()
@@ -139,18 +173,27 @@ class MainViewController: UIViewController {
                 }
                 DispatchQueue.main.async {
                     let summonerVC = SummonerViewController()
-                    self?.navigationController?.pushViewController(summonerVC, animated: true)
+                    self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
             case.failure(let error):
-                if error == .summonerNotFound {
-                    let ac = UIAlertController(title: "Summoner not found", message: nil, preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                    ac.addAction(ok)
+                guard case .summonerNotFound = error else { return }
+                
                     DispatchQueue.main.async {
-                        self?.present(ac, animated: true)
+                        let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                        ac.addAction(ok)
+                        self.present(ac, animated: true)
                     }
-                }
+                
+//                if error == .summonerNotFound {
+//                    DispatchQueue.main.async {
+//                        let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
+//                        let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
+//                        ac.addAction(ok)
+//                        self.present(ac, animated: true)
+//                    }
+//                }
             }
         }
     }
@@ -163,18 +206,18 @@ class MainViewController: UIViewController {
                 self.verLabel.text = versin.lastVesion
             }
         }
-//        NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-//            guard let self = self else { return }
-//            switch result {
-//            case .success(let version):
-//
-//                DispatchQueue.main.async {
-//                    self.verLabel.text = version
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+        //        NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
+        //            guard let self = self else { return }
+        //            switch result {
+        //            case .success(let version):
+        //
+        //                DispatchQueue.main.async {
+        //                    self.verLabel.text = version
+        //                }
+        //            case .failure(let error):
+        //                print(error)
+        //            }
+        //        }
     }
     
     private func getChampionsListRealm(){

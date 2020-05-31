@@ -9,8 +9,12 @@
 import Foundation
 
 enum APIErrors: Error {
+    case statusCode(_ id: Int)
+    case noData
     case network
     case parsing
     case unknown
     case summonerNotFound
+    case noInternet
 }
+

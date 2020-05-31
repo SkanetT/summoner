@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MoreInfoCell: UITableViewCell {
     
@@ -46,6 +47,7 @@ class MoreInfoCell: UITableViewCell {
         let images = contentView.subviews.filter({ $0 is UIImageView })
         images.forEach {
             if let imageView = $0 as? UIImageView {
+                imageView.sd_cancelCurrentImageLoad()
                 imageView.image = nil
             }
         }

@@ -10,7 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChampionInfoController" customModule="LoLProject" customModuleProvider="target">
             <connections>
                 <outlet property="championImage" destination="h8P-Ts-YFj" id="wD9-n0-xVQ"/>
-                <outlet property="spellsTable" destination="FK4-eh-y7h" id="lo4-4N-5uO"/>
+                <outlet property="skillsTable" destination="FK4-eh-y7h" id="lo4-4N-5uO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

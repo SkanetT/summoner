@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcY-cm-IxU">
-                                <rect key="frame" x="0.0" y="524" width="414" height="259"/>
+                                <rect key="frame" x="0.0" y="523.5" width="414" height="259.5"/>
                                 <accessibility key="accessibilityConfiguration" label="123">
                                     <accessibilityTraits key="traits" none="YES"/>
                                     <bool key="isElement" value="NO"/>
@@ -275,11 +275,11 @@
             </objects>
             <point key="canvasLocation" x="-675.36231884057975" y="118.52678571428571"/>
         </scene>
-        <!--Info-->
+        <!--Navigation Controller-->
         <scene sceneID="aC7-w2-uA5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B26-0H-y3c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Info" image="info" catalog="system" id="dXZ-WW-uO4" userLabel="Info"/>
+                    <tabBarItem key="tabBarItem" title="" image="info" catalog="system" id="dXZ-WW-uO4" userLabel="Info"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KMX-kN-C6G">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -294,11 +294,11 @@
             </objects>
             <point key="canvasLocation" x="-675.36231884057975" y="847.76785714285711"/>
         </scene>
-        <!--Item-->
+        <!--Navigation Controller-->
         <scene sceneID="qVQ-NV-wjY">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nj1-td-S4A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="hurricane" catalog="system" id="F8j-I5-u2P"/>
+                    <tabBarItem key="tabBarItem" title="" image="person" catalog="system" id="F8j-I5-u2P"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ula-Cf-YPs">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -315,9 +315,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hurricane" catalog="system" width="91" height="128"/>
         <image name="info" catalog="system" width="93" height="128"/>
         <image name="nosign" catalog="system" width="128" height="121"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="planet" width="512" height="512"/>
     </resources>
 </document>

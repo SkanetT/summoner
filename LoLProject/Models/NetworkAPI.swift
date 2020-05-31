@@ -124,6 +124,8 @@ class NetworkAPI {
                         } else {
                             completion(.failure(.parsing))
                         }
+                    } else {
+                        completion(.failure(.noData))
                     }
                 }
             }
@@ -132,8 +134,8 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchMostPlayedChampions(summonerId: String, completion: @escaping (Result<MostPlayedChampionsData, APIErrors>) -> () ) {
-        let urlString = "https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
+    func fetchMostPlayedChampions(region: String,summonerId: String, completion: @escaping (Result<MostPlayedChampionsData, APIErrors>) -> () ) {
+        let urlString = "https://\(region).api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -148,8 +150,8 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchLeagues(summonerId: String, completion: @escaping (Result<LeagueData, APIErrors>) -> () ) {
-        let urlString = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
+    func fetchLeagues(region: String ,summonerId: String, completion: @escaping (Result<LeagueData, APIErrors>) -> () ) {
+        let urlString = "https://\(region).api.riotgames.com/lol/league/v4/entries/by-summoner/\(summonerId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -164,8 +166,8 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchMatchHistory(accountId: String, completion: @escaping (Result<MatchHistory, APIErrors>) -> () ) {
-        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/\(accountId)?api_key=\(GlobalConstants.shared.apiKey)"
+    func fetchMatchHistory(region: String,accountId: String, completion: @escaping (Result<MatchHistory, APIErrors>) -> () ) {
+        let urlString = "https://\(region).api.riotgames.com/lol/match/v4/matchlists/by-account/\(accountId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -180,19 +182,33 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchFullInfoMatch(matchId: Int, completion: @escaping (Result<FullInfoMatch, APIErrors>) -> () ) {
-        let urlString = "https://euw1.api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(GlobalConstants.shared.apiKey)"
+    func fetchFullInfoMatch(region: String,matchId: Int, completion: @escaping (Result<FullInfoMatch, APIErrors>) -> () ) {
+        let urlString = "https://\(region).api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
+        
+        // Reachabiblity
+        
         let task = session.dataTask(with: url) { data, response, rerror in
-            if let data = data {
-                if let fullInfoMatch = try? JSONDecoder().decode(FullInfoMatch.self, from: data) {
-                    completion(.success(fullInfoMatch))
-                } else {
-                    
-                    completion(.failure(.parsing))
-                }
+            guard let responseCode = response as? HTTPURLResponse else {
+                completion(.failure(.unknown))
+                return
             }
+            switch responseCode.statusCode {
+            case 200...300:
+                if let data = data {
+                    if let fullInfoMatch = try? JSONDecoder().decode(FullInfoMatch.self, from: data) {
+                        completion(.success(fullInfoMatch))
+                    } else {
+                        
+                        completion(.failure(.parsing))
+                    }
+                }
+            default:
+                completion(.failure(.statusCode(responseCode.statusCode)))
+                
+            }
+            
         }
         task.resume()
     }

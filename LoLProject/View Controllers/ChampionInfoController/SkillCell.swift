@@ -10,9 +10,9 @@ import UIKit
 
 class SpellsCell: UITableViewCell {
     
-    @IBOutlet var spellImage: UIImageView!
-    @IBOutlet var spellName: UILabel!
-    @IBOutlet var spellDescription: UILabel!
+    @IBOutlet var skillImage: UIImageView!
+    @IBOutlet var skillName: UILabel!
+    @IBOutlet var skillDescription: UILabel!
     
 
     override func awakeFromNib() {
@@ -26,16 +26,16 @@ class SpellsCell: UITableViewCell {
     func setData(isPassive: Bool, image: String, name: String, description: String) {
         
         if isPassive {
-            spellImage.downloadSD(type: .passiveSkillImage(name: image))
+            skillImage.downloadSD(type: .passiveSkillImage(name: image))
         } else {
-            spellImage.downloadSD(type: .skillImage(name: image))
+            skillImage.downloadSD(type: .skillImage(name: image))
         }
         
         
         DispatchQueue.main.async {
-            self.spellName.text = name
+            self.skillName.text = name
             
-            self.spellDescription.attributedText = description.gettingAttributedText()
+            self.skillDescription.attributedText = description.gettingAttributedText()
         }
         
         
