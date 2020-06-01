@@ -231,7 +231,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func reloadMatchInfo(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int = 0,  summonerName: String ) {
         guard reply < 4 else {
-            print("some wrong")
+            print("not reload 🧻")
             disGroup.leave()
             return
         }
@@ -240,6 +240,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 switch result {
                 case.success(let fullMatchHistory):
                      self.dataQueue.sync(flags:.barrier) {
+                        print("reload 🩸")
                         disGroup.leave()
                         let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
                         self.matchModel.append(match)
@@ -259,7 +260,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         let disGroup = DispatchGroup()
         var failsMatchs = 0
         
-        let decValue = matchsArray.count - matchModel.count < 7 ? matchsArray.count - matchModel.count : 7
+        let decValue = matchsArray.count - matchModel.count < 7 ? matchsArray.count - matchModel.count - 1 : 7
+        guard decValue >= 1 else { return }
         
         for i in matchModel.count...(matchModel.count + decValue) {
             

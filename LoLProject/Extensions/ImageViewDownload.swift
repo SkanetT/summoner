@@ -35,7 +35,7 @@ enum ImageType {
     case championIcon(id: String)
     case spellIcon(id: String)
     case profileIcon(id: String)
-    case championWallpaper(id: String)
+    case championWallpaper(id: String, index: String)
     case passiveSkillImage(name: String)
     case skillImage(name: String)
     
@@ -60,8 +60,8 @@ enum ImageType {
             return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/spell/\(id).png")
         case .profileIcon(let id):
             return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/profileicon/\(id).png")
-        case .championWallpaper(let id):
-            return URL(string: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/\(id)_0.jpg")
+        case .championWallpaper(let id, let index):
+            return URL(string: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/\(id)_\(index).jpg")
         case .passiveSkillImage(let name):
             return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/passive/\(name)")
         case .skillImage(let name):

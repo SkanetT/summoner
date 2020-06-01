@@ -11,22 +11,29 @@ import RealmSwift
 
 class ChampionInfoController: UIViewController {
     
-    @IBOutlet var skillsTable: UITableView!
+    @IBOutlet var tableView: UITableView!
     
+    let footer = FooterForChampion()
+    let header = HeaderForChampion()
     
     var id = "Jinx"
     
-    @IBOutlet var championImage: UIImageView!
+    // @IBOutlet var championImage: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        skillsTable.delegate = self
-        skillsTable.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        skillsTable.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
         
-        skillsTable.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
+        tableView.allowsSelection = false
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        
+        tableView.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
         
         NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
             switch result {
@@ -39,7 +46,7 @@ class ChampionInfoController: UIViewController {
             }
         }
         
-        championImage.downloadSD(type: .championWallpaper(id: id))
+        //  championImage.downloadSD(type: .championWallpaper(id: id))
     }
     
     @objc
@@ -65,6 +72,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                 switch indexPath.row {
                 case 0:
                     cell.setData(isPassive: true, image: champion.passiveImage, name: champion.passiveName, description: champion.passiveDescription)
+                    
                 case 1:
                     cell.setData(isPassive: false, image: champion.qImage, name: champion.qName, description: champion.qDescription)
                 case 2:
@@ -72,7 +80,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                 case 3:
                     cell.setData(isPassive: false, image: champion.eImage, name: champion.eName, description: champion.eDescription)
                 case 4:
-                    cell.setData(isPassive: false, image: champion.rImage, name: champion.rName, description: champion.rDescription)                    
+                    cell.setData(isPassive: false, image: champion.rImage, name: champion.rName, description: champion.rDescription)
                 default:
                     
                     break
@@ -80,10 +88,63 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
             case .failure:
                 print("?")
             }
+            
+            
         }
+        
+       
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let champion):
+                self.header.setData(id: self.id, skins: champion.skins)
+                
+            case .failure:
+                print("Errort")
+            }
+        }
+        
+        //    header.setData(id: id)
+        
+        return header
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 225
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
+            switch result {
+            case .success(let champion):
+                DispatchQueue.main.async {
+                    self?.footer.setData(lore: champion.lore)
+                }
+                
+            case .failure:
+                print("Errort")
+            }
+        }
+        return footer
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 220
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return UITableView.automaticDimension
+    }
+    
+    
 }
 
 

@@ -11,7 +11,7 @@ import RealmSwift
 
 class SpellsViewController: UIViewController {
     
-    @IBOutlet weak var spellsTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var allSpells = try! Realm().objects(SummonerSpell.self)
     var spellList: [String] = []
@@ -27,8 +27,8 @@ class SpellsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Spells"
-        spellsTableView.delegate = self
-        spellsTableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
         allSpellsList()
         
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,18 +9,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChampionInfoController" customModule="LoLProject" customModuleProvider="target">
             <connections>
-                <outlet property="championImage" destination="h8P-Ts-YFj" id="wD9-n0-xVQ"/>
-                <outlet property="skillsTable" destination="FK4-eh-y7h" id="lo4-4N-5uO"/>
+                <outlet property="tableView" destination="FK4-eh-y7h" id="lo4-4N-5uO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-eh-y7h">
-                    <rect key="frame" x="0.0" y="250" width="414" height="646"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FK4-eh-y7h">
+                    <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="sectionIndexBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -29,22 +28,13 @@
                         <outlet property="delegate" destination="-1" id="yvB-wr-D07"/>
                     </connections>
                 </tableView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h8P-Ts-YFj">
-                    <rect key="frame" x="0.0" y="44" width="414" height="198"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="198" id="443-bw-Wch"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1gI-ay-0ZE"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5Dy-k7-tsp"/>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MJ2-rG-J03"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="top" secondItem="h8P-Ts-YFj" secondAttribute="bottom" constant="8" id="NZI-2K-eoO"/>
-                <constraint firstAttribute="bottom" secondItem="FK4-eh-y7h" secondAttribute="bottom" id="iDE-pc-M1k"/>
-                <constraint firstItem="FK4-eh-y7h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kQD-hw-gNo"/>
-                <constraint firstItem="h8P-Ts-YFj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qf3-Uq-Frv"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JDk-v8-fmV"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Mre-JX-bHg"/>
+                <constraint firstItem="FK4-eh-y7h" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="OBe-7i-qbe"/>
+                <constraint firstAttribute="bottom" secondItem="FK4-eh-y7h" secondAttribute="bottom" id="VQn-cd-MSM"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="4.3478260869565224" y="101.78571428571428"/>

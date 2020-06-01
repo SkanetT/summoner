@@ -15,6 +15,8 @@ struct SelectedChampionsData: Codable {
 
 struct Info: Codable {
     let id, key, name, title: String
+    let lore: String
+    let skins: [Skin]
     let spells: [Spell]
     let passive: Passive
 }
@@ -30,4 +32,12 @@ struct Passive: Codable {
 }
 struct Image: Codable {
     let full, sprite, group: String
+}
+
+
+
+
+struct Skin: Codable {
+let name: String
+let num: Int
 }

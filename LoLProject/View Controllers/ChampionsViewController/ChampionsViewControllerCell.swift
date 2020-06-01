@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class CollectionViewControllerCellCollectionViewCell: UICollectionViewCell {
+class ChampionsViewControllerCell: UICollectionViewCell {
     
     @IBOutlet var nameLabel: UILabel!
         

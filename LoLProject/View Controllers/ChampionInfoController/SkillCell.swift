@@ -19,9 +19,6 @@ class SpellsCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     func setData(isPassive: Bool, image: String, name: String, description: String) {
         
@@ -36,7 +33,8 @@ class SpellsCell: UITableViewCell {
             self.skillName.text = name
             
             self.skillDescription.attributedText = description.gettingAttributedText()
-        }
+            
+                    }
         
         
         

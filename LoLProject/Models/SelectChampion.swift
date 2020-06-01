@@ -9,16 +9,21 @@
 import Foundation
 
 struct SelectedChampion {
-    let name, title: String
+    let name, title, lore: String
     let passiveName, passiveImage, passiveDescription: String
     let qName, qImage, qDescription, qTooltip: String
     let wName, wImage, wDescription: String
     let eName, eImage, eDescription: String
     let rName, rImage, rDescription: String
+    var skins: [Skin]  = []
     
     init(item: Dictionary<String, Info>.Element) {
         name = item.value.name
         title = item.value.title
+        lore = item.value.lore
+        
+        skins = item.value.skins
+        
         passiveName = item.value.passive.name
         passiveImage = item.value.passive.image.full
         passiveDescription = item.value.passive.description
@@ -36,5 +41,10 @@ struct SelectedChampion {
         rImage = item.value.spells[3].image.full
         rDescription = item.value.spells[3].description 
     }
+//    struct Skin {
+//        let name: String
+//        let id: Int
+//    }
+    
 }
 

@@ -42,7 +42,7 @@ class ChampionsViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! CollectionViewControllerCellCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! ChampionsViewControllerCell
         cell.nameLabel.text = champList[indexPath.row].name
         
         cell.championImage.downloadSD(type: .championIcon(id: champList[indexPath.row].id))

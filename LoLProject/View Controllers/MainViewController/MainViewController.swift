@@ -84,6 +84,13 @@ class MainViewController: UIViewController {
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
+                            
+//                            let defaults = UserDefaults.standard
+//                            defaults.set(101, forKey: "test")
+//
+//                            let test1 = defaults.integer(forKey: "test")
+//                                print(test1)
+                            
                         }
                         
                         //disnorif hide loader
