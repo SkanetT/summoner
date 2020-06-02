@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+
+
 class SummonerViewController: UIViewController {
     
     
@@ -208,6 +210,17 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                     print("no league")
                 }
                 
+            }
+            
+            header.tapHandler = { value in
+                
+                
+                let leagueVC = LeagueController()
+                leagueVC.leagueId = value
+                
+                DispatchQueue.main.async {
+                    self.navigationController?.pushViewController(leagueVC, animated: true)
+                }
             }
             return header
         } else { return nil }

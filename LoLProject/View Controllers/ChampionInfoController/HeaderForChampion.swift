@@ -83,13 +83,21 @@ extension HeaderForChampion: UICollectionViewDelegate, UICollectionViewDataSourc
         } else {
             cell.skinName.text = ""
         }
+        
+        
         cell.skinImage.downloadSD(type: .championWallpaper(id: id, index: String(skins[indexPath.row].num)))
         
+        
+                
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         self.pageControl.currentPage = indexPath.row
     }
+    
+   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+       pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+   }
     
 }

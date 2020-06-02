@@ -18,24 +18,38 @@ class SpellsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
+    
+    
+    override func prepareForReuse() {
+//        skillImage.sd_cancelCurrentImageLoad()
+//        
+//        skillDescription.text = " "
+//        layoutIfNeeded()
+    }
     
     func setData(isPassive: Bool, image: String, name: String, description: String) {
         
-        if isPassive {
-            skillImage.downloadSD(type: .passiveSkillImage(name: image))
-        } else {
-            skillImage.downloadSD(type: .skillImage(name: image))
+        
+        DispatchQueue.main.async {
+            if isPassive {
+                self.skillImage.downloadSD(type: .passiveSkillImage(name: image))
+            } else {
+                self.skillImage.downloadSD(type: .skillImage(name: image))
+            }
         }
+        
         
         
         DispatchQueue.main.async {
             self.skillName.text = name
             
             self.skillDescription.attributedText = description.gettingAttributedText()
-            
-                    }
-        
+        //   self.layoutIfNeeded()
+
+                    
+        }
+       
         
         
     }

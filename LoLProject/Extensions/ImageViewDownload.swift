@@ -11,22 +11,48 @@ import SDWebImage
 import RealmSwift
 
 extension UIImageView {
-    func download(urlString: String) {
-        var imageURL: URL?
-
-        imageURL = URL(string: urlString)
-        guard let url = imageURL, let imageData = try? Data(contentsOf: url) else { return (self.image = nil) }
-        let downloadImage = UIImage(data: imageData)
-        
-        return self.image = downloadImage
+    
+    func leagueImage(league: String) {
+        switch league {
+        case "IRON":
+            self.image = #imageLiteral(resourceName: "Iron")
+        case "BRONZE":
+            self.image = #imageLiteral(resourceName: "Bronze")
+        case "SILVER":
+            self.image = #imageLiteral(resourceName: "Silver")
+        case "GOLD":
+            self.image = #imageLiteral(resourceName: "Gold")
+        case "PLATINUM":
+            self.image = #imageLiteral(resourceName: "Platinum")
+        case "DIAMOND":
+            self.image = #imageLiteral(resourceName: "Diamond")
+        case "CHALLENGER":
+            self.image = #imageLiteral(resourceName: "Challenger")
+        case "MASTER":
+            self.image = #imageLiteral(resourceName: "Master")
+        case "GRANDMASTER":
+            self.image = #imageLiteral(resourceName: "Grandmaster")
+        default:
+            self.image = #imageLiteral(resourceName: "Unranked")
+        }
     }
     
     
-    
     func downloadSD(type: ImageType)
-        {
-            self.sd_setImage(with: type.url)
-        }
+    {
+        
+        self.sd_imageIndicator = SDWebImageActivityIndicator.whiteLarge
+        
+        self.sd_setImage(with: type.url)
+    }
+    
+    func downloadSDPlaceHolder(type: ImageType)
+    {
+        
+        self.sd_setImage(with: type.url, placeholderImage: #imageLiteral(resourceName: "Bronze"))
+    }
+    
+    
     
 }
 
@@ -53,7 +79,11 @@ enum ImageType {
         
         switch self {
         case .itemIcon(let id):
-            return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/item/\(id).png")
+            if id == "0" {
+                return URL(string: "https://vignette.wikia.nocookie.net/leagueoflegends/images/d/d5/Item.png/revision/latest?cb=20171221062712")
+            } else {
+                return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/item/\(id).png")
+            }
         case.championIcon(let id):
             return URL(string: "https://ddragon.leagueoflegends.com/cdn/\(version)/img/champion/\(id).png")
         case .spellIcon(let id):

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A57BD702485959600769F41 /* CellForInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57BD6E2485959600769F41 /* CellForInfoView.swift */; };
+		3A57BD712485959600769F41 /* CellForInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A57BD6F2485959600769F41 /* CellForInfoView.xib */; };
+		3A58E5142485A95700287CA7 /* LeagueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58E5122485A95700287CA7 /* LeagueController.swift */; };
+		3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A58E5132485A95700287CA7 /* LeagueController.xib */; };
 		3A5AE7432464876400E80092 /* LeagueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7422464876300E80092 /* LeagueData.swift */; };
 		3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7442466125A00E80092 /* ItemsData.swift */; };
 		3A5AE7472466FA1200E80092 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7462466FA1200E80092 /* Item.swift */; };
@@ -71,6 +75,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A57BD6E2485959600769F41 /* CellForInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForInfoView.swift; sourceTree = "<group>"; };
+		3A57BD6F2485959600769F41 /* CellForInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellForInfoView.xib; sourceTree = "<group>"; };
+		3A58E5122485A95700287CA7 /* LeagueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueController.swift; sourceTree = "<group>"; };
+		3A58E5132485A95700287CA7 /* LeagueController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueController.xib; sourceTree = "<group>"; };
 		3A5AE7422464876300E80092 /* LeagueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueData.swift; sourceTree = "<group>"; };
 		3A5AE7442466125A00E80092 /* ItemsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsData.swift; sourceTree = "<group>"; };
 		3A5AE7462466FA1200E80092 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -170,6 +178,8 @@
 				3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */,
 				3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */,
 				3AAA325D246DE81700100FF8 /* RankView.swift */,
+				3A58E5122485A95700287CA7 /* LeagueController.swift */,
+				3A58E5132485A95700287CA7 /* LeagueController.xib */,
 				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
 				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
 				3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */,
@@ -190,6 +200,8 @@
 			isa = PBXGroup;
 			children = (
 				3A6366F82460B75E004C76D0 /* InfoViewController.swift */,
+				3A57BD6E2485959600769F41 /* CellForInfoView.swift */,
+				3A57BD6F2485959600769F41 /* CellForInfoView.xib */,
 			);
 			path = InfoViewController;
 			sourceTree = "<group>";
@@ -427,6 +439,7 @@
 			files = (
 				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
 				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
+				3A57BD712485959600769F41 /* CellForInfoView.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */,
@@ -435,6 +448,7 @@
 				3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
+				3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */,
 				3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */,
 				3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */,
 				3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */,
@@ -512,6 +526,7 @@
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
 				3A5BB736247F3450002417B4 /* MatchModel.swift in Sources */,
+				3A57BD702485959600769F41 /* CellForInfoView.swift in Sources */,
 				3A8790E72483FFCC00499C5E /* CellForHeaderForChampion.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
@@ -522,6 +537,7 @@
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
+				3A58E5142485A95700287CA7 /* LeagueController.swift in Sources */,
 				3A8790E22483E52300499C5E /* HeaderForChampion.swift in Sources */,
 				3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */,
 				3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */,

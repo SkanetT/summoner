@@ -20,6 +20,25 @@ class RankView: UIView {
     let soloWr = UILabel()
     
     
+     var tapHandler: ( (String)->() )?
+    var leagueIdSolo: String = "0"
+    var leagueIdFlex: String = "0"
+
+    
+    @objc func tappedOnSoloLeague()
+    {
+        
+        tapHandler?(leagueIdSolo)
+        
+    }
+    
+    @objc func tappedOnFlexLeague()
+    {
+        
+        tapHandler?(leagueIdFlex)
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -126,7 +145,19 @@ class RankView: UIView {
     }
     
     func setData(leagueData: LeagueData) {
+        
+        
         if let flexRankData = leagueData.first(where: {$0.queueType == "RANKED_FLEX_SR"}) {
+           
+            leagueIdFlex = flexRankData.leagueId
+            
+            DispatchQueue.main.async {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnFlexLeague))
+                self.flexImage.addGestureRecognizer(tap)
+                self.flexImage.isUserInteractionEnabled = true
+                
+            }
+            
             let wrFlex :Double
             wrFlex = Double(flexRankData.wins) / (Double(flexRankData.wins) + Double(flexRankData.losses)) * 100
             DispatchQueue.main.async {
@@ -137,31 +168,24 @@ class RankView: UIView {
                     self.flexWr.textColor = .green
                 }
                 self.flexWr.text = "WR \(round(10*wrFlex)/10)%"
-                switch flexRankData.tier {
-                case "IRON":
-                    self.flexImage.image = #imageLiteral(resourceName: "Iron")
-                case "BRONZE":
-                    self.flexImage.image = #imageLiteral(resourceName: "Bronze")
-                case "SILVER":
-                    self.flexImage.image = #imageLiteral(resourceName: "Silver")
-                case "GOLD":
-                    self.flexImage.image = #imageLiteral(resourceName: "Gold")
-                case "PLATINUM":
-                    self.flexImage.image = #imageLiteral(resourceName: "Platinum")
-                case "DIAMOND":
-                    self.flexImage.image = #imageLiteral(resourceName: "Diamond")
-                case "CHALLENGER":
-                    self.flexImage.image = #imageLiteral(resourceName: "Challenger")
-                case "MASTER":
-                    self.flexImage.image = #imageLiteral(resourceName: "Master")
-                case "GRANDMASTER":
-                    self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
-                default:
-                    self.flexImage.image = #imageLiteral(resourceName: "Unranked")
-                }
+                
+                self.flexImage.leagueImage(league: flexRankData.tier)
             }
         }
         if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
+           
+            leagueIdSolo = soloRankData.leagueId
+
+            
+            DispatchQueue.main.async {
+                let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnSoloLeague))
+                self.soloImage.addGestureRecognizer(tap)
+                self.soloImage.isUserInteractionEnabled = true
+                
+            }
+            
+
+            
             let wrSolo :Double
             wrSolo = Double(soloRankData.wins) / (Double(soloRankData.wins) + Double(soloRankData.losses)) * 100
             DispatchQueue.main.async {
@@ -170,30 +194,12 @@ class RankView: UIView {
                 } else {
                     self.soloWr.textColor = .green
                 }
+                
+                
                 self.soloWr.text = "WR \(round(10*wrSolo)/10)%"
                 self.soloRank.text = "\(soloRankData.tier) \(soloRankData.rank) (LP \(soloRankData.leaguePoints))"
-                switch soloRankData.tier {
-                case "IRON":
-                    self.soloImage.image = #imageLiteral(resourceName: "Iron")
-                case "BRONZE":
-                    self.soloImage.image = #imageLiteral(resourceName: "Bronze")
-                case "SILVER":
-                    self.soloImage.image = #imageLiteral(resourceName: "Silver")
-                case "GOLD":
-                    self.soloImage.image = #imageLiteral(resourceName: "Gold")
-                case "PLATINUM":
-                    self.soloImage.image = #imageLiteral(resourceName: "Platinum")
-                case "DIAMOND":
-                    self.soloImage.image = #imageLiteral(resourceName: "Diamond")
-                case "CHALLENGER":
-                    self.soloImage.image = #imageLiteral(resourceName: "Challenger")
-                case "MASTER":
-                    self.soloImage.image = #imageLiteral(resourceName: "Master")
-                case "GRANDMASTER":
-                    self.soloImage.image = #imageLiteral(resourceName: "Grandmaster")
-                default:
-                    self.soloImage.image = #imageLiteral(resourceName: "Unranked")
-                }
+                
+                self.soloImage.leagueImage(league: soloRankData.tier)
             }
         }
     }

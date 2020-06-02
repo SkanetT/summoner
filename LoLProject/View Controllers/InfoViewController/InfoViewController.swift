@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import SDWebImage
 
 class InfoViewController: UIViewController {
     
-    @IBOutlet weak var championListButton: UIButton!
-    @IBOutlet weak var itemListButton: UIButton!
-    @IBOutlet weak var spellsListButtom: UIButton!
-   
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+        tableView.register(UINib(nibName: "CellForInfoView", bundle: nil), forCellReuseIdentifier: "cellForInfoView")
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
-        championListButton.addTarget(self, action: #selector(didTapChampionList), for: .touchUpInside)
-        spellsListButtom.addTarget(self, action: #selector(didTapSpellList), for: .touchUpInside)
     }
-   
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -30,19 +35,50 @@ class InfoViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
-   
-    @objc
-    private func didTapChampionList() {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: "championList")
-//        let viewController = ChampionsViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        
+    
+    
+}
+
+extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
     }
     
-    @objc private func didTapSpellList() {
-        let vc = SpellsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell =  tableView.dequeueReusableCell(withIdentifier: "cellForInfoView", for: indexPath) as! CellForInfoView
+        switch indexPath.row {
+        case 0:
+            cell.imageCell.downloadSD(type: .championIcon(id: "Jinx"))
+            cell.textCell.numberOfLines = 2
+            cell.textCell.text = "Champions & Skins"
+        case 1:
+            cell.imageCell.downloadSD(type: .itemIcon(id: "3026"))
+            cell.textCell.text = "Items"
+        case 2:
+            cell.imageCell.downloadSD(type: .spellIcon(id: "SummonerFlash"))
+            cell.textCell.text = "Spells"
+            
+        default:
+            break
+        }
+           cell.layer.borderWidth = 3
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(identifier: "championList")
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            print("Not yet")
+        case 2:
+            let vc = SpellsViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
     }
     
 }

@@ -16,11 +16,12 @@ class ChampionInfoController: UIViewController {
     let footer = FooterForChampion()
     let header = HeaderForChampion()
     
-    var id = "Jinx"
-    
-    // @IBOutlet var championImage: UIImageView!
+    var count = 0
     
     
+    
+    var id = ""
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -30,23 +31,30 @@ class ChampionInfoController: UIViewController {
         
         tableView.allowsSelection = false
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+            self.tableView.reloadData()
+        })
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = 44
         
         tableView.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
         
         NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
             switch result {
             case .success(let champion):
+                self?.count = 5
                 DispatchQueue.main.async {
                     self?.title = champion.name + " " + champion.title
+                    self?.tableView.reloadData()
                 }
+                
+                
             case .failure:
                 print("Errort")
             }
         }
         
-        //  championImage.downloadSD(type: .championWallpaper(id: id))
+        
     }
     
     @objc
@@ -58,7 +66,7 @@ class ChampionInfoController: UIViewController {
 
 extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +77,9 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         NetworkAPI.shared.fetchFullInfoChampion(id: id){ result in
             switch result {
             case .success(let champion):
+                
                 switch indexPath.row {
+                
                 case 0:
                     cell.setData(isPassive: true, image: champion.passiveImage, name: champion.passiveName, description: champion.passiveDescription)
                     
@@ -85,6 +95,8 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                     
                     break
                 }
+                
+                
             case .failure:
                 print("?")
             }
@@ -92,7 +104,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-       
+        cell.layoutIfNeeded()
         
         return cell
     }
@@ -140,10 +152,10 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         return 220
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return UITableView.automaticDimension
-    }
-    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//       return UITableView.automaticDimension
+//    }
+//
     
 }
 

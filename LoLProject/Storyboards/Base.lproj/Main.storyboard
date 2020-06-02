@@ -194,62 +194,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWl-QJ-hfL">
-                                <rect key="frame" x="20" y="88" width="374" height="130"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="aeQ-2U-DXg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
-                                <state key="normal" title="Champions &amp; Skins">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLy-z1-8ji">
-                                <rect key="frame" x="20" y="226" width="374" height="130"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="Db6-ye-Ss3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="Items">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68u-nZ-WEs">
-                                <rect key="frame" x="20" y="364" width="374" height="130"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="X3P-zY-WZX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="Spells">
-                                    <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="gki-pD-n3g">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZCx-mb-fAQ" id="Ol0-VI-aKm"/>
+                                    <outlet property="delegate" destination="ZCx-mb-fAQ" id="Dfu-B0-FFW"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="68u-nZ-WEs" secondAttribute="trailing" constant="20" id="0M9-fS-Sjp"/>
-                            <constraint firstItem="sLy-z1-8ji" firstAttribute="top" secondItem="AWl-QJ-hfL" secondAttribute="bottom" constant="8" id="1Mk-e1-hHZ"/>
-                            <constraint firstItem="sLy-z1-8ji" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="QUr-JS-qRZ"/>
-                            <constraint firstItem="AWl-QJ-hfL" firstAttribute="top" secondItem="7eD-nj-Who" secondAttribute="top" id="R9M-iU-zGn"/>
-                            <constraint firstItem="68u-nZ-WEs" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="SVu-wt-RRO"/>
-                            <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="sLy-z1-8ji" secondAttribute="trailing" constant="20" id="UPp-qw-yOB"/>
-                            <constraint firstItem="7eD-nj-Who" firstAttribute="trailing" secondItem="AWl-QJ-hfL" secondAttribute="trailing" constant="20" id="X4y-Jj-LDl"/>
-                            <constraint firstItem="AWl-QJ-hfL" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" constant="20" id="bJc-2U-fzN"/>
-                            <constraint firstItem="68u-nZ-WEs" firstAttribute="top" secondItem="sLy-z1-8ji" secondAttribute="bottom" constant="8" id="nd3-DN-ovo"/>
+                            <constraint firstAttribute="bottom" secondItem="gki-pD-n3g" secondAttribute="bottom" id="ZA4-Am-vo5"/>
+                            <constraint firstItem="gki-pD-n3g" firstAttribute="trailing" secondItem="7eD-nj-Who" secondAttribute="trailing" id="fnO-WS-TSe"/>
+                            <constraint firstItem="gki-pD-n3g" firstAttribute="top" secondItem="7eD-nj-Who" secondAttribute="top" id="kWv-in-ayi"/>
+                            <constraint firstItem="gki-pD-n3g" firstAttribute="leading" secondItem="7eD-nj-Who" secondAttribute="leading" id="nbY-Mp-hle"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7eD-nj-Who"/>
                     </view>
                     <navigationItem key="navigationItem" id="mCA-ah-pQt"/>
                     <connections>
-                        <outlet property="championListButton" destination="AWl-QJ-hfL" id="90G-pk-Qgq"/>
-                        <outlet property="itemListButton" destination="sLy-z1-8ji" id="bmm-Dj-x74"/>
-                        <outlet property="spellsListButtom" destination="68u-nZ-WEs" id="TPA-rG-K6B"/>
+                        <outlet property="tableView" destination="gki-pD-n3g" id="lH1-pD-QLZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQa-BZ-NSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
