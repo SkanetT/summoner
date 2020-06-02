@@ -15,6 +15,16 @@ class CellForHeaderForChampion: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        if skinName.text?.isEmpty ?? false {
+//            skinName.isHidden = true
+//        } else {
+//            skinName.isHidden = false
+//        }
+        skinName.alpha = 0.5
+        skinName.clipsToBounds = true
+        
+        skinName.layer.borderWidth = 1
+        skinName.layer.borderColor = UIColor.white.cgColor
     }
 
 }

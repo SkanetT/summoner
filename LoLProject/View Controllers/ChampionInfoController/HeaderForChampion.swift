@@ -17,6 +17,8 @@ class HeaderForChampion: XibBasedView {
     
     var skins: [Skin] = []
     var id: String = ""
+    var name: String = ""
+    var title: String = ""
     
     //    override func awakeFromNib() {
     //           super.awakeFromNib()
@@ -46,9 +48,11 @@ class HeaderForChampion: XibBasedView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(id: String, skins: [Skin]) {
+    func setData(id: String, skins: [Skin], name: String, title: String) {
         self.skins = skins
         self.id = id
+        self.name = name
+        self.title = title
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.pageControl.numberOfPages = skins.count
@@ -79,9 +83,10 @@ extension HeaderForChampion: UICollectionViewDelegate, UICollectionViewDataSourc
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "skins", for: indexPath) as! CellForHeaderForChampion
         
         if skins[indexPath.row].name != "default" {
+
             cell.skinName.text = skins[indexPath.row].name
         } else {
-            cell.skinName.text = ""
+            cell.skinName.text = "\(name) \(title)"
         }
         
         

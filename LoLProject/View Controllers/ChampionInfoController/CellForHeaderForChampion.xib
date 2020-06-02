@@ -18,14 +18,20 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kc5-aI-LxG">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="225"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOb-Af-Jvi">
-                        <rect key="frame" x="16" y="10" width="368" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="dOb-Af-Jvi">
+                        <rect key="frame" x="16" y="5" width="368" height="23"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="vpz-FV-rXa"/>
+                            <constraint firstAttribute="height" constant="23" id="vpz-FV-rXa"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="23"/>
-                        <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
@@ -33,7 +39,7 @@
             <constraints>
                 <constraint firstItem="kc5-aI-LxG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AHX-4X-JL9"/>
                 <constraint firstAttribute="bottom" secondItem="kc5-aI-LxG" secondAttribute="bottom" id="CO4-gc-IMq"/>
-                <constraint firstItem="dOb-Af-Jvi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="EDB-5D-aQu"/>
+                <constraint firstItem="dOb-Af-Jvi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="EDB-5D-aQu"/>
                 <constraint firstAttribute="trailing" secondItem="kc5-aI-LxG" secondAttribute="trailing" id="P2X-3g-S3V"/>
                 <constraint firstAttribute="trailing" secondItem="dOb-Af-Jvi" secondAttribute="trailing" constant="16" id="ZFj-KX-BPa"/>
                 <constraint firstItem="dOb-Af-Jvi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="uwX-30-Gmj"/>
@@ -44,7 +50,7 @@
                 <outlet property="skinImage" destination="kc5-aI-LxG" id="QUj-mX-bQH"/>
                 <outlet property="skinName" destination="dOb-Af-Jvi" id="w5n-aY-Glv"/>
             </connections>
-            <point key="canvasLocation" x="382.60869565217394" y="123.88392857142857"/>
+            <point key="canvasLocation" x="382.60869565217394" y="123.54910714285714"/>
         </collectionViewCell>
     </objects>
 </document>

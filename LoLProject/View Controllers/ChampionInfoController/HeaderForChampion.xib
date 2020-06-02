@@ -32,7 +32,7 @@
                         <outlet property="delegate" destination="-1" id="xf1-xO-iho"/>
                     </connections>
                 </collectionView>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vwt-D9-WZA">
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vwt-D9-WZA">
                     <rect key="frame" x="0.0" y="188" width="414" height="37"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="rB2-E9-adZ"/>

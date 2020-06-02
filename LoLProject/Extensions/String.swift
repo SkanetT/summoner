@@ -22,6 +22,7 @@ extension String {
      documentAttributes: nil)
         
     result?.addAttributes([NSAttributedString.Key.font:UIFont(name: "Avenir", size: 16.0)!], range:   NSRange(location:0 , length: result!.length))
+        re
 
     return result
     }

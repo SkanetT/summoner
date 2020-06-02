@@ -14,6 +14,8 @@ class SpellsCell: UITableViewCell {
     @IBOutlet var skillName: UILabel!
     @IBOutlet var skillDescription: UILabel!
     
+    
+    @IBOutlet var skillKey: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,36 +23,26 @@ class SpellsCell: UITableViewCell {
     
     
     
-    override func prepareForReuse() {
-//        skillImage.sd_cancelCurrentImageLoad()
-//        
-//        skillDescription.text = " "
-//        layoutIfNeeded()
+    
+    func setTitles(name: String, desc: String) {
+        self.skillName.text = name
+        
+        self.skillDescription.attributedText = description.gettingAttributedText()
     }
     
-    func setData(isPassive: Bool, image: String, name: String, description: String) {
+    func setData(isPassive: Bool, image: String,key: String, name: String, description: String) {
+        
+        self.skillName.text = name
+        self.skillKey.text = key
+
+        self.skillDescription.attributedText = description.gettingAttributedText()
         
         
-        DispatchQueue.main.async {
             if isPassive {
                 self.skillImage.downloadSD(type: .passiveSkillImage(name: image))
             } else {
                 self.skillImage.downloadSD(type: .skillImage(name: image))
             }
-        }
-        
-        
-        
-        DispatchQueue.main.async {
-            self.skillName.text = name
-            
-            self.skillDescription.attributedText = description.gettingAttributedText()
-        //   self.layoutIfNeeded()
-
-                    
-        }
-       
-        
         
     }
 }

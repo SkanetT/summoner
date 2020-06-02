@@ -16,43 +16,39 @@ class ChampionInfoController: UIViewController {
     let footer = FooterForChampion()
     let header = HeaderForChampion()
     
-    var count = 0
+    var championData: SelectedChampion?
+    
+//    var count = 0
     
     
     
     var id = ""
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
         
         tableView.showsVerticalScrollIndicator = false
         
         tableView.allowsSelection = false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-            self.tableView.reloadData()
-        })
+        
+        title = championData?.name
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+//            self.tableView.reloadData()
+//        })
 //        tableView.rowHeight = UITableView.automaticDimension
 //        tableView.estimatedRowHeight = 44
         
         tableView.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
-        
-        NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
-            switch result {
-            case .success(let champion):
-                self?.count = 5
-                DispatchQueue.main.async {
-                    self?.title = champion.name + " " + champion.title
-                    self?.tableView.reloadData()
-                }
-                
-                
-            case .failure:
-                print("Errort")
-            }
-        }
         
         
     }
@@ -66,45 +62,31 @@ class ChampionInfoController: UIViewController {
 
 extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "skill", for: indexPath) as! SpellsCell
+        guard let championData = championData else { return cell }
         
-        
-        
-        NetworkAPI.shared.fetchFullInfoChampion(id: id){ result in
-            switch result {
-            case .success(let champion):
-                
                 switch indexPath.row {
-                
+
                 case 0:
-                    cell.setData(isPassive: true, image: champion.passiveImage, name: champion.passiveName, description: champion.passiveDescription)
-                    
+                    cell.setData(isPassive: true, image: championData.passiveImage, key: "Passive", name: championData.passiveName, description: championData.passiveDescription)
+
                 case 1:
-                    cell.setData(isPassive: false, image: champion.qImage, name: champion.qName, description: champion.qDescription)
+                    cell.setData(isPassive: false, image: championData.qImage, key: "[Q]", name: championData.qName, description: championData.qDescription)
                 case 2:
-                    cell.setData(isPassive: false, image: champion.wImage, name: champion.wName, description: champion.wDescription)
+                    cell.setData(isPassive: false, image: championData.wImage, key: "[W]", name: championData.wName, description: championData.wDescription)
                 case 3:
-                    cell.setData(isPassive: false, image: champion.eImage, name: champion.eName, description: champion.eDescription)
+                    cell.setData(isPassive: false, image: championData.eImage, key: "[E]", name: championData.eName, description: championData.eDescription)
                 case 4:
-                    cell.setData(isPassive: false, image: champion.rImage, name: champion.rName, description: champion.rDescription)
+                    cell.setData(isPassive: false, image: championData.rImage, key: "[R]", name: championData.rName, description: championData.rDescription)
                 default:
-                    
+
                     break
                 }
-                
-                
-            case .failure:
-                print("?")
-            }
-            
-            
-        }
         
-        cell.layoutIfNeeded()
         
         return cell
     }
@@ -115,7 +97,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
             guard let self = self else { return }
             switch result {
             case .success(let champion):
-                self.header.setData(id: self.id, skins: champion.skins)
+                self.header.setData(id: self.id, skins: champion.skins, name: champion.name, title: champion.title)
                 
             case .failure:
                 print("Errort")
@@ -152,10 +134,10 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
         return 220
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//       return UITableView.automaticDimension
-//    }
-//
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return UITableView.automaticDimension
+    }
+
     
 }
 
