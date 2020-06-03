@@ -70,7 +70,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcY-cm-IxU">
+                            <pickerView alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcY-cm-IxU">
                                 <rect key="frame" x="0.0" y="523.5" width="414" height="259.5"/>
                                 <accessibility key="accessibilityConfiguration" label="123">
                                     <accessibilityTraits key="traits" none="YES"/>
@@ -107,6 +107,7 @@
                     <navigationItem key="navigationItem" id="l1S-tm-x9k"/>
                     <connections>
                         <outlet property="picker" destination="BcY-cm-IxU" id="dQV-Ff-86s"/>
+                        <outlet property="searchButton" destination="T2G-ax-9rw" id="1gs-4X-72z"/>
                         <outlet property="serverButton" destination="HWX-6S-ePa" id="sAJ-ns-w9L"/>
                         <outlet property="serverLabel" destination="rfb-yq-Mr9" id="9qv-1P-QDu"/>
                         <outlet property="summonerNameTF" destination="yii-6v-MZ5" id="nZq-Ft-GaW"/>

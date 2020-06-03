@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     let realm = try! Realm()
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
     
+    var pickerAlpha = false
+    
     @IBOutlet var verLabel: UILabel!
     @IBOutlet var summonerNameTF: UITextField!
     @IBOutlet var serverLabel: UILabel!
@@ -21,7 +23,8 @@ class MainViewController: UIViewController {
     @IBOutlet var picker: UIPickerView!
     
     @IBOutlet var serverButton: UIButton!
-    
+    @IBOutlet var searchButton: UIButton!
+
     
     let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan", "Republic of Korea"]
     
@@ -50,6 +53,10 @@ class MainViewController: UIViewController {
         picker.delegate = self
         picker.dataSource = self
         
+        searchButton.clipsToBounds = true
+        searchButton.layer.cornerRadius = 5
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -118,13 +125,26 @@ class MainViewController: UIViewController {
     
     
     @IBAction func regionDidTap(_ sender: UIButton) {
-        picker.isHidden.toggle()
+        
+        pickerAlpha = !pickerAlpha
+        
+        if pickerAlpha == true {
+        UIView.animate(withDuration: 0.3) {
+            self.picker.alpha = 1
+        }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+            self.picker.alpha = 0
+        }
+        
+      //  picker.isHidden.toggle()
+    }
     }
     
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
-        picker.isHidden = true
+        picker.alpha = 0
         
         guard  !summonerNameTF.text!.isEmpty else {return}
         
@@ -192,15 +212,6 @@ class MainViewController: UIViewController {
                         ac.addAction(ok)
                         self.present(ac, animated: true)
                     }
-                
-//                if error == .summonerNotFound {
-//                    DispatchQueue.main.async {
-//                        let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
-//                        let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
-//                        ac.addAction(ok)
-//                        self.present(ac, animated: true)
-//                    }
-//                }
             }
         }
     }
@@ -213,18 +224,6 @@ class MainViewController: UIViewController {
                 self.verLabel.text = versin.lastVesion
             }
         }
-        //        NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-        //            guard let self = self else { return }
-        //            switch result {
-        //            case .success(let version):
-        //
-        //                DispatchQueue.main.async {
-        //                    self.verLabel.text = version
-        //                }
-        //            case .failure(let error):
-        //                print(error)
-        //            }
-        //        }
     }
     
     private func getChampionsListRealm(){

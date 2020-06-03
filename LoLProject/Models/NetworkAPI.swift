@@ -183,6 +183,22 @@ class NetworkAPI {
         task.resume()
     }
     
+    func fetchRankData (region: String, leagueId: String, completion: @escaping (Result<RankData, APIErrors>) -> () ) {
+        let urlString = "https://\(region).api.riotgames.com/lol/league/v4/leagues/\(leagueId)?api_key=\(GlobalConstants.shared.apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        let session = URLSession(configuration: .default)
+        let task = session.dataTask(with: url) { data, response, rerror in
+            if let data = data {
+                if let rankData = try? JSONDecoder().decode(RankData.self, from: data) {
+                    completion(.success(rankData))
+                } else {
+                    completion(.failure(.parsing))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     func fetchFullInfoMatch(region: String,matchId: Int, completion: @escaping (Result<FullInfoMatch, APIErrors>) -> () ) {
         let urlString = "https://\(region).api.riotgames.com/lol/match/v4/matches/\(matchId)?api_key=\(GlobalConstants.shared.apiKey)"
         guard let url = URL(string: urlString) else { return }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeagueController" customModule="LoLProject" customModuleProvider="target">
+            <connections>
+                <outlet property="leagueImage" destination="Z4U-zM-Ds1" id="1IL-M6-19k"/>
+                <outlet property="segmentedControl" destination="kfO-XZ-b3G" id="dXw-pA-8IJ"/>
+                <outlet property="tableView" destination="7WU-wa-iuL" id="TRY-3z-hBa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kfO-XZ-b3G">
+                    <rect key="frame" x="20" y="268" width="374" height="32"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="oWB-8M-cfN"/>
+                    </constraints>
+                    <segments>
+                        <segment title="I"/>
+                        <segment title="II"/>
+                        <segment title="III"/>
+                        <segment title="IV"/>
+                    </segments>
+                    <connections>
+                        <action selector="changeTier:" destination="-1" eventType="valueChanged" id="5Qm-Ra-5kQ"/>
+                    </connections>
+                </segmentedControl>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7WU-wa-iuL">
+                    <rect key="frame" x="0.0" y="315" width="414" height="581"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-zM-Ds1">
+                    <rect key="frame" x="107" y="52" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="9m8-Zj-Tf4"/>
+                        <constraint firstAttribute="width" constant="200" id="M5s-Pi-W3I"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7WU-wa-iuL" secondAttribute="trailing" id="4to-Hn-gXg"/>
+                <constraint firstItem="Z4U-zM-Ds1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="8SU-Ym-7c7"/>
+                <constraint firstItem="7WU-wa-iuL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="V75-7i-6Bx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kfO-XZ-b3G" secondAttribute="trailing" constant="20" id="Wfq-FH-oYL"/>
+                <constraint firstItem="Z4U-zM-Ds1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hqu-ib-N6s"/>
+                <constraint firstItem="kfO-XZ-b3G" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="lLz-yM-TmT"/>
+                <constraint firstItem="kfO-XZ-b3G" firstAttribute="top" secondItem="Z4U-zM-Ds1" secondAttribute="bottom" constant="16" id="pcN-JC-fEF"/>
+                <constraint firstItem="7WU-wa-iuL" firstAttribute="top" secondItem="kfO-XZ-b3G" secondAttribute="bottom" constant="16" id="tdv-Au-sX6"/>
+                <constraint firstAttribute="bottom" secondItem="7WU-wa-iuL" secondAttribute="bottom" id="x2i-St-Y4Y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+        </view>
+    </objects>
+</document>

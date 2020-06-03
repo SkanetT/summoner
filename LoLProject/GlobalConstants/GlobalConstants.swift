@@ -12,6 +12,6 @@ class GlobalConstants {
     
     static let shared = GlobalConstants()
     
-    let apiKey = "RGAPI-5e0eb6de-8092-4460-a85d-571cd520303f"
+    let apiKey = "RGAPI-e6090bf3-4f62-41fe-a2bb-2093f516f8a2"
     var rest = "1"
 }

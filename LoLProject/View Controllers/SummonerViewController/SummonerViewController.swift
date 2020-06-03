@@ -216,11 +216,22 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 
                 let leagueVC = LeagueController()
-                leagueVC.leagueId = value
                 
-                DispatchQueue.main.async {
-                    self.navigationController?.pushViewController(leagueVC, animated: true)
+                NetworkAPI.shared.fetchRankData(region: foundSummoner.region, leagueId: value) { result in
+                    switch result{
+                    case.success(let rankData):
+                        leagueVC.rankData = rankData
+                        DispatchQueue.main.async {
+                            self.navigationController?.pushViewController(leagueVC, animated: true)
+                        }
+                    case.failure:
+                        print("some rank error")
+                    }
                 }
+                
+                //    leagueVC.leagueId = value
+                
+                
             }
             return header
         } else { return nil }
