@@ -9,7 +9,13 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController {
+class LoginController: UIViewController {
+    
+   // @IBOutlet var tfToTop: NSLayoutConstraint!
+    
+    @IBOutlet var tfToPicker: NSLayoutConstraint!
+    @IBOutlet var searchToPicker: NSLayoutConstraint!
+
     
     let realm = try! Realm()
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
@@ -112,6 +118,8 @@ class MainViewController: UIViewController {
                 self.getChampionsListRealm()
                 self.getItemsListRealm()
                 self.getSpellsListRealm()
+                self.updateCurrentVersion()
+
                 
             }
             updateCurrentVersion()
@@ -128,57 +136,48 @@ class MainViewController: UIViewController {
         
         pickerAlpha = !pickerAlpha
         
+
+        
         if pickerAlpha == true {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.4) {
             self.picker.alpha = 1
+            self.tfToPicker.constant = 0
+            self.searchToPicker.constant = 0
+            self.view.layoutIfNeeded()
         }
         } else {
-            UIView.animate(withDuration: 0.3) {
-            self.picker.alpha = 0
+            UIView.animate(withDuration: 0.4) {
+                self.picker.alpha = 0
+                self.tfToPicker.constant = -71
+                self.searchToPicker.constant = -137
+                self.view.layoutIfNeeded()
+                
+            }
+            
+            //  picker.isHidden.toggle()
         }
-        
-      //  picker.isHidden.toggle()
-    }
     }
     
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
-        picker.alpha = 0
+        UIView.animate(withDuration: 0.2) {
+            self.picker.alpha = 0
+            self.tfToPicker.constant = -71
+            self.searchToPicker.constant = -137
+            self.view.layoutIfNeeded()
+            
+        }
         
         guard  !summonerNameTF.text!.isEmpty else {return}
         
         var summonerName = summonerNameTF.text
         summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
-        var region: String
         
-        switch serverLabel.text {
-        case "Europe West":
-            region = "euw1"
-        case "Europe Nordic & East":
-            region = "eun1"
-        case "Brazil":
-            region = "br1"
-        case "Latin America North":
-            region = "la1"
-        case "Latin America South":
-            region = "la2"
-        case "North America":
-            region = "na1"
-        case "Oceania":
-            region = "oc1"
-        case "Russia":
-            region = "ru"
-        case "Turkey":
-            region = "tr1"
-        case "Japan":
-            region = "jp1"
-        case "Republic of Korea":
-            region = "kr"
-        default:
-            region = ""
-        }
+        
+        guard let region = serverLabel.text?.serverNameToRegion() else { return }
+
         
         NetworkAPI.shared.seachSummoner(region: region,name: summonerName!) {[weak self] result in
             guard let self = self else { return }
@@ -313,7 +312,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension LoginController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }

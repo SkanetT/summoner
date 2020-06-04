@@ -285,7 +285,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         var failsMatchs = 0
         
         let decValue = matchsArray.count - matchModel.count < 7 ? matchsArray.count - matchModel.count - 1 : 7
-        guard decValue >= 1 else { return }
+        guard decValue > 1 else { return }
         
         for i in matchModel.count...(matchModel.count + decValue) {
             

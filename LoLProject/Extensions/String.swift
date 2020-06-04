@@ -26,6 +26,38 @@ extension String {
 
     return result
     }
+    
+    func serverNameToRegion() -> String {
+        var region = ""
+        switch self {
+        case "Europe West":
+            region = "euw1"
+        case "Europe Nordic & East":
+            region = "eun1"
+        case "Brazil":
+            region = "br1"
+        case "Latin America North":
+            region = "la1"
+        case "Latin America South":
+            region = "la2"
+        case "North America":
+            region = "na1"
+        case "Oceania":
+            region = "oc1"
+        case "Russia":
+            region = "ru"
+        case "Turkey":
+            region = "tr1"
+        case "Japan":
+            region = "jp1"
+        case "Republic of Korea":
+            region = "kr"
+        default:
+            region = ""
+        }
+        
+        return region
+    }
 }
 
 

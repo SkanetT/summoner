@@ -30,7 +30,7 @@
 		3A8790E82483FFCC00499C5E /* CellForHeaderForChampion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */; };
 		3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D624549417005801A8 /* AppDelegate.swift */; };
 		3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D824549417005801A8 /* SceneDelegate.swift */; };
-		3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* MainViewController.swift */; };
+		3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* LoginController.swift */; };
 		3A8CB6DE24549417005801A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DC24549417005801A8 /* Main.storyboard */; };
 		3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DF24549419005801A8 /* Assets.xcassets */; };
 		3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6E124549419005801A8 /* LaunchScreen.storyboard */; };
@@ -102,7 +102,7 @@
 		3A8CB6D324549417005801A8 /* LoLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CB6D624549417005801A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8CB6D824549417005801A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A8CB6DA24549417005801A8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3A8CB6DA24549417005801A8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3A8CB6DD24549417005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A8CB6DF24549419005801A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8CB6E224549419005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 				3A8790DD2483D39100499C5E /* ChampionsViewController */,
 				3AAA3226246849E200100FF8 /* SpellsViewController */,
 				3A6366FA2460C726004C76D0 /* SummonerViewController */,
-				3A8CB730245C258A005801A8 /* MainViewController */,
+				3A8CB730245C258A005801A8 /* LoginController */,
 				3A8CB72B245A16A2005801A8 /* ChampionInfoController */,
 			);
 			path = "View Controllers";
@@ -328,12 +328,12 @@
 			path = ChampionInfoController;
 			sourceTree = "<group>";
 		};
-		3A8CB730245C258A005801A8 /* MainViewController */ = {
+		3A8CB730245C258A005801A8 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				3A8CB6DA24549417005801A8 /* MainViewController.swift */,
+				3A8CB6DA24549417005801A8 /* LoginController.swift */,
 			);
-			path = MainViewController;
+			path = LoginController;
 			sourceTree = "<group>";
 		};
 		3A8CB7A1245E2F63005801A8 /* Extensions */ = {
@@ -532,7 +532,7 @@
 				3A8CB71F24550767005801A8 /* ChampionsViewControllerCell.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
-				3A8CB6DB24549417005801A8 /* MainViewController.swift in Sources */,
+				3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
 				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,

@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kfO-XZ-b3G">
-                    <rect key="frame" x="20" y="268" width="374" height="32"/>
+                    <rect key="frame" x="20" y="218" width="374" height="32"/>
                     <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="oWB-8M-cfN"/>
@@ -37,18 +37,18 @@
                     </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7WU-wa-iuL">
-                    <rect key="frame" x="0.0" y="315" width="414" height="581"/>
+                    <rect key="frame" x="0.0" y="265" width="414" height="631"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z4U-zM-Ds1">
-                    <rect key="frame" x="107" y="52" width="200" height="200"/>
+                    <rect key="frame" x="132" y="52" width="150" height="150"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="9m8-Zj-Tf4"/>
-                        <constraint firstAttribute="width" constant="200" id="M5s-Pi-W3I"/>
+                        <constraint firstAttribute="height" constant="150" id="9m8-Zj-Tf4"/>
+                        <constraint firstAttribute="width" constant="150" id="M5s-Pi-W3I"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7WU-wa-iuL" secondAttribute="trailing" id="4to-Hn-gXg"/>
                 <constraint firstItem="Z4U-zM-Ds1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="8SU-Ym-7c7"/>

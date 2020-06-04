@@ -22,20 +22,21 @@ class LeagueController: UIViewController {
     var tierTwo: [Entry] = []
     var tierThree: [Entry] = []
     var tierFour: [Entry] = []
-
+    
     let summoner  = try! Realm().objects(FoundSummoner.self)
     
+    var index = 0
     
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let rankData = rankData else { return }
         
-       
+        
         
         title = rankData.name
         leagueImage.leagueImage(league: rankData.tier)
@@ -45,6 +46,7 @@ class LeagueController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
+        tableView.remembersLastFocusedIndexPath = true
         
         
         
@@ -61,30 +63,40 @@ class LeagueController: UIViewController {
         tierFour.sort(by: { $0.leaguePoints > $1.leaguePoints })
         
         
+        
+        
         if let foundSommonerName = summoner.first?.name {
-                   if let summonerEntry = rankData.entries.first(where: { $0.summonerName == foundSommonerName }) {
-                       switch summonerEntry.rank {
-                       case "I":
-                           segmentedControl.selectedSegmentIndex = 0
-                        currectTier = tierOne
-                       case "II":
-                           segmentedControl.selectedSegmentIndex = 1
-                        currectTier = tierTwo
-
-                       case "III":
-                           segmentedControl.selectedSegmentIndex = 2
-                        currectTier = tierThree
-
-                       case "IV":
-                           segmentedControl.selectedSegmentIndex = 3
-                        currectTier = tierFour
-
-                       default:
-                           break
-                       }
-                   }
-                   
-               }
+            if let summonerEntry = rankData.entries.first(where: { $0.summonerName == foundSommonerName }) {
+                switch summonerEntry.rank {
+                case "I":
+                    segmentedControl.selectedSegmentIndex = 0
+                    tierOne = tierOne.filter({ $0.summonerName != foundSommonerName })
+                    tierOne.insert(summonerEntry, at: 0)
+                    currectTier = tierOne
+                case "II":
+                    segmentedControl.selectedSegmentIndex = 1
+                    tierTwo = tierTwo.filter({ $0.summonerName != foundSommonerName })
+                    tierTwo.insert(summonerEntry, at: 0)
+                    currectTier = tierTwo
+                    
+                case "III":
+                    segmentedControl.selectedSegmentIndex = 2
+                    tierThree = tierThree.filter({ $0.summonerName != foundSommonerName })
+                    tierThree.insert(summonerEntry, at: 0)
+                    currectTier = tierThree
+                    
+                case "IV":
+                    segmentedControl.selectedSegmentIndex = 3
+                    tierFour = tierFour.filter({ $0.summonerName != foundSommonerName })
+                    tierFour.insert(summonerEntry, at: 0)
+                    currectTier = tierFour
+                    
+                default:
+                    break
+                }
+            }
+            
+        }
         
         
         
@@ -112,13 +124,13 @@ class LeagueController: UIViewController {
         }
     }
     
-
+    
 }
 
 extension LeagueController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//       return currectTier.count
-        return currectTier.count
+        //       return currectTier.count
+        return currectTier.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -126,18 +138,38 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
         
         guard let foundSommonerName = summoner.first?.name  else { return cell }
         
-       
+        cell.clipsToBounds = true
+        cell.layer.cornerRadius = 10
+        cell.layer.borderWidth = 0.5
+        cell.layer.borderColor = UIColor.black.cgColor
         
-        cell.nameLabel.text = currectTier[indexPath.row].summonerName
-        cell.lpLabel.text = String(currectTier[indexPath.row].leaguePoints)
-        cell.backgroundColor = .white
-        
-        if foundSommonerName == currectTier[indexPath.row].summonerName {
-            cell.backgroundColor = .yellow
+        if indexPath.row == 0 {
+            cell.backgroundColor = .gray
+            cell.nameLabel.text = "Summoner"
+            cell.winLabel.text = "Wins"
+            cell.lpLabel.text = "Points"
+        } else {
+            
+            
+            
+            cell.nameLabel.text = currectTier[indexPath.row - 1].summonerName
+            cell.lpLabel.text = String(currectTier[indexPath.row - 1].leaguePoints)
+            cell.winLabel.text = String(currectTier[indexPath.row - 1].wins)
+            cell.backgroundColor = .white
+            
+            if foundSommonerName == currectTier[indexPath.row - 1].summonerName {
+                
+                
+                cell.backgroundColor = .yellow
+            }
         }
+        
+        
         
         return cell
     }
+    
+    
     
     
     
