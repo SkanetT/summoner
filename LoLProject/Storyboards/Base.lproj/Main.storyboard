@@ -36,13 +36,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Škanet" borderStyle="roundedRect" placeholder="Summoner name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yii-6v-MZ5">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Summoner name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yii-6v-MZ5">
                                 <rect key="frame" x="107" y="377" width="200" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="iHq-4e-gRf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingSummoner:" destination="BYZ-38-t0r" eventType="editingChanged" id="0NQ-Fz-dop"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-yq-Mr9">
                                 <rect key="frame" x="120" y="340" width="174" height="21.5"/>
@@ -50,7 +53,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2G-ax-9rw">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2G-ax-9rw">
                                 <rect key="frame" x="107" y="419" width="200" height="40"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
@@ -125,31 +128,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yh4-kg-hRY">
-                            <size key="itemSize" width="100" height="100"/>
+                            <size key="itemSize" width="100" height="120"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="champions" id="lea-og-QTp" customClass="ChampionsViewControllerCell" customModule="LoLProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="100" height="120"/>
+                                <rect key="frame" x="20" y="20" width="100" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zu7-1M-JYu">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Champion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7D-ZU-nYc">
-                                            <rect key="frame" x="0.0" y="100" width="100" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Champion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="S7D-ZU-nYc">
+                                            <rect key="frame" x="0.0" y="110" width="100" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="JZh-BZ-rzd"/>
                                                 <constraint firstAttribute="height" constant="20" id="NTe-f7-d2W"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nosign" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lro-0d-nqS">
-                                            <rect key="frame" x="0.0" y="0.5" width="100" height="99"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lro-0d-nqS">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="106"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="993-im-EJH"/>
                                                 <constraint firstAttribute="width" constant="100" id="bI1-Md-Mx5"/>
@@ -163,10 +166,10 @@
                                         <constraint firstItem="lro-0d-nqS" firstAttribute="leading" secondItem="Zu7-1M-JYu" secondAttribute="leading" id="dyZ-SA-XYu"/>
                                         <constraint firstAttribute="trailing" secondItem="S7D-ZU-nYc" secondAttribute="trailing" id="lA3-0l-11g"/>
                                         <constraint firstItem="lro-0d-nqS" firstAttribute="top" secondItem="Zu7-1M-JYu" secondAttribute="top" id="nUg-ZW-E6Q"/>
-                                        <constraint firstItem="S7D-ZU-nYc" firstAttribute="top" secondItem="lro-0d-nqS" secondAttribute="bottom" id="zDo-ZX-Zpk"/>
+                                        <constraint firstItem="S7D-ZU-nYc" firstAttribute="top" secondItem="lro-0d-nqS" secondAttribute="bottom" constant="4" id="zDo-ZX-Zpk"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <size key="customSize" width="100" height="120"/>
+                                <size key="customSize" width="100" height="130"/>
                                 <connections>
                                     <outlet property="championImage" destination="lro-0d-nqS" id="guq-5Q-S5z"/>
                                     <outlet property="nameLabel" destination="S7D-ZU-nYc" id="bCa-EO-rLQ"/>
@@ -183,7 +186,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbT-2g-mtw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1145" y="865"/>
+            <point key="canvasLocation" x="1144.9275362318842" y="864.50892857142856"/>
         </scene>
         <!--Info-->
         <scene sceneID="SDe-PB-Xnr">
@@ -280,7 +283,6 @@
     </scenes>
     <resources>
         <image name="info" catalog="system" width="93" height="128"/>
-        <image name="nosign" catalog="system" width="128" height="121"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="planet" width="512" height="512"/>
     </resources>

@@ -131,6 +131,21 @@ class LoginController: UIViewController {
         
     }
     
+    @IBAction func editingSummoner(_ sender: UITextField) {
+        if sender.text!.count > 2 {
+            self.searchButton.alpha = 1
+            self.searchButton.isEnabled = true
+        } else {
+            self.searchButton.alpha = 0.5
+            self.searchButton.isEnabled = false
+
+        }
+    }
+    
+    
+    
+    
+    
     
     @IBAction func regionDidTap(_ sender: UIButton) {
         
@@ -196,8 +211,13 @@ class LoginController: UIViewController {
                 
                 try! realm.write {
                     realm.add(foundSummoner)
+                   
+                    
                 }
                 DispatchQueue.main.async {
+                     self.summonerNameTF.text? = ""
+                    self.searchButton.alpha = 0.5
+                    self.searchButton.isEnabled = false
                     let summonerVC = SummonerViewController()
                     self.navigationController?.pushViewController(summonerVC, animated: true)
                 }

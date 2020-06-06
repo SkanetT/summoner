@@ -18,6 +18,7 @@ class RankView: UIView {
     let soloImage = UIImageView()
     let flexWr = UILabel()
     let soloWr = UILabel()
+    let separator = UIView()
     
     
      var tapHandler: ( (String)->() )?
@@ -49,17 +50,28 @@ class RankView: UIView {
     }
     
     private func setup() {
-        self.backgroundColor = .darkGray
+        backgroundColor = .darkGray
+        
+        separator.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(separator)
+        
+        separator.backgroundColor = .black
+        separator.alpha = 0.7
+        separator.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        separator.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        separator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        separator.widthAnchor.constraint(equalToConstant: 2).isActive = true
+        
         
         flexName.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(flexName)
+        addSubview(flexName)
         
         flexName.font = UIFont(name: "Avenir-Heavy", size: 22)
         flexName.textAlignment = .center
         flexName.text = "Flex"
         flexName.textColor = .systemYellow
-        flexName.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        flexName.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -100).isActive = true
+        flexName.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        flexName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -90).isActive = true
         flexName.widthAnchor.constraint(equalToConstant: 70).isActive = true
         flexName.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
@@ -70,16 +82,18 @@ class RankView: UIView {
         soloName.textAlignment = .center
         soloName.text = "Solo"
         soloName.textColor = .systemYellow
-        soloName.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
-        soloName.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 100).isActive = true
+        soloName.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        soloName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 90).isActive = true
         soloName.widthAnchor.constraint(equalToConstant: 70).isActive = true
         soloName.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         flexRank.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(flexRank)
+        addSubview(flexRank)
         
         flexRank.font = UIFont(name: "Avenir-Heavy", size: 17)
         flexRank.textAlignment = .center
+        flexRank.adjustsFontSizeToFitWidth = true
+        flexRank.minimumScaleFactor = 0.7
         flexRank.text = "Unranked"
         flexRank.textColor = .black
         flexRank.topAnchor.constraint(equalTo: flexName.bottomAnchor, constant: 8).isActive = true
@@ -88,10 +102,12 @@ class RankView: UIView {
         flexRank.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         soloRank.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(soloRank)
+        addSubview(soloRank)
         
         soloRank.font = UIFont(name: "Avenir-Heavy", size: 17)
         soloRank.textAlignment = .center
+        soloRank.adjustsFontSizeToFitWidth = true
+        soloRank.minimumScaleFactor = 0.7
         soloRank.text = "Unranked"
         soloRank.textColor = .black
         soloRank.topAnchor.constraint(equalTo: soloName.bottomAnchor, constant: 8).isActive = true
@@ -100,7 +116,7 @@ class RankView: UIView {
         soloRank.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         flexImage.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(flexImage)
+        addSubview(flexImage)
         
         flexImage.image = #imageLiteral(resourceName: "Unranked")
         flexImage.contentMode = .scaleAspectFit
@@ -110,7 +126,7 @@ class RankView: UIView {
         flexImage.heightAnchor.constraint(equalToConstant: 130).isActive = true
         
         soloImage.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(soloImage)
+        addSubview(soloImage)
         
         soloImage.image = #imageLiteral(resourceName: "Unranked")
         soloImage.contentMode = .scaleAspectFit
@@ -120,7 +136,7 @@ class RankView: UIView {
         soloImage.heightAnchor.constraint(equalToConstant: 130).isActive = true
         
         flexWr.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(flexWr)
+        addSubview(flexWr)
         
         flexWr.font = UIFont(name: "Avenir", size: 17)
         flexWr.textAlignment = .center
@@ -132,7 +148,7 @@ class RankView: UIView {
         flexWr.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         soloWr.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(soloWr)
+        addSubview(soloWr)
         
         soloWr.font = UIFont(name: "Avenir", size: 17)
         soloWr.textAlignment = .center

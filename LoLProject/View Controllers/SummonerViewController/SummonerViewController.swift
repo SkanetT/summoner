@@ -34,10 +34,6 @@ class SummonerViewController: UIViewController {
     
     var matchModel: [MatchModel] = []
     
-
-    
-//    var offset = 7
-//    var start = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
