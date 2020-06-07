@@ -32,8 +32,19 @@ class LoginController: UIViewController {
     @IBOutlet var searchButton: UIButton!
 
     
-    let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan", "Republic of Korea"]
+    var delegate: LoginControllerDelegate?
+
     
+    let servers = GlobalConstants.shared.servers
+    
+    
+//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -41,20 +52,40 @@ class LoginController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !foundSummoner.isEmpty {
-            let summonerVC = SummonerViewController()
-            navigationController?.pushViewController(summonerVC, animated:  false)
+            
+            let summ = ContainerController()
+            summ.isLogin = false
+            
+            summ.modalPresentationStyle = .fullScreen
+            present(summ, animated: true)
+           // self.navigationController?.pushViewController(summ, animated: true)
+            
+//            let summonerVC = SummonerViewController()
+//            navigationController?.pushViewController(summonerVC, animated:  false)
         }
-        navigationController?.setNavigationBarHidden(true, animated: true)
+     //   navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
+    //    navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+    @objc func handleMenu(){
+           delegate?.handleMenuToggle(forMenuOption: nil)
+       }
+       func configureNavigationBar() {
+           navigationController?.navigationBar.barTintColor = .darkGray
+           navigationController?.navigationBar.barStyle = .black
+            navigationController?.navigationBar.barTintColor = .black
+
+           
+           navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         picker.delegate = self
         picker.dataSource = self
@@ -65,12 +96,13 @@ class LoginController: UIViewController {
         searchButton.layer.borderColor = UIColor.white.cgColor
         
         
-        
+        configureNavigationBar()
+
         DispatchQueue.main.async {
             self.serverLabel.text = self.servers.first
         }
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+      //  navigationController?.setNavigationBarHidden(true, animated: false)
         updateCurrentVersion()
         
         
@@ -218,8 +250,17 @@ class LoginController: UIViewController {
                      self.summonerNameTF.text? = ""
                     self.searchButton.alpha = 0.5
                     self.searchButton.isEnabled = false
-                    let summonerVC = SummonerViewController()
-                    self.navigationController?.pushViewController(summonerVC, animated: true)
+                    
+                    let summ = ContainerController()
+                    summ.isLogin = false
+                    
+                    
+                    summ.modalPresentationStyle = .fullScreen
+                    self.present(summ, animated: true)
+                    
+                 //   self.navigationController?.pushViewController(summ, animated: true)
+//                    let summonerVC = SummonerViewController()
+//                    self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
             case.failure(let error):

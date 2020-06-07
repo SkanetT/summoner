@@ -29,9 +29,15 @@ class ChampionsViewController: UICollectionViewController {
         champList = champList.sorted(by: {$0.name < $1.name})
     }
     
+    @objc func exitChampions() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Champions"
+        
+        navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
        
         championsItems()
     }
@@ -60,6 +66,7 @@ class ChampionsViewController: UICollectionViewController {
                     let champController = ChampionInfoController()
                     champController.championData = champion
                     champController.id = self!.champList[indexPath.row].id
+                    
                     self?.navigationController?.pushViewController(champController, animated: true)
                 }
             case .failure:

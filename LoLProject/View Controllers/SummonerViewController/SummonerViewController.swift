@@ -22,6 +22,7 @@ class SummonerViewController: UIViewController {
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
+    var delegate: LoginControllerDelegate?
     
     let header = RankView()
     let footer = MoreFooterView()
@@ -35,23 +36,46 @@ class SummonerViewController: UIViewController {
     var matchModel: [MatchModel] = []
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        
-        
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    
     //MARK: ViewDidLoad
+    
+    
+    @objc func handleMenu(){
+        delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+    
+    
+    @objc func loggOff() {
+        let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
+               let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
+                   
+                   let realm = try! Realm()
+                   let summoner = try! Realm().objects(FoundSummoner.self)
+                   try! realm.write {
+                       realm.delete(summoner)
+                   }
+                               
+                   self?.dismiss(animated: true, completion: nil)
+                   
+               }
+               let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+               
+               ac.addAction(logOut)
+               ac.addAction(cancel)
+               present(ac, animated: true)
+           
+
+           
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.barStyle = .default
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(loggOff))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,7 +85,7 @@ class SummonerViewController: UIViewController {
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        //   navigationController?.setNavigationBarHidden(true, animated: false)
         guard let foundSummoner = summoner.first else { return }
         let summonerName = foundSummoner.name
         let region = foundSummoner.region
@@ -82,7 +106,7 @@ class SummonerViewController: UIViewController {
                 
                 self.matchHistoryLoad(region: region, summonerName: summonerName)
                 
-
+                
             case .failure:
                 print("Error matchs")
             }
@@ -119,23 +143,6 @@ class SummonerViewController: UIViewController {
         }
     }
     
-    @IBAction func logOffTaped(_ sender: UIButton) {
-        let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
-        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
-            
-            let realm = try! Realm()
-            let summoner = try! Realm().objects(FoundSummoner.self)
-            try! realm.write {
-                realm.delete(summoner)
-            }
-            self?.navigationController?.popViewController(animated: true)
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        ac.addAction(logOut)
-        ac.addAction(cancel)
-        present(ac, animated: true)
-    }
     
 }
 
@@ -169,11 +176,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async {
                 matchHistoryCell.tapHandler = { [weak self]  in
                     guard let self = self else { return }
-//                    let sectionList: IndexSet = [indexPath.section]
+                    //                    let sectionList: IndexSet = [indexPath.section]
                     self.matchsArray[indexPath.section].isExpanded.toggle()
-//                    self.tableView.beginUpdates()
-//                    self.tableView.reloadSections(sectionList, with: .fade)
-//                    self.tableView.endUpdates()
+                    //                    self.tableView.beginUpdates()
+                    //                    self.tableView.reloadSections(sectionList, with: .fade)
+                    //                    self.tableView.endUpdates()
                     self.tableView.reloadData()
                 }
                 
@@ -184,8 +191,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 moreInfoCell.tapHandler = { [weak self]  in
                     self?.matchsArray[indexPath.section].isExpanded.toggle()
                     self?.tableView.reloadData()
-
-//                    self?.tableView.reloadSections([indexPath.section], with: .fade)
+                    
+                    //                    self?.tableView.reloadSections([indexPath.section], with: .fade)
                 }
             }
             return moreInfoCell
@@ -246,7 +253,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         guard let foundSummoner = summoner.first else { return }
         guard indexPath.section == matchModel.count - 6 else { return }
         matchHistoryLoad(region: foundSummoner.region, summonerName: foundSummoner.name)
-
+        
     }
     
     private func reloadMatchInfo(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int = 0,  summonerName: String ) {
@@ -257,20 +264,20 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         }
         NetworkAPI.shared.fetchFullInfoMatch(region: region, matchId: matchId) {[weak self] result in
             guard let self = self else { return }
-                switch result {
-                case.success(let fullMatchHistory):
-                     self.dataQueue.sync(flags:.barrier) {
-                        print("reload 🩸")
-                        disGroup.leave()
-                        let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
-                        self.matchModel.append(match)
-                    }
-                case.failure:
-                    self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName)
-//                    print("Fail section \(i) for match \(self.matchsArray[i].match.gameId)")
-//                    failsMatchs += 1
+            switch result {
+            case.success(let fullMatchHistory):
+                self.dataQueue.sync(flags:.barrier) {
+                    print("reload 🩸")
+                    disGroup.leave()
+                    let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
+                    self.matchModel.append(match)
                 }
-                
+            case.failure:
+                self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName)
+                //                    print("Fail section \(i) for match \(self.matchsArray[i].match.gameId)")
+                //                    failsMatchs += 1
+            }
+            
             
             
         }
@@ -319,7 +326,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 print("🌈🌈🌈🌈🌈🌈 All matchs good 🌈🌈🌈🌈🌈🌈")
             }
             self.tableView.reloadData()
-//            self.start = self.offset + 1
+            //            self.start = self.offset + 1
         }
     }
     
@@ -330,3 +337,5 @@ extension UIViewController {
         
     }
 }
+
+

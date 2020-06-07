@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sxx-8R-rcx">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
@@ -30,7 +30,7 @@
             </subviews>
             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="sxx-8R-rcx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TIw-Vg-9sd"/>
+                <constraint firstItem="sxx-8R-rcx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="TIw-Vg-9sd"/>
                 <constraint firstAttribute="bottom" secondItem="sxx-8R-rcx" secondAttribute="bottom" id="fA8-pj-uVb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sxx-8R-rcx" secondAttribute="trailing" id="hcQ-74-1Fo"/>
                 <constraint firstItem="sxx-8R-rcx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pHW-y2-YGB"/>

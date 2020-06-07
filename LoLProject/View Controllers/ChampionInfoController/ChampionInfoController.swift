@@ -29,7 +29,15 @@ class ChampionInfoController: UIViewController {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    @objc func exitChampions() {
+        dismiss(animated: true, completion: nil)
         
+    }
+       
+    @objc func back(){
+        navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -39,6 +47,14 @@ class ChampionInfoController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.allowsSelection = false
+        
+        
+////        navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .cancel, target: self, action: #selector(back))
+//        navigationItem.backBarButtonItem = .init(title: "Back", style: .plain, target: self, action: #selector(back))
+        
+//        navigationItem.leftBarButtonItem?.tintColor = .black
+        
+        navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
         
         
         title = championData?.name

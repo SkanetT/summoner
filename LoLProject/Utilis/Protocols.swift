@@ -6,4 +6,7 @@
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
-import Foundation
+protocol LoginControllerDelegate {
+    func handleMenuToggle(forMenuOption menuOption: MenuOption?)
+}
+
