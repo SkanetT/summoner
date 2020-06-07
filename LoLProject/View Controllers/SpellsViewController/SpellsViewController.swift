@@ -23,10 +23,16 @@ class SpellsViewController: UIViewController {
         spellList = spellList.sorted()
     }
     
-
+    
+    @objc func exitSpells() {
+           dismiss(animated: true, completion: nil)
+       }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Spells"
+        
+        customiseNavigatorBar()
+        
         tableView.delegate = self
         tableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
         allSpellsList()
@@ -34,7 +40,20 @@ class SpellsViewController: UIViewController {
     }
 
 
+    func customiseNavigatorBar() {
+        title = "Spells"
+        
+        let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = titleColor
+        
+        navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitSpells))
+        
+    }
+    
 }
+
 
 extension SpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

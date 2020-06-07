@@ -115,14 +115,14 @@ class ContainerController: UIViewController {
             present(vc, animated: true)
             
             
-           // print("champ")
         case .items:
             print("item")
         case .spells:
             let vc = SpellsViewController()
-            vc.modalPresentationStyle = .automatic
-            present(vc, animated: true)
-            //navigationController?.pushViewController(vc, animated: true)
+            let nc = UINavigationController(rootViewController: vc)
+            
+            nc.modalPresentationStyle = .fullScreen
+            present(nc, animated: true)
         }
         
     }

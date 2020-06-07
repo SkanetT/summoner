@@ -35,11 +35,20 @@ class ChampionsViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       customiseNavigatorBar()
+        championsItems()
+    }
+    
+    func customiseNavigatorBar() {
         title = "Champions"
         
+        let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = titleColor
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
-       
-        championsItems()
+        
     }
      
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
