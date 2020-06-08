@@ -19,7 +19,7 @@ class ContainerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    
+        
         if isLogin {
             configureLoginController()
         } else {
@@ -69,6 +69,7 @@ class ContainerController: UIViewController {
             menuController = MenuController()
             menuController.delegate = self
             view.insertSubview(menuController.view, at: 0)
+            
             addChild(menuController)
             menuController.didMove(toParent: self)
         }
@@ -81,17 +82,19 @@ class ContainerController: UIViewController {
             
             
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            
-                            self.centerContoller.view.frame.origin.x  = self.centerContoller.view.frame.width - 80
-            
-                        }, completion: nil)
+                
+                self.centerContoller.view.frame.origin.x  = self.centerContoller.view.frame.width - 80
+                
+                
+                
+            }, completion: nil)
             
         } else {
             
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            
-                            self.centerContoller.view.frame.origin.x  = 0
-            
+                
+                self.centerContoller.view.frame.origin.x  = 0
+                
             }, completion: {[weak self] _ in
                 guard let menuOption = menuOption else { return }
                 
@@ -100,13 +103,13 @@ class ContainerController: UIViewController {
             })
         }
         
-     //  animateStatusBar()
+        //  animateStatusBar()
     }
     
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
-        
-
+            
+            
         case .champions:
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "championList2")
@@ -123,6 +126,9 @@ class ContainerController: UIViewController {
             
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
+            
+        case .serversStatus:
+            print("Status")
         }
         
     }
@@ -130,9 +136,9 @@ class ContainerController: UIViewController {
     func animateStatusBar() {
         
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-        
+            
             self.setNeedsStatusBarAppearanceUpdate()
-                    }, completion: nil)
+        }, completion: nil)
     }
     
 }
@@ -140,11 +146,11 @@ class ContainerController: UIViewController {
 extension ContainerController: LoginControllerDelegate {
     func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
         if !isExpanded {
-                configureMenuController()
-            }
-            isExpanded = !isExpanded
-        animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
+            configureMenuController()
         }
+        isExpanded = !isExpanded
+        animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
     }
-    
+}
+
 

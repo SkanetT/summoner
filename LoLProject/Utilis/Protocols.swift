@@ -6,7 +6,13 @@
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
+import Foundation
+
 protocol LoginControllerDelegate {
     func handleMenuToggle(forMenuOption menuOption: MenuOption?)
 }
 
+protocol BaseRequestProtocol  {
+    associatedtype response: Decodable
+    var urlRequest: URLRequest? { get }
+}

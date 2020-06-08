@@ -17,11 +17,8 @@ class NetworkAPI {
     
     
     func fetchCurrentChampionsList(completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
-//        let versions = try! Realm().objects(Version.self)
-//        guard let version = versions.first?.lastVesion else { return }
-//        let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/champion.json"
         let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion.json"
-
+        
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -97,7 +94,7 @@ class NetworkAPI {
                         let selectedChampion = SelectedChampion.init(item: champion)
                         completion(.success(selectedChampion))
                     }
-    
+                    
                 } else {
                     print("🌐")
                     completion(.failure(.network))
@@ -230,4 +227,25 @@ class NetworkAPI {
         task.resume()
     }
     
+    
+    
+    func dataTask<Request: BaseRequestProtocol>(request: Request, completion: @escaping ((Result<Request.response,APIErrors>) -> ()) ) {
+        if !Reachability.shared.isConnectedToNetwork().self {
+            completion(.failure(.noInternet))
+        }
+        guard let req = request.urlRequest else {
+            completion(.failure(.unknown))
+            return
+        }
+        URLSession.shared.dataTask(with: req) { (data, response, error) in
+            if let data = data, let res = try? JSONDecoder().decode(Request.response.self, from: data) {
+                completion(.success(res))
+            } else {
+                completion(.failure(.parsing))
+            }
+        }.resume()
+    }
+
+
+
 }

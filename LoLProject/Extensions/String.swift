@@ -53,7 +53,7 @@ extension String {
         case "Republic of Korea":
             region = "kr"
         default:
-            region = ""
+            break
         }
         
         return region
