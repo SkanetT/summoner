@@ -68,3 +68,21 @@ struct Player: Codable {
     let profileIcon: Int?
 
 }
+
+class FullInfoMatchRequest: BaseRequest<FullInfoMatch> {
+    
+    private let matchId: String
+    private let region: String
+    
+    override var server: String {
+        return region
+    }
+    
+    override var path: String{
+        return "/lol/match/v4/matches/\(matchId)"
+    }
+    init(matchId: String, server: String) {
+        self.matchId = matchId
+        self.region = server
+    }
+}

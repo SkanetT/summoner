@@ -24,3 +24,20 @@ struct ExpandableMathHistory {
 }
 
 
+class MatchHistoryRequest: BaseRequest<MatchHistory> {
+    
+    private let accountId: String
+    private let region: String
+    
+    override var server: String {
+        return region
+    }
+    
+    override var path: String{
+        return "/lol/match/v4/matchlists/by-account/\(accountId)"
+    }
+    init(accountId: String, server: String) {
+        self.accountId = accountId
+        self.region = server
+    }
+}

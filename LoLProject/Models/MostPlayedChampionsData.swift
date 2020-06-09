@@ -15,3 +15,23 @@ struct MostPlayedChampionsDatum: Codable {
 
 
 typealias MostPlayedChampionsData = [MostPlayedChampionsDatum]
+
+class MostPlayedChampionsRequest: BaseRequest<MostPlayedChampionsData> {
+    
+    private let summonerId: String
+    private let region: String
+    
+    override var server: String {
+        return region
+    }
+    
+    override var path: String{
+        return "/lol/champion-mastery/v4/champion-masteries/by-summoner/\(summonerId)"
+    }
+    init(summonerId: String, server: String) {
+        self.summonerId = summonerId
+        self.region = server
+    }
+    
+    
+}

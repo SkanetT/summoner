@@ -297,7 +297,6 @@
 				3A8CB71A2454DCE5005801A8 /* ChampionsAndVersionsData.swift */,
 				3A8CB755245C7E14005801A8 /* SelectedChampionData.swift */,
 				3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */,
-				3A8CB7222455FE61005801A8 /* Errors.swift */,
 				3A9F8569246084C70090BBAF /* SummonerData.swift */,
 				3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */,
 				3A5AE7422464876300E80092 /* LeagueData.swift */,
@@ -374,6 +373,7 @@
 			children = (
 				3A9F856C246086F80090BBAF /* GlobalConstants.swift */,
 				3AC26808248C2DFA009C3D18 /* Protocols.swift */,
+				3A8CB7222455FE61005801A8 /* Errors.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";

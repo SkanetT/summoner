@@ -11,11 +11,11 @@ import RealmSwift
 
 class LoginController: UIViewController {
     
-   // @IBOutlet var tfToTop: NSLayoutConstraint!
+    // @IBOutlet var tfToTop: NSLayoutConstraint!
     
     @IBOutlet var tfToPicker: NSLayoutConstraint!
     @IBOutlet var searchToPicker: NSLayoutConstraint!
-
+    
     
     let realm = try! Realm()
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
@@ -30,21 +30,21 @@ class LoginController: UIViewController {
     
     @IBOutlet var serverButton: UIButton!
     @IBOutlet var searchButton: UIButton!
-
+    
     
     var delegate: LoginControllerDelegate?
-
+    
     
     let servers = GlobalConstants.shared.servers
     
     
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    //    }
+    //
+    //    required init?(coder: NSCoder) {
+    //        fatalError("init(coder:) has not been implemented")
+    //    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -58,31 +58,31 @@ class LoginController: UIViewController {
             
             summ.modalPresentationStyle = .fullScreen
             present(summ, animated: true)
-           // self.navigationController?.pushViewController(summ, animated: true)
+            // self.navigationController?.pushViewController(summ, animated: true)
             
-//            let summonerVC = SummonerViewController()
-//            navigationController?.pushViewController(summonerVC, animated:  false)
+            //            let summonerVC = SummonerViewController()
+            //            navigationController?.pushViewController(summonerVC, animated:  false)
         }
-     //   navigationController?.setNavigationBarHidden(true, animated: true)
+        //   navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-    //    navigationController?.setNavigationBarHidden(false, animated: true)
+        //    navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @objc func handleMenu(){
-           delegate?.handleMenuToggle(forMenuOption: nil)
-       }
-       func configureNavigationBar() {
-           navigationController?.navigationBar.barTintColor = .darkGray
-           navigationController?.navigationBar.barStyle = .black
-            navigationController?.navigationBar.barTintColor = .black
-
-           
-           navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
+        delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+    func configureNavigationBar() {
+        navigationController?.navigationBar.barTintColor = .darkGray
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = .black
+        
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
         navigationItem.leftBarButtonItem?.tintColor = .white
-       }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,12 +97,12 @@ class LoginController: UIViewController {
         
         
         configureNavigationBar()
-
+        
         DispatchQueue.main.async {
             self.serverLabel.text = self.servers.first
         }
         
-      //  navigationController?.setNavigationBarHidden(true, animated: false)
+        //  navigationController?.setNavigationBarHidden(true, animated: false)
         updateCurrentVersion()
         
         
@@ -130,11 +130,11 @@ class LoginController: UIViewController {
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
                             
-//                            let defaults = UserDefaults.standard
-//                            defaults.set(101, forKey: "test")
-//
-//                            let test1 = defaults.integer(forKey: "test")
-//                                print(test1)
+                            //                            let defaults = UserDefaults.standard
+                            //                            defaults.set(101, forKey: "test")
+                            //
+                            //                            let test1 = defaults.integer(forKey: "test")
+                            //                                print(test1)
                             
                         }
                         
@@ -151,7 +151,7 @@ class LoginController: UIViewController {
                 self.getItemsListRealm()
                 self.getSpellsListRealm()
                 self.updateCurrentVersion()
-
+                
                 
             }
             updateCurrentVersion()
@@ -170,7 +170,7 @@ class LoginController: UIViewController {
         } else {
             self.searchButton.alpha = 0.5
             self.searchButton.isEnabled = false
-
+            
         }
     }
     
@@ -183,15 +183,15 @@ class LoginController: UIViewController {
         
         pickerAlpha = !pickerAlpha
         
-
+        
         
         if pickerAlpha == true {
-        UIView.animate(withDuration: 0.4) {
-            self.picker.alpha = 1
-            self.tfToPicker.constant = 0
-            self.searchToPicker.constant = 0
-            self.view.layoutIfNeeded()
-        }
+            UIView.animate(withDuration: 0.4) {
+                self.picker.alpha = 1
+                self.tfToPicker.constant = 0
+                self.searchToPicker.constant = 0
+                self.view.layoutIfNeeded()
+            }
         } else {
             UIView.animate(withDuration: 0.4) {
                 self.picker.alpha = 0
@@ -208,7 +208,7 @@ class LoginController: UIViewController {
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.4) {
             self.picker.alpha = 0
             self.tfToPicker.constant = -71
             self.searchToPicker.constant = -137
@@ -218,15 +218,18 @@ class LoginController: UIViewController {
         
         guard  !summonerNameTF.text!.isEmpty else {return}
         
-        var summonerName = summonerNameTF.text
-        summonerName = summonerName?.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        guard let summonerName = summonerNameTF.text else { return }
         
+        //         let summonerNameQuery = summonerName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
         
         
         guard let region = serverLabel.text?.serverNameToRegion() else { return }
-
         
-        NetworkAPI.shared.seachSummoner(region: region,name: summonerName!) {[weak self] result in
+        
+        let summonerRequest = SummonerRequest.init(summonerName: summonerName
+            , server: region)
+        
+        NetworkAPI.shared.dataTask(request: summonerRequest) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let summoner):
@@ -243,11 +246,11 @@ class LoginController: UIViewController {
                 
                 try! realm.write {
                     realm.add(foundSummoner)
-                   
+                    
                     
                 }
                 DispatchQueue.main.async {
-                     self.summonerNameTF.text? = ""
+                    self.summonerNameTF.text? = ""
                     self.searchButton.alpha = 0.5
                     self.searchButton.isEnabled = false
                     
@@ -258,20 +261,20 @@ class LoginController: UIViewController {
                     summ.modalPresentationStyle = .fullScreen
                     self.present(summ, animated: true)
                     
-                 //   self.navigationController?.pushViewController(summ, animated: true)
-//                    let summonerVC = SummonerViewController()
-//                    self.navigationController?.pushViewController(summonerVC, animated: true)
+                    //   self.navigationController?.pushViewController(summ, animated: true)
+                    //                    let summonerVC = SummonerViewController()
+                    //                    self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
             case.failure(let error):
-                guard case .summonerNotFound = error else { return }
+                guard case .noData = error else { return }
                 
-                    DispatchQueue.main.async {
-                        let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                        ac.addAction(ok)
-                        self.present(ac, animated: true)
-                    }
+                DispatchQueue.main.async {
+                    let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
+                    let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                    ac.addAction(ok)
+                    self.present(ac, animated: true)
+                }
             }
         }
     }

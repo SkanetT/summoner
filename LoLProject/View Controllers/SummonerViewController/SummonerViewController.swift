@@ -46,25 +46,25 @@ class SummonerViewController: UIViewController {
     
     @objc func loggOff() {
         let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
-               let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
-                   
-                   let realm = try! Realm()
-                   let summoner = try! Realm().objects(FoundSummoner.self)
-                   try! realm.write {
-                       realm.delete(summoner)
-                   }
-                               
-                   self?.dismiss(animated: true, completion: nil)
-                   
-               }
-               let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-               
-               ac.addAction(logOut)
-               ac.addAction(cancel)
-               present(ac, animated: true)
-           
-
-           
+        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
+            
+            let realm = try! Realm()
+            let summoner = try! Realm().objects(FoundSummoner.self)
+            try! realm.write {
+                realm.delete(summoner)
+            }
+            
+            self?.dismiss(animated: true, completion: nil)
+            
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        ac.addAction(logOut)
+        ac.addAction(cancel)
+        present(ac, animated: true)
+        
+        
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class SummonerViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(loggOff))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
         navigationItem.leftBarButtonItem?.tintColor = .white
-
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -96,7 +96,9 @@ class SummonerViewController: UIViewController {
         summonerIconImage.downloadSD(type: .profileIcon(id: String(foundSummoner.profileIconId)))
         
         
-        NetworkAPI.shared.fetchMatchHistory(region: region, accountId: foundSummoner.accountId) {[weak self] result in
+        let matchHistoryRequest = MatchHistoryRequest.init(accountId: foundSummoner.accountId, server: region)
+        
+        NetworkAPI.shared.dataTask(request: matchHistoryRequest) {[weak self] result in
             
             guard let self = self else{ return }
             switch result {
@@ -112,10 +114,15 @@ class SummonerViewController: UIViewController {
             }
         }
         
-        NetworkAPI.shared.fetchMostPlayedChampions(region: foundSummoner.region,summonerId: foundSummoner.id) {[weak self] result in
+        
+        let mostPlayedChampionsRequest = MostPlayedChampionsRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)
+        
+        
+        NetworkAPI.shared.dataTask(request: mostPlayedChampionsRequest) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case.success(let mostPlayedChampions):
+                
                 if mostPlayedChampions.count >= 3 {
                     DispatchQueue.main.async {
                         let mostView = MostPlayedView()
@@ -141,6 +148,37 @@ class SummonerViewController: UIViewController {
                 print("No most Played")
             }
         }
+        
+        
+        //        NetworkAPI.shared.fetchMostPlayedChampions(region: foundSummoner.region,summonerId: foundSummoner.id) {[weak self] result in
+        //            guard let self = self else { return }
+        //            switch result {
+        //            case.success(let mostPlayedChampions):
+        //                if mostPlayedChampions.count >= 3 {
+        //                    DispatchQueue.main.async {
+        //                        let mostView = MostPlayedView()
+        //                        mostView.setData(mostPlayedChampions: mostPlayedChampions)
+        //                        self.mostPlayed.addSubview(mostView)
+        //                        mostView.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
+        //                        mostView.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
+        //                        mostView.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
+        //                        mostView.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
+        //                    }
+        //                } else {
+        //                    DispatchQueue.main.async {
+        //                        let noData = NoMostPlayedView()
+        //                        self.mostPlayed.addSubview(noData)
+        //                        noData.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
+        //                        noData.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
+        //                        noData.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
+        //                        noData.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
+        //                    }
+        //                }
+        //
+        //            case.failure:
+        //                print("No most Played")
+        //            }
+        //        }
     }
     
     
@@ -204,7 +242,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         let summoner = try! Realm().objects(FoundSummoner.self)
         guard let foundSummoner = summoner.first else { return nil }
         if section == 0 {
-            NetworkAPI.shared.fetchLeagues(region: foundSummoner.region,summonerId: foundSummoner.id) {[weak self] result in
+            
+            let leagueRequest = LeagueRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)
+            
+            
+            NetworkAPI.shared.dataTask(request: leagueRequest) {[weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case.success(let leagueData):
@@ -236,17 +278,17 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                     
                 }
                 
-//                NetworkAPI.shared.fetchRankData(region: foundSummoner.region, leagueId: value) { result in
-//                    switch result{
-//                    case.success(let rankData):
-//                        leagueVC.rankData = rankData
-//                        DispatchQueue.main.async {
-//                            self.navigationController?.pushViewController(leagueVC, animated: true)
-//                        }
-//                    case.failure:
-//                        print("some rank error")
-//                    }
-//                }
+                //                NetworkAPI.shared.fetchRankData(region: foundSummoner.region, leagueId: value) { result in
+                //                    switch result{
+                //                    case.success(let rankData):
+                //                        leagueVC.rankData = rankData
+                //                        DispatchQueue.main.async {
+                //                            self.navigationController?.pushViewController(leagueVC, animated: true)
+                //                        }
+                //                    case.failure:
+                //                        print("some rank error")
+                //                    }
+                //                }
                 
                 //    leagueVC.leagueId = value
                 
@@ -278,7 +320,10 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
             disGroup.leave()
             return
         }
-        NetworkAPI.shared.fetchFullInfoMatch(region: region, matchId: matchId) {[weak self] result in
+        
+        let fullInfoMatch = FullInfoMatchRequest.init(matchId: String(matchId), server: region)
+        
+        NetworkAPI.shared.dataTask(request: fullInfoMatch) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case.success(let fullMatchHistory):
@@ -290,13 +335,13 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             case.failure:
                 self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName)
-                //                    print("Fail section \(i) for match \(self.matchsArray[i].match.gameId)")
-                //                    failsMatchs += 1
+                
             }
             
             
             
         }
+        
     }
     
     private func matchHistoryLoad(region : String, summonerName: String) {
@@ -309,7 +354,10 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         for i in matchModel.count...(matchModel.count + decValue) {
             
             disGroup.enter()
-            NetworkAPI.shared.fetchFullInfoMatch(region: region, matchId: self.matchsArray[i].match.gameId) {[weak self] result in
+            
+            let fullInfoMatch = FullInfoMatchRequest.init(matchId: String(self.matchsArray[i].match.gameId), server: region)
+            
+            NetworkAPI.shared.dataTask(request: fullInfoMatch) {[weak self] result in
                 guard let self = self else { return }
                 
                 switch result {
@@ -342,7 +390,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 print("🌈🌈🌈🌈🌈🌈 All matchs good 🌈🌈🌈🌈🌈🌈")
             }
             self.tableView.reloadData()
-            //            self.start = self.offset + 1
         }
     }
     
