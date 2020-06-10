@@ -18,9 +18,6 @@ class NetworkAPI {
     
     
     func dataTask<Request: BaseRequestProtocol>(request: Request, completion: @escaping ((Result<Request.response,APIErrors>) -> ()) ) {
-        if !Reachability.shared.isConnectedToNetwork() {
-            completion(.failure(.noInternet))
-        }
         guard let req = request.urlRequest else {
             completion(.failure(.unknown))
             return

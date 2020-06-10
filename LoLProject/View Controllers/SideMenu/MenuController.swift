@@ -31,6 +31,7 @@ class MenuController: UIViewController {
         tableView.backgroundColor = .gray
         
         
+        
         tableView.register(MenuOptionCell.self, forCellReuseIdentifier: reuseIdentifer)
         tableView.separatorStyle = .none
         tableView.rowHeight = 80
@@ -55,6 +56,8 @@ extension MenuController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifer, for: indexPath) as! MenuOptionCell
         
         let menuOption = MenuOption(rawValue: indexPath.row)
+        
+        cell.selectionStyle = .none
         
         cell.descriptionLabel.text = menuOption?.description
         cell.iconImageView.image = menuOption?.image

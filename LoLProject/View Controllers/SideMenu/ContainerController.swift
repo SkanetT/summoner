@@ -128,7 +128,12 @@ class ContainerController: UIViewController {
             present(nc, animated: true)
             
         case .serversStatus:
-            print("Status")
+            let vc = StatusController()
+            let nc = UINavigationController(rootViewController: vc)
+            
+            nc.modalPresentationStyle = .fullScreen
+
+            present(nc, animated: true)
         }
         
     }
