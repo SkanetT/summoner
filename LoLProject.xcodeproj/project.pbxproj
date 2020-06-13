@@ -73,8 +73,6 @@
 		3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC26810248EBE94009C3D18 /* BaseRequest.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
-		3AFED4DC246F5ACB00D8AA40 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DB246F5ACB00D8AA40 /* TestView.swift */; };
-		3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4DD246F5AD700D8AA40 /* TestView.xib */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
 		3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */; };
 		3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */; };
@@ -155,8 +153,6 @@
 		3AC26810248EBE94009C3D18 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
-		3AFED4DB246F5ACB00D8AA40 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		3AFED4DD246F5AD700D8AA40 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
 		3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMostPlayedView.swift; sourceTree = "<group>"; };
 		3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFooterView.swift; sourceTree = "<group>"; };
@@ -284,13 +280,10 @@
 		3A8CB6EA24549A75005801A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3A8CB7A2245E2F8B005801A8 /* New Group */,
 				3A8CB6D624549417005801A8 /* AppDelegate.swift */,
-				3A8790DB2483173300499C5E /* Reachability.swift */,
 				3A8CB6D824549417005801A8 /* SceneDelegate.swift */,
 				3A8CB6DF24549419005801A8 /* Assets.xcassets */,
 				3A8CB6E424549419005801A8 /* Info.plist */,
-				3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -330,8 +323,8 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3A5C34972491643A0044AB6D /* StatusController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
+				3A5C34972491643A0044AB6D /* StatusController */,
 				3A653C992486FC3800CB7C97 /* LeagueController */,
 				3A8790DE2483D46100499C5E /* InfoViewController */,
 				3A8790DD2483D39100499C5E /* ChampionsViewController */,
@@ -376,21 +369,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3A8CB7A2245E2F8B005801A8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				3AFED4DB246F5ACB00D8AA40 /* TestView.swift */,
-				3AFED4DD246F5AD700D8AA40 /* TestView.xib */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		3A9F856B246086C80090BBAF /* Utilis */ = {
 			isa = PBXGroup;
 			children = (
 				3A9F856C246086F80090BBAF /* GlobalConstants.swift */,
 				3AC26808248C2DFA009C3D18 /* Protocols.swift */,
 				3A8CB7222455FE61005801A8 /* Errors.swift */,
+				3A8790DB2483173300499C5E /* Reachability.swift */,
+				3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -506,7 +492,6 @@
 				3A8790E42483E54800499C5E /* HeaderForChampion.xib in Resources */,
 				3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */,
 				3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */,
-				3AFED4DE246F5AD700D8AA40 /* TestView.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
 				3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */,
@@ -602,7 +587,6 @@
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
-				3AFED4DC246F5ACB00D8AA40 /* TestView.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,

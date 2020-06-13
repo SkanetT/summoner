@@ -50,7 +50,7 @@ class RankView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .darkGray
+        backgroundColor = .lightGray
         
         separator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(separator)

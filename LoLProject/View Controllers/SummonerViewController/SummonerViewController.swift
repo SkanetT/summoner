@@ -19,10 +19,17 @@ class SummonerViewController: UIViewController {
     @IBOutlet var nameLebel: UILabel!
     @IBOutlet var lvlLabel: UILabel!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var indicator: UIActivityIndicatorView!
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
     var delegate: LoginControllerDelegate?
+    let refrechControll: UIRefreshControl = {
+        let refrechControll = UIRefreshControl()
+        refrechControll.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        
+        return refrechControll
+    }()
     
     let header = RankView()
     let footer = MoreFooterView()
@@ -36,6 +43,11 @@ class SummonerViewController: UIViewController {
     var matchModel: [MatchModel] = []
     
     
+    @objc private func refresh(sender: UIRefreshControl){
+        
+        sender.endRefreshing()
+    }
+    
     //MARK: ViewDidLoad
     
     
@@ -43,36 +55,18 @@ class SummonerViewController: UIViewController {
         delegate?.handleMenuToggle(forMenuOption: nil)
     }
     
-    
-    @objc func loggOff() {
-        let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
-        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
-            
-            let realm = try! Realm()
-            let summoner = try! Realm().objects(FoundSummoner.self)
-            try! realm.write {
-                realm.delete(summoner)
-            }
-            
-            self?.dismiss(animated: true, completion: nil)
-            
-        }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        ac.addAction(logOut)
-        ac.addAction(cancel)
-        present(ac, animated: true)
-        
-        
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        summonerIconImage.clipsToBounds = true
+        summonerIconImage.layer.cornerRadius = 6
+        summonerIconImage.layer.borderColor = UIColor.black.cgColor
+        summonerIconImage.layer.borderWidth = 3
+        
+        indicator.isHidden = false
+        indicator.startAnimating()
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.barStyle = .default
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(loggOff))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
         navigationItem.leftBarButtonItem?.tintColor = .white
         
@@ -82,10 +76,14 @@ class SummonerViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         
+        tableView.refreshControl = refrechControll
+        
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius = 10
+        
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
         
-        //   navigationController?.setNavigationBarHidden(true, animated: false)
         guard let foundSummoner = summoner.first else { return }
         let summonerName = foundSummoner.name
         let region = foundSummoner.region
@@ -109,8 +107,9 @@ class SummonerViewController: UIViewController {
                 self.matchHistoryLoad(region: region, summonerName: summonerName)
                 
                 
-            case .failure:
-                print("Error matchs")
+            case .failure(let error):
+                print(error)
+               
             }
         }
         
@@ -125,6 +124,9 @@ class SummonerViewController: UIViewController {
                 
                 if mostPlayedChampions.count >= 3 {
                     DispatchQueue.main.async {
+                        
+                        self.indicator.isHidden = true
+                        self.indicator.stopAnimating()
                         let mostView = MostPlayedView()
                         mostView.setData(mostPlayedChampions: mostPlayedChampions)
                         self.mostPlayed.addSubview(mostView)
@@ -136,6 +138,8 @@ class SummonerViewController: UIViewController {
                 } else {
                     DispatchQueue.main.async {
                         let noData = NoMostPlayedView()
+                        self.indicator.isHidden = true
+                        self.indicator.stopAnimating()
                         self.mostPlayed.addSubview(noData)
                         noData.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
                         noData.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
@@ -149,36 +153,6 @@ class SummonerViewController: UIViewController {
             }
         }
         
-        
-        //        NetworkAPI.shared.fetchMostPlayedChampions(region: foundSummoner.region,summonerId: foundSummoner.id) {[weak self] result in
-        //            guard let self = self else { return }
-        //            switch result {
-        //            case.success(let mostPlayedChampions):
-        //                if mostPlayedChampions.count >= 3 {
-        //                    DispatchQueue.main.async {
-        //                        let mostView = MostPlayedView()
-        //                        mostView.setData(mostPlayedChampions: mostPlayedChampions)
-        //                        self.mostPlayed.addSubview(mostView)
-        //                        mostView.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
-        //                        mostView.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
-        //                        mostView.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
-        //                        mostView.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
-        //                    }
-        //                } else {
-        //                    DispatchQueue.main.async {
-        //                        let noData = NoMostPlayedView()
-        //                        self.mostPlayed.addSubview(noData)
-        //                        noData.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
-        //                        noData.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
-        //                        noData.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
-        //                        noData.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
-        //                    }
-        //                }
-        //
-        //            case.failure:
-        //                print("No most Played")
-        //            }
-        //        }
     }
     
     
@@ -201,6 +175,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         
         let matchForSection = matchModel[indexPath.section]
         
+        matchHistoryCell.clipsToBounds = true
+        matchHistoryCell.layer.cornerRadius = 6
+        moreInfoCell.clipsToBounds = true
+        moreInfoCell.layer.cornerRadius = 6
+        
         matchHistoryCell.setData(summonerInMatch: matchForSection.summonerInMatch)
         
         if matchForSection.members.count == 10 {
@@ -214,11 +193,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
             DispatchQueue.main.async {
                 matchHistoryCell.tapHandler = { [weak self]  in
                     guard let self = self else { return }
-                    //                    let sectionList: IndexSet = [indexPath.section]
                     self.matchsArray[indexPath.section].isExpanded.toggle()
-                    //                    self.tableView.beginUpdates()
-                    //                    self.tableView.reloadSections(sectionList, with: .fade)
-                    //                    self.tableView.endUpdates()
+                    
                     self.tableView.reloadData()
                 }
                 
@@ -229,8 +205,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 moreInfoCell.tapHandler = { [weak self]  in
                     self?.matchsArray[indexPath.section].isExpanded.toggle()
                     self?.tableView.reloadData()
-                    
-                    //                    self?.tableView.reloadSections([indexPath.section], with: .fade)
                 }
             }
             return moreInfoCell
@@ -277,21 +251,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     
                 }
-                
-                //                NetworkAPI.shared.fetchRankData(region: foundSummoner.region, leagueId: value) { result in
-                //                    switch result{
-                //                    case.success(let rankData):
-                //                        leagueVC.rankData = rankData
-                //                        DispatchQueue.main.async {
-                //                            self.navigationController?.pushViewController(leagueVC, animated: true)
-                //                        }
-                //                    case.failure:
-                //                        print("some rank error")
-                //                    }
-                //                }
-                
-                //    leagueVC.leagueId = value
-                
                 
             }
             return header

@@ -36,15 +36,6 @@ class LoginController: UIViewController {
     
     
     let servers = GlobalConstants.shared.servers
-    
-    
-    //    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //    }
-    //
-    //    required init?(coder: NSCoder) {
-    //        fatalError("init(coder:) has not been implemented")
-    //    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -58,12 +49,8 @@ class LoginController: UIViewController {
             
             summ.modalPresentationStyle = .fullScreen
             present(summ, animated: true)
-            // self.navigationController?.pushViewController(summ, animated: true)
-            
-            //            let summonerVC = SummonerViewController()
-            //            navigationController?.pushViewController(summonerVC, animated:  false)
+           
         }
-        //   navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -129,13 +116,7 @@ class LoginController: UIViewController {
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
-                            
-                            //                            let defaults = UserDefaults.standard
-                            //                            defaults.set(101, forKey: "test")
-                            //
-                            //                            let test1 = defaults.integer(forKey: "test")
-                            //                                print(test1)
-                            
+
                         }
                         
                         //disnorif hide loader
@@ -173,10 +154,6 @@ class LoginController: UIViewController {
             
         }
     }
-    
-    
-    
-    
     
     
     @IBAction func regionDidTap(_ sender: UIButton) {

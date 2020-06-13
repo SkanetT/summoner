@@ -45,7 +45,7 @@ class StatusCell: UITableViewCell {
         
         indicator.isHidden = false
         indicator.startAnimating()
-        indicator.color = .blue
+        indicator.color = .white
         indicator.style = .medium
         
         indicator.centerXAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40).isActive = true

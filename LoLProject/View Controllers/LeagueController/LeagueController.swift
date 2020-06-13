@@ -36,7 +36,11 @@ class LeagueController: UIViewController {
         
         guard let rankData = rankData else { return }
         
+        let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
+
         
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.titleTextAttributes = titleColor
         
         title = rankData.name
         leagueImage.leagueImage(league: rankData.tier)
@@ -47,7 +51,9 @@ class LeagueController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
         tableView.remembersLastFocusedIndexPath = true
-        
+        tableView.allowsSelection = false
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius = 10
         
         
         tierOne = rankData.entries.filter({ $0.rank == "I" })
@@ -110,15 +116,22 @@ class LeagueController: UIViewController {
         case 0:
             currectTier = tierOne
             tableView.reloadData()
+            tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
         case 1:
             currectTier = tierTwo
             tableView.reloadData()
+            tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
+
         case 2:
             currectTier = tierThree
             tableView.reloadData()
+            tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
+
         case 3:
             currectTier = tierFour
             tableView.reloadData()
+            tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
+
         default:
             break
         }
@@ -163,15 +176,6 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
                 cell.backgroundColor = .yellow
             }
         }
-        
-        
-        
         return cell
     }
-    
-    
-    
-    
-    
-    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ContainerController: UIViewController {
     
@@ -83,6 +84,10 @@ class ContainerController: UIViewController {
             
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 
+                
+                self.view.frame.size.height -= 80
+                self.view.frame.origin.y += 40
+                
                 self.centerContoller.view.frame.origin.x  = self.centerContoller.view.frame.width - 80
                 
                 
@@ -92,6 +97,9 @@ class ContainerController: UIViewController {
         } else {
             
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                
+                self.view.frame.size.height += 80
+                self.view.frame.origin.y -= 40
                 
                 self.centerContoller.view.frame.origin.x  = 0
                 
@@ -118,8 +126,8 @@ class ContainerController: UIViewController {
             present(vc, animated: true)
             
             
-        case .items:
-            print("item")
+            //        case .items:
+        //            print("item")
         case .spells:
             let vc = SpellsViewController()
             let nc = UINavigationController(rootViewController: vc)
@@ -132,8 +140,27 @@ class ContainerController: UIViewController {
             let nc = UINavigationController(rootViewController: vc)
             
             nc.modalPresentationStyle = .fullScreen
-
+            
             present(nc, animated: true)
+            
+        case .logOff:
+            let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
+            let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
+                
+                let realm = try! Realm()
+                let summoner = try! Realm().objects(FoundSummoner.self)
+                try! realm.write {
+                    realm.delete(summoner)
+                }
+                
+                self?.dismiss(animated: true, completion: nil)
+                
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            ac.addAction(logOut)
+            ac.addAction(cancel)
+            present(ac, animated: true)
         }
         
     }

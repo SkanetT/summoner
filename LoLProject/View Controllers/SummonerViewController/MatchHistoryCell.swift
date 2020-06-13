@@ -40,10 +40,17 @@ class MatchHistoryCell: UITableViewCell {
         super.awakeFromNib()
         championIcon.clipsToBounds = true
         championIcon.layer.cornerRadius = championIcon.frame.height / 2
+        championIcon.layer.borderColor = UIColor.white.cgColor
+        championIcon.layer.borderWidth = 2
         moreButton.clipsToBounds = true
         moreButton.layer.cornerRadius = 8
         moreButton.layer.borderWidth = 0.8
         moreButton.layer.borderColor = UIColor.white.cgColor
+        
+        dateAndTime.clipsToBounds = true
+        dateAndTime.layer.cornerRadius = 7
+        dateAndTime.layer.borderWidth = 1.5
+        dateAndTime.layer.borderColor = UIColor.black.cgColor
         
         moreButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
     }

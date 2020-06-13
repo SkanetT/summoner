@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 private let reuseIdentifer = "MenuOptionCell"
 
 class MenuController: UIViewController {
+    
+    let foundSummoner = try! Realm().objects(FoundSummoner.self)
     
     
     var tableView: UITableView!
@@ -20,7 +23,7 @@ class MenuController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
-        view.backgroundColor = .red
+        view.backgroundColor = .gray
         
     }
     
@@ -49,7 +52,7 @@ class MenuController: UIViewController {
 
 extension MenuController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return foundSummoner.isEmpty ? 3 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

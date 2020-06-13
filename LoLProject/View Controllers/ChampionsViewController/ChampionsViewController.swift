@@ -68,18 +68,20 @@ class ChampionsViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.allowsSelection = false
         NetworkAPI.shared.fetchFullInfoChampion(id: champList[indexPath.row].id) {[weak self] result in
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
+                    self?.collectionView.allowsSelection = true
                     let champController = ChampionInfoController()
                     champController.championData = champion
                     champController.id = self!.champList[indexPath.row].id
                     
                     self?.navigationController?.pushViewController(champController, animated: true)
                 }
-            case .failure:
-                print("Errort")
+            case .failure(let error):
+                print("\(error) for  champions")
             }
         }
         

@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SummonerViewController" customModule="LoLProject" customModuleProvider="target">
             <connections>
+                <outlet property="indicator" destination="3Hc-Yi-42O" id="lm2-kg-YAU"/>
                 <outlet property="lvlLabel" destination="IBi-7C-FN8" id="3fG-Eq-pix"/>
                 <outlet property="mostPlayed" destination="ELa-Ew-AOF" id="ib3-UA-vBd"/>
                 <outlet property="nameLebel" destination="ls6-En-YBj" id="YWZ-Ps-Sji"/>
@@ -59,7 +60,20 @@
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELa-Ew-AOF">
                     <rect key="frame" x="128" y="95.5" width="270" height="151.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="3Hc-Yi-42O">
+                            <rect key="frame" x="125" y="66" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="2NW-Yn-G7j"/>
+                                <constraint firstAttribute="height" constant="20" id="gcQ-J4-kl9"/>
+                            </constraints>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="3Hc-Yi-42O" firstAttribute="centerY" secondItem="ELa-Ew-AOF" secondAttribute="centerY" id="5yF-5Y-Q7d"/>
+                        <constraint firstItem="3Hc-Yi-42O" firstAttribute="centerX" secondItem="ELa-Ew-AOF" secondAttribute="centerX" id="bHe-Pl-ey4"/>
+                    </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most played champions:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7UH-Rf-gd9">
                     <rect key="frame" x="128" y="64.5" width="270" height="23"/>

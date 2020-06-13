@@ -13,6 +13,13 @@ class StatusController: UIViewController {
     let tableView = UITableView()
     let servers = GlobalConstants.shared.servers
     
+    let refrechControll: UIRefreshControl = {
+           let refrechControll = UIRefreshControl()
+           refrechControll.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+           
+           return refrechControll
+       }()
+    
     struct ServerStatusList {
         let name: String
         let status: String
@@ -27,6 +34,10 @@ class StatusController: UIViewController {
         
     }
     
+    
+    @objc private func refresh(sender: UIRefreshControl){
+        sender.endRefreshing()
+    }
     
     @objc
     func exit(){
@@ -44,6 +55,8 @@ class StatusController: UIViewController {
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exit))
         
         view.backgroundColor = .gray
+        
+        tableView.refreshControl = refrechControll
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .darkGray
