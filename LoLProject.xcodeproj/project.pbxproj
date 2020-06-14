@@ -71,6 +71,9 @@
 		3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2680C248C2F64009C3D18 /* MenuController.swift */; };
 		3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2680E248C2FFB009C3D18 /* ContainerController.swift */; };
 		3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC26810248EBE94009C3D18 /* BaseRequest.swift */; };
+		3AC6ED1024956C4E00F8B733 /* PopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED0E24956C4E00F8B733 /* PopController.swift */; };
+		3AC6ED1124956C4E00F8B733 /* PopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED0F24956C4E00F8B733 /* PopController.xib */; };
+		3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
@@ -151,6 +154,9 @@
 		3AC2680C248C2F64009C3D18 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		3AC2680E248C2FFB009C3D18 /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		3AC26810248EBE94009C3D18 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		3AC6ED0E24956C4E00F8B733 /* PopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopController.swift; sourceTree = "<group>"; };
+		3AC6ED0F24956C4E00F8B733 /* PopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopController.xib; sourceTree = "<group>"; };
+		3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorDate.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 				3A5BB735247F3450002417B4 /* MatchModel.swift */,
 				3AC26806248C2D0E009C3D18 /* MenuOption.swift */,
 				3A5C349C2491758B0044AB6D /* StatusData.swift */,
+				3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -323,6 +330,7 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3AC6ED0D24956C1300F8B733 /* PopController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A5C34972491643A0044AB6D /* StatusController */,
 				3A653C992486FC3800CB7C97 /* LeagueController */,
@@ -400,6 +408,15 @@
 				3AC2680E248C2FFB009C3D18 /* ContainerController.swift */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		3AC6ED0D24956C1300F8B733 /* PopController */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6ED0E24956C4E00F8B733 /* PopController.swift */,
+				3AC6ED0F24956C4E00F8B733 /* PopController.xib */,
+			);
+			path = PopController;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -500,6 +517,7 @@
 				3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */,
 				3A8CB6DE24549417005801A8 /* Main.storyboard in Resources */,
 				3A8790E82483FFCC00499C5E /* CellForHeaderForChampion.xib in Resources */,
+				3AC6ED1124956C4E00F8B733 /* PopController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +587,7 @@
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,
 				3AC26809248C2DFA009C3D18 /* Protocols.swift in Sources */,
+				3AC6ED1024956C4E00F8B733 /* PopController.swift in Sources */,
 				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
 				3A5C3499249164830044AB6D /* StatusController.swift in Sources */,
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
@@ -588,6 +607,7 @@
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
+				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,
 				3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */,

@@ -31,12 +31,35 @@ class MoreInfoCell: UITableViewCell {
     @IBOutlet weak var closeButton: UIButton!
 
     var tapHandler: ( ()->() )?
+    
+    var tapLongHandler: ( ()->() )?
+
 
     override func awakeFromNib() {
+        
+        
         super.awakeFromNib()
         closeButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
+        
 
     }
+    
+//    @objc func longTap() {
+//        
+//        
+//        
+//        let popVc = PopController()
+//
+//        popVc.modalPresentationStyle = .popover
+//
+//        let popOverVC = popVc.popoverPresentationController
+//        popOverVC?.delegate = self
+//        popOverVC?.sourceView = self.participant1
+//        popOverVC?.sourceRect = CGRect(x: self.participant1.bounds.midX, y: self.participant1.bounds.midY, width: 0, height: 0)
+//        popVc.preferredContentSize = CGSize(width: 80, height: 120)
+//
+//        
+//    }
     
     @objc
     private func didTapExpand() {
@@ -118,6 +141,13 @@ class MoreInfoCell: UITableViewCell {
         participant8.setData(member: members[7])
         participant9.setData(member: members[8])
         participant10.setData(member: members[9])
+    }
+    
+}
+
+extension MoreInfoCell: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
 }

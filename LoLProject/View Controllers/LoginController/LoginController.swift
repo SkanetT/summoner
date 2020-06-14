@@ -88,19 +88,14 @@ class LoginController: UIViewController {
         DispatchQueue.main.async {
             self.serverLabel.text = self.servers.first
         }
-        
-        //  navigationController?.setNavigationBarHidden(true, animated: false)
-        updateCurrentVersion()
+                updateCurrentVersion()
         
         
         
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)
         if let lastVersion = version.first?.lastVesion {
-            // show
-            // create grou
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-                // hide
                 switch result {
                     
                 case .success(let version):
@@ -119,7 +114,6 @@ class LoginController: UIViewController {
 
                         }
                         
-                        //disnorif hide loader
                     }
                 case.failure:
                     print("error")
@@ -196,10 +190,7 @@ class LoginController: UIViewController {
         guard  !summonerNameTF.text!.isEmpty else {return}
         
         guard let summonerName = summonerNameTF.text else { return }
-        
-        //         let summonerNameQuery = summonerName.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-        
-        
+ 
         guard let region = serverLabel.text?.serverNameToRegion() else { return }
         
         

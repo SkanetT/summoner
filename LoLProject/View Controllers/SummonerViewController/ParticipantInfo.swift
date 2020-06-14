@@ -39,6 +39,8 @@ class ParticipantInfo: XibBasedView {
     
     
     func setData(member: Member) -> () {
+        
+        
         participantNameLabel.text = member.name
         kda.text = member.kda
         if let champion = champions.first(where: { $0.key == member.championKey }) {

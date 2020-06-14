@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 
 
@@ -18,7 +19,7 @@ struct MatchModel {
     var members: [Member] = []
     
     
-    init(match: FullInfoMatch, summonerName: String) {
+    init(match: FullInfoMatch, summonerName: String, summonerId: String) {
         
         summonerInMatch.dateCreation = match.gameCreation
         
@@ -69,7 +70,7 @@ struct MatchModel {
             return result
         } ()
         
-        if let myPlayerIdentities = match.participantIdentities.first(where: { $0.player.summonerName == summonerName }){
+        if let myPlayerIdentities = match.participantIdentities.first(where: { $0.player.summonerId == summonerId }){
             summonerInMatch.idInMatch = myPlayerIdentities.participantId
             if let myPlayer = match.participants.first(where: { $0.participantId == summonerInMatch.idInMatch }) {
                 summonerInMatch.win = myPlayer.stats.win

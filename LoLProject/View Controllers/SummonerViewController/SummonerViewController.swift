@@ -14,12 +14,12 @@ import RealmSwift
 class SummonerViewController: UIViewController {
     
     
-    @IBOutlet var mostPlayed: UIView!
-    @IBOutlet var summonerIconImage: UIImageView!
-    @IBOutlet var nameLebel: UILabel!
-    @IBOutlet var lvlLabel: UILabel!
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var mostPlayed: UIView!
+    @IBOutlet weak var summonerIconImage: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var lvlLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
@@ -42,13 +42,12 @@ class SummonerViewController: UIViewController {
     
     var matchModel: [MatchModel] = []
     
+    var spectatorData: SpectatorDate?
     
     @objc private func refresh(sender: UIRefreshControl){
-        
+        dismiss(animated: true)
         sender.endRefreshing()
     }
-    
-    //MARK: ViewDidLoad
     
     
     @objc func handleMenu(){
@@ -58,43 +57,24 @@ class SummonerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        summonerIconImage.clipsToBounds = true
-        summonerIconImage.layer.cornerRadius = 6
-        summonerIconImage.layer.borderColor = UIColor.black.cgColor
-        summonerIconImage.layer.borderWidth = 3
-        
-        indicator.isHidden = false
-        indicator.startAnimating()
-        navigationController?.navigationBar.barTintColor = .black
-        navigationController?.navigationBar.barStyle = .default
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
-        navigationItem.leftBarButtonItem?.tintColor = .white
-        
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsSelection = false
-        tableView.showsVerticalScrollIndicator = false
-        
-        tableView.refreshControl = refrechControll
-        
-        tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 10
-        
-        tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
-        tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
-        
         guard let foundSummoner = summoner.first else { return }
-        let summonerName = foundSummoner.name
-        let region = foundSummoner.region
         
-        nameLebel.text = foundSummoner.name
+        fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
+        setup()
+        tableViewConfiguration()
+        
+        title = "\(foundSummoner.name) (\(foundSummoner.region))"
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
-        
         summonerIconImage.downloadSD(type: .profileIcon(id: String(foundSummoner.profileIconId)))
         
+        fetchMatchHistory(summonerName: foundSummoner.name, summonerId: foundSummoner.id, accountId: foundSummoner.accountId, server: foundSummoner.region)
         
-        let matchHistoryRequest = MatchHistoryRequest.init(accountId: foundSummoner.accountId, server: region)
+        fetchMostPlayedChampions(summonerId: foundSummoner.id, server: foundSummoner.region)
+        
+    }
+    
+    func fetchMatchHistory(summonerName: String, summonerId: String, accountId: String, server: String) {
+        let matchHistoryRequest = MatchHistoryRequest.init(accountId: accountId, server: server)
         
         NetworkAPI.shared.dataTask(request: matchHistoryRequest) {[weak self] result in
             
@@ -104,18 +84,18 @@ class SummonerViewController: UIViewController {
                 
                 self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
                 
-                self.matchHistoryLoad(region: region, summonerName: summonerName)
+                self.matchHistoryLoad(region: server, summonerName: summonerName, summonerId: summonerId)
                 
                 
             case .failure(let error):
                 print(error)
-               
+                
             }
         }
-        
-        
-        let mostPlayedChampionsRequest = MostPlayedChampionsRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)
-        
+    }
+    
+    func fetchMostPlayedChampions(summonerId: String, server: String) {
+        let mostPlayedChampionsRequest = MostPlayedChampionsRequest.init(summonerId: summonerId, server: server)
         
         NetworkAPI.shared.dataTask(request: mostPlayedChampionsRequest) {[weak self] result in
             guard let self = self else { return }
@@ -153,8 +133,77 @@ class SummonerViewController: UIViewController {
             }
         }
         
+        
     }
     
+    func tableViewConfiguration() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
+        
+        tableView.refreshControl = refrechControll
+        
+        tableView.clipsToBounds = true
+        tableView.layer.cornerRadius = 10
+        
+        tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
+        tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
+    }
+    
+    func setup() {
+        let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = titleColor
+        summonerIconImage.clipsToBounds = true
+        summonerIconImage.layer.cornerRadius = 6
+        summonerIconImage.layer.borderColor = UIColor.black.cgColor
+        summonerIconImage.layer.borderWidth = 3
+        indicator.isHidden = false
+        indicator.startAnimating()
+        navigationController?.navigationBar.barTintColor = .black
+        navigationController?.navigationBar.barStyle = .default
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
+        navigationItem.leftBarButtonItem?.tintColor = .white
+        
+    }
+    
+    func fetcSpectator(summonerId: String, server: String) {
+        let spectatorRequest = SpectatorRequest.init(summonerId: summonerId, server: server)
+        
+        
+        NetworkAPI.shared.dataTask(request: spectatorRequest) {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case.success(let spectatorDate):
+                
+                self.spectatorData = spectatorDate
+                DispatchQueue.main.async {
+                    self.statusLabel.backgroundColor = .green
+                    self.statusLabel.text = "Online"
+                }
+                
+                
+            case.failure(let error):
+                switch error {
+                case.noData:
+                    DispatchQueue.main.async {
+                        self.statusLabel.backgroundColor = .red
+                        self.statusLabel.text = "Offline"
+                    }
+                case .statusCode(_):
+                    print(error)
+                case .network:
+                    print(error)
+                case .parsing:
+                    print(error)
+                case .unknown:
+                    print(error)
+                case .noInternet:
+                    print(error)
+                }
+            }
+        }
+    }
     
 }
 
@@ -166,7 +215,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return matchModel.count
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -269,11 +317,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let foundSummoner = summoner.first else { return }
         guard indexPath.section == matchModel.count - 6 else { return }
-        matchHistoryLoad(region: foundSummoner.region, summonerName: foundSummoner.name)
+        matchHistoryLoad(region: foundSummoner.region, summonerName: foundSummoner.name, summonerId: foundSummoner.id)
         
     }
     
-    private func reloadMatchInfo(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int = 0,  summonerName: String ) {
+    private func reloadMatchInfo(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int = 0, summonerName: String, summonerId: String ) {
         guard reply < 4 else {
             print("not reload 🧻")
             disGroup.leave()
@@ -289,11 +337,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 self.dataQueue.sync(flags:.barrier) {
                     print("reload 🩸")
                     disGroup.leave()
-                    let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
+                    let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId)
                     self.matchModel.append(match)
                 }
             case.failure:
-                self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName)
+                self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName, summonerId: summonerId)
                 
             }
             
@@ -303,7 +351,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    private func matchHistoryLoad(region : String, summonerName: String) {
+    private func matchHistoryLoad(region : String, summonerName: String, summonerId: String) {
         let disGroup = DispatchGroup()
         var failsMatchs = 0
         
@@ -323,14 +371,14 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 case.success(let fullMatchHistory):
                     self.dataQueue.sync(flags:.barrier) {
                         disGroup.leave()
-                        let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName)
+                        let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId)
                         self.matchModel.append(match)
                     }
                 case.failure(let erorr):
                     print("####",erorr)
                     print("Fail section \(i) for match \(self.matchsArray[i].match.gameId)")
                     failsMatchs += 1
-                    self.reloadMatchInfo(disGroup: disGroup, matchId: self.matchsArray[i].match.gameId, region: region, summonerName: summonerName)
+                    self.reloadMatchInfo(disGroup: disGroup, matchId: self.matchsArray[i].match.gameId, region: region, summonerName: summonerName, summonerId: summonerId)
                 }
                 
                 
