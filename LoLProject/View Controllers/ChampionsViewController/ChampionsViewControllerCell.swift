@@ -12,9 +12,9 @@ import UIKit
 
 class ChampionsViewControllerCell: UICollectionViewCell {
     
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
         
-    @IBOutlet var championImage: UIImageView!
+    @IBOutlet weak var championImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

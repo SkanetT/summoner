@@ -74,6 +74,10 @@
 		3AC6ED1024956C4E00F8B733 /* PopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED0E24956C4E00F8B733 /* PopController.swift */; };
 		3AC6ED1124956C4E00F8B733 /* PopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED0F24956C4E00F8B733 /* PopController.xib */; };
 		3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */; };
+		3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1524969C5600F8B733 /* SpectatorController.swift */; };
+		3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1624969C5600F8B733 /* SpectatorController.xib */; };
+		3AC6ED1A249952E300F8B733 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED19249952E300F8B733 /* ViewController.swift */; };
+		3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
@@ -157,6 +161,10 @@
 		3AC6ED0E24956C4E00F8B733 /* PopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopController.swift; sourceTree = "<group>"; };
 		3AC6ED0F24956C4E00F8B733 /* PopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopController.xib; sourceTree = "<group>"; };
 		3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorDate.swift; sourceTree = "<group>"; };
+		3AC6ED1524969C5600F8B733 /* SpectatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorController.swift; sourceTree = "<group>"; };
+		3AC6ED1624969C5600F8B733 /* SpectatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpectatorController.xib; sourceTree = "<group>"; };
+		3AC6ED19249952E300F8B733 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
@@ -330,6 +338,7 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3AC6ED1424969C1300F8B733 /* SpectatorController */,
 				3AC6ED0D24956C1300F8B733 /* PopController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A5C34972491643A0044AB6D /* StatusController */,
@@ -373,6 +382,7 @@
 			children = (
 				3A8CB7A3245E2FF1005801A8 /* String.swift */,
 				3A8CB7A5245E3037005801A8 /* ImageView.swift */,
+				3AC6ED19249952E300F8B733 /* ViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +395,7 @@
 				3A8CB7222455FE61005801A8 /* Errors.swift */,
 				3A8790DB2483173300499C5E /* Reachability.swift */,
 				3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */,
+				3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -417,6 +428,15 @@
 				3AC6ED0F24956C4E00F8B733 /* PopController.xib */,
 			);
 			path = PopController;
+			sourceTree = "<group>";
+		};
+		3AC6ED1424969C1300F8B733 /* SpectatorController */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6ED1524969C5600F8B733 /* SpectatorController.swift */,
+				3AC6ED1624969C5600F8B733 /* SpectatorController.xib */,
+			);
+			path = SpectatorController;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -508,6 +528,7 @@
 				3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */,
 				3A8790E42483E54800499C5E /* HeaderForChampion.xib in Resources */,
 				3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */,
+				3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */,
 				3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
@@ -591,6 +612,7 @@
 				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
 				3A5C3499249164830044AB6D /* StatusController.swift in Sources */,
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
+				3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
@@ -606,6 +628,7 @@
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
+				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
@@ -625,6 +648,7 @@
 				3A8CB6D924549417005801A8 /* SceneDelegate.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */,
+				3AC6ED1A249952E300F8B733 /* ViewController.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
 				3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */,

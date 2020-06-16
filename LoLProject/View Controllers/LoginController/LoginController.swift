@@ -9,12 +9,12 @@
 import UIKit
 import RealmSwift
 
-class LoginController: UIViewController {
+class LoginController: SpinnerController {
     
     // @IBOutlet var tfToTop: NSLayoutConstraint!
     
-    @IBOutlet var tfToPicker: NSLayoutConstraint!
-    @IBOutlet var searchToPicker: NSLayoutConstraint!
+    @IBOutlet weak var tfToPicker: NSLayoutConstraint!
+    @IBOutlet weak var searchToPicker: NSLayoutConstraint!
     
     
     let realm = try! Realm()
@@ -22,14 +22,14 @@ class LoginController: UIViewController {
     
     var pickerAlpha = false
     
-    @IBOutlet var verLabel: UILabel!
-    @IBOutlet var summonerNameTF: UITextField!
-    @IBOutlet var serverLabel: UILabel!
+    @IBOutlet weak var verLabel: UILabel!
+    @IBOutlet weak var summonerNameTF: UITextField!
+    @IBOutlet weak var serverLabel: UILabel!
     
-    @IBOutlet var picker: UIPickerView!
+    @IBOutlet weak var picker: UIPickerView!
     
-    @IBOutlet var serverButton: UIButton!
-    @IBOutlet var searchButton: UIButton!
+    @IBOutlet weak var serverButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     
     var delegate: LoginControllerDelegate?
@@ -73,6 +73,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         picker.delegate = self
         picker.dataSource = self
@@ -186,6 +187,7 @@ class LoginController: UIViewController {
             self.view.layoutIfNeeded()
             
         }
+        showSpinner()
         
         guard  !summonerNameTF.text!.isEmpty else {return}
         
@@ -234,9 +236,11 @@ class LoginController: UIViewController {
                     //                    self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
+                self.removeSpinner()
             case.failure(let error):
                 guard case .noData = error else { return }
-                
+                self.removeSpinner()
+
                 DispatchQueue.main.async {
                     let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
                     let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)

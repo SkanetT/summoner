@@ -35,24 +35,24 @@
                     <rect key="frame" x="20" y="64" width="374" height="181.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vgD-cM-FdF">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="181.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="181.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWH-68-JVi">
-                                    <rect key="frame" x="8" y="0.0" width="84" height="39.5"/>
+                                    <rect key="frame" x="8" y="0.0" width="103.5" height="39.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WpB-wk-vxr">
-                                    <rect key="frame" x="0.0" y="49.5" width="100" height="100"/>
+                                    <rect key="frame" x="10" y="49.5" width="100" height="100"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="5tp-4M-RIZ"/>
                                         <constraint firstAttribute="height" constant="100" id="n8L-yx-MMe"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lvl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-7C-FN8">
-                                    <rect key="frame" x="8" y="159.5" width="84" height="22"/>
+                                    <rect key="frame" x="8" y="159.5" width="103.5" height="22"/>
                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -66,19 +66,19 @@
                             </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2qk-O4-DQA">
-                            <rect key="frame" x="116" y="0.0" width="258" height="181.5"/>
+                            <rect key="frame" x="135.5" y="0.0" width="238.5" height="181.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most played champions:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7UH-Rf-gd9">
-                                    <rect key="frame" x="0.0" y="0.0" width="258" height="21.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="238.5" height="21.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELa-Ew-AOF">
-                                    <rect key="frame" x="0.0" y="29.5" width="258" height="152"/>
+                                    <rect key="frame" x="0.0" y="29.5" width="238.5" height="152"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3Hc-Yi-42O">
-                                            <rect key="frame" x="119" y="66" width="20" height="20"/>
+                                            <rect key="frame" x="109.5" y="66" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="8Qp-jH-n8o"/>
                                                 <constraint firstAttribute="height" constant="20" id="Yj4-5D-G86"/>
@@ -113,11 +113,5 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="134.78260869565219" y="126.5625"/>
         </view>
-        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VFR-KF-SMe">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-            <point key="canvasLocation" x="388" y="773"/>
-        </tableView>
     </objects>
 </document>

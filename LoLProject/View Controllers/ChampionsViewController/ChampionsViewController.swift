@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ChampionsViewController: UICollectionViewController {
+class ChampionsViewController: SpinnerController {
     
     var allChampion = try! Realm().objects(Champion.self)
     
@@ -51,11 +51,17 @@ class ChampionsViewController: UICollectionViewController {
         
     }
      
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    
+    
+}
+
+extension ChampionsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return champList.count
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! ChampionsViewControllerCell
         cell.nameLabel.text = champList[indexPath.row].name
@@ -67,13 +73,14 @@ class ChampionsViewController: UICollectionViewController {
     
     
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.allowsSelection = false
         NetworkAPI.shared.fetchFullInfoChampion(id: champList[indexPath.row].id) {[weak self] result in
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
-                    self?.collectionView.allowsSelection = true
+                    collectionView.allowsSelection = true
+
                     let champController = ChampionInfoController()
                     champController.championData = champion
                     champController.id = self!.champList[indexPath.row].id

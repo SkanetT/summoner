@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SpellsViewController: UIViewController {
+class SpellsViewController: SpinnerController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,6 +30,7 @@ class SpellsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         customiseNavigatorBar()
         

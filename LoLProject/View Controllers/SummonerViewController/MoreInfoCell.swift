@@ -22,6 +22,8 @@ class MoreInfoCell: UITableViewCell {
     @IBOutlet weak var participant8: ParticipantInfo!
     @IBOutlet weak var participant9: ParticipantInfo!
     @IBOutlet weak var participant10: ParticipantInfo!
+    
+    @IBOutlet weak var stackVies: UIStackView!
 
     @IBOutlet weak var team1: UIView!
     @IBOutlet weak var team2: UIView!
@@ -36,30 +38,15 @@ class MoreInfoCell: UITableViewCell {
 
 
     override func awakeFromNib() {
-        
-        
         super.awakeFromNib()
         closeButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
-        
+        clipsToBounds = true
+        layer.cornerRadius = 10
+        layer.borderWidth = 2
 
     }
     
-//    @objc func longTap() {
-//        
-//        
-//        
-//        let popVc = PopController()
-//
-//        popVc.modalPresentationStyle = .popover
-//
-//        let popOverVC = popVc.popoverPresentationController
-//        popOverVC?.delegate = self
-//        popOverVC?.sourceView = self.participant1
-//        popOverVC?.sourceRect = CGRect(x: self.participant1.bounds.midX, y: self.participant1.bounds.midY, width: 0, height: 0)
-//        popVc.preferredContentSize = CGSize(width: 80, height: 120)
-//
-//        
-//    }
+
     
     @objc
     private func didTapExpand() {

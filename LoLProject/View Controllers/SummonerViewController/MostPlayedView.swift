@@ -31,15 +31,19 @@ class MostPlayedView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .darkGray
+        backgroundColor = .lightGray
         translatesAutoresizingMaskIntoConstraints = false
         
         firstMostPlayedChampionImage.translatesAutoresizingMaskIntoConstraints = false
         addSubview(firstMostPlayedChampionImage)
         firstMostPlayedChampionImage.contentMode = .scaleAspectFit
+        firstMostPlayedChampionImage.clipsToBounds = true
+        firstMostPlayedChampionImage.layer.cornerRadius = 4
+        firstMostPlayedChampionImage.layer.borderColor = UIColor.white.cgColor
+        firstMostPlayedChampionImage.layer.borderWidth = 1.2
         
-        firstMostPlayedChampionImage.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-        firstMostPlayedChampionImage.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -80).isActive = true
+        firstMostPlayedChampionImage.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        firstMostPlayedChampionImage.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -70).isActive = true
         firstMostPlayedChampionImage.heightAnchor.constraint(equalToConstant: 50).isActive = true
         firstMostPlayedChampionImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -70,6 +74,11 @@ class MostPlayedView: UIView {
         secondMostPlayedChampionImage.heightAnchor.constraint(equalToConstant: 38).isActive = true
         secondMostPlayedChampionImage.widthAnchor.constraint(equalToConstant: 38).isActive = true
         
+        secondMostPlayedChampionImage.clipsToBounds = true
+        secondMostPlayedChampionImage.layer.cornerRadius = 4
+        secondMostPlayedChampionImage.layer.borderColor = UIColor.white.cgColor
+        secondMostPlayedChampionImage.layer.borderWidth = 1.2
+        
         secondMostPlayedChampionNameLvl.translatesAutoresizingMaskIntoConstraints = false
         addSubview(secondMostPlayedChampionNameLvl)
         secondMostPlayedChampionNameLvl.contentMode = .left
@@ -96,6 +105,12 @@ class MostPlayedView: UIView {
         thidMostPlayedChampionImage.centerXAnchor.constraint(equalTo: secondMostPlayedChampionImage.centerXAnchor).isActive = true
         thidMostPlayedChampionImage.heightAnchor.constraint(equalToConstant: 38).isActive = true
         thidMostPlayedChampionImage.widthAnchor.constraint(equalToConstant: 38).isActive = true
+        
+        thidMostPlayedChampionImage.clipsToBounds = true
+        thidMostPlayedChampionImage.layer.cornerRadius = 4
+        thidMostPlayedChampionImage.layer.borderColor = UIColor.white.cgColor
+        thidMostPlayedChampionImage.layer.borderWidth = 1.2
+        
         
         thidMostPlayedChampionNameLvl.translatesAutoresizingMaskIntoConstraints = false
         addSubview(thidMostPlayedChampionNameLvl)

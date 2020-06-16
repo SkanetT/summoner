@@ -13,7 +13,7 @@ class NoMostPlayedView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let noData = UILabel()
-        backgroundColor = .darkGray
+        backgroundColor = .lightGray
         translatesAutoresizingMaskIntoConstraints = false
         noData.translatesAutoresizingMaskIntoConstraints = false
         addSubview(noData)

@@ -11,7 +11,7 @@ import RealmSwift
 
 
 
-class SummonerViewController: UIViewController {
+class SummonerViewController: SpinnerController {
     
     
     @IBOutlet weak var mostPlayed: UIView!
@@ -56,11 +56,12 @@ class SummonerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showSpinner()
         
         guard let foundSummoner = summoner.first else { return }
         
         fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
-        setup()
+        setupUI()
         tableViewConfiguration()
         
         title = "\(foundSummoner.name) (\(foundSummoner.region))"
@@ -89,6 +90,7 @@ class SummonerViewController: UIViewController {
                 
             case .failure(let error):
                 print(error)
+                self.removeSpinner()
                 
             }
         }
@@ -146,18 +148,27 @@ class SummonerViewController: UIViewController {
         
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
+        tableView.layer.borderWidth = 2
         
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
     }
     
-    func setup() {
+    func setupUI() {
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleColor
         summonerIconImage.clipsToBounds = true
         summonerIconImage.layer.cornerRadius = 6
         summonerIconImage.layer.borderColor = UIColor.black.cgColor
         summonerIconImage.layer.borderWidth = 3
+        mostPlayed.clipsToBounds = true
+        mostPlayed.layer.cornerRadius = 10
+        mostPlayed.layer.borderWidth = 2
+        statusLabel.clipsToBounds = true
+        statusLabel.layer.cornerRadius = 4
+        statusLabel.layer.backgroundColor = UIColor.black.cgColor
+        statusLabel.layer.borderWidth = 1.5
+        
         indicator.isHidden = false
         indicator.startAnimating()
         navigationController?.navigationBar.barTintColor = .black
@@ -165,6 +176,14 @@ class SummonerViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
         navigationItem.leftBarButtonItem?.tintColor = .white
         
+    }
+    
+    @objc
+    func spectatorPresent() {
+        guard spectatorData != nil else { return }
+        let vc = SpectatorController()
+        vc.spectatorDate = spectatorData
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func fetcSpectator(summonerId: String, server: String) {
@@ -178,6 +197,12 @@ class SummonerViewController: UIViewController {
                 
                 self.spectatorData = spectatorDate
                 DispatchQueue.main.async {
+
+                    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.spectatorPresent))
+
+                    self.statusLabel.addGestureRecognizer(gesture)
+                    self.statusLabel.isUserInteractionEnabled = true
+
                     self.statusLabel.backgroundColor = .green
                     self.statusLabel.text = "Online"
                 }
@@ -287,12 +312,12 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 let req = RankRequest(leagueId: value, server: foundSummoner.region)
                 
                 
-                NetworkAPI.shared.dataTask(request: req) { result in
+                NetworkAPI.shared.dataTask(request: req) {[weak self] result in
                     switch result{
                     case.success(let rankData):
                         leagueVC.rankData = rankData
                         DispatchQueue.main.async {
-                            self.navigationController?.pushViewController(leagueVC, animated: true)
+                            self?.navigationController?.pushViewController(leagueVC, animated: true)
                         }
                     case .failure:
                         print("!!!!!!!!")
@@ -306,7 +331,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 260 : 0
+        return section == 0 ? 280 : 0
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -397,6 +422,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 print("🌈🌈🌈🌈🌈🌈 All matchs good 🌈🌈🌈🌈🌈🌈")
             }
             self.tableView.reloadData()
+            self.removeSpinner()
         }
     }
     
