@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LoginControllerDelegate {
+protocol LoginControllerDelegate: class {
     func handleMenuToggle(forMenuOption menuOption: MenuOption?)
 }
 

@@ -17,7 +17,7 @@ class MenuController: UIViewController {
     
     
     var tableView: UITableView!
-    var delegate: LoginControllerDelegate?
+    weak var delegate: LoginControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

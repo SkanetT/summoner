@@ -13,6 +13,7 @@ import SDWebImage
 class MatchHistoryCell: UITableViewCell {
     @IBOutlet var test: UILabel!
     
+    @IBOutlet var stack: UIStackView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var championIcon: UIImageView!
@@ -38,6 +39,8 @@ class MatchHistoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
         
         clipsToBounds = true
         layer.borderWidth = 2

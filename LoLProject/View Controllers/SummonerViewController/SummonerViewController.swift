@@ -11,19 +11,23 @@ import RealmSwift
 
 
 
+
 class SummonerViewController: SpinnerController {
     
     
     @IBOutlet weak var mostPlayed: UIView!
+    @IBOutlet weak var topWallpaper: UIView!
     @IBOutlet weak var summonerIconImage: UIImageView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var lvlLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var topLine: UIView!
+    
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
-    var delegate: LoginControllerDelegate?
+    weak var delegate: LoginControllerDelegate?
     let refrechControll: UIRefreshControl = {
         let refrechControll = UIRefreshControl()
         refrechControll.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
@@ -58,6 +62,7 @@ class SummonerViewController: SpinnerController {
         super.viewDidLoad()
         showSpinner()
         
+        
         guard let foundSummoner = summoner.first else { return }
         
         fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
@@ -73,6 +78,7 @@ class SummonerViewController: SpinnerController {
         fetchMostPlayedChampions(summonerId: foundSummoner.id, server: foundSummoner.region)
         
     }
+    
     
     func fetchMatchHistory(summonerName: String, summonerId: String, accountId: String, server: String) {
         let matchHistoryRequest = MatchHistoryRequest.init(accountId: accountId, server: server)
@@ -138,17 +144,17 @@ class SummonerViewController: SpinnerController {
         
     }
     
+    
+    
     func tableViewConfiguration() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
         
-        tableView.refreshControl = refrechControll
+        //  tableView.refreshControl = refrechControll
         
-        tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 10
-        tableView.layer.borderWidth = 2
+        
         
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
@@ -157,13 +163,26 @@ class SummonerViewController: SpinnerController {
     func setupUI() {
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleColor
+        topLine.clipsToBounds = true
+        topLine.layer.cornerRadius = 6
+        topLine.alpha = 0.7
+        
+        
+        let topDown = UISwipeGestureRecognizer(target: self, action: #selector(openTop))
+        topDown.direction = .down
+        
+        
+        topLine.addGestureRecognizer(topDown)
+        topLine.isUserInteractionEnabled = true
+        
         summonerIconImage.clipsToBounds = true
         summonerIconImage.layer.cornerRadius = 6
         summonerIconImage.layer.borderColor = UIColor.black.cgColor
         summonerIconImage.layer.borderWidth = 3
-        mostPlayed.clipsToBounds = true
-        mostPlayed.layer.cornerRadius = 10
-        mostPlayed.layer.borderWidth = 2
+        topWallpaper.backgroundColor = .lightGray
+        topWallpaper.clipsToBounds = true
+        topWallpaper.layer.cornerRadius = 10
+        topWallpaper.layer.borderWidth = 2
         statusLabel.clipsToBounds = true
         statusLabel.layer.cornerRadius = 4
         statusLabel.layer.backgroundColor = UIColor.black.cgColor
@@ -186,6 +205,18 @@ class SummonerViewController: SpinnerController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc
+    func openTop() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.topWallpaper.isHidden = true
+            self.topLine.isHidden = false
+            
+            
+        })
+        
+    }
+    
+    
     func fetcSpectator(summonerId: String, server: String) {
         let spectatorRequest = SpectatorRequest.init(summonerId: summonerId, server: server)
         
@@ -195,15 +226,20 @@ class SummonerViewController: SpinnerController {
             switch result {
             case.success(let spectatorDate):
                 
+                
                 self.spectatorData = spectatorDate
                 DispatchQueue.main.async {
-
+                    
+                    self.statusLabel.flash()
+                    
+                    
                     let gesture = UITapGestureRecognizer(target: self, action: #selector(self.spectatorPresent))
-
+                    
                     self.statusLabel.addGestureRecognizer(gesture)
                     self.statusLabel.isUserInteractionEnabled = true
-
+                    
                     self.statusLabel.backgroundColor = .green
+                    
                     self.statusLabel.text = "Online"
                 }
                 
@@ -340,6 +376,17 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
+        
+        if indexPath.section >= 6 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topWallpaper.isHidden = true
+                self.topLine.isHidden = false
+                
+                
+            })
+            
+        }
+        
         guard let foundSummoner = summoner.first else { return }
         guard indexPath.section == matchModel.count - 6 else { return }
         matchHistoryLoad(region: foundSummoner.region, summonerName: foundSummoner.name, summonerId: foundSummoner.id)
@@ -409,6 +456,12 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 
             }
+            
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            //                UIView.animate(withDuration: 0.5) {
+            //                    self.topWallpaper.isHidden = true
+            //                }
+            //            }
             
         }
         

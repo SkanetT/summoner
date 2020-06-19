@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SpectatorController: UIViewController {
     
@@ -15,51 +16,136 @@ class SpectatorController: UIViewController {
     @IBOutlet weak var collection1: UICollectionView!
     @IBOutlet weak var collection2: UICollectionView!
     
-    let array = [1,2,3,45,6]
+    @IBOutlet weak var banStack1: UIStackView!
+    @IBOutlet weak var banStack2: UIStackView!
     
-    let coll1: CollectionViewDelegate = {
-        return .init(data: [1,2,3])
+    
+    
+    let champions = try! Realm().objects(Champion.self)
+    
+   
+    
+    lazy var coll1 : CollectionViewDelegate = {
+        let data = spectatorDate?.participants.filter{ $0.teamId == 100 }
+        return .init(data: data ?? [])
     }()
     
-    lazy var coll2: CollectionViewDelegate = {
-        return .init(data: array)
+    lazy var coll2 : CollectionViewDelegate = {
+        let data = spectatorDate?.participants.filter{ $0.teamId == 200 }
+        return .init(data: data ?? [])
     }()
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
+//        collection1.register(SpectatorCell.self, forCellWithReuseIdentifier: "spectatorCell")
+        
+        collection1.register(UINib(nibName: "SpectatorCell", bundle: nil), forCellWithReuseIdentifier: "spectatorCell")
+        
         collection1.dataSource = coll1
         collection1.delegate = coll1
+
         
+        collection1.reloadData()
+
+       
         
+
+        collection2.register(UINib(nibName: "SpectatorCell", bundle: nil), forCellWithReuseIdentifier: "spectatorCell")
         collection2.dataSource = coll2
-        collection2.delegate = coll2
+            collection2.delegate = coll2
+        collection2.reloadData()
+
+
+        
+        
+        setupBanStackViews()
     }
     
-
-// ARC
+    
+    func setupBanStackViews() {
+        
+        guard let spectatorDate = spectatorDate else { return }
+        banStack1.distribution = .fillEqually
+        banStack1.alignment = .center
+        banStack1.spacing = 2
+        
+        banStack2.distribution = .fillEqually
+        banStack2.alignment = .center
+        banStack2.spacing = 2
+        
+        for i in 0...4 {
+            
+            let image = UIImageView()
+            image.contentMode = .scaleAspectFit
+            image.backgroundColor = .lightGray
+            image.clipsToBounds = true
+            image.layer.cornerRadius = 5
+            
+            image.translatesAutoresizingMaskIntoConstraints = false
+            image.widthAnchor.constraint(equalTo: image.heightAnchor).isActive = true
+            
+            if let champion = champions.first(where: { $0.key == spectatorDate.bannedChampions[i].championId.description}) {
+                image.downloadSD(type: .championIcon(id: champion.id))
+                
+            } else {
+                image.image = nil
+            }
+            banStack1.addArrangedSubview(image)
+        }
+        
+        for i in 5...9 {
+            
+            let image = UIImageView()
+            image.contentMode = .scaleAspectFit
+            image.backgroundColor = .lightGray
+            image.clipsToBounds = true
+            image.layer.cornerRadius = 5
+            
+            if let champion = champions.first(where: { $0.key == spectatorDate.bannedChampions[i].championId.description}) {
+                image.downloadSD(type: .championIcon(id: champion.id))
+            } else {
+                image.image = nil
+            }
+            banStack2.addArrangedSubview(image)
+        }
+        
+        
+        
+    }
+    
+    // ARC
     
 }
 
 class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-    var champData = [Int]()
+    var participantSpectators = [ParticipantSpectator]()
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return participantSpectators.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "spectatorCell", for: indexPath) as? SpectatorCell {
+            
+            cell.summonerNameLabel.text = participantSpectators[indexPath.row].summonerName
+            return cell
+        } else {
+            return .init()
+        }
     }
     
-    init(data: [Int]) {
-        self.champData = data
+    init(data: [ParticipantSpectator]) {
+        self.participantSpectators = data
         
         
-//        [1,2,3,4,5,6,7].enumerated().forEach{
-//            print($0.offset)
-        }
+        
+    }
     
     
 }

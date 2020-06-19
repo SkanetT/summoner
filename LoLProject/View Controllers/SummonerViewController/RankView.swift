@@ -58,7 +58,7 @@ class RankView: UIView {
         wallpaper.backgroundColor = .lightGray
         wallpaper.translatesAutoresizingMaskIntoConstraints = false
         addSubview(wallpaper)
-        wallpaper.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        wallpaper.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
         wallpaper.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         wallpaper.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         wallpaper.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
@@ -66,23 +66,23 @@ class RankView: UIView {
         wallpaper.layer.cornerRadius = 10
         wallpaper.layer.borderWidth = 2
         
-        wallpaper2.backgroundColor = .lightGray
-        wallpaper2.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(wallpaper2)
-
-        wallpaper2.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        wallpaper2.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        wallpaper2.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        wallpaper2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
-        wallpaper2.clipsToBounds = true
-        wallpaper2.layer.cornerRadius = 10
-        wallpaper2.layer.borderWidth = 2
+//        wallpaper2.backgroundColor = .lightGray
+//        wallpaper2.translatesAutoresizingMaskIntoConstraints = false
+//        addSubview(wallpaper2)
+//
+//        wallpaper2.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//        wallpaper2.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//        wallpaper2.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//        wallpaper2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
+//        wallpaper2.clipsToBounds = true
+//        wallpaper2.layer.cornerRadius = 10
+//        wallpaper2.layer.borderWidth = 2
         
         separator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(separator)
         
         separator.backgroundColor = .black
-        separator.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        separator.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
         separator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         separator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         separator.widthAnchor.constraint(equalToConstant: 2).isActive = true
@@ -199,10 +199,7 @@ class RankView: UIView {
     
     func setData(leagueData: LeagueData) {
         
-        DispatchQueue.main.async {
-            self.wallpaper2.isHidden = true
-
-        }
+        
         if let flexRankData = leagueData.first(where: {$0.queueType == "RANKED_FLEX_SR"}) {
            
             leagueIdFlex = flexRankData.leagueId

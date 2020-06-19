@@ -67,8 +67,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wfQ-Db-NAC">
-                        <rect key="frame" x="122" y="34" width="240" height="90"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="wfQ-Db-NAC">
+                        <rect key="frame" x="122" y="34" width="227" height="90"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-ur-lqE">
                                 <rect key="frame" x="0.0" y="0.0" width="44" height="90"/>
@@ -90,7 +90,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="2eQ-Mm-nmQ">
-                                <rect key="frame" x="52" y="0.0" width="136" height="90"/>
+                                <rect key="frame" x="50" y="0.0" width="136" height="90"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ASU-3O-j6I">
                                         <rect key="frame" x="0.0" y="0.0" width="136" height="44"/>
@@ -153,11 +153,11 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xDm-ed-eQV">
-                                <rect key="frame" x="196" y="23" width="44" height="44"/>
+                                <rect key="frame" x="192" y="27.5" width="35" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="a76-dE-L6A"/>
-                                    <constraint firstAttribute="width" constant="44" id="z4N-QN-4zh"/>
+                                    <constraint firstAttribute="height" constant="35" id="a76-dE-L6A"/>
+                                    <constraint firstAttribute="width" constant="35" id="z4N-QN-4zh"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -199,6 +199,7 @@
                 <outlet property="item6" destination="xDm-ed-eQV" id="Fhf-qB-J9O"/>
                 <outlet property="kda" destination="kBQ-Ws-Jfo" id="PjI-zG-9qn"/>
                 <outlet property="moreButton" destination="nsr-XB-e4y" id="UV9-jH-aIa"/>
+                <outlet property="stack" destination="wfQ-Db-NAC" id="av0-xj-aaH"/>
                 <outlet property="typeAndWin" destination="ZPK-tM-wtz" id="G5g-Wn-Dg9"/>
                 <outlet property="winOrLose" destination="W7c-ap-DUN" id="Fda-In-RNL"/>
             </connections>
