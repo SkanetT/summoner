@@ -50,6 +50,8 @@ class SpectatorController: UIViewController {
 
         
         collection1.reloadData()
+        
+        
 
        
         
@@ -69,6 +71,7 @@ class SpectatorController: UIViewController {
     func setupBanStackViews() {
         
         guard let spectatorDate = spectatorDate else { return }
+        guard !spectatorDate.bannedChampions.isEmpty else { return }
         banStack1.distribution = .fillEqually
         banStack1.alignment = .center
         banStack1.spacing = 2
@@ -121,7 +124,7 @@ class SpectatorController: UIViewController {
     
 }
 
-class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var participantSpectators = [ParticipantSpectator]()
     
     
@@ -138,16 +141,19 @@ class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionVie
         } else {
             return .init()
         }
+        
+        
     }
     
     init(data: [ParticipantSpectator]) {
         self.participantSpectators = data
-        
-        
-        
     }
-    
-    
 }
-
-// netfox
+    
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//
+//
+//        let screenSize = UIScreen.main.bounds
+//        let s = self..ss

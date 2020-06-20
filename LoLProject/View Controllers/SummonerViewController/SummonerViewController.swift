@@ -22,7 +22,8 @@ class SummonerViewController: SpinnerController {
     @IBOutlet weak var lvlLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var topLine: UIView!
+    @IBOutlet weak var summonerTopButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
@@ -71,7 +72,14 @@ class SummonerViewController: SpinnerController {
         
         title = "\(foundSummoner.name) (\(foundSummoner.region))"
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
-        summonerIconImage.downloadSD(type: .profileIcon(id: String(foundSummoner.profileIconId)))
+        
+       
+        
+        summonerIconImage.downloadSD(type: .profileIcon(id: foundSummoner.profileIconId.description))
+        
+        
+        
+
         
         fetchMatchHistory(summonerName: foundSummoner.name, summonerId: foundSummoner.id, accountId: foundSummoner.accountId, server: foundSummoner.region)
         
@@ -163,17 +171,12 @@ class SummonerViewController: SpinnerController {
     func setupUI() {
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = titleColor
-        topLine.clipsToBounds = true
-        topLine.layer.cornerRadius = 6
-        topLine.alpha = 0.7
         
+        summonerTopButton.isHidden = true
+        summonerTopButton.clipsToBounds = true
+        summonerTopButton.layer.cornerRadius = 25
+        summonerTopButton.alpha = 0.7
         
-        let topDown = UISwipeGestureRecognizer(target: self, action: #selector(openTop))
-        topDown.direction = .down
-        
-        
-        topLine.addGestureRecognizer(topDown)
-        topLine.isUserInteractionEnabled = true
         
         summonerIconImage.clipsToBounds = true
         summonerIconImage.layer.cornerRadius = 6
@@ -205,16 +208,18 @@ class SummonerViewController: SpinnerController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc
-    func openTop() {
+    
+    @IBAction func showTop(_ sender: Any) {
         UIView.animate(withDuration: 0.5, animations: {
-            self.topWallpaper.isHidden = true
-            self.topLine.isHidden = false
-            
-            
+            self.topWallpaper.isHidden = false
+            self.summonerTopButton.isHidden = true
+            self.stackView.layoutIfNeeded()
+
         })
-        
     }
+    
+    
+    
     
     
     func fetcSpectator(summonerId: String, server: String) {
@@ -377,10 +382,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         
-        if indexPath.section >= 6 {
+        if indexPath.section >= 5 {
+            summonerTopButton.pulse()
             UIView.animate(withDuration: 0.5, animations: {
                 self.topWallpaper.isHidden = true
-                self.topLine.isHidden = false
+                self.summonerTopButton.isHidden = false
                 
                 
             })

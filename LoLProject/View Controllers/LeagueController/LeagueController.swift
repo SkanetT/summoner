@@ -45,7 +45,9 @@ class LeagueController: UIViewController {
         title = rankData.name
         leagueImage.leagueImage(league: rankData.tier)
         
-        
+        if rankData.tier == "GRANDMASTER" || rankData.tier == "MASTER" || rankData.tier == "CHALLENGER" {
+            segmentedControl.isHidden = true
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
