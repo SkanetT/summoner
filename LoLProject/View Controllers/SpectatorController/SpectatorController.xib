@@ -13,6 +13,7 @@
                 <outlet property="banStack2" destination="0kZ-Qb-5R1" id="UO6-Oy-08S"/>
                 <outlet property="collection1" destination="thI-EL-KhN" id="5C4-qE-Mxs"/>
                 <outlet property="collection2" destination="2k3-ZY-dFq" id="MMU-t8-b96"/>
+                <outlet property="noBanesLabel" destination="94i-oh-Jio" id="1Gx-Eq-CKr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,9 +34,9 @@
                         <constraint firstAttribute="height" constant="50" id="suF-iq-H9V"/>
                     </constraints>
                 </stackView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="thI-EL-KhN">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="thI-EL-KhN">
                     <rect key="frame" x="8" y="52" width="398" height="342"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dga-Og-DkX">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -43,9 +44,9 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2k3-ZY-dFq">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="2k3-ZY-dFq">
                     <rect key="frame" x="8" y="512" width="398" height="342"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rQL-t0-exZ">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,15 +54,26 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No bans in this match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="94i-oh-Jio">
+                    <rect key="frame" x="8" y="402" width="398" height="102"/>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="33"/>
+                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="2k3-ZY-dFq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1J4-b9-hd4"/>
+                <constraint firstItem="2k3-ZY-dFq" firstAttribute="top" secondItem="94i-oh-Jio" secondAttribute="bottom" constant="8" id="1VQ-an-JQe"/>
+                <constraint firstItem="94i-oh-Jio" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="9Bf-vN-EWQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2k3-ZY-dFq" secondAttribute="bottom" constant="8" id="HLb-ls-3i4"/>
                 <constraint firstItem="2k3-ZY-dFq" firstAttribute="top" secondItem="0kZ-Qb-5R1" secondAttribute="bottom" constant="8" id="L9p-iM-bnk"/>
                 <constraint firstItem="thI-EL-KhN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="MX9-fv-LFc"/>
                 <constraint firstItem="g1k-ao-gIn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-8" id="Osd-Iz-cnu"/>
+                <constraint firstItem="94i-oh-Jio" firstAttribute="top" secondItem="thI-EL-KhN" secondAttribute="bottom" constant="8" id="Oyg-2g-clK"/>
                 <constraint firstItem="g1k-ao-gIn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="PIX-ng-QkK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="94i-oh-Jio" secondAttribute="trailing" constant="8" id="Pqb-3R-lym"/>
                 <constraint firstItem="0kZ-Qb-5R1" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="26" id="U6F-4P-ygE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="thI-EL-KhN" secondAttribute="trailing" constant="8" id="Xhx-fq-wzC"/>
                 <constraint firstItem="g1k-ao-gIn" firstAttribute="top" secondItem="thI-EL-KhN" secondAttribute="bottom" constant="8" id="aR6-t5-LaK"/>

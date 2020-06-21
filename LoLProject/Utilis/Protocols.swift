@@ -16,3 +16,7 @@ protocol BaseRequestProtocol  {
     associatedtype response: Decodable
     var urlRequest: URLRequest? { get }
 }
+
+protocol SpectatorDelegate: class {
+    func dissmissAll()
+}

@@ -10,35 +10,72 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="spectatorCell" id="gTV-IL-0wX" customClass="SpectatorCell" customModule="LoLProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="148"/>
+            <rect key="frame" x="0.0" y="0.0" width="210" height="205"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="148"/>
+                <rect key="frame" x="0.0" y="0.0" width="210" height="205"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-K0-CkQ">
-                        <rect key="frame" x="31" y="64" width="65" height="21"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ITV-th-Tf5">
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="205"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-K0-CkQ">
+                        <rect key="frame" x="8" y="66" width="194" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="dsr-py-c40"/>
-                            <constraint firstAttribute="width" constant="65" id="f4N-9E-0Ja"/>
+                            <constraint firstAttribute="height" constant="22" id="jOg-Ry-H0g"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3om-zA-vBx">
+                        <rect key="frame" x="80" y="8" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="pai-cY-Qv7"/>
+                            <constraint firstAttribute="width" constant="50" id="uHb-8W-0Wk"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3nt-Ga-1hd">
+                        <rect key="frame" x="48" y="96" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Fpg-sD-hFn"/>
+                            <constraint firstAttribute="width" constant="50" id="lU0-U6-WzD"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LKB-2a-C9J">
+                        <rect key="frame" x="112" y="96" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="phs-5b-ONE"/>
+                            <constraint firstAttribute="width" constant="50" id="rjc-9N-2Iv"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
             </view>
-            <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Bbl-K0-CkQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="64" id="3U7-Fj-luG"/>
-                <constraint firstItem="Bbl-K0-CkQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="31" id="59h-Vd-ldY"/>
+                <constraint firstItem="3om-zA-vBx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6Vg-zL-ogq"/>
+                <constraint firstAttribute="trailing" secondItem="Bbl-K0-CkQ" secondAttribute="trailing" constant="8" id="9g9-BL-vrG"/>
+                <constraint firstItem="LKB-2a-C9J" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="32" id="AgP-fP-qdc"/>
+                <constraint firstAttribute="trailing" secondItem="ITV-th-Tf5" secondAttribute="trailing" id="BVt-dC-ABh"/>
+                <constraint firstItem="ITV-th-Tf5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="NHJ-6M-EqK"/>
+                <constraint firstItem="ITV-th-Tf5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Q2W-bB-wQD"/>
+                <constraint firstItem="Bbl-K0-CkQ" firstAttribute="top" secondItem="3om-zA-vBx" secondAttribute="bottom" constant="8" id="QwR-Ut-dSz"/>
+                <constraint firstItem="LKB-2a-C9J" firstAttribute="top" secondItem="Bbl-K0-CkQ" secondAttribute="bottom" constant="8" id="WIV-bQ-R88"/>
+                <constraint firstItem="3nt-Ga-1hd" firstAttribute="top" secondItem="Bbl-K0-CkQ" secondAttribute="bottom" constant="8" id="XWI-YC-q12"/>
+                <constraint firstItem="3nt-Ga-1hd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" constant="-32" id="YxD-On-RLB"/>
+                <constraint firstItem="Bbl-K0-CkQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="b9i-iw-zSu"/>
+                <constraint firstItem="3om-zA-vBx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="lmz-OO-dCX"/>
+                <constraint firstAttribute="bottom" secondItem="ITV-th-Tf5" secondAttribute="bottom" id="ued-ZM-1vK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="150" height="148"/>
+            <size key="customSize" width="210" height="205"/>
             <connections>
+                <outlet property="background" destination="ITV-th-Tf5" id="085-7A-cZ0"/>
+                <outlet property="summonerIcon" destination="3om-zA-vBx" id="TbM-rk-qD5"/>
                 <outlet property="summonerNameLabel" destination="Bbl-K0-CkQ" id="IeE-4X-gnQ"/>
+                <outlet property="summonerSpell1" destination="3nt-Ga-1hd" id="5Lh-v5-MFL"/>
+                <outlet property="summonerSpell2" destination="LKB-2a-C9J" id="Q5Y-6A-yuZ"/>
             </connections>
-            <point key="canvasLocation" x="210.1449275362319" y="116.51785714285714"/>
+            <point key="canvasLocation" x="13.043478260869566" y="65.959821428571431"/>
         </collectionViewCell>
     </objects>
 </document>

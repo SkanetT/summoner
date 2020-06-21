@@ -10,6 +10,7 @@ import Foundation
 
 struct SpectatorDate: Codable {
     let gameId: Int
+    let gameQueueConfigId: Int?
     let participants: [ParticipantSpectator]
     let bannedChampions: [BannedChampion]
 }

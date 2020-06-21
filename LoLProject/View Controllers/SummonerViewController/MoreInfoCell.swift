@@ -34,7 +34,9 @@ class MoreInfoCell: UITableViewCell {
 
     var tapHandler: ( ()->() )?
     
-    var tapLongHandler: ( ()->() )?
+    
+//    var tapLongHandler: ( ()->() )?
+    
 
 
     override func awakeFromNib() {
@@ -47,6 +49,8 @@ class MoreInfoCell: UITableViewCell {
     }
     
 
+    
+   
     
     @objc
     private func didTapExpand() {
@@ -118,6 +122,7 @@ class MoreInfoCell: UITableViewCell {
     }
     
     func setDataForParticipants(members: [Member]) {
+        
         participant1.setData(member: members[0])
         participant2.setData(member: members[1])
         participant3.setData(member: members[2])

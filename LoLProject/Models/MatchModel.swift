@@ -25,26 +25,29 @@ struct MatchModel {
         
         version = match.gameVersion
         
-        switch match.queueId {
-        case 400:
-            summonerInMatch.matchType = "Normal (Draft Pick)"
-        case 420:
-            summonerInMatch.matchType = "Ranked Solo/Duo"
-        case 430:
-            summonerInMatch.matchType = "Normal (Blind Pick)"
-        case 440:
-            summonerInMatch.matchType = "Ranked Flex"
-        case 450:
-            summonerInMatch.matchType = "ARAM"
-        case 900:
-            summonerInMatch.matchType = "Ultra Rapid Fire"
-        case 700:
-            summonerInMatch.matchType = "Clash"
-        case 1020:
-            summonerInMatch.matchType = "One for All"
-        default:
-            summonerInMatch.matchType = "Error type \(match.queueId)"
-        }
+        
+        summonerInMatch.matchType = match.queueId.description.typeIdtoGameType()
+        
+//        switch match.queueId {
+//        case 400:
+//            summonerInMatch.matchType = "Normal (Draft Pick)"
+//        case 420:
+//            summonerInMatch.matchType = "Ranked Solo/Duo"
+//        case 430:
+//            summonerInMatch.matchType = "Normal (Blind Pick)"
+//        case 440:
+//            summonerInMatch.matchType = "Ranked Flex"
+//        case 450:
+//            summonerInMatch.matchType = "ARAM"
+//        case 900:
+//            summonerInMatch.matchType = "Ultra Rapid Fire"
+//        case 700:
+//            summonerInMatch.matchType = "Clash"
+//        case 1020:
+//            summonerInMatch.matchType = "One for All"
+//        default:
+//            summonerInMatch.matchType = "Error type \(match.queueId)"
+//        }
         
         
         summonerInMatch.date = { () -> String in

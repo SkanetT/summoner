@@ -58,6 +58,32 @@ extension String {
         
         return region
     }
+    
+    func typeIdtoGameType() -> String {
+        var result = ""
+        switch  self {
+        case "400":
+            result = "Normal (Draft Pick)"
+        case "420":
+            result = "Ranked Solo/Duo"
+        case "430":
+            result = "Normal (Blind Pick)"
+        case "440":
+            result = "Ranked Flex"
+        case "450":
+            result = "ARAM"
+        case "900":
+            result = "Ultra Rapid Fire"
+        case "700":
+            result = "Clash"
+        case "1020":
+            result = "One for All"
+        default:
+            result = "Error type \(self)"
+            
+        }
+        return result
+    }
 }
 
 

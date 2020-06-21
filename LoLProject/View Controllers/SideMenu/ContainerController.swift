@@ -126,8 +126,7 @@ class ContainerController: UIViewController {
             present(vc, animated: true)
             
             
-            //        case .items:
-        //            print("item")
+            
         case .spells:
             let vc = SpellsViewController()
             let nc = UINavigationController(rootViewController: vc)
@@ -141,6 +140,13 @@ class ContainerController: UIViewController {
             
             nc.modalPresentationStyle = .fullScreen
             
+            present(nc, animated: true)
+            
+        case .news:
+            let vc = NewsController()
+            let nc = UINavigationController(rootViewController: vc)
+            
+            nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
             
         case .logOff:

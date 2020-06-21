@@ -83,6 +83,7 @@
 		3AC6ED22249D3E1300F8B733 /* SpectatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
+		3AE82CF024A004A800B7A417 /* NewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82CEF24A004A800B7A417 /* NewsController.swift */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
 		3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */; };
 		3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */; };
@@ -173,6 +174,7 @@
 		3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpectatorCell.xib; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		3AE82CEF24A004A800B7A417 /* NewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsController.swift; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
 		3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMostPlayedView.swift; sourceTree = "<group>"; };
 		3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFooterView.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3AE82CEE24A0047300B7A417 /* NewsController */,
 				3AC6ED1424969C1300F8B733 /* SpectatorController */,
 				3AC6ED0D24956C1300F8B733 /* PopController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
@@ -458,6 +461,14 @@
 				3A5AE74A2467620C00E80092 /* SummonerSpell.swift */,
 			);
 			path = Realms;
+			sourceTree = "<group>";
+		};
+		3AE82CEE24A0047300B7A417 /* NewsController */ = {
+			isa = PBXGroup;
+			children = (
+				3AE82CEF24A004A800B7A417 /* NewsController.swift */,
+			);
+			path = NewsController;
 			sourceTree = "<group>";
 		};
 		42A3B2DD9188F0E32D5B9CA9 /* Pods */ = {
@@ -614,6 +625,7 @@
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
 				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
+				3AE82CF024A004A800B7A417 /* NewsController.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,

@@ -32,7 +32,7 @@ class LoginController: SpinnerController {
     @IBOutlet weak var searchButton: UIButton!
     
     
-    var delegate: LoginControllerDelegate?
+    weak var delegate: LoginControllerDelegate?
     
     
     let servers = GlobalConstants.shared.servers

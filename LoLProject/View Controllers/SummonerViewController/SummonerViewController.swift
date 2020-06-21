@@ -25,7 +25,7 @@ class SummonerViewController: SpinnerController {
     @IBOutlet weak var summonerTopButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
-    
+
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
     weak var delegate: LoginControllerDelegate?
@@ -179,8 +179,8 @@ class SummonerViewController: SpinnerController {
         
         
         summonerIconImage.clipsToBounds = true
-        summonerIconImage.layer.cornerRadius = 6
-        summonerIconImage.layer.borderColor = UIColor.black.cgColor
+        summonerIconImage.layer.cornerRadius = 50
+        summonerIconImage.layer.borderColor = UIColor.white.cgColor
         summonerIconImage.layer.borderWidth = 3
         topWallpaper.backgroundColor = .lightGray
         topWallpaper.clipsToBounds = true
@@ -213,6 +213,7 @@ class SummonerViewController: SpinnerController {
         UIView.animate(withDuration: 0.5, animations: {
             self.topWallpaper.isHidden = false
             self.summonerTopButton.isHidden = true
+            self.tableView.layoutIfNeeded()
             self.stackView.layoutIfNeeded()
 
         })
@@ -273,7 +274,7 @@ class SummonerViewController: SpinnerController {
     
 }
 
-extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
+extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchsArray[section].isExpanded ? 2 : 1
     }
@@ -379,18 +380,30 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        summonerTopButton.pulse()
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.topWallpaper.isHidden = true
+//            self.summonerTopButton.isHidden = false
+//
+//
+//        })
+//
+//    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         
-        if indexPath.section >= 5 {
+        
+        if indexPath.section >= 5  {
             summonerTopButton.pulse()
             UIView.animate(withDuration: 0.5, animations: {
                 self.topWallpaper.isHidden = true
                 self.summonerTopButton.isHidden = false
-                
-                
+
+
             })
-            
+
         }
         
         guard let foundSummoner = summoner.first else { return }
@@ -463,15 +476,10 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
             
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            //                UIView.animate(withDuration: 0.5) {
-            //                    self.topWallpaper.isHidden = true
-            //                }
-            //            }
-            
         }
         
-        disGroup.notify(queue: .main) {
+        disGroup.notify(queue: .main) {[weak self] in
+            guard let self = self else { return }
             self.matchModel.sort { (lhs, rhs) -> Bool in
                 return lhs.summonerInMatch.dateCreation > rhs.summonerInMatch.dateCreation
             }
