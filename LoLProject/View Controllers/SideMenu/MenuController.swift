@@ -17,23 +17,64 @@ class MenuController: UIViewController {
     
     
     var tableView: UITableView!
+    var botPlace: UIView!
+    var logOff: UIButton!
+    var saveSummonerIcon: UIImageView!
+    var saveSummonerName: UILabel!
     weak var delegate: LoginControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureTableView()
+        configureMenu()
         view.backgroundColor = .gray
+        
+        if foundSummoner.isEmpty {
+            botPlace.isHidden = true
+        } else {
+            botPlace.isHidden = false
+            setDataToBot()
+        }
+        
+        
         
     }
     
-    func configureTableView(){
+    func configureMenu(){
         tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = .gray
         
+        logOff = UIButton()
+        logOff.setTitle("Log off", for: .normal)
+        logOff.backgroundColor = .red
+        logOff.clipsToBounds = true
+        logOff.layer.cornerRadius = 8
+        logOff.layer.borderColor = UIColor.white.cgColor
+        logOff.layer.borderWidth = 1
         
+        
+        botPlace = UIView()
+        botPlace.backgroundColor = .gray
+        botPlace.clipsToBounds = true
+        botPlace.layer.cornerRadius = 8
+        botPlace.layer.borderColor = UIColor.white.cgColor
+        botPlace.layer.borderWidth = 1
+        
+        
+        saveSummonerIcon = UIImageView()
+        saveSummonerIcon.clipsToBounds = true
+        saveSummonerIcon.layer.cornerRadius = 25
+        saveSummonerIcon.layer.borderColor = UIColor.white.cgColor
+        saveSummonerIcon.layer.borderWidth = 1
+        
+        saveSummonerName = UILabel()
+        saveSummonerName.font = UIFont(name: "Avenir", size: 20)
+        saveSummonerName.textColor = .white
+        saveSummonerName.textAlignment = .left
+        saveSummonerName.adjustsFontSizeToFitWidth = true
+        saveSummonerName.minimumScaleFactor = 0.7
         
         tableView.register(MenuOptionCell.self, forCellReuseIdentifier: reuseIdentifer)
         tableView.separatorStyle = .none
@@ -44,15 +85,52 @@ class MenuController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -111).isActive = true
         
+        view.addSubview(botPlace)
+        botPlace.translatesAutoresizingMaskIntoConstraints = false
+        botPlace.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+        botPlace.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 8).isActive = true
+        botPlace.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -88).isActive = true
+        botPlace.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -8).isActive = true
+        
+        botPlace.addSubview(saveSummonerIcon)
+        saveSummonerIcon.translatesAutoresizingMaskIntoConstraints = false
+        saveSummonerIcon.topAnchor.constraint(equalTo: botPlace.topAnchor, constant: 8).isActive = true
+        saveSummonerIcon.leadingAnchor.constraint(equalTo: botPlace.leadingAnchor, constant: 8).isActive = true
+        saveSummonerIcon.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        saveSummonerIcon.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        botPlace.addSubview(saveSummonerName)
+        saveSummonerName.translatesAutoresizingMaskIntoConstraints = false
+        saveSummonerName.centerYAnchor.constraint(equalTo: saveSummonerIcon.centerYAnchor).isActive = true
+        saveSummonerName.leadingAnchor.constraint(equalTo: saveSummonerIcon.trailingAnchor, constant: 8).isActive = true
+        saveSummonerName.trailingAnchor.constraint(equalTo: botPlace.trailingAnchor, constant: -8).isActive = true
+        
+        
+        
+        botPlace.addSubview(logOff)
+        logOff.translatesAutoresizingMaskIntoConstraints = false
+        logOff.topAnchor.constraint(equalTo: saveSummonerIcon.bottomAnchor, constant: 8).isActive = true
+        logOff.leadingAnchor.constraint(equalTo: botPlace.leadingAnchor, constant: 8).isActive = true
+        logOff.trailingAnchor.constraint(equalTo: botPlace.trailingAnchor, constant: -8).isActive = true
+        logOff.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        
+        
+    }
+    
+    func setDataToBot() {
+        guard !foundSummoner.isEmpty else { return }
+        guard let summoner = foundSummoner.first else { return }
+        saveSummonerIcon.downloadSD(type: .profileIcon(id: summoner.profileIconId.description))
+        saveSummonerName.text = "\(summoner.name) (\(summoner.region))"
     }
 }
 
 extension MenuController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foundSummoner.isEmpty ? 4 : 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

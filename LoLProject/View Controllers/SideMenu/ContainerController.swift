@@ -68,8 +68,13 @@ class ContainerController: UIViewController {
     func configureMenuController() {
         if menuController == nil {
             menuController = MenuController()
+            
+            
             menuController.delegate = self
+            
             view.insertSubview(menuController.view, at: 0)
+            
+            
             
             addChild(menuController)
             menuController.didMove(toParent: self)
@@ -149,25 +154,30 @@ class ContainerController: UIViewController {
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
             
-        case .logOff:
-            let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
-            let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
-                
-                let realm = try! Realm()
-                let summoner = try! Realm().objects(FoundSummoner.self)
-                try! realm.write {
-                    realm.delete(summoner)
-                }
-                
-                self?.dismiss(animated: true, completion: nil)
-                
-            }
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            
-            ac.addAction(logOut)
-            ac.addAction(cancel)
-            present(ac, animated: true)
         }
+        
+    }
+    
+    @objc
+    func logOff() {
+        let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
+        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
+            
+            let realm = try! Realm()
+            let summoner = try! Realm().objects(FoundSummoner.self)
+            try! realm.write {
+                realm.delete(summoner)
+            }
+            
+            self?.dismiss(animated: true, completion: nil)
+            
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        ac.addAction(logOut)
+        ac.addAction(cancel)
+        present(ac, animated: true)
+        
         
     }
     
@@ -187,6 +197,8 @@ extension ContainerController: LoginControllerDelegate {
         if !isExpanded {
             configureMenuController()
         }
+        menuController.logOff.addTarget(self, action: #selector(logOff), for: .touchUpInside)
+
         isExpanded = !isExpanded
         animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
     }

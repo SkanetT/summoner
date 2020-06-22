@@ -173,6 +173,10 @@ class SummonerViewController: SpinnerController {
         navigationController?.navigationBar.titleTextAttributes = titleColor
         
         summonerTopButton.isHidden = true
+        
+        
+        
+        
         summonerTopButton.clipsToBounds = true
         summonerTopButton.layer.cornerRadius = 25
         summonerTopButton.alpha = 0.7
@@ -301,6 +305,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             
             moreInfoCell.setDataForEnvironment(summonerIdInGame: matchForSection.summonerInMatch.idInMatch, win: matchForSection.summonerInMatch.win)
             moreInfoCell.setDataForParticipants(members: matchForSection.members.self)
+            
             
         }
         
