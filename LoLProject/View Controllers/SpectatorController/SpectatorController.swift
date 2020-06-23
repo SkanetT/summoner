@@ -192,11 +192,7 @@ class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionVie
                     DispatchQueue.main.async {
 
                         let realm = try! Realm()
-//                        try! realm.write {
-//                            try! realm.write {
-//                                realm.delete(self.summoner)
-//                            }
-//                        }
+
                         
                         let foundSummoner = FoundSummoner()
                         foundSummoner.name = summonerData.name

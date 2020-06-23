@@ -159,14 +159,16 @@ class ContainerController: UIViewController {
     }
     
     @objc
-    func logOff() {
+    func logOut() {
         let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
         let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
             
             let realm = try! Realm()
-            let summoner = try! Realm().objects(FoundSummoner.self)
+            let foundSummoner = try! Realm().objects(FoundSummoner.self)
+            let saveSummoner = try! Realm().objects(SaveSummoner.self)
             try! realm.write {
-                realm.delete(summoner)
+                realm.delete(foundSummoner)
+                realm.delete(saveSummoner)
             }
             
             self?.dismiss(animated: true, completion: nil)
@@ -180,6 +182,70 @@ class ContainerController: UIViewController {
         
         
     }
+    
+    @objc
+    func swap() {
+        let foundSummoner = try! Realm().objects(FoundSummoner.self)
+        let saveSummoner = try! Realm().objects(SaveSummoner.self)
+        guard let actualFoundSummoner = foundSummoner.first, let actualSaveSummoner = saveSummoner.first else { return }
+        
+        if actualFoundSummoner.id == actualSaveSummoner.id {
+            dismiss(animated: true, completion: nil)
+            
+        } else {
+            
+            let realm = try! Realm()
+            
+            let region = actualSaveSummoner.region
+            
+            let request = SummonerRequest(summonerName: actualSaveSummoner.name, server: actualSaveSummoner.region)
+            NetworkAPI.shared.dataTask(request: request) {[weak self] result in
+                switch result {
+                case .success( let summonerData):
+                    let newFoundSummoner = FoundSummoner()
+                    newFoundSummoner.name = summonerData.name
+                    newFoundSummoner.id = summonerData.id
+                    newFoundSummoner.accountId = summonerData.accountId
+                    newFoundSummoner.puuid = summonerData.puuid
+                    newFoundSummoner.profileIconId = summonerData.profileIconId
+                    newFoundSummoner.summonerLevel = summonerData.summonerLevel
+                    newFoundSummoner.region = region
+                    
+                    let newSaveSummoner = SaveSummoner()
+                    newSaveSummoner.name = summonerData.name
+                    newSaveSummoner.id = summonerData.id
+                    newSaveSummoner.profileIconId = summonerData.profileIconId
+                    newSaveSummoner.region = region
+                    
+                    
+                    
+                    DispatchQueue.main.async {
+                        try! realm.write {
+                                realm.delete(actualFoundSummoner)
+                                realm.delete(actualSaveSummoner)
+                                
+                                realm.add(newFoundSummoner)
+                                realm.add(newSaveSummoner)
+                                
+                                
+                        }
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                case.failure( let error):
+                    print(error)
+                    
+                    
+                }
+                
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
     
     func animateStatusBar() {
         
@@ -197,7 +263,8 @@ extension ContainerController: LoginControllerDelegate {
         if !isExpanded {
             configureMenuController()
         }
-        menuController.logOff.addTarget(self, action: #selector(logOff), for: .touchUpInside)
+        menuController.logOut.addTarget(self, action: #selector(logOut), for: .touchUpInside)
+        menuController.swap.addTarget(self, action: #selector(swap), for: .touchUpInside)
 
         isExpanded = !isExpanded
         animatePanel(shouldExpand: isExpanded, menuOption: menuOption)

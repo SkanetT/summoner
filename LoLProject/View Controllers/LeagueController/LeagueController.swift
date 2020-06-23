@@ -34,10 +34,11 @@ class LeagueController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         guard let rankData = rankData else { return }
         
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
+        
         
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = titleColor
@@ -53,7 +54,7 @@ class LeagueController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
         tableView.remembersLastFocusedIndexPath = true
-        tableView.allowsSelection = false
+        tableView.allowsSelection = true
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
         
@@ -123,17 +124,17 @@ class LeagueController: UIViewController {
             currectTier = tierTwo
             tableView.reloadData()
             tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
-
+            
         case 2:
             currectTier = tierThree
             tableView.reloadData()
             tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
-
+            
         case 3:
             currectTier = tierFour
             tableView.reloadData()
             tableView.scrollToRow(at: [0,0], at: .bottom, animated: false)
-
+            
         default:
             break
         }
@@ -144,7 +145,6 @@ class LeagueController: UIViewController {
 
 extension LeagueController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //       return currectTier.count
         return currectTier.count + 1
     }
     
@@ -166,11 +166,12 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
         } else {
             
             
-            
+            cell.selectionStyle = .none
             cell.nameLabel.text = currectTier[indexPath.row - 1].summonerName
             cell.lpLabel.text = String(currectTier[indexPath.row - 1].leaguePoints)
             cell.winLabel.text = String(currectTier[indexPath.row - 1].wins)
             cell.backgroundColor = .white
+            
             
             if foundSommonerName == currectTier[indexPath.row - 1].summonerName {
                 
@@ -179,5 +180,49 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row != 0, let foundSummoner = summoner.first  else { return }
+        guard currectTier[indexPath.row - 1].summonerId != foundSummoner.id else { return }
+        
+        let server = foundSummoner.region
+        
+        let request = SummonerRequest(summonerName: currectTier[indexPath.row - 1].summonerName, server: server)
+        
+        
+        NetworkAPI.shared.dataTask(request: request) {result in
+            switch result {
+            case.success(let summonerData):
+                DispatchQueue.main.async {
+                    
+                    let realm = try! Realm()
+                    
+                    
+                    let newSummoner = FoundSummoner()
+                    newSummoner.name = summonerData.name
+                    newSummoner.id = summonerData.id
+                    newSummoner.accountId = summonerData.accountId
+                    newSummoner.puuid = summonerData.puuid
+                    newSummoner.profileIconId = summonerData.profileIconId
+                    newSummoner.summonerLevel = summonerData.summonerLevel
+                    newSummoner.region = server
+                    
+                    
+                    try! realm.write {
+                        realm.delete(foundSummoner)
+                        realm.add(newSummoner)
+                        
+                    }
+                    
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+            case.failure(let error):
+                print(error)
+            }
+            
+            
+        }
     }
 }

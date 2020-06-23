@@ -48,7 +48,7 @@ class LoginController: SpinnerController {
             summ.isLogin = false
             
             summ.modalPresentationStyle = .fullScreen
-            present(summ, animated: true)
+            present(summ, animated: false)
            
         }
     }
@@ -213,9 +213,16 @@ class LoginController: SpinnerController {
                 foundSummoner.summonerLevel = summoner.summonerLevel
                 foundSummoner.region = region
                 
+                let saveSummoner = SaveSummoner()
+                saveSummoner.name = summoner.name
+                saveSummoner.id = summoner.id
+                saveSummoner.profileIconId = summoner.profileIconId
+                saveSummoner.region = region
+                
                 
                 try! realm.write {
                     realm.add(foundSummoner)
+                    realm.add(saveSummoner)
                     
                     
                 }

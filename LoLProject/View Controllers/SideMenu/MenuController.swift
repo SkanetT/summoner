@@ -13,12 +13,13 @@ private let reuseIdentifer = "MenuOptionCell"
 
 class MenuController: UIViewController {
     
+    let saveSummoner = try! Realm().objects(SaveSummoner.self)
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
-    
     
     var tableView: UITableView!
     var botPlace: UIView!
-    var logOff: UIButton!
+    var logOut: UIButton!
+    var swap: UIButton!
     var saveSummonerIcon: UIImageView!
     var saveSummonerName: UILabel!
     weak var delegate: LoginControllerDelegate?
@@ -29,7 +30,7 @@ class MenuController: UIViewController {
         configureMenu()
         view.backgroundColor = .gray
         
-        if foundSummoner.isEmpty {
+        if saveSummoner.isEmpty {
             botPlace.isHidden = true
         } else {
             botPlace.isHidden = false
@@ -46,13 +47,25 @@ class MenuController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .gray
         
-        logOff = UIButton()
-        logOff.setTitle("Log off", for: .normal)
-        logOff.backgroundColor = .red
-        logOff.clipsToBounds = true
-        logOff.layer.cornerRadius = 8
-        logOff.layer.borderColor = UIColor.white.cgColor
-        logOff.layer.borderWidth = 1
+        logOut = UIButton()
+        logOut.setTitle("Log out", for: .normal)
+        logOut.setTitleColor(.black, for: .normal)
+        logOut.backgroundColor = .red
+        logOut.alpha = 0.9
+        logOut.clipsToBounds = true
+        logOut.layer.cornerRadius = 8
+        logOut.layer.borderColor = UIColor.white.cgColor
+        logOut.layer.borderWidth = 1
+        
+        swap = UIButton()
+        swap.setTitle("Swap", for: .normal)
+        swap.setTitleColor(.black, for: .normal)
+        swap.backgroundColor = .green
+        swap.alpha = 0.9
+        swap.clipsToBounds = true
+        swap.layer.cornerRadius = 8
+        swap.layer.borderColor = UIColor.white.cgColor
+        swap.layer.borderWidth = 1
         
         
         botPlace = UIView()
@@ -85,7 +98,7 @@ class MenuController: UIViewController {
         tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -111).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -149).isActive = true
         
         view.addSubview(botPlace)
         botPlace.translatesAutoresizingMaskIntoConstraints = false
@@ -109,22 +122,32 @@ class MenuController: UIViewController {
         
         
         
-        botPlace.addSubview(logOff)
-        logOff.translatesAutoresizingMaskIntoConstraints = false
-        logOff.topAnchor.constraint(equalTo: saveSummonerIcon.bottomAnchor, constant: 8).isActive = true
-        logOff.leadingAnchor.constraint(equalTo: botPlace.leadingAnchor, constant: 8).isActive = true
-        logOff.trailingAnchor.constraint(equalTo: botPlace.trailingAnchor, constant: -8).isActive = true
-        logOff.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        botPlace.addSubview(logOut)
+        logOut.translatesAutoresizingMaskIntoConstraints = false
+        logOut.topAnchor.constraint(equalTo: saveSummonerIcon.bottomAnchor, constant: 8).isActive = true
+        logOut.leadingAnchor.constraint(equalTo: botPlace.leadingAnchor, constant: 8).isActive = true
+        logOut.trailingAnchor.constraint(equalTo: botPlace.trailingAnchor, constant: -8).isActive = true
+        logOut.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
+        botPlace.addSubview(swap)
+        swap.translatesAutoresizingMaskIntoConstraints = false
+        swap.topAnchor.constraint(equalTo: logOut.bottomAnchor, constant: 8).isActive = true
+        swap.leadingAnchor.constraint(equalTo: botPlace.leadingAnchor, constant: 8).isActive = true
+        swap.trailingAnchor.constraint(equalTo: botPlace.trailingAnchor, constant: -8).isActive = true
+        swap.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         
     }
     
     func setDataToBot() {
-        guard !foundSummoner.isEmpty else { return }
-        guard let summoner = foundSummoner.first else { return }
+        guard !saveSummoner.isEmpty else { return }
+        guard let summoner = saveSummoner.first, let found = foundSummoner.first else { return }
         saveSummonerIcon.downloadSD(type: .profileIcon(id: summoner.profileIconId.description))
         saveSummonerName.text = "\(summoner.name) (\(summoner.region))"
+        
+        if summoner.name == found.name {
+        swap.setTitle("Refresh", for: .normal)
+        }
     }
 }
 
