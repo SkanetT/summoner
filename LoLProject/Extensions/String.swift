@@ -10,21 +10,21 @@ import UIKit
 
 extension String {
     func gettingAttributedText() -> NSAttributedString?{
-    
-
-    let htmlData = NSString(string: self).data(using: String.Encoding.unicode.rawValue)
         
-    let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
-        NSAttributedString.DocumentType.html]
         
-     let result = try? NSMutableAttributedString(data: htmlData ?? Data(),
-     options: options,
-     documentAttributes: nil)
+        let htmlData = NSString(string: self).data(using: String.Encoding.unicode.rawValue)
         
-    result?.addAttributes([NSAttributedString.Key.font:UIFont(name: "Avenir", size: 16.0)!], range:   NSRange(location:0 , length: result!.length))
+        let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
+            NSAttributedString.DocumentType.html]
         
-
-    return result
+        let result = try? NSMutableAttributedString(data: htmlData ?? Data(),
+                                                    options: options,
+                                                    documentAttributes: nil)
+        
+        result?.addAttributes([NSAttributedString.Key.font:UIFont(name: "Avenir", size: 16.0)!], range:   NSRange(location:0 , length: result!.length))
+        
+        
+        return result
     }
     
     func serverNameToRegion() -> String {
@@ -76,6 +76,12 @@ extension String {
             result = "Ultra Rapid Fire"
         case "700":
             result = "Clash"
+        case "830":
+            result = "Co-op vs. Intro Bots"
+        case "840":
+            result = "Co-op vs. Beginner Bots"
+        case "850":
+            result = "Co-op vs. Intermediate Bots"
         case "1020":
             result = "One for All"
         default:

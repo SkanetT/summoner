@@ -15,9 +15,11 @@ class NetworkAPI {
     static let shared = NetworkAPI()
     static let que = DispatchQueue.init(label: "com.imageloader", qos: .utility, attributes: .concurrent)
     
-    
-    
     func dataTask<Request: BaseRequestProtocol>(request: Request, completion: @escaping ((Result<Request.response,APIErrors>) -> ()) ) {
+        guard Reachability.shared.isConnectedToNetwork() else {
+            completion(.failure(.noInternet))
+            return
+        }
         guard let req = request.urlRequest else {
             completion(.failure(.unknown))
             return

@@ -23,9 +23,10 @@ class SummonerViewController: SpinnerController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var summonerTopButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
-
+    
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
     weak var delegate: LoginControllerDelegate?
@@ -44,8 +45,11 @@ class SummonerViewController: SpinnerController {
     let champions = try! Realm().objects(Champion.self)
     let spells = try! Realm().objects(SummonerSpell.self)
     let summoner = try! Realm().objects(FoundSummoner.self)
+    let saveSummoner = try! Realm().objects(SaveSummoner.self)
     
     var matchModel: [MatchModel] = []
+    
+    var topWallpapperIndex = 0
     
     var spectatorData: SpectatorDate?
     
@@ -68,18 +72,19 @@ class SummonerViewController: SpinnerController {
         
         fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
         setupUI()
+        configureSaveBitton()
         tableViewConfiguration()
         
         title = "\(foundSummoner.name) (\(foundSummoner.region))"
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
         
-       
+        
         
         summonerIconImage.downloadSD(type: .profileIcon(id: foundSummoner.profileIconId.description))
         
         
         
-
+        
         
         fetchMatchHistory(summonerName: foundSummoner.name, summonerId: foundSummoner.id, accountId: foundSummoner.accountId, server: foundSummoner.region)
         
@@ -173,13 +178,17 @@ class SummonerViewController: SpinnerController {
         navigationController?.navigationBar.titleTextAttributes = titleColor
         
         summonerTopButton.isHidden = true
-        
-        
-        
-        
         summonerTopButton.clipsToBounds = true
         summonerTopButton.layer.cornerRadius = 25
         summonerTopButton.alpha = 0.7
+        summonerTopButton.layer.borderColor = UIColor.black.cgColor
+        summonerTopButton.layer.borderWidth = 1
+        
+        saveButton.clipsToBounds = true
+        saveButton.layer.cornerRadius = 25
+        saveButton.alpha = 0.7
+        saveButton.layer.borderColor = UIColor.black.cgColor
+        saveButton.layer.borderWidth = 1
         
         
         summonerIconImage.clipsToBounds = true
@@ -204,6 +213,17 @@ class SummonerViewController: SpinnerController {
         
     }
     
+    
+    func configureSaveBitton() {
+        guard let actualFoundSummoner = summoner.first, let actualSaveSummoner = saveSummoner.first else { return }
+        if actualFoundSummoner.id == actualSaveSummoner.id {
+            saveButton.isHidden = true
+        } else {
+            saveButton.isHidden = false
+        }
+        
+    }
+    
     @objc
     func spectatorPresent() {
         guard spectatorData != nil else { return }
@@ -213,13 +233,39 @@ class SummonerViewController: SpinnerController {
     }
     
     
+    @IBAction func saveSummoner(_ sender: Any ) {
+        guard let actualFoundSummoner = summoner.first, let actualSaveSummoner = saveSummoner.first else { return }
+        if actualFoundSummoner.id != actualSaveSummoner.id {
+            let ac = UIAlertController(title: "\(actualFoundSummoner.name) will save", message: "\(actualSaveSummoner.name) will delete", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default) {[weak self]_ in
+                let realm = try! Realm()
+                let newSaveSummoner = SaveSummoner()
+                newSaveSummoner.id = actualFoundSummoner.id
+                newSaveSummoner.name = actualFoundSummoner.name
+                newSaveSummoner.profileIconId = actualFoundSummoner.profileIconId
+                newSaveSummoner.region = actualFoundSummoner.region
+                
+                try! realm.write {
+                    realm.delete(actualSaveSummoner)
+                    realm.add(newSaveSummoner)
+                }
+                
+                self?.dismiss(animated: true, completion: nil)
+            }
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(ok)
+            ac.addAction(cancel)
+            present(ac, animated: true)
+            
+            
+        }
+    }
+    
     @IBAction func showTop(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, animations: {
             self.topWallpaper.isHidden = false
             self.summonerTopButton.isHidden = true
-            self.tableView.layoutIfNeeded()
-            self.stackView.layoutIfNeeded()
-
         })
     }
     
@@ -314,7 +360,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 matchHistoryCell.tapHandler = { [weak self]  in
                     guard let self = self else { return }
                     self.matchsArray[indexPath.section].isExpanded.toggle()
-                    
                     self.tableView.reloadData()
                 }
                 
@@ -326,6 +371,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                     self?.matchsArray[indexPath.section].isExpanded.toggle()
                     self?.tableView.reloadData()
                 }
+                
             }
             return moreInfoCell
         }
@@ -351,9 +397,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 
             }
             
-            header.tapHandler = { value in
-                
-                
+            header.tapHandler = {[weak self] value in
                 let leagueVC = LeagueController()
                 
                 let req = RankRequest(leagueId: value, server: foundSummoner.region)
@@ -385,30 +429,20 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
         return 1
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        summonerTopButton.pulse()
-//        UIView.animate(withDuration: 0.5, animations: {
-//            self.topWallpaper.isHidden = true
-//            self.summonerTopButton.isHidden = false
-//
-//
-//        })
-//
-//    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         
         
-        if indexPath.section >= 5  {
-            summonerTopButton.pulse()
+        if indexPath.section >= topWallpapperIndex + 5 || indexPath.section <= topWallpapperIndex - 5   {
+            if self.topWallpaper.isHidden == false {
             UIView.animate(withDuration: 0.5, animations: {
                 self.topWallpaper.isHidden = true
                 self.summonerTopButton.isHidden = false
-
-
+            }, completion: { _ in
+                self.topWallpapperIndex = indexPath.section
             })
-
+            }
         }
         
         guard let foundSummoner = summoner.first else { return }
@@ -433,7 +467,9 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 self.dataQueue.sync(flags:.barrier) {
                     print("reload 🩸")
                     disGroup.leave()
-                    let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId)
+                    let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId, handler: {[weak self] str in
+                        self?.relogin(name: str)
+                    })
                     self.matchModel.append(match)
                 }
             case.failure:
@@ -467,7 +503,9 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 case.success(let fullMatchHistory):
                     self.dataQueue.sync(flags:.barrier) {
                         disGroup.leave()
-                        let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId)
+                        let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId, handler: {[weak self] str in
+                            self?.relogin(name: str)
+                        })
                         self.matchModel.append(match)
                     }
                 case.failure(let erorr):
@@ -496,6 +534,53 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             self.tableView.reloadData()
             self.removeSpinner()
         }
+    }
+    
+    private func relogin(name: String) {
+        guard let actualFoundSummoner = summoner.first else { return }
+        if name != actualFoundSummoner.name {
+            
+            let server = actualFoundSummoner.region
+            
+            let request = SummonerRequest(summonerName: name, server: server)
+            NetworkAPI.shared.dataTask(request: request) {[weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case.success(let summonerData):
+                    print(summonerData.name)
+                    DispatchQueue.main.async {
+
+                        let realm = try! Realm()
+
+                        
+                        let foundSummoner = FoundSummoner()
+                        foundSummoner.name = summonerData.name
+                        foundSummoner.id = summonerData.id
+                        foundSummoner.accountId = summonerData.accountId
+                        foundSummoner.puuid = summonerData.puuid
+                        foundSummoner.profileIconId = summonerData.profileIconId
+                        foundSummoner.summonerLevel = summonerData.summonerLevel
+                        foundSummoner.region = server
+                        
+                        
+                        try! realm.write {
+                            realm.delete(actualFoundSummoner)
+                            realm.add(foundSummoner)
+                            
+                        }
+                    
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                        
+                    
+                    
+                case.failure(let error):
+                    print(error)
+                }
+            }
+            
+        }
+        
     }
     
 }

@@ -161,7 +161,7 @@ class ContainerController: UIViewController {
     @objc
     func logOut() {
         let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
-        let logOut = UIAlertAction(title: "Log Out", style: .destructive) {[weak self] _ in
+        let logOut = UIAlertAction(title: "Log Out", style: .default) {[weak self] _ in
             
             let realm = try! Realm()
             let foundSummoner = try! Realm().objects(FoundSummoner.self)

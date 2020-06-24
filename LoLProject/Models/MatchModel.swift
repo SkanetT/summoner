@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-
+typealias StringClosure = (String) -> Void
 
 struct MatchModel {
     
@@ -18,36 +18,16 @@ struct MatchModel {
     
     var members: [Member] = []
     
+    let handler: ((String) -> ())
     
-    init(match: FullInfoMatch, summonerName: String, summonerId: String) {
-        
+    init(match: FullInfoMatch, summonerName: String, summonerId: String, handler: @escaping StringClosure) {
+        self.handler = handler
         summonerInMatch.dateCreation = match.gameCreation
         
         version = match.gameVersion
         
         
         summonerInMatch.matchType = match.queueId.description.typeIdtoGameType()
-        
-//        switch match.queueId {
-//        case 400:
-//            summonerInMatch.matchType = "Normal (Draft Pick)"
-//        case 420:
-//            summonerInMatch.matchType = "Ranked Solo/Duo"
-//        case 430:
-//            summonerInMatch.matchType = "Normal (Blind Pick)"
-//        case 440:
-//            summonerInMatch.matchType = "Ranked Flex"
-//        case 450:
-//            summonerInMatch.matchType = "ARAM"
-//        case 900:
-//            summonerInMatch.matchType = "Ultra Rapid Fire"
-//        case 700:
-//            summonerInMatch.matchType = "Clash"
-//        case 1020:
-//            summonerInMatch.matchType = "One for All"
-//        default:
-//            summonerInMatch.matchType = "Error type \(match.queueId)"
-//        }
         
         
         summonerInMatch.date = { () -> String in
@@ -94,7 +74,7 @@ struct MatchModel {
         for id in 1...match.participantIdentities.count {
             if let member = match.participants.first(where: { $0.participantId == id }), let memberIdentities = match.participantIdentities.first(where: { $0.participantId == id }) {
                 
-                var memberData = Member()
+                var memberData = Member(tapHandler: self.handler)
                 memberData.name = memberIdentities.player.summonerName
                 memberData.championKey = String(member.championId)
                 memberData.kda = "\(member.stats.kills) / \(member.stats.deaths) / \(member.stats.assists)"
@@ -132,6 +112,7 @@ struct Member {
     var fourthItemId: String = ""
     var fifthItemId: String = ""
     var sixthItemId: String = ""
+    var tapHandler: ((String) -> ())?
 }
 
 struct SummonerInMatch {

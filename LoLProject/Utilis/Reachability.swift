@@ -14,7 +14,6 @@ public class Reachability {
 
     static let shared = Reachability()
     
-    
     func isConnectedToNetwork() -> Bool {
 
    // class func isConnectedToNetwork() -> Bool {

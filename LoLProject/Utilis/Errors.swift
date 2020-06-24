@@ -15,5 +15,14 @@ enum APIErrors: Error {
     case parsing
     case unknown
     case noInternet
+    
+    var desc: String {
+        switch self {
+        case .noInternet:
+            return "нет инета"
+        default:
+            return "blyad"
+        }
+    }
 }
 

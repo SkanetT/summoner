@@ -58,7 +58,7 @@ class MenuController: UIViewController {
         logOut.layer.borderWidth = 1
         
         swap = UIButton()
-        swap.setTitle("Swap", for: .normal)
+        swap.setTitle("Go to", for: .normal)
         swap.setTitleColor(.black, for: .normal)
         swap.backgroundColor = .green
         swap.alpha = 0.9

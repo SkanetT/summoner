@@ -37,9 +37,9 @@ class ParticipantInfo: XibBasedView {
     @IBOutlet weak var item5: UIImageView!
     @IBOutlet weak var item6: UIImageView!
     
+    var tapHandler: ((String) -> ())?
     
     func setData(member: Member) -> () {
-        
         
         participantNameLabel.text = member.name
         kda.text = member.kda
@@ -52,7 +52,7 @@ class ParticipantInfo: XibBasedView {
             secondSpell.downloadSD(type: .spellIcon(id: spell2.id))
             
         }
-        
+        tapHandler = member.tapHandler
         
         item0.downloadSD(type: .itemIcon(id: member.firstItemId))
         item1.downloadSD(type: .itemIcon(id: member.secondItemId))
@@ -62,5 +62,16 @@ class ParticipantInfo: XibBasedView {
         item5.downloadSD(type: .itemIcon(id: member.sixthItemId))
         item6.downloadSD(type: .itemIcon(id: member.wardId))
         
+    }
+    
+    override func setupUI() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        addGestureRecognizer(gesture)
+    }
+    
+    @objc
+    private func didTap() {
+        guard let name = participantNameLabel.text else { return }
+        tapHandler?(name)
     }
 }

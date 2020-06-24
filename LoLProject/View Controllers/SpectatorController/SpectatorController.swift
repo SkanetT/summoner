@@ -79,7 +79,10 @@ class SpectatorController: UIViewController {
             noBanesLabel.isHidden = false
             return
         }
-        guard !spectatorDate.bannedChampions.isEmpty else { return }
+        guard !spectatorDate.bannedChampions.isEmpty else {
+            noBanesLabel.isHidden = false
+            return
+        }
         banStack1.distribution = .fillEqually
         banStack1.alignment = .center
         banStack1.spacing = 2

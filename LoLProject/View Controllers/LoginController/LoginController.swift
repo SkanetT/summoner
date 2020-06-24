@@ -245,6 +245,9 @@ class LoginController: SpinnerController {
                 
                 self.removeSpinner()
             case.failure(let error):
+                self.showError(apiErro: error)
+                self.removeSpinner()
+
                 guard case .noData = error else { return }
                 self.removeSpinner()
 

@@ -58,3 +58,13 @@ class SpinnerController: UIViewController {
     }
     
 }
+
+extension UIViewController {
+    func showErrorMessage(_ error: APIErrors) {
+        DispatchQueue.main.async {
+            let ac = UIAlertController()
+            ac.addAction(.init(title: error.desc, style: .default, handler: nil))
+            self.present(ac, animated: true, completion: nil)
+        }
+    }
+}

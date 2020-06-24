@@ -50,7 +50,9 @@ class MatchHistoryCell: UITableViewCell {
         championIcon.layer.borderWidth = 2
         moreButton.clipsToBounds = true
         moreButton.layer.cornerRadius = 10
-        moreButton.layer.borderWidth = 2
+        
+        winOrLose.clipsToBounds = true
+        winOrLose.layer.cornerRadius = 10
         
         dateAndTime.clipsToBounds = true
         dateAndTime.layer.cornerRadius = 7

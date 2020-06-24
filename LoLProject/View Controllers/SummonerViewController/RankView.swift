@@ -26,23 +26,17 @@ class RankView: UIView {
     
     
     
-     var tapHandler: ( (String)->() )?
+    var tapHandler: ( (String)->() )?
     var leagueIdSolo: String = "0"
     var leagueIdFlex: String = "0"
 
     
-    @objc func tappedOnSoloLeague()
-    {
-        
+    @objc func tappedOnSoloLeague() {
         tapHandler?(leagueIdSolo)
-        
     }
     
-    @objc func tappedOnFlexLeague()
-    {
-        
+    @objc func tappedOnFlexLeague() {
         tapHandler?(leagueIdFlex)
-        
     }
     
     override init(frame: CGRect) {
