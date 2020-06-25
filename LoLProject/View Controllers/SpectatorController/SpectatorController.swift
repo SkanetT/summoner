@@ -71,6 +71,12 @@ class SpectatorController: UIViewController {
     
     func setupBanStackViews() {
         
+        collection1.clipsToBounds = true
+        collection1.layer.cornerRadius = 10
+        
+        collection2.clipsToBounds = true
+        collection2.layer.cornerRadius = 10
+        
         noBanesLabel.isHidden = true
         noBanesLabel.clipsToBounds = true
         noBanesLabel.layer.cornerRadius = 10

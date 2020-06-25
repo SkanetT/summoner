@@ -14,4 +14,6 @@ class GlobalConstants {
     
     
     let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan", "Republic of Korea"]
+    
+    let newsUrlString = "https://euw.leagueoflegends.com/en-gb/news/"
 }

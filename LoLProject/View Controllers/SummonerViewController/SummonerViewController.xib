@@ -134,13 +134,13 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELc-CO-pWu">
-                    <rect key="frame" x="10" y="802" width="50" height="50"/>
+                    <rect key="frame" x="20" y="772" width="70" height="70"/>
                     <color key="backgroundColor" red="0.63529411759999999" green="0.86666666670000003" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="0t2-qj-Gmw"/>
-                        <constraint firstAttribute="width" constant="50" id="WDc-ph-Zmh"/>
+                        <constraint firstAttribute="height" constant="70" id="0t2-qj-Gmw"/>
+                        <constraint firstAttribute="width" constant="70" id="WDc-ph-Zmh"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <state key="normal" title="Save">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -149,13 +149,13 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLc-8o-2R7">
-                    <rect key="frame" x="354" y="802" width="50" height="50"/>
+                    <rect key="frame" x="324" y="772" width="70" height="70"/>
                     <color key="backgroundColor" red="0.63529411759999999" green="0.86666666670000003" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="2gg-WR-4f7"/>
-                        <constraint firstAttribute="width" constant="50" id="nYZ-7i-7aI"/>
+                        <constraint firstAttribute="height" constant="70" id="2gg-WR-4f7"/>
+                        <constraint firstAttribute="width" constant="70" id="nYZ-7i-7aI"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <state key="normal" title="Info">
                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                     </state>
@@ -167,12 +167,12 @@
             <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="8Ow-Op-SpN" secondAttribute="bottom" id="7St-cF-wAj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ELc-CO-pWu" secondAttribute="bottom" constant="10" id="BtL-TR-sua"/>
-                <constraint firstItem="ELc-CO-pWu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="GQm-78-dbn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ELc-CO-pWu" secondAttribute="bottom" constant="20" id="BtL-TR-sua"/>
+                <constraint firstItem="ELc-CO-pWu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GQm-78-dbn"/>
                 <constraint firstAttribute="trailing" secondItem="8Ow-Op-SpN" secondAttribute="trailing" id="Kly-YM-r7l"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fLc-8o-2R7" secondAttribute="bottom" priority="999" constant="10" id="YZ5-KQ-nLq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fLc-8o-2R7" secondAttribute="bottom" priority="999" constant="20" id="YZ5-KQ-nLq"/>
                 <constraint firstItem="8Ow-Op-SpN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f0Y-Tz-W8V"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fLc-8o-2R7" secondAttribute="trailing" constant="10" id="kqS-sI-UUc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fLc-8o-2R7" secondAttribute="trailing" constant="20" id="kqS-sI-UUc"/>
                 <constraint firstItem="8Ow-Op-SpN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="rhj-tX-fuN"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

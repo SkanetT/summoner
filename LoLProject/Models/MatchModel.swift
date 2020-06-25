@@ -74,7 +74,10 @@ struct MatchModel {
         for id in 1...match.participantIdentities.count {
             if let member = match.participants.first(where: { $0.participantId == id }), let memberIdentities = match.participantIdentities.first(where: { $0.participantId == id }) {
                 
-                var memberData = Member(tapHandler: self.handler)
+                
+                
+                var memberData = Member()
+                memberData.tapHandler = self.handler
                 memberData.name = memberIdentities.player.summonerName
                 memberData.championKey = String(member.championId)
                 memberData.kda = "\(member.stats.kills) / \(member.stats.deaths) / \(member.stats.assists)"

@@ -108,7 +108,7 @@ class SummonerViewController: SpinnerController {
                 
                 
             case .failure(let error):
-                print(error)
+                self.showErrorMessage(error)
                 self.removeSpinner()
                 
             }
@@ -179,17 +179,22 @@ class SummonerViewController: SpinnerController {
         
         summonerTopButton.isHidden = true
         summonerTopButton.clipsToBounds = true
-        summonerTopButton.layer.cornerRadius = 25
-        summonerTopButton.alpha = 0.7
+        summonerTopButton.layer.cornerRadius = 35
         summonerTopButton.layer.borderColor = UIColor.black.cgColor
-        summonerTopButton.layer.borderWidth = 1
+        summonerTopButton.layer.borderWidth = 1.5
+        summonerTopButton.layer.shadowColor = UIColor.black.cgColor
+        summonerTopButton.layer.masksToBounds = false
+        summonerTopButton.layer.shadowRadius = 3
+        summonerTopButton.layer.shadowOpacity = 0.5
         
         saveButton.clipsToBounds = true
-        saveButton.layer.cornerRadius = 25
-        saveButton.alpha = 0.7
+        saveButton.layer.cornerRadius = 35
         saveButton.layer.borderColor = UIColor.black.cgColor
-        saveButton.layer.borderWidth = 1
-        
+        saveButton.layer.borderWidth = 1.5
+        saveButton.layer.shadowColor = UIColor.black.cgColor
+        saveButton.layer.masksToBounds = false
+        saveButton.layer.shadowRadius = 3
+        saveButton.layer.shadowOpacity = 0.5
         
         summonerIconImage.clipsToBounds = true
         summonerIconImage.layer.cornerRadius = 50
@@ -366,13 +371,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             }
             return matchHistoryCell
         } else {
-            DispatchQueue.main.async {
-                moreInfoCell.tapHandler = { [weak self]  in
-                    self?.matchsArray[indexPath.section].isExpanded.toggle()
-                    self?.tableView.reloadData()
-                }
-                
-            }
             return moreInfoCell
         }
     }
@@ -384,7 +382,6 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
         if section == 0 {
             
             let leagueRequest = LeagueRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)
-            
             
             NetworkAPI.shared.dataTask(request: leagueRequest) {[weak self] result in
                 guard let self = self else { return }
@@ -413,9 +410,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                     case .failure:
                         print("!!!!!!!!")
                     }
-                    
                 }
-                
             }
             return header
         } else { return nil }
@@ -474,13 +469,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 }
             case.failure:
                 self.reloadMatchInfo(disGroup: disGroup, matchId: matchId, region: region, reply: reply + 1, summonerName: summonerName, summonerId: summonerId)
-                
             }
-            
-            
-            
         }
-        
     }
     
     private func matchHistoryLoad(region : String, summonerName: String, summonerId: String) {
@@ -514,11 +504,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                     failsMatchs += 1
                     self.reloadMatchInfo(disGroup: disGroup, matchId: self.matchsArray[i].match.gameId, region: region, summonerName: summonerName, summonerId: summonerId)
                 }
-                
-                
-                
             }
-            
         }
         
         disGroup.notify(queue: .main) {[weak self] in
@@ -547,12 +533,10 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 guard let self = self else { return }
                 switch result {
                 case.success(let summonerData):
-                    print(summonerData.name)
                     DispatchQueue.main.async {
 
                         let realm = try! Realm()
 
-                        
                         let foundSummoner = FoundSummoner()
                         foundSummoner.name = summonerData.name
                         foundSummoner.id = summonerData.id
@@ -572,22 +556,11 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                         self.dismiss(animated: true, completion: nil)
                     }
                         
-                    
-                    
                 case.failure(let error):
                     print(error)
                 }
             }
-            
         }
-        
-    }
-    
-}
-
-extension UIViewController {
-    func showError(apiErro: APIErrors) {
-        
     }
 }
 

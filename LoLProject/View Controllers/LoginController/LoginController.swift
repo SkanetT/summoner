@@ -49,7 +49,7 @@ class LoginController: SpinnerController {
             
             summ.modalPresentationStyle = .fullScreen
             present(summ, animated: false)
-           
+            
         }
     }
     
@@ -89,7 +89,7 @@ class LoginController: SpinnerController {
         DispatchQueue.main.async {
             self.serverLabel.text = self.servers.first
         }
-                updateCurrentVersion()
+        updateCurrentVersion()
         
         
         
@@ -112,7 +112,7 @@ class LoginController: SpinnerController {
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
-
+                            
                         }
                         
                     }
@@ -192,7 +192,7 @@ class LoginController: SpinnerController {
         guard  !summonerNameTF.text!.isEmpty else {return}
         
         guard let summonerName = summonerNameTF.text else { return }
- 
+        
         guard let region = serverLabel.text?.serverNameToRegion() else { return }
         
         
@@ -233,29 +233,35 @@ class LoginController: SpinnerController {
                     
                     let summ = ContainerController()
                     summ.isLogin = false
-                    
-                    
+        
                     summ.modalPresentationStyle = .fullScreen
                     self.present(summ, animated: true)
-                    
-                    //   self.navigationController?.pushViewController(summ, animated: true)
-                    //                    let summonerVC = SummonerViewController()
-                    //                    self.navigationController?.pushViewController(summonerVC, animated: true)
                 }
                 
                 self.removeSpinner()
             case.failure(let error):
-                self.showError(apiErro: error)
+                
                 self.removeSpinner()
-
-                guard case .noData = error else { return }
-                self.removeSpinner()
-
-                DispatchQueue.main.async {
-                    let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
-                    let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
-                    ac.addAction(ok)
-                    self.present(ac, animated: true)
+                switch error {
+                case .noData:
+                    DispatchQueue.main.async {
+                        let ac = UIAlertController(title: "\(self.summonerNameTF.text!) not found", message: "Check summoner name and region", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                        ac.addAction(ok)
+                        self.present(ac, animated: true)
+                    }
+                    
+                case .statusCode(_):
+                    self.showErrorMessage(error)
+                case .network:
+                    self.showErrorMessage(error)
+                case .parsing:
+                    self.showErrorMessage(error)
+                case .unknown:
+                    self.showErrorMessage(error)
+                case .noInternet:
+                    self.showErrorMessage(error)
+                    
                 }
             }
         }

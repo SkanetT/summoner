@@ -19,9 +19,13 @@ enum APIErrors: Error {
     var desc: String {
         switch self {
         case .noInternet:
-            return "нет инета"
+            return "No Internet connection"
+        case .unknown:
+            return "Unknown error (2)"
+        case .noData:
+            return "No data"
         default:
-            return "blyad"
+            return "Unknown error, try refresh"
         }
     }
 }

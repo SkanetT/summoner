@@ -203,7 +203,7 @@
                 <outlet property="typeAndWin" destination="ZPK-tM-wtz" id="G5g-Wn-Dg9"/>
                 <outlet property="winOrLose" destination="W7c-ap-DUN" id="Fda-In-RNL"/>
             </connections>
-            <point key="canvasLocation" x="169.56521739130437" y="136.60714285714286"/>
+            <point key="canvasLocation" x="171" y="151"/>
         </tableViewCell>
     </objects>
 </document>

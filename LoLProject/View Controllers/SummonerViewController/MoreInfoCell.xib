@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -112,15 +112,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNl-r2-Ge7">
-                        <rect key="frame" x="0.0" y="808" width="320" height="18"/>
-                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="9GF-CC-tWX"/>
-                        </constraints>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <state key="normal" title="Close"/>
-                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
@@ -144,13 +135,11 @@
                     <constraint firstItem="ejd-ED-Z1L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F3h-xJ-zw9"/>
                     <constraint firstItem="7vp-Jv-lHE" firstAttribute="top" secondItem="pQH-7K-OSL" secondAttribute="bottom" constant="8" id="Fi1-hl-zCb"/>
                     <constraint firstAttribute="bottom" secondItem="TbV-Sh-3Q9" secondAttribute="bottom" constant="16" id="FlL-ng-MU9"/>
-                    <constraint firstAttribute="trailing" secondItem="XNl-r2-Ge7" secondAttribute="trailing" id="Gic-ai-dms"/>
                     <constraint firstItem="slv-QX-9O4" firstAttribute="top" secondItem="bif-79-hKb" secondAttribute="bottom" constant="8" id="NNp-IP-nHZ"/>
                     <constraint firstItem="EzV-9S-2GR" firstAttribute="top" secondItem="wKr-Vd-Wf2" secondAttribute="bottom" id="Nss-iE-11v"/>
                     <constraint firstAttribute="trailing" secondItem="PVT-6O-2IC" secondAttribute="trailing" id="RUg-5j-eaT"/>
                     <constraint firstAttribute="trailing" secondItem="b3H-sP-IIm" secondAttribute="trailing" id="TZ0-wF-Uhr"/>
                     <constraint firstAttribute="trailing" secondItem="ejd-ED-Z1L" secondAttribute="trailing" id="TaY-ff-bLy"/>
-                    <constraint firstAttribute="bottom" secondItem="XNl-r2-Ge7" secondAttribute="bottom" id="X3J-iR-vVu"/>
                     <constraint firstItem="zax-LB-7xK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZBG-g3-1Du"/>
                     <constraint firstAttribute="trailing" secondItem="7vp-Jv-lHE" secondAttribute="trailing" id="Zav-NG-V3G"/>
                     <constraint firstAttribute="trailing" secondItem="K3S-yL-uID" secondAttribute="trailing" id="b4f-d5-0VS"/>
@@ -162,8 +151,6 @@
                     <constraint firstItem="pQH-7K-OSL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fzq-uR-gvx"/>
                     <constraint firstItem="TbV-Sh-3Q9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gJK-tn-b4f"/>
                     <constraint firstItem="K3S-yL-uID" firstAttribute="top" secondItem="pcx-su-NL9" secondAttribute="bottom" constant="8" id="ke2-m9-ppI"/>
-                    <constraint firstItem="XNl-r2-Ge7" firstAttribute="top" secondItem="TbV-Sh-3Q9" secondAttribute="bottom" id="kve-CP-D3E"/>
-                    <constraint firstItem="XNl-r2-Ge7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lUg-Cv-44g"/>
                     <constraint firstItem="w7P-Im-Jwk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="m9h-QH-mYW"/>
                     <constraint firstAttribute="trailing" secondItem="EzV-9S-2GR" secondAttribute="trailing" id="mWT-qq-oMC"/>
                     <constraint firstItem="TbV-Sh-3Q9" firstAttribute="top" secondItem="K3S-yL-uID" secondAttribute="bottom" constant="8" id="neK-Ba-H4Y"/>
@@ -177,7 +164,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="closeButton" destination="XNl-r2-Ge7" id="wvf-bp-phi"/>
                 <outlet property="participant1" destination="bif-79-hKb" id="Tlu-3U-K9h"/>
                 <outlet property="participant10" destination="TbV-Sh-3Q9" id="ihL-mb-aVY"/>
                 <outlet property="participant2" destination="slv-QX-9O4" id="aqA-mU-9LM"/>

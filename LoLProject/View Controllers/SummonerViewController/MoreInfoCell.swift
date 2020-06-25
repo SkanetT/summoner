@@ -30,32 +30,15 @@ class MoreInfoCell: UITableViewCell {
     @IBOutlet weak var team1Win: UILabel!
     @IBOutlet weak var team2Win: UILabel!
     
-    @IBOutlet weak var closeButton: UIButton!
-
-    var tapHandler: ( ()->() )?
-    
-    
-//    var tapLongHandler: ( ()->() )?
-    
-
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        closeButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
+
         clipsToBounds = true
         layer.cornerRadius = 10
         layer.borderWidth = 2
 
     }
     
-
-    
-   
-    
-    @objc
-    private func didTapExpand() {
-        tapHandler?()
-    }
     
     override func prepareForReuse() {
         let images = contentView.subviews.filter({ $0 is UIImageView })

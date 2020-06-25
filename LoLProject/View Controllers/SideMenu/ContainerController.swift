@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SafariServices
 
 class ContainerController: UIViewController {
     
@@ -121,24 +122,16 @@ class ContainerController: UIViewController {
     
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
-            
-            
         case .champions:
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateViewController(identifier: "championList2")
-            
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-            
-            
-            
         case .spells:
             let vc = SpellsViewController()
             let nc = UINavigationController(rootViewController: vc)
-            
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
-            
         case .serversStatus:
             let vc = StatusController()
             let nc = UINavigationController(rootViewController: vc)
@@ -146,16 +139,13 @@ class ContainerController: UIViewController {
             nc.modalPresentationStyle = .fullScreen
             
             present(nc, animated: true)
-            
         case .news:
-            let vc = NewsController()
-            let nc = UINavigationController(rootViewController: vc)
-            
-            nc.modalPresentationStyle = .fullScreen
-            present(nc, animated: true)
-            
+            if let url = URL(string: GlobalConstants.shared.newsUrlString) {
+                let vc = SFSafariViewController(url: url)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true)
+              }
         }
-        
     }
     
     @objc
@@ -188,16 +178,11 @@ class ContainerController: UIViewController {
         let foundSummoner = try! Realm().objects(FoundSummoner.self)
         let saveSummoner = try! Realm().objects(SaveSummoner.self)
         guard let actualFoundSummoner = foundSummoner.first, let actualSaveSummoner = saveSummoner.first else { return }
-        
         if actualFoundSummoner.id == actualSaveSummoner.id {
             dismiss(animated: true, completion: nil)
-            
         } else {
-            
             let realm = try! Realm()
-            
             let region = actualSaveSummoner.region
-            
             let request = SummonerRequest(summonerName: actualSaveSummoner.name, server: actualSaveSummoner.region)
             NetworkAPI.shared.dataTask(request: request) {[weak self] result in
                 switch result {
@@ -217,8 +202,6 @@ class ContainerController: UIViewController {
                     newSaveSummoner.profileIconId = summonerData.profileIconId
                     newSaveSummoner.region = region
                     
-                    
-                    
                     DispatchQueue.main.async {
                         try! realm.write {
                                 realm.delete(actualFoundSummoner)
@@ -226,36 +209,21 @@ class ContainerController: UIViewController {
                                 
                                 realm.add(newFoundSummoner)
                                 realm.add(newSaveSummoner)
-                                
-                                
                         }
                         self?.dismiss(animated: true, completion: nil)
                     }
                 case.failure( let error):
                     print(error)
-                    
-                    
                 }
-                
             }
-            
-            
         }
-        
-        
     }
-    
-    
-    
+
     func animateStatusBar() {
-        
         UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-            
             self.setNeedsStatusBarAppearanceUpdate()
         }, completion: nil)
     }
-    
-    
 }
 
 extension ContainerController: LoginControllerDelegate {
