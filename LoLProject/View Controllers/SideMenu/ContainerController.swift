@@ -14,7 +14,7 @@ class ContainerController: UIViewController {
     
     var menuController: MenuController!
     var centerContoller: UIViewController!
-    var isExpanded = false
+    private var isExpanded = false
     
     var isLogin = true
     
@@ -48,11 +48,10 @@ class ContainerController: UIViewController {
         vc.delegate = self
         centerContoller = UINavigationController(rootViewController: vc)
         
-        
+        centerContoller.view.frame = self.view.frame
         view.addSubview(centerContoller.view)
         addChild(centerContoller)
         centerContoller.didMove(toParent: self)
-        
     }
     
     func configureSummonerController() {
@@ -60,7 +59,7 @@ class ContainerController: UIViewController {
         vc.delegate = self
         centerContoller = UINavigationController(rootViewController: vc)
         
-        
+        centerContoller.view.frame = self.view.frame
         view.addSubview(centerContoller.view)
         addChild(centerContoller)
         centerContoller.didMove(toParent: self)
@@ -128,7 +127,7 @@ class ContainerController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         case .spells:
-            let vc = SpellsViewController()
+            let vc = SpellsViewAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
