@@ -35,20 +35,10 @@ class SpellsPresenter: SpellsPresenterInput {
     
 }
 
-extension SpellsPresenter: SpeellsnteractorOutput {
+extension SpellsPresenter: SpeellsInteractorOutput {
     func didReciveSpellList(spells: Results<SummonerSpell>) {
         viewController?.didReciveSpellList(spells.map{ .init(spellName: $0.name, spellDesc: $0.spellDescription, spellImgId: $0.id)}.sorted{$0.spellName < $1.spellName })
     }
     
 }
 
-
-protocol SpellsPresenterInput: class {
-    func attach(_ viewController: SpellsPresenterOutput)
-    func viewDidLoad()
-    func didTapClose()
-}
-
-protocol SpellsPresenterOutput: class {
-    func didReciveSpellList(_ spells: [SpellModel])
-}

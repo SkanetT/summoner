@@ -13,6 +13,8 @@ class StatusController: UIViewController {
     let tableView = UITableView()
     let servers = GlobalConstants.shared.servers
     
+    var presenter: StatusPresenterInput?
+    
     let refrechControll: UIRefreshControl = {
            let refrechControll = UIRefreshControl()
            refrechControll.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
@@ -30,6 +32,7 @@ class StatusController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter?.attach(self)
         setup()
         
     }
@@ -41,7 +44,7 @@ class StatusController: UIViewController {
     
     @objc
     func exit(){
-        dismiss(animated: true, completion: nil)
+        presenter?.didTapClose()
     }
     
     private func setup() {
@@ -89,8 +92,8 @@ extension StatusController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
-    
-    
-    
+}
+
+extension StatusController: StatusPresenterOutput {
     
 }

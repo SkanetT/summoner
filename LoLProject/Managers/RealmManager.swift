@@ -9,7 +9,6 @@
 import RealmSwift
 import Foundation
 
-#warning("TO DO REALM ")
 
 class RealmManager {
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpellTableHandler:NSObject, SpellTableViewHandlerProtocol {
+class SpellTableHandler: NSObject, SpellTableHandlerProtocol {
     
     func updateData(_ spellList: [SpellModel]) {
         self.spellList = spellList
@@ -43,7 +43,3 @@ extension SpellTableHandler: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-protocol SpellTableViewHandlerProtocol {
-    func attach(_ tableView: UITableView)
-    func updateData(_ spellList: [SpellModel])
-}

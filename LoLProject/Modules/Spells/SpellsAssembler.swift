@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SpellsViewAssembler {
+class SpellsAssembler {
     static func createModule() -> UIViewController {
-        let viewController = SpellsViewController()
+        let viewController = SpellsController()
         let router = SpellsRouter(viewController)
         let interactor = SpellsInteractor()
         let tableHandler = SpellTableHandler()

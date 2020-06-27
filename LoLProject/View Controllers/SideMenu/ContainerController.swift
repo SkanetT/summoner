@@ -127,12 +127,12 @@ class ContainerController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         case .spells:
-            let vc = SpellsViewAssembler.createModule()
+            let vc = SpellsAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
         case .serversStatus:
-            let vc = StatusController()
+            let vc = StatusAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)
             
             nc.modalPresentationStyle = .fullScreen

@@ -74,7 +74,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             print("Not yet")
         case 2:
-            let vc = SpellsViewAssembler.createModule()
+            let vc = SpellsAssembler.createModule()
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

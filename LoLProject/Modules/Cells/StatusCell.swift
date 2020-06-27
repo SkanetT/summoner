@@ -17,7 +17,15 @@ class StatusCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
+        settupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    private func settupUI() {
         contentView.backgroundColor = .darkGray
         serverName.translatesAutoresizingMaskIntoConstraints = false
         serverName.textAlignment = .left
@@ -52,14 +60,8 @@ class StatusCell: UITableViewCell {
         indicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         indicator.heightAnchor.constraint(equalToConstant: 50).isActive = true
         indicator.widthAnchor.constraint(equalToConstant: 50).isActive = true
-
         
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     
     func setData(server: String) {
         let request = StatusRequest.init(server: server)

@@ -9,12 +9,12 @@
 import UIKit
 import RealmSwift
 
-class SpellsViewController: SpinnerController {
+class SpellsController: SpinnerController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var presenter: SpellsPresenterInput?
-    var tableViewHandler: SpellTableViewHandlerProtocol?
+    var tableViewHandler: SpellTableHandlerProtocol?
 
     @objc func exitSpells() {
         presenter?.didTapClose()
@@ -47,7 +47,7 @@ class SpellsViewController: SpinnerController {
     
 }
 
-extension SpellsViewController: SpellsPresenterOutput {
+extension SpellsController: SpellsPresenterOutput {
     func didReciveSpellList(_ spells: [SpellModel]) {
         tableViewHandler?.updateData(spells)
     }

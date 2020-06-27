@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD524A6A73C00488F32 /* SpellModel.swift */; };
+		3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */; };
+		3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */; };
 		3A57BD702485959600769F41 /* CellForInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57BD6E2485959600769F41 /* CellForInfoView.swift */; };
 		3A57BD712485959600769F41 /* CellForInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A57BD6F2485959600769F41 /* CellForInfoView.xib */; };
 		3A58E5142485A95700287CA7 /* LeagueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58E5122485A95700287CA7 /* LeagueController.swift */; };
@@ -26,6 +28,11 @@
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
 		3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */; };
+		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
+		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
+		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
+		3A83111424A77AA000D6552D /* StatusRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111324A77AA000D6552D /* StatusRouter.swift */; };
+		3A83111624A77ABA00D6552D /* StatusRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111524A77ABA00D6552D /* StatusRouting.swift */; };
 		3A8790DC2483173300499C5E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790DB2483173300499C5E /* Reachability.swift */; };
 		3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790DF2483D9BC00499C5E /* FooterForChampion.swift */; };
 		3A8790E22483E52300499C5E /* HeaderForChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790E12483E52300499C5E /* HeaderForChampion.swift */; };
@@ -53,8 +60,8 @@
 		3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D119245F313600B05437 /* SkillCell.swift */; };
 		3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA4D11A245F313700B05437 /* SkillCell.xib */; };
 		3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D13D246045AF00B05437 /* NetworkAPI.swift */; };
-		3AAA322924684A1100100FF8 /* SpellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322724684A1100100FF8 /* SpellsViewController.swift */; };
-		3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA322824684A1100100FF8 /* SpellsViewController.xib */; };
+		3AAA322924684A1100100FF8 /* SpellsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322724684A1100100FF8 /* SpellsController.swift */; };
+		3AAA322A24684A1100100FF8 /* SpellsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA322824684A1100100FF8 /* SpellsController.xib */; };
 		3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322B24684F7000100FF8 /* SummonerSpellCell.swift */; };
 		3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA322C24684F7000100FF8 /* SummonerSpellCell.xib */; };
 		3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA322F2468878900100FF8 /* MatchHistory.swift */; };
@@ -62,6 +69,13 @@
 		3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */; };
 		3AAA325E246DE81700100FF8 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325D246DE81700100FF8 /* RankView.swift */; };
 		3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */; };
+		3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451524A77F5300B06936 /* StatusPresenter.swift */; };
+		3AB9451824A7826800B06936 /* StatusPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451724A7826800B06936 /* StatusPresenterInput.swift */; };
+		3AB9451A24A7829600B06936 /* StatusPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451924A7829600B06936 /* StatusPresenterOutput.swift */; };
+		3AB9451C24A78C4200B06936 /* SpellTableHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451B24A78C4200B06936 /* SpellTableHandlerProtocol.swift */; };
+		3AB9451F24A7979600B06936 /* StatusInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451E24A7979600B06936 /* StatusInteractor.swift */; };
+		3AB9452124A798B500B06936 /* StatusInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9452024A798B500B06936 /* StatusInteractorInput.swift */; };
+		3AB9452324A798E200B06936 /* StatusInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9452224A798E200B06936 /* StatusInteractorOutput.swift */; };
 		3AC267F92488346C009C3D18 /* RankData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC267F82488346C009C3D18 /* RankData.swift */; };
 		3AC267FC248840D7009C3D18 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC267FA248840D7009C3D18 /* LeagueCell.swift */; };
 		3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC267FB248840D7009C3D18 /* LeagueCell.xib */; };
@@ -104,6 +118,8 @@
 
 /* Begin PBXFileReference section */
 		3A14CCD524A6A73C00488F32 /* SpellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellModel.swift; sourceTree = "<group>"; };
+		3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsPresenterInput.swift; sourceTree = "<group>"; };
+		3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsPresenterOutput.swift; sourceTree = "<group>"; };
 		3A57BD6E2485959600769F41 /* CellForInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForInfoView.swift; sourceTree = "<group>"; };
 		3A57BD6F2485959600769F41 /* CellForInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellForInfoView.xib; sourceTree = "<group>"; };
 		3A58E5122485A95700287CA7 /* LeagueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueController.swift; sourceTree = "<group>"; };
@@ -122,6 +138,11 @@
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
 		3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedChampionsData.swift; sourceTree = "<group>"; };
+		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
+		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
+		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
+		3A83111324A77AA000D6552D /* StatusRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRouter.swift; sourceTree = "<group>"; };
+		3A83111524A77ABA00D6552D /* StatusRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusRouting.swift; sourceTree = "<group>"; };
 		3A8790DB2483173300499C5E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3A8790DF2483D9BC00499C5E /* FooterForChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterForChampion.swift; sourceTree = "<group>"; };
 		3A8790E12483E52300499C5E /* HeaderForChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForChampion.swift; sourceTree = "<group>"; };
@@ -151,8 +172,8 @@
 		3AA4D119245F313600B05437 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
 		3AA4D11A245F313700B05437 /* SkillCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SkillCell.xib; sourceTree = "<group>"; };
 		3AA4D13D246045AF00B05437 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
-		3AAA322724684A1100100FF8 /* SpellsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsViewController.swift; sourceTree = "<group>"; };
-		3AAA322824684A1100100FF8 /* SpellsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellsViewController.xib; sourceTree = "<group>"; };
+		3AAA322724684A1100100FF8 /* SpellsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsController.swift; sourceTree = "<group>"; };
+		3AAA322824684A1100100FF8 /* SpellsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellsController.xib; sourceTree = "<group>"; };
 		3AAA322B24684F7000100FF8 /* SummonerSpellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpellCell.swift; sourceTree = "<group>"; };
 		3AAA322C24684F7000100FF8 /* SummonerSpellCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerSpellCell.xib; sourceTree = "<group>"; };
 		3AAA322F2468878900100FF8 /* MatchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistory.swift; sourceTree = "<group>"; };
@@ -160,6 +181,13 @@
 		3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchHistoryCell.xib; sourceTree = "<group>"; };
 		3AAA325D246DE81700100FF8 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedView.swift; sourceTree = "<group>"; };
+		3AB9451524A77F5300B06936 /* StatusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenter.swift; sourceTree = "<group>"; };
+		3AB9451724A7826800B06936 /* StatusPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenterInput.swift; sourceTree = "<group>"; };
+		3AB9451924A7829600B06936 /* StatusPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenterOutput.swift; sourceTree = "<group>"; };
+		3AB9451B24A78C4200B06936 /* SpellTableHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTableHandlerProtocol.swift; sourceTree = "<group>"; };
+		3AB9451E24A7979600B06936 /* StatusInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInteractor.swift; sourceTree = "<group>"; };
+		3AB9452024A798B500B06936 /* StatusInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInteractorInput.swift; sourceTree = "<group>"; };
+		3AB9452224A798E200B06936 /* StatusInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInteractorOutput.swift; sourceTree = "<group>"; };
 		3AC267F82488346C009C3D18 /* RankData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankData.swift; sourceTree = "<group>"; };
 		3AC267FA248840D7009C3D18 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
 		3AC267FB248840D7009C3D18 /* LeagueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueCell.xib; sourceTree = "<group>"; };
@@ -222,29 +250,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3A14CCD424A6A73000488F32 /* Models */ = {
+		3A14CCD424A6A73000488F32 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				3A14CCD524A6A73C00488F32 /* SpellModel.swift */,
 			);
-			path = Models;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3A83110F24A7752200D6552D /* Status */,
+				3A83111724A77B2900D6552D /* Cells */,
 				3AAA3226246849E200100FF8 /* Spells */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		3A5C34972491643A0044AB6D /* StatusController */ = {
+		3A14CCDC24A7719E00488F32 /* SpellTableHandler */ = {
 			isa = PBXGroup;
 			children = (
-				3A5C3498249164830044AB6D /* StatusController.swift */,
-				3A5C349A249167550044AB6D /* StatusCell.swift */,
+				3AE82D0924A6A59500B7A417 /* SpellTableHandler.swift */,
+				3AB9451B24A78C4200B06936 /* SpellTableHandlerProtocol.swift */,
 			);
-			path = StatusController;
+			path = SpellTableHandler;
 			sourceTree = "<group>";
 		};
 		3A6366FA2460C726004C76D0 /* SummonerViewController */ = {
@@ -275,6 +305,43 @@
 				3AC267FB248840D7009C3D18 /* LeagueCell.xib */,
 			);
 			path = LeagueController;
+			sourceTree = "<group>";
+		};
+		3A83110F24A7752200D6552D /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				3A83111024A7756800D6552D /* StatusAssembler.swift */,
+				3A83111A24A77B6100D6552D /* View */,
+				3AB9451D24A7971300B06936 /* Interactor */,
+				3AB9451424A77F2B00B06936 /* Presenter */,
+				3A83111224A77A7200D6552D /* Router */,
+			);
+			path = Status;
+			sourceTree = "<group>";
+		};
+		3A83111224A77A7200D6552D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3A83111324A77AA000D6552D /* StatusRouter.swift */,
+				3A83111524A77ABA00D6552D /* StatusRouting.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3A83111724A77B2900D6552D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A5C349A249167550044AB6D /* StatusCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3A83111A24A77B6100D6552D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A5C3498249164830044AB6D /* StatusController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3A8790DD2483D39100499C5E /* ChampionsViewController */ = {
@@ -379,7 +446,6 @@
 			children = (
 				3AC6ED1424969C1300F8B733 /* SpectatorController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
-				3A5C34972491643A0044AB6D /* StatusController */,
 				3A653C992486FC3800CB7C97 /* LeagueController */,
 				3A8790DE2483D46100499C5E /* InfoViewController */,
 				3A8790DD2483D39100499C5E /* ChampionsViewController */,
@@ -441,16 +507,36 @@
 		3AAA3226246849E200100FF8 /* Spells */ = {
 			isa = PBXGroup;
 			children = (
-				3A14CCD424A6A73000488F32 /* Models */,
-				3AE82D0624A6A2EE00B7A417 /* Presenter */,
-				3AE82D0324A6998A00B7A417 /* Interactor */,
-				3AE82CFE24A698AE00B7A417 /* Router */,
 				3AE82CFA24A6980700B7A417 /* SpellsAssembler.swift */,
+				3AE82CFD24A6989A00B7A417 /* View */,
+				3AE82D0324A6998A00B7A417 /* Interactor */,
+				3AE82D0624A6A2EE00B7A417 /* Presenter */,
+				3A14CCD424A6A73000488F32 /* Entity */,
+				3AE82CFE24A698AE00B7A417 /* Router */,
+				3A14CCDC24A7719E00488F32 /* SpellTableHandler */,
 				3AE82CFC24A6988800B7A417 /* Cells */,
-				3AE82CFD24A6989A00B7A417 /* ViewController */,
-				3AE82D0924A6A59500B7A417 /* SpellTableHandler.swift */,
 			);
 			path = Spells;
+			sourceTree = "<group>";
+		};
+		3AB9451424A77F2B00B06936 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3AB9451524A77F5300B06936 /* StatusPresenter.swift */,
+				3AB9451724A7826800B06936 /* StatusPresenterInput.swift */,
+				3AB9451924A7829600B06936 /* StatusPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3AB9451D24A7971300B06936 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3AB9451E24A7979600B06936 /* StatusInteractor.swift */,
+				3AB9452024A798B500B06936 /* StatusInteractorInput.swift */,
+				3AB9452224A798E200B06936 /* StatusInteractorOutput.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3AC26805248C2CAA009C3D18 /* SideMenu */ = {
@@ -506,13 +592,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		3AE82CFD24A6989A00B7A417 /* ViewController */ = {
+		3AE82CFD24A6989A00B7A417 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3AAA322724684A1100100FF8 /* SpellsViewController.swift */,
-				3AAA322824684A1100100FF8 /* SpellsViewController.xib */,
+				3AAA322724684A1100100FF8 /* SpellsController.swift */,
+				3AAA322824684A1100100FF8 /* SpellsController.xib */,
 			);
-			path = ViewController;
+			path = View;
 			sourceTree = "<group>";
 		};
 		3AE82CFE24A698AE00B7A417 /* Router */ = {
@@ -528,6 +614,8 @@
 			isa = PBXGroup;
 			children = (
 				3AE82D0424A699A900B7A417 /* SpellsInteractor.swift */,
+				3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */,
+				3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -536,6 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				3AE82D0724A6A2FF00B7A417 /* SpellsPresenter.swift */,
+				3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */,
+				3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -620,7 +710,7 @@
 				3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */,
 				3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
-				3AAA322A24684A1100100FF8 /* SpellsViewController.xib in Resources */,
+				3AAA322A24684A1100100FF8 /* SpellsController.xib in Resources */,
 				3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */,
 				3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */,
 				3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */,
@@ -692,14 +782,21 @@
 				3AE82CFB24A6980700B7A417 /* SpellsAssembler.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */,
+				3AB9451C24A78C4200B06936 /* SpellTableHandlerProtocol.swift in Sources */,
+				3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
+				3AB9451824A7826800B06936 /* StatusPresenterInput.swift in Sources */,
 				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
+				3A83111424A77AA000D6552D /* StatusRouter.swift in Sources */,
+				3AB9452324A798E200B06936 /* StatusInteractorOutput.swift in Sources */,
 				3AE82D0524A699A900B7A417 /* SpellsInteractor.swift in Sources */,
+				3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,
 				3AC26809248C2DFA009C3D18 /* Protocols.swift in Sources */,
+				3AB9451A24A7829600B06936 /* StatusPresenterOutput.swift in Sources */,
 				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
 				3A5C3499249164830044AB6D /* StatusController.swift in Sources */,
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
@@ -708,6 +805,7 @@
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
+				3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */,
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
 				3AC2680B248C2EAC009C3D18 /* MenuOptionCell.swift in Sources */,
@@ -719,8 +817,10 @@
 				3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */,
 				3AE82CF924A6943C00B7A417 /* RealmManager.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,
+				3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
 				3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */,
+				3AB9451F24A7979600B06936 /* StatusInteractor.swift in Sources */,
 				3AE82D0224A698CB00B7A417 /* SpellsRouting.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
@@ -748,11 +848,15 @@
 				3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */,
+				3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */,
 				3AC6ED1A249952E300F8B733 /* ViewController.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
+				3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */,
 				3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */,
-				3AAA322924684A1100100FF8 /* SpellsViewController.swift in Sources */,
+				3A83111624A77ABA00D6552D /* StatusRouting.swift in Sources */,
+				3AB9452124A798B500B06936 /* StatusInteractorInput.swift in Sources */,
+				3AAA322924684A1100100FF8 /* SpellsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

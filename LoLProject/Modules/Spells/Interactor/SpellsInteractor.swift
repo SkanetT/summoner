@@ -6,12 +6,12 @@
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
-import RealmSwift
+
 import Foundation
 
 class SpellsInteractor: SpellsInteractorInput {
     
-    private weak var output: SpeellsnteractorOutput?
+    private weak var output: SpeellsInteractorOutput?
 
     
     func fetchSpellList() {
@@ -19,17 +19,11 @@ class SpellsInteractor: SpellsInteractorInput {
     }
     
     
-    func attach(_ output: SpeellsnteractorOutput) {
+    func attach(_ output: SpeellsInteractorOutput) {
         self.output = output
     }
 }
 
-protocol SpellsInteractorInput: class {
-    func attach(_ output: SpeellsnteractorOutput)
-    func fetchSpellList()
-}
 
-protocol SpeellsnteractorOutput: class {
-    func didReciveSpellList(spells: Results<SummonerSpell>)
-}
+
 
