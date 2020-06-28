@@ -13,8 +13,11 @@ class StatusAssembler {
     static func createModule() -> UIViewController{
         let viewController = StatusController()
         let router = StatusRouter(viewController)
-        let presenter = StatusPresenter(router)
+        let interactor = StatusInteractor()
+        let presenter = StatusPresenter(router, interactor)
+        let tableHander = StatusTableHandler()
         viewController.presenter = presenter
+        viewController.tableHandler = tableHander
         
         return viewController
     }

@@ -10,6 +10,7 @@ import Foundation
 
 protocol StatusPresenterInput: class {
     func attach(_ viewController: StatusPresenterOutput)
+    func viewDidLoad()
     func didTapClose()
     
 }

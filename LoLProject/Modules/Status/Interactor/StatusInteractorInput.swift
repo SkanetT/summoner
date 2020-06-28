@@ -9,5 +9,6 @@
 import Foundation
 
 protocol StatusInteractorInput: class {
-    
+    func attach(_ output: StatusInteractorOutput)
+    func fetchServerList()
 }

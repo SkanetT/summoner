@@ -11,8 +11,6 @@ import RealmSwift
 
 class LeagueController: UIViewController {
     
-    
-    
     var leagueId: String = ""
     
     var rankData: RankData?

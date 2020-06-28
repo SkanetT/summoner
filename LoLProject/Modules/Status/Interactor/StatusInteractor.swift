@@ -10,4 +10,17 @@ import Foundation
 
 class StatusInteractor: StatusInteractorInput {
     
+    
+    
+    weak var output: StatusInteractorOutput?
+    
+    func attach(_ output: StatusInteractorOutput) {
+        self.output = output
+        
+    }
+    func fetchServerList() {
+        output?.didReciveServerList(servers: GlobalConstants.shared.servers)
+    }
+    
+    
 }

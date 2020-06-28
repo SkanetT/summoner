@@ -395,7 +395,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             }
             
             header.tapHandler = {[weak self] value in
-                let leagueVC = LeagueController()
+         //       let leagueVC = LeagueController()
                 
                 let req = RankRequest(leagueId: value, server: foundSummoner.region)
                 
@@ -403,8 +403,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
                 NetworkAPI.shared.dataTask(request: req) {[weak self] result in
                     switch result{
                     case.success(let rankData):
-                        leagueVC.rankData = rankData
                         DispatchQueue.main.async {
+                            let leagueVC = LeagueAssembler.createModule(rankData)
                             self?.navigationController?.pushViewController(leagueVC, animated: true)
                         }
                     case .failure:

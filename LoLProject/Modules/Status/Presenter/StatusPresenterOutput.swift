@@ -9,6 +9,6 @@
 import Foundation
 
 protocol StatusPresenterOutput: class {
-    
+    func didReciveServerList(servers: [String])
     
 }

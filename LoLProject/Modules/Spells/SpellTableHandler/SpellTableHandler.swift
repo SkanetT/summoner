@@ -10,10 +10,7 @@ import UIKit
 
 class SpellTableHandler: NSObject, SpellTableHandlerProtocol {
     
-    func updateData(_ spellList: [SpellModel]) {
-        self.spellList = spellList
-        tableView?.reloadData()
-    }
+    
     
     private weak var tableView: UITableView?
     var spellList: [SpellModel] = []
@@ -22,6 +19,11 @@ class SpellTableHandler: NSObject, SpellTableHandlerProtocol {
         self.tableView = tableView
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+    }
+    
+    func updateData(_ spellList: [SpellModel]) {
+        self.spellList = spellList
+        tableView?.reloadData()
     }
     
 }
