@@ -13,9 +13,8 @@ import RealmSwift
 class NetworkAPI {
     
     static let shared = NetworkAPI()
-    static let que = DispatchQueue.init(label: "com.imageloader", qos: .utility, attributes: .concurrent)
     
-    func dataTask<Request: BaseRequestProtocol>(request: Request, completion: @escaping ((Result<Request.response,APIErrors>) -> ()) ) {
+    func dataTask<Request: BaseRequestProtocol> (request: Request, completion: @escaping ((Result<Request.response,APIErrors>) -> ()) ) {
         guard Reachability.shared.isConnectedToNetwork() else {
             completion(.failure(.noInternet))
             return
@@ -45,8 +44,6 @@ class NetworkAPI {
             
         }.resume()
     }
-    
-    
     
     func fetchCurrentChampionsList(completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
         let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion.json"

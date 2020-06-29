@@ -9,11 +9,7 @@
 import UIKit
 import RealmSwift
 
-
-
-
 class SummonerViewController: SpinnerController {
-    
     
     @IBOutlet weak var mostPlayed: UIView!
     @IBOutlet weak var topWallpaper: UIView!
@@ -26,16 +22,9 @@ class SummonerViewController: SpinnerController {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
-    
     let dataQueue: DispatchQueue = DispatchQueue.init(label: "qqq", qos: .userInteractive)
     
     weak var delegate: LoginControllerDelegate?
-    let refrechControll: UIRefreshControl = {
-        let refrechControll = UIRefreshControl()
-        refrechControll.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-        
-        return refrechControll
-    }()
     
     let header = RankView()
     let footer = MoreFooterView()
@@ -44,8 +33,8 @@ class SummonerViewController: SpinnerController {
     
     let champions = try! Realm().objects(Champion.self)
     let spells = try! Realm().objects(SummonerSpell.self)
-    let summoner = try! Realm().objects(FoundSummoner.self)
-    let saveSummoner = try! Realm().objects(SaveSummoner.self)
+    let foundSummoner = RealmManager.fetchFoundSummoner()
+    let saveSummoner = RealmManager.fetchSaveSummoner()
     
     var matchModel: [MatchModel] = []
     
@@ -66,9 +55,7 @@ class SummonerViewController: SpinnerController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showSpinner()
-        
-        
-        guard let foundSummoner = summoner.first else { return }
+        guard let foundSummoner = foundSummoner else { return }
         
         fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
         setupUI()
@@ -78,20 +65,12 @@ class SummonerViewController: SpinnerController {
         title = "\(foundSummoner.name) (\(foundSummoner.region))"
         lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
         
-        
-        
         summonerIconImage.downloadSD(type: .profileIcon(id: foundSummoner.profileIconId.description))
-        
-        
-        
-        
         
         fetchMatchHistory(summonerName: foundSummoner.name, summonerId: foundSummoner.id, accountId: foundSummoner.accountId, server: foundSummoner.region)
         
         fetchMostPlayedChampions(summonerId: foundSummoner.id, server: foundSummoner.region)
-        
     }
-    
     
     func fetchMatchHistory(summonerName: String, summonerId: String, accountId: String, server: String) {
         let matchHistoryRequest = MatchHistoryRequest.init(accountId: accountId, server: server)
@@ -105,7 +84,6 @@ class SummonerViewController: SpinnerController {
                 self.matchsArray = matchs.matches.map{ .init(isExpanded: false, match: $0) }
                 
                 self.matchHistoryLoad(region: server, summonerName: summonerName, summonerId: summonerId)
-                
                 
             case .failure(let error):
                 self.showErrorMessage(error)
@@ -148,26 +126,17 @@ class SummonerViewController: SpinnerController {
                         noData.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
                     }
                 }
-                
             case.failure:
                 print("No most Played")
             }
         }
-        
-        
     }
-    
-    
-    
+
     func tableViewConfiguration() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = false
         tableView.showsVerticalScrollIndicator = false
-        
-        //  tableView.refreshControl = refrechControll
-        
-        
         
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
         tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
@@ -220,8 +189,8 @@ class SummonerViewController: SpinnerController {
     
     
     func configureSaveBitton() {
-        guard let actualFoundSummoner = summoner.first, let actualSaveSummoner = saveSummoner.first else { return }
-        if actualFoundSummoner.id == actualSaveSummoner.id {
+        guard let foundSummoner = foundSummoner, let saveSummoner = saveSummoner else { return }
+        if foundSummoner.id == saveSummoner.id {
             saveButton.isHidden = true
         } else {
             saveButton.isHidden = false
@@ -239,22 +208,12 @@ class SummonerViewController: SpinnerController {
     
     
     @IBAction func saveSummoner(_ sender: Any ) {
-        guard let actualFoundSummoner = summoner.first, let actualSaveSummoner = saveSummoner.first else { return }
-        if actualFoundSummoner.id != actualSaveSummoner.id {
-            let ac = UIAlertController(title: "\(actualFoundSummoner.name) will save", message: "\(actualSaveSummoner.name) will delete", preferredStyle: .alert)
+        guard let foundSummoner = foundSummoner, let saveSummoner = saveSummoner else { return }
+        if foundSummoner.id != saveSummoner.id {
+            let ac = UIAlertController(title: "\(foundSummoner.name) will save", message: "\(saveSummoner.name) will delete", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .default) {[weak self]_ in
-                let realm = try! Realm()
-                let newSaveSummoner = SaveSummoner()
-                newSaveSummoner.id = actualFoundSummoner.id
-                newSaveSummoner.name = actualFoundSummoner.name
-                newSaveSummoner.profileIconId = actualFoundSummoner.profileIconId
-                newSaveSummoner.region = actualFoundSummoner.region
                 
-                try! realm.write {
-                    realm.delete(actualSaveSummoner)
-                    realm.add(newSaveSummoner)
-                }
-                
+                RealmManager.reWriteSaveSummoner()
                 self?.dismiss(animated: true, completion: nil)
             }
             
@@ -395,10 +354,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             }
             
             header.tapHandler = {[weak self] value in
-         //       let leagueVC = LeagueController()
                 
                 let req = RankRequest(leagueId: value, server: foundSummoner.region)
-                
                 
                 NetworkAPI.shared.dataTask(request: req) {[weak self] result in
                     switch result{
@@ -424,10 +381,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
         return 1
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        
         
         if indexPath.section >= topWallpapperIndex + 5 || indexPath.section <= topWallpapperIndex - 5   {
             if self.topWallpaper.isHidden == false {
@@ -440,7 +394,7 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
             }
         }
         
-        guard let foundSummoner = summoner.first else { return }
+        guard let foundSummoner = foundSummoner else { return }
         guard indexPath.section == matchModel.count - 6 else { return }
         matchHistoryLoad(region: foundSummoner.region, summonerName: foundSummoner.name, summonerId: foundSummoner.id)
         
@@ -523,39 +477,19 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
     }
     
     private func relogin(name: String) {
-        guard let actualFoundSummoner = summoner.first else { return }
-        if name != actualFoundSummoner.name {
-            
-            let server = actualFoundSummoner.region
-            
+        guard let foundSummoner = foundSummoner else { return }
+        if name != foundSummoner.name {
+
+            let server = foundSummoner.region
             let request = SummonerRequest(summonerName: name, server: server)
             NetworkAPI.shared.dataTask(request: request) {[weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case.success(let summonerData):
                     DispatchQueue.main.async {
-
-                        let realm = try! Realm()
-
-                        let foundSummoner = FoundSummoner()
-                        foundSummoner.name = summonerData.name
-                        foundSummoner.id = summonerData.id
-                        foundSummoner.accountId = summonerData.accountId
-                        foundSummoner.puuid = summonerData.puuid
-                        foundSummoner.profileIconId = summonerData.profileIconId
-                        foundSummoner.summonerLevel = summonerData.summonerLevel
-                        foundSummoner.region = server
-                        
-                        
-                        try! realm.write {
-                            realm.delete(actualFoundSummoner)
-                            realm.add(foundSummoner)
-                            
-                        }
-                    
+                        RealmManager.reWriteFoundSummoner(summonerData)
                         self.dismiss(animated: true, completion: nil)
                     }
-                        
                 case.failure(let error):
                     print(error)
                 }

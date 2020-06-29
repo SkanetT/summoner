@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import SDWebImage
 
 class MatchHistoryCell: UITableViewCell {
@@ -22,8 +21,8 @@ class MatchHistoryCell: UITableViewCell {
     @IBOutlet weak var typeAndWin: UILabel!
     @IBOutlet weak var dateAndTime: UILabel!
     
-    @IBOutlet weak var Spell1: UIImageView!
-    @IBOutlet weak var Spell2: UIImageView!
+    @IBOutlet weak var spell1: UIImageView!
+    @IBOutlet weak var spell2: UIImageView!
     
     @IBOutlet weak var item0: UIImageView!
     @IBOutlet weak var item1: UIImageView!
@@ -92,14 +91,18 @@ class MatchHistoryCell: UITableViewCell {
         }
         
         dateAndTime.text = "\(summonerInMatch.date) \(summonerInMatch.time) "
-        
-        let champions = try! Realm().objects(Champion.self)
-        
-        if let champion = champions.first(where: {$0.key == summonerInMatch.championKey}) {
-        
-            championIcon.downloadSD(type: .championIcon(id: champion.id))
+                
+        if let championId = RealmManager.fetchChampionIdfromKey(summonerInMatch.championKey) {
+            championIcon.downloadSD(type: .championIcon(id: championId))
         }
         
+        if let spell1Id = RealmManager.fetchSpellIdfromKey(summonerInMatch.spellKey1) {
+            spell1.downloadSD(type: .spellIcon(id: spell1Id))
+        }
+        
+        if let spell2Id = RealmManager.fetchSpellIdfromKey(summonerInMatch.spellKey2) {
+                   spell2.downloadSD(type: .spellIcon(id: spell2Id))
+               }
         
         item0.downloadSD(type: .itemIcon(id: summonerInMatch.firstItemId))
         item1.downloadSD(type: .itemIcon(id: summonerInMatch.secondItemId))
@@ -108,18 +111,6 @@ class MatchHistoryCell: UITableViewCell {
         item4.downloadSD(type: .itemIcon(id: summonerInMatch.fifthItemId))
         item5.downloadSD(type: .itemIcon(id: summonerInMatch.sixthItemId))
         item6.downloadSD(type: .itemIcon(id: summonerInMatch.wardId))
-
-
-
-
-        let spells = try! Realm().objects(SummonerSpell.self)
-
-
-        if let spell1 = spells.first(where: { $0.key == summonerInMatch.spellKey1 }), let spell2 = spells.first(where: { $0.key == summonerInMatch.spellKey2 }) {
-            Spell1.downloadSD(type: .spellIcon(id: spell1.id))
-            Spell2.downloadSD(type: .spellIcon(id: spell2.id))
-
-        }
        
     }
     

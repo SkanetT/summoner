@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -186,8 +185,6 @@
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="Spell1" destination="4uY-MA-bS1" id="Rkk-9h-4ji"/>
-                <outlet property="Spell2" destination="GAP-HS-GbC" id="bFh-Qf-JQy"/>
                 <outlet property="championIcon" destination="a9V-TM-at4" id="YQN-7W-lso"/>
                 <outlet property="dateAndTime" destination="YFg-VP-GlM" id="UBb-Xw-8HH"/>
                 <outlet property="item0" destination="FVG-ja-OGZ" id="rwn-6Z-qnK"/>
@@ -199,6 +196,8 @@
                 <outlet property="item6" destination="xDm-ed-eQV" id="Fhf-qB-J9O"/>
                 <outlet property="kda" destination="kBQ-Ws-Jfo" id="PjI-zG-9qn"/>
                 <outlet property="moreButton" destination="nsr-XB-e4y" id="UV9-jH-aIa"/>
+                <outlet property="spell1" destination="4uY-MA-bS1" id="Rkk-9h-4ji"/>
+                <outlet property="spell2" destination="GAP-HS-GbC" id="bFh-Qf-JQy"/>
                 <outlet property="stack" destination="wfQ-Db-NAC" id="av0-xj-aaH"/>
                 <outlet property="typeAndWin" destination="ZPK-tM-wtz" id="G5g-Wn-Dg9"/>
                 <outlet property="winOrLose" destination="W7c-ap-DUN" id="Fda-In-RNL"/>

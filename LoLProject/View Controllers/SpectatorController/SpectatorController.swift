@@ -20,12 +20,7 @@ class SpectatorController: UIViewController {
     @IBOutlet weak var banStack1: UIStackView!
     @IBOutlet weak var banStack2: UIStackView!
     
-    
-    
     let champions = try! Realm().objects(Champion.self)
-    
-    
-    
     
     lazy var coll1 : CollectionViewDelegate = {
         let data = spectatorDate?.participants.filter{ $0.teamId == 100 }
@@ -48,22 +43,11 @@ class SpectatorController: UIViewController {
         
         collection1.dataSource = coll1
         collection1.delegate = coll1
-        
-        
         collection1.reloadData()
-        
-        
-        
-        
-        
-        
         collection2.register(UINib(nibName: "SpectatorCell", bundle: nil), forCellWithReuseIdentifier: "spectatorCell")
         collection2.dataSource = coll2
         collection2.delegate = coll2
         collection2.reloadData()
-        
-        
-        
         
         setupBanStackViews()
     }
@@ -132,13 +116,7 @@ class SpectatorController: UIViewController {
             }
             banStack2.addArrangedSubview(image)
         }
-        
-        
-        
     }
-    
-    // ARC
-    
 }
 
 extension SpectatorController: SpectatorDelegate {
@@ -149,15 +127,10 @@ extension SpectatorController: SpectatorDelegate {
     
 }
 
-class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var participantSpectators = [ParticipantSpectator]()
     weak var delegate: SpectatorDelegate?
-    
-    
-    
-    let summoner = try! Realm().objects(FoundSummoner.self)
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return participantSpectators.count
     }
@@ -184,11 +157,9 @@ class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let foundSummoner = summoner.first else { return }
+        guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return }
         
         let server = foundSummoner.region
-        
-        
         
         if participantSpectators[indexPath.row].summonerId != foundSummoner.id {
             
@@ -197,33 +168,11 @@ class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionVie
                 guard let self = self else { return }
                 switch result {
                 case.success(let summonerData):
-                    print(summonerData.name)
                     DispatchQueue.main.async {
-
-                        let realm = try! Realm()
-
                         
-                        let foundSummoner = FoundSummoner()
-                        foundSummoner.name = summonerData.name
-                        foundSummoner.id = summonerData.id
-                        foundSummoner.accountId = summonerData.accountId
-                        foundSummoner.puuid = summonerData.puuid
-                        foundSummoner.profileIconId = summonerData.profileIconId
-                        foundSummoner.summonerLevel = summonerData.summonerLevel
-                        foundSummoner.region = server
-                        
-                        
-                        try! realm.write {
-                            realm.delete(self.summoner)
-                            realm.add(foundSummoner)
-                            
-                        }
-                    
+                        RealmManager.reWriteFoundSummoner(summonerData)
                         self.delegate?.dissmissAll()
-
                     }
-                        
-                    
                     
                 case.failure(let error):
                     print(error)
@@ -236,7 +185,6 @@ class CollectionViewDelegate:NSObject, UICollectionViewDelegate, UICollectionVie
     
     
     init(data: [ParticipantSpectator], delegate: SpectatorDelegate ) {
-        
         self.delegate = delegate
         self.participantSpectators = data
         

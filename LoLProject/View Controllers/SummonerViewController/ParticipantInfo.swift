@@ -19,8 +19,6 @@ class ParticipantInfo: XibBasedView {
     }
     let champions = try! Realm().objects(Champion.self)
     let spells = try! Realm().objects(SummonerSpell.self)
- //   let networkAPI = NetworkAPI()
-    
     
     @IBOutlet weak var participantNameLabel: UILabel!
     @IBOutlet weak var championIcon: UIImageView!

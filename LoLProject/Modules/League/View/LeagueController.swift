@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import RealmSwift
 
 class LeagueController: UIViewController {
     
-    var leagueId: String = ""
-    
     var rankData: RankData?
+    var tableHandler: LeagueTableHandlerProtocol?
     
     var currectTier: [Entry] = []
     var tierOne: [Entry] = []
@@ -21,10 +19,10 @@ class LeagueController: UIViewController {
     var tierThree: [Entry] = []
     var tierFour: [Entry] = []
     
-    let summoner  = try! Realm().objects(FoundSummoner.self)
+    let foundSummoner = RealmManager.fetchFoundSummoner()
     
-    var index = 0
-    
+    var presenter: LeaguePresenterInput?
+        
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -32,12 +30,12 @@ class LeagueController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         guard let rankData = rankData else { return }
         
+        presenter?.attach(self)
+        
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        
+                
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = titleColor
         
@@ -56,7 +54,6 @@ class LeagueController: UIViewController {
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
         
-        
         tierOne = rankData.entries.filter({ $0.rank == "I" })
         tierOne.sort(by: { $0.leaguePoints > $1.leaguePoints })
         
@@ -69,10 +66,7 @@ class LeagueController: UIViewController {
         tierFour = rankData.entries.filter({ $0.rank == "IV" })
         tierFour.sort(by: { $0.leaguePoints > $1.leaguePoints })
         
-        
-        
-        
-        if let foundSommonerName = summoner.first?.name {
+        if let foundSommonerName = foundSummoner?.name {
             if let summonerEntry = rankData.entries.first(where: { $0.summonerName == foundSommonerName }) {
                 switch summonerEntry.rank {
                 case "I":
@@ -102,12 +96,7 @@ class LeagueController: UIViewController {
                     break
                 }
             }
-            
         }
-        
-        
-        
-        
         tableView.reloadData()
     }
     
@@ -137,8 +126,6 @@ class LeagueController: UIViewController {
             break
         }
     }
-    
-    
 }
 
 extension LeagueController: UITableViewDelegate, UITableViewDataSource{
@@ -149,7 +136,7 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "leagueCell", for: indexPath) as! LeagueCell
         
-        guard let foundSommonerName = summoner.first?.name  else { return cell }
+        guard let foundSommonerName = foundSummoner?.name  else { return cell }
         
         cell.clipsToBounds = true
         cell.layer.cornerRadius = 10
@@ -163,17 +150,13 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
             cell.lpLabel.text = "Points"
         } else {
             
-            
             cell.selectionStyle = .none
             cell.nameLabel.text = currectTier[indexPath.row - 1].summonerName
-            cell.lpLabel.text = String(currectTier[indexPath.row - 1].leaguePoints)
-            cell.winLabel.text = String(currectTier[indexPath.row - 1].wins)
+            cell.lpLabel.text = currectTier[indexPath.row - 1].leaguePoints.description
+            cell.winLabel.text = currectTier[indexPath.row - 1].wins.description
             cell.backgroundColor = .white
             
-            
             if foundSommonerName == currectTier[indexPath.row - 1].summonerName {
-                
-                
                 cell.backgroundColor = .yellow
             }
         }
@@ -181,37 +164,18 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row != 0, let foundSummoner = summoner.first  else { return }
+        guard indexPath.row != 0, let foundSummoner = self.foundSummoner else { return }
         guard currectTier[indexPath.row - 1].summonerId != foundSummoner.id else { return }
         
         let server = foundSummoner.region
         
         let request = SummonerRequest(summonerName: currectTier[indexPath.row - 1].summonerName, server: server)
         
-        
         NetworkAPI.shared.dataTask(request: request) {result in
             switch result {
             case.success(let summonerData):
                 DispatchQueue.main.async {
-                    
-                    let realm = try! Realm()
-                    
-                    
-                    let newSummoner = FoundSummoner()
-                    newSummoner.name = summonerData.name
-                    newSummoner.id = summonerData.id
-                    newSummoner.accountId = summonerData.accountId
-                    newSummoner.puuid = summonerData.puuid
-                    newSummoner.profileIconId = summonerData.profileIconId
-                    newSummoner.summonerLevel = summonerData.summonerLevel
-                    newSummoner.region = server
-                    
-                    
-                    try! realm.write {
-                        realm.delete(foundSummoner)
-                        realm.add(newSummoner)
-                        
-                    }
+                    RealmManager.reWriteFoundSummoner(summonerData)
                     
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -219,8 +183,10 @@ extension LeagueController: UITableViewDelegate, UITableViewDataSource{
             case.failure(let error):
                 print(error)
             }
-            
-            
         }
     }
+}
+
+extension LeagueController: LeaguePresenterOutput {
+    
 }

@@ -26,7 +26,6 @@ class SpellsController: SpinnerController {
         tableViewHandler?.attach(tableView)
         presenter?.viewDidLoad()
         
-        #warning("TODO")
         customiseNavigatorBar()
         tableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
         

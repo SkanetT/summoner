@@ -96,6 +96,11 @@
 		3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1D249AB6BF00F8B733 /* View.swift */; };
 		3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */; };
 		3AC6ED22249D3E1300F8B733 /* SpectatorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */; };
+		3AC8B1EF24A925C600DEF819 /* LeagueTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1EE24A925C600DEF819 /* LeagueTableHandler.swift */; };
+		3AC8B1F124A9267800DEF819 /* LeagueTableHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F024A9267800DEF819 /* LeagueTableHandlerProtocol.swift */; };
+		3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */; };
+		3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */; };
+		3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */; };
@@ -211,6 +216,11 @@
 		3AC6ED1D249AB6BF00F8B733 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorCell.swift; sourceTree = "<group>"; };
 		3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpectatorCell.xib; sourceTree = "<group>"; };
+		3AC8B1EE24A925C600DEF819 /* LeagueTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableHandler.swift; sourceTree = "<group>"; };
+		3AC8B1F024A9267800DEF819 /* LeagueTableHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableHandlerProtocol.swift; sourceTree = "<group>"; };
+		3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenter.swift; sourceTree = "<group>"; };
+		3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterInput.swift; sourceTree = "<group>"; };
+		3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterOutput.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSummoner.swift; sourceTree = "<group>"; };
@@ -549,6 +559,8 @@
 			children = (
 				3AB9452C24A8EA9A00B06936 /* LeagueAssembler.swift */,
 				3AB9452B24A8EA2000B06936 /* View */,
+				3AC8B1F224AA869900DEF819 /* Presenter */,
+				3AC8B1ED24A9244800DEF819 /* LeagueTableHander */,
 				3AB9452A24A8E9F000B06936 /* Cells */,
 			);
 			path = League;
@@ -592,6 +604,25 @@
 				3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */,
 			);
 			path = SpectatorController;
+			sourceTree = "<group>";
+		};
+		3AC8B1ED24A9244800DEF819 /* LeagueTableHander */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B1EE24A925C600DEF819 /* LeagueTableHandler.swift */,
+				3AC8B1F024A9267800DEF819 /* LeagueTableHandlerProtocol.swift */,
+			);
+			path = LeagueTableHander;
+			sourceTree = "<group>";
+		};
+		3AC8B1F224AA869900DEF819 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */,
+				3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */,
+				3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -810,6 +841,7 @@
 				3AC26807248C2D0E009C3D18 /* MenuOption.swift in Sources */,
 				3A8CB7A4245E2FF1005801A8 /* String.swift in Sources */,
 				3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */,
+				3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */,
 				3A8CB71F24550767005801A8 /* ChampionsViewControllerCell.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3AE82CFB24A6980700B7A417 /* SpellsAssembler.swift in Sources */,
@@ -855,13 +887,16 @@
 				3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
 				3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */,
+				3AC8B1F124A9267800DEF819 /* LeagueTableHandlerProtocol.swift in Sources */,
 				3AB9451F24A7979600B06936 /* StatusInteractor.swift in Sources */,
 				3AE82D0224A698CB00B7A417 /* SpellsRouting.swift in Sources */,
+				3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
+				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
 				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
 				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,
@@ -880,6 +915,7 @@
 				3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,
 				3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */,
+				3AC8B1EF24A925C600DEF819 /* LeagueTableHandler.swift in Sources */,
 				3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */,
 				3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
