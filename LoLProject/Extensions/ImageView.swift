@@ -8,7 +8,6 @@
 
 import UIKit
 import SDWebImage
-import RealmSwift
 
 extension UIImageView {
     
@@ -50,6 +49,7 @@ extension UIImageView {
     {
         
         self.sd_setImage(with: type.url, placeholderImage: #imageLiteral(resourceName: "Bronze"))
+        
     }
     
     
@@ -70,10 +70,8 @@ enum ImageType {
     var url: URL? {
         
         var version = ""
-        
-        let versions = try! Realm().objects(Version.self)
-        
-        if let lastVerion = versions.first?.lastVesion {
+                
+        if let lastVerion = RealmManager.fetchLastVersion() {
             version = lastVerion
         }
         

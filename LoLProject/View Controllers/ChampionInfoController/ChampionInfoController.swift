@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class ChampionInfoController: UIViewController {
     
@@ -17,10 +16,6 @@ class ChampionInfoController: UIViewController {
     let header = HeaderForChampion()
     
     var championData: SelectedChampion?
-    
-//    var count = 0
-    
-    
     
     var id = ""
     
@@ -49,21 +44,11 @@ class ChampionInfoController: UIViewController {
         tableView.allowsSelection = false
         
         
-////        navigationItem.leftBarButtonItem = .init(barButtonSystemItem: .cancel, target: self, action: #selector(back))
-//        navigationItem.backBarButtonItem = .init(title: "Back", style: .plain, target: self, action: #selector(back))
-        
-//        navigationItem.leftBarButtonItem?.tintColor = .black
-        
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
         
         
         title = championData?.name
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
-//            self.tableView.reloadData()
-//        })
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 44
-        
+
         tableView.register(UINib(nibName: "SkillCell", bundle: nil), forCellReuseIdentifier: "skill")
         
         
@@ -119,9 +104,7 @@ extension ChampionInfoController: UITableViewDelegate, UITableViewDataSource {
                 print("Errort")
             }
         }
-        
-        //    header.setData(id: id)
-        
+                
         return header
     }
     

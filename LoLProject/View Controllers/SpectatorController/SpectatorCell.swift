@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SpectatorCell: UICollectionViewCell {
     
@@ -19,9 +18,6 @@ class SpectatorCell: UICollectionViewCell {
 
     @IBOutlet weak var summonerNameLabel: UILabel!
     
-    let champions = try! Realm().objects(Champion.self)
-    let spells = try! Realm().objects(SummonerSpell.self)
-
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -46,17 +42,20 @@ class SpectatorCell: UICollectionViewCell {
     }
     
     func setData(data: ParticipantSpectator) {
-        
-        guard let champion = champions.first(where: { $0.key == data.championId.description }) else { return }
+                
+        guard let championId = RealmManager.fetchChampionIdfromKey(data.championId.description) else { return }
         summonerNameLabel.text = data.summonerName
         summonerIcon.downloadSD(type: .profileIcon(id: data.profileIconId.description))
-        background.downloadSD(type: .championWallpaper(id: champion.id, index: "0"))
+        background.downloadSD(type: .championWallpaper(id: championId, index: "0"))
         
-        if let spell1 = spells.first(where: { $0.key == data.spell1Id.description }), let spell2 = spells.first(where: { $0.key == data.spell2Id.description }) {
-            summonerSpell1.downloadSD(type: .spellIcon(id: spell1.id))
-            summonerSpell2.downloadSD(type: .spellIcon(id: spell2.id))
-
+        if let spell1Id = RealmManager.fetchSpellIdfromKey(data.spell1Id.description) {
+             summonerSpell1.downloadSD(type: .spellIcon(id: spell1Id))
         }
+        
+        if let spell2Id = RealmManager.fetchSpellIdfromKey(data.spell2Id.description) {
+             summonerSpell1.downloadSD(type: .spellIcon(id: spell2Id))
+        }
+        
     }
 
 }

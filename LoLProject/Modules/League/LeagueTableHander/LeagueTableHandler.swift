@@ -10,7 +10,7 @@ import UIKit
 
 class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
     
-    
+    private var userSelectSomething: ((String) -> ())?
     
     private weak var tableView: UITableView?
     let foundSummoner = RealmManager.fetchFoundSummoner()

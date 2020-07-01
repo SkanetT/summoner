@@ -28,6 +28,30 @@ class RealmManager {
         }
     }
     
+    static func loginSummoner(summonerData: SummonerData, region: String) {
+        
+        let realm = try! Realm()
+        let foundSummoner = FoundSummoner()
+        foundSummoner.name = summonerData.name
+        foundSummoner.id = summonerData.id
+        foundSummoner.accountId = summonerData.accountId
+        foundSummoner.puuid = summonerData.puuid
+        foundSummoner.profileIconId = summonerData.profileIconId
+        foundSummoner.summonerLevel = summonerData.summonerLevel
+        foundSummoner.region = region
+        
+        let saveSummoner = SaveSummoner()
+        saveSummoner.name = summonerData.name
+        saveSummoner.id = summonerData.id
+        saveSummoner.profileIconId = summonerData.profileIconId
+        saveSummoner.region = region
+        
+        try! realm.write {
+            realm.add(foundSummoner)
+            realm.add(saveSummoner)
+        }
+    }
+    
     static func reWriteFoundSummoner(_ summonerData: SummonerData) {
         guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return }
         
@@ -83,8 +107,16 @@ class RealmManager {
         }
     }
     
+    static func fetchLastVersion() -> String? {
+        let version = try! Realm().objects(Version.self)
+        if let lastVersion = version.first {
+            return lastVersion.lastVesion
+        } else {
+            return nil
+        }
+    }
     
     static func fetchSpellList() -> Results<SummonerSpell> {
-         return try! Realm().objects(SummonerSpell.self)
+        return try! Realm().objects(SummonerSpell.self)
     }
 }

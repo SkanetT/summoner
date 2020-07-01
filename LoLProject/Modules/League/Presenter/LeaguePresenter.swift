@@ -10,7 +10,6 @@ import Foundation
 
 class LeaguePresenter: LeaguePresenterInput {
    
-    
     private weak var viewController: LeaguePresenterOutput?
     var rankData: RankData
     
@@ -20,5 +19,9 @@ class LeaguePresenter: LeaguePresenterInput {
     
     func attach(_ viewController: LeaguePresenterOutput) {
         self.viewController = viewController
+       }
+    
+    func viewDidLoad() {
+           
        }
 }

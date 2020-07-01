@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SummonerViewController: SpinnerController {
     
@@ -31,8 +30,6 @@ class SummonerViewController: SpinnerController {
     
     var matchsArray: [ExpandableMathHistory] = []
     
-    let champions = try! Realm().objects(Champion.self)
-    let spells = try! Realm().objects(SummonerSpell.self)
     let foundSummoner = RealmManager.fetchFoundSummoner()
     let saveSummoner = RealmManager.fetchSaveSummoner()
     
@@ -336,8 +333,8 @@ extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let summoner = try! Realm().objects(FoundSummoner.self)
-        guard let foundSummoner = summoner.first else { return nil }
+        guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return nil }
+        
         if section == 0 {
             
             let leagueRequest = LeagueRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)

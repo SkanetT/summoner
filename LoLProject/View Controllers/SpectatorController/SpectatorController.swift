@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SpectatorController: UIViewController {
     
@@ -20,7 +19,6 @@ class SpectatorController: UIViewController {
     @IBOutlet weak var banStack1: UIStackView!
     @IBOutlet weak var banStack2: UIStackView!
     
-    let champions = try! Realm().objects(Champion.self)
     
     lazy var coll1 : CollectionViewDelegate = {
         let data = spectatorDate?.participants.filter{ $0.teamId == 100 }
@@ -92,12 +90,10 @@ class SpectatorController: UIViewController {
             image.translatesAutoresizingMaskIntoConstraints = false
             image.widthAnchor.constraint(equalTo: image.heightAnchor).isActive = true
             
-            if let champion = champions.first(where: { $0.key == spectatorDate.bannedChampions[i].championId.description}) {
-                image.downloadSD(type: .championIcon(id: champion.id))
-                
-            } else {
-                image.image = nil
+            if let championId = RealmManager.fetchChampionIdfromKey(spectatorDate.bannedChampions[i].championId.description) {
+                    image.downloadSD(type: .championIcon(id: championId))
             }
+            
             banStack1.addArrangedSubview(image)
         }
         
@@ -109,11 +105,10 @@ class SpectatorController: UIViewController {
             image.clipsToBounds = true
             image.layer.cornerRadius = 5
             
-            if let champion = champions.first(where: { $0.key == spectatorDate.bannedChampions[i].championId.description}) {
-                image.downloadSD(type: .championIcon(id: champion.id))
-            } else {
-                image.image = nil
+            if let championId = RealmManager.fetchChampionIdfromKey(spectatorDate.bannedChampions[i].championId.description) {
+                    image.downloadSD(type: .championIcon(id: championId))
             }
+            
             banStack2.addArrangedSubview(image)
         }
     }

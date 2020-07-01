@@ -11,4 +11,6 @@ import UIKit
 protocol LeagueTableHandlerProtocol {
     func attach(_ tableView: UITableView)
     func updateData(tier: [Entry])
+    
+    //
 }

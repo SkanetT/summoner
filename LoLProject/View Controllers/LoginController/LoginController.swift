@@ -10,9 +10,7 @@ import UIKit
 import RealmSwift
 
 class LoginController: SpinnerController {
-    
-    // @IBOutlet var tfToTop: NSLayoutConstraint!
-    
+        
     @IBOutlet weak var tfToPicker: NSLayoutConstraint!
     @IBOutlet weak var searchToPicker: NSLayoutConstraint!
     
@@ -90,7 +88,6 @@ class LoginController: SpinnerController {
             self.serverLabel.text = self.servers.first
         }
         updateCurrentVersion()
-        
         
         
         let realm = try! Realm()
@@ -202,30 +199,10 @@ class LoginController: SpinnerController {
         NetworkAPI.shared.dataTask(request: summonerRequest) {[weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success(let summoner):
-                let realm = try! Realm()
-                let foundSummoner = FoundSummoner()
-                foundSummoner.name = summoner.name
-                foundSummoner.id = summoner.id
-                foundSummoner.accountId = summoner.accountId
-                foundSummoner.puuid = summoner.puuid
-                foundSummoner.profileIconId = summoner.profileIconId
-                foundSummoner.summonerLevel = summoner.summonerLevel
-                foundSummoner.region = region
+            case .success(let summonerData):
                 
-                let saveSummoner = SaveSummoner()
-                saveSummoner.name = summoner.name
-                saveSummoner.id = summoner.id
-                saveSummoner.profileIconId = summoner.profileIconId
-                saveSummoner.region = region
-                
-                
-                try! realm.write {
-                    realm.add(foundSummoner)
-                    realm.add(saveSummoner)
-                    
-                    
-                }
+                RealmManager.loginSummoner(summonerData: summonerData, region: region)
+
                 DispatchQueue.main.async {
                     self.summonerNameTF.text? = ""
                     self.searchButton.alpha = 0.5

@@ -91,7 +91,6 @@
 		3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */; };
 		3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1524969C5600F8B733 /* SpectatorController.swift */; };
 		3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1624969C5600F8B733 /* SpectatorController.xib */; };
-		3AC6ED1A249952E300F8B733 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED19249952E300F8B733 /* ViewController.swift */; };
 		3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */; };
 		3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1D249AB6BF00F8B733 /* View.swift */; };
 		3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */; };
@@ -101,6 +100,7 @@
 		3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */; };
 		3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */; };
 		3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */; };
+		3AC8B1FB24ABDDA100DEF819 /* LoginAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */; };
@@ -211,7 +211,6 @@
 		3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorDate.swift; sourceTree = "<group>"; };
 		3AC6ED1524969C5600F8B733 /* SpectatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorController.swift; sourceTree = "<group>"; };
 		3AC6ED1624969C5600F8B733 /* SpectatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpectatorController.xib; sourceTree = "<group>"; };
-		3AC6ED19249952E300F8B733 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
 		3AC6ED1D249AB6BF00F8B733 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorCell.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenter.swift; sourceTree = "<group>"; };
 		3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterInput.swift; sourceTree = "<group>"; };
 		3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterOutput.swift; sourceTree = "<group>"; };
+		3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembler.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSummoner.swift; sourceTree = "<group>"; };
@@ -277,6 +277,7 @@
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3AC8B1F924ABDD8000DEF819 /* Loading */,
 				3AB9452924A8E75200B06936 /* League */,
 				3A83110F24A7752200D6552D /* Status */,
 				3AAA3226246849E200100FF8 /* Spells */,
@@ -491,7 +492,6 @@
 			children = (
 				3A8CB7A3245E2FF1005801A8 /* String.swift */,
 				3A8CB7A5245E3037005801A8 /* ImageView.swift */,
-				3AC6ED19249952E300F8B733 /* ViewController.swift */,
 				3AC6ED1D249AB6BF00F8B733 /* View.swift */,
 			);
 			path = Extensions;
@@ -623,6 +623,14 @@
 				3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3AC8B1F924ABDD8000DEF819 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -907,6 +915,7 @@
 				3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */,
 				3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */,
 				3AB9452D24A8EA9A00B06936 /* LeagueAssembler.swift in Sources */,
+				3AC8B1FB24ABDDA100DEF819 /* LoginAssembler.swift in Sources */,
 				3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */,
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
@@ -921,7 +930,6 @@
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */,
 				3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */,
-				3AC6ED1A249952E300F8B733 /* ViewController.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
 				3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */,

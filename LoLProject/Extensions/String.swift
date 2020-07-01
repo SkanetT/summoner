@@ -9,7 +9,7 @@
 import UIKit
 
 extension String {
-    func gettingAttributedText() -> NSAttributedString?{
+    func gettingAttributedText() -> NSAttributedString? {
         
         
         let htmlData = NSString(string: self).data(using: String.Encoding.unicode.rawValue)
