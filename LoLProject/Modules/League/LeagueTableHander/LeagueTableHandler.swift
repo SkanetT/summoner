@@ -9,8 +9,12 @@
 import UIKit
 
 class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
+    func setAction(userSelect: ((Entry) -> ())?) {
+        userSelectSomething = userSelect
+    }
     
-    private var userSelectSomething: ((String) -> ())?
+    
+    var userSelectSomething: ((Entry) -> ())?
     
     private weak var tableView: UITableView?
     let foundSummoner = RealmManager.fetchFoundSummoner()
@@ -19,6 +23,8 @@ class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
     
     func attach(_ tableView: UITableView) {
         self.tableView = tableView
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     func updateData(tier: [Entry]) {
@@ -29,7 +35,7 @@ class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
 
 extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currectTier.count
+        return currectTier.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,4 +68,30 @@ extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard indexPath.row != 0, let foundSummoner = self.foundSummoner else { return }
+//        guard currectTier[indexPath.row - 1].summonerId != foundSummoner.id else { return }
+        
+//        let server = foundSummoner.region
+        
+        userSelectSomething?(currectTier[indexPath.row - 1])
+        
+//        let request = SummonerRequest(summonerName: currectTier[indexPath.row - 1].summonerName, server: server)
+        
+//        NetworkAPI.shared.dataTask(request: request) {result in
+//            switch result {
+//            case.success(let summonerData):
+//                DispatchQueue.main.async {
+//                    RealmManager.reWriteFoundSummoner(summonerData)
+//
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//
+//            case.failure(let error):
+//                print(error)
+//            }
+//        }
+    }
+    
 }

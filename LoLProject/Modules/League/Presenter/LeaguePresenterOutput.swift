@@ -9,5 +9,7 @@
 import Foundation
 
 protocol LeaguePresenterOutput: class {
-    
+    func didReciveTier(tier: [Entry])
+    func didReciveUserRank(_ rank: UserRank)
+    func setAction(userSelect: ((Entry) -> ())?)
 }

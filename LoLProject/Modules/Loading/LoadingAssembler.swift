@@ -1,5 +1,5 @@
 //
-//  LoginAssembler.swift
+//  LoadingAssembler.swift
 //  LoLProject
 //
 //  Created by Антон on 30.06.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginAssembler {
+class LoadingAssembler {
     static func createModuler(complition: @escaping (InititalControllerList) -> ()) -> UIViewController {
         let vc = UIViewController()
         return vc

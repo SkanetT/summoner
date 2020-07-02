@@ -100,7 +100,13 @@
 		3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */; };
 		3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */; };
 		3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */; };
-		3AC8B1FB24ABDDA100DEF819 /* LoginAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */; };
+		3AC8B1FB24ABDDA100DEF819 /* LoadingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1FA24ABDDA100DEF819 /* LoadingAssembler.swift */; };
+		3AC8B1FE24ACCA5000DEF819 /* LeagueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1FD24ACCA5000DEF819 /* LeagueInteractor.swift */; };
+		3AC8B20024ACCACC00DEF819 /* LeagueInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B1FF24ACCACC00DEF819 /* LeagueInteractorInput.swift */; };
+		3AC8B20224ACCB8600DEF819 /* LeagueInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20124ACCB8600DEF819 /* LeagueInteractorOutput.swift */; };
+		3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20424ACCE5F00DEF819 /* LeagueRouter.swift */; };
+		3AC8B20724ACCEA500DEF819 /* LeagueRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */; };
+		3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20824AE75CC00DEF819 /* UserRank.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */; };
@@ -220,7 +226,13 @@
 		3AC8B1F324AA878E00DEF819 /* LeaguePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenter.swift; sourceTree = "<group>"; };
 		3AC8B1F524AA886B00DEF819 /* LeaguePresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterInput.swift; sourceTree = "<group>"; };
 		3AC8B1F724AA88E700DEF819 /* LeaguePresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterOutput.swift; sourceTree = "<group>"; };
-		3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembler.swift; sourceTree = "<group>"; };
+		3AC8B1FA24ABDDA100DEF819 /* LoadingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAssembler.swift; sourceTree = "<group>"; };
+		3AC8B1FD24ACCA5000DEF819 /* LeagueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInteractor.swift; sourceTree = "<group>"; };
+		3AC8B1FF24ACCACC00DEF819 /* LeagueInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInteractorInput.swift; sourceTree = "<group>"; };
+		3AC8B20124ACCB8600DEF819 /* LeagueInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInteractorOutput.swift; sourceTree = "<group>"; };
+		3AC8B20424ACCE5F00DEF819 /* LeagueRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueRouter.swift; sourceTree = "<group>"; };
+		3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueRouting.swift; sourceTree = "<group>"; };
+		3AC8B20824AE75CC00DEF819 /* UserRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRank.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSummoner.swift; sourceTree = "<group>"; };
@@ -393,11 +405,11 @@
 		3A8CB6D524549417005801A8 /* LoLProject */ = {
 			isa = PBXGroup;
 			children = (
-				3A14CCD724A6AE4F00488F32 /* Modules */,
 				3AE82CF724A6942E00B7A417 /* Managers */,
 				3A9F856B246086C80090BBAF /* Utilis */,
 				3AD12D3B2460655700DDB6E1 /* Realms */,
 				3A8CB7A1245E2F63005801A8 /* Extensions */,
+				3A14CCD724A6AE4F00488F32 /* Modules */,
 				3A8CB6EB24549B37005801A8 /* Storyboards */,
 				3A8CB6EC24549B5B005801A8 /* Models */,
 				3A8CB6ED24549B75005801A8 /* View Controllers */,
@@ -559,9 +571,12 @@
 			children = (
 				3AB9452C24A8EA9A00B06936 /* LeagueAssembler.swift */,
 				3AB9452B24A8EA2000B06936 /* View */,
+				3AC8B1FC24ACC9FC00DEF819 /* Interactor */,
 				3AC8B1F224AA869900DEF819 /* Presenter */,
+				3AC8B20324ACCDFF00DEF819 /* Router */,
 				3AC8B1ED24A9244800DEF819 /* LeagueTableHander */,
 				3AB9452A24A8E9F000B06936 /* Cells */,
+				3AC8B20824AE75CC00DEF819 /* UserRank.swift */,
 			);
 			path = League;
 			sourceTree = "<group>";
@@ -628,9 +643,28 @@
 		3AC8B1F924ABDD8000DEF819 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				3AC8B1FA24ABDDA100DEF819 /* LoginAssembler.swift */,
+				3AC8B1FA24ABDDA100DEF819 /* LoadingAssembler.swift */,
 			);
 			path = Loading;
+			sourceTree = "<group>";
+		};
+		3AC8B1FC24ACC9FC00DEF819 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B1FD24ACCA5000DEF819 /* LeagueInteractor.swift */,
+				3AC8B1FF24ACCACC00DEF819 /* LeagueInteractorInput.swift */,
+				3AC8B20124ACCB8600DEF819 /* LeagueInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3AC8B20324ACCDFF00DEF819 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B20424ACCE5F00DEF819 /* LeagueRouter.swift */,
+				3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -863,7 +897,9 @@
 				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
 				3A83111424A77AA000D6552D /* StatusRouter.swift in Sources */,
 				3AB9452324A798E200B06936 /* StatusInteractorOutput.swift in Sources */,
+				3AC8B20024ACCACC00DEF819 /* LeagueInteractorInput.swift in Sources */,
 				3AE82D0524A699A900B7A417 /* SpellsInteractor.swift in Sources */,
+				3AC8B20224ACCB8600DEF819 /* LeagueInteractorOutput.swift in Sources */,
 				3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
 				3AB9452824A7A52B00B06936 /* StatusTableHandlerProtocol.swift in Sources */,
@@ -877,6 +913,7 @@
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
 				3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */,
 				3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */,
+				3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */,
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
@@ -902,6 +939,7 @@
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
+				3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */,
 				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
@@ -915,7 +953,7 @@
 				3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */,
 				3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */,
 				3AB9452D24A8EA9A00B06936 /* LeagueAssembler.swift in Sources */,
-				3AC8B1FB24ABDDA100DEF819 /* LoginAssembler.swift in Sources */,
+				3AC8B1FB24ABDDA100DEF819 /* LoadingAssembler.swift in Sources */,
 				3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */,
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
@@ -935,7 +973,9 @@
 				3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */,
 				3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */,
 				3A83111624A77ABA00D6552D /* StatusRouting.swift in Sources */,
+				3AC8B20724ACCEA500DEF819 /* LeagueRouting.swift in Sources */,
 				3AB9452124A798B500B06936 /* StatusInteractorInput.swift in Sources */,
+				3AC8B1FE24ACCA5000DEF819 /* LeagueInteractor.swift in Sources */,
 				3AAA322924684A1100100FF8 /* SpellsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
