@@ -10,8 +10,7 @@ import UIKit
 
 class LeagueAssembler {
     static func createModule(_ rankData: RankData) -> UIViewController {
-        let viewController = LeagueController ()
-        viewController.rankData = rankData
+        let viewController = LeagueController()
         let router = LeagueRouter(viewController)
         let tableHandler = LeagueTableHandler()
         let interactor = LeagueInteractor(data: rankData)

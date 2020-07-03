@@ -11,8 +11,12 @@ import UIKit
 class LeagueRouter: LeagueRouting {
     
     private weak var viewController: UIViewController?
-
+    
     init(_ viewController: UIViewController) {
-           self.viewController = viewController
-       }
+        self.viewController = viewController
+    }
+    
+    func dismiss() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
 }

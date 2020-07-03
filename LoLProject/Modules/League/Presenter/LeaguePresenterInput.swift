@@ -11,5 +11,6 @@ import Foundation
 protocol LeaguePresenterInput: class {
     func attach(_ viewController: LeaguePresenterOutput)
     func viewDidLoad()
+    func didSegmentChange(_ segmentIndex : Int)
 
 }

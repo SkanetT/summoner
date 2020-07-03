@@ -12,4 +12,6 @@ protocol LeaguePresenterOutput: class {
     func didReciveTier(tier: [Entry])
     func didReciveUserRank(_ rank: UserRank)
     func setAction(userSelect: ((Entry) -> ())?)
+    func newTierHasCome(tier: [Entry])
+    func fetchTitileAndImage(name: String, image: String)
 }

@@ -10,6 +10,8 @@ import Foundation
 
 protocol LeagueInteractorInput: class {
     func attach(_ output: LeagueInteractorOutput)
-    func filterByTiers()
+    func fetchDataForView()
     func fetchFoundSummonerInLeague()
+    func fetchNewTier(_ tier: String)
+    func attemptToReconnect(summonerName: String)
 }

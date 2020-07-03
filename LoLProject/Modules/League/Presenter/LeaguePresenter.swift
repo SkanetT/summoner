@@ -9,12 +9,10 @@
 import Foundation
 
 class LeaguePresenter: LeaguePresenterInput {
-   
+    
     private weak var viewController: LeaguePresenterOutput?
     private let interactor: LeagueInteractorInput
     private let router: LeagueRouting
-
-
     
     init(_ interactor:LeagueInteractorInput, _ router: LeagueRouting) {
         self.interactor = interactor
@@ -27,17 +25,36 @@ class LeaguePresenter: LeaguePresenterInput {
        }
     
     func viewDidLoad() {
-//        interactor.filterByTiers()
         interactor.fetchFoundSummonerInLeague()
-        viewController?.setAction(userSelect: { entry in
-            print(entry.summonerName)
+        interactor.fetchDataForView()
+        viewController?.setAction(userSelect: {[weak self] entry in
+            self?.interactor.attemptToReconnect(summonerName: entry.summonerName)
         })
        }
+    func didSegmentChange(_ segmentIndex: Int) {
+        interactor.fetchNewTier(UserRank.init(rawValue: segmentIndex)?.title ?? "I")
+    }
+    
 }
 
 extension LeaguePresenter: LeagueInteractorOutput {
+    func receiveData(_ data: RankData) {
+        viewController?.fetchTitileAndImage(name: data.name, image: data.tier)
+    }
+    
+    func reconnectSuccess() {
+        router.dismiss()
+    }
+    
+    func reconnectFailure(_ error: APIErrors) {
+        print(error)
+    }
+    
+    func didReciveNewTier(_ tier: [Entry]) {
+        viewController?.newTierHasCome(tier: tier)
+    }
+    
     func didReciveTier(tier: [Entry], rank: String) {
-//        viewController?.didReciveTier(tier: tier, rank: rank)
         viewController?.didReciveTier(tier: tier)
         viewController?.didReciveUserRank(.init(rank: rank))
     }

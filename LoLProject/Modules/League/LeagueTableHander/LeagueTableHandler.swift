@@ -43,10 +43,9 @@ extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
         
         guard let foundSommonerName = foundSummoner?.name  else { return cell }
         
-        cell.clipsToBounds = true
-        cell.layer.cornerRadius = 10
-        cell.layer.borderWidth = 0.5
-        cell.layer.borderColor = UIColor.black.cgColor
+        
+         
+        cell.selectionStyle = .none
         
         if indexPath.row == 0 {
             cell.backgroundColor = .gray
@@ -55,7 +54,10 @@ extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
             cell.lpLabel.text = "Points"
         } else {
             
-            cell.selectionStyle = .none
+            cell.clipsToBounds = true
+            cell.layer.cornerRadius = 10
+            cell.layer.borderWidth = 0.5
+            cell.layer.borderColor = UIColor.black.cgColor
             cell.nameLabel.text = currectTier[indexPath.row - 1].summonerName
             cell.lpLabel.text = currectTier[indexPath.row - 1].leaguePoints.description
             cell.winLabel.text = currectTier[indexPath.row - 1].wins.description
@@ -70,28 +72,11 @@ extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard indexPath.row != 0, let foundSummoner = self.foundSummoner else { return }
-//        guard currectTier[indexPath.row - 1].summonerId != foundSummoner.id else { return }
-        
-//        let server = foundSummoner.region
-        
+        guard indexPath.row != 0, let foundSummoner = foundSummoner else { return }
+        guard currectTier[indexPath.row - 1].summonerId != foundSummoner.id else { return }
+                
         userSelectSomething?(currectTier[indexPath.row - 1])
         
-//        let request = SummonerRequest(summonerName: currectTier[indexPath.row - 1].summonerName, server: server)
-        
-//        NetworkAPI.shared.dataTask(request: request) {result in
-//            switch result {
-//            case.success(let summonerData):
-//                DispatchQueue.main.async {
-//                    RealmManager.reWriteFoundSummoner(summonerData)
-//
-//                    self.dismiss(animated: true, completion: nil)
-//                }
-//
-//            case.failure(let error):
-//                print(error)
-//            }
-//        }
     }
     
 }

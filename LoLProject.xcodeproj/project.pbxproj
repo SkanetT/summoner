@@ -107,6 +107,7 @@
 		3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20424ACCE5F00DEF819 /* LeagueRouter.swift */; };
 		3AC8B20724ACCEA500DEF819 /* LeagueRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */; };
 		3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20824AE75CC00DEF819 /* UserRank.swift */; };
+		3AC8B20E24AFC2EC00DEF819 /* SpectatorAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC8B20D24AFC2EC00DEF819 /* SpectatorAssembler.swift */; };
 		3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3C2460657F00DDB6E1 /* Champion.swift */; };
 		3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD12D3E2460666200DDB6E1 /* Version.swift */; };
 		3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */; };
@@ -233,6 +234,7 @@
 		3AC8B20424ACCE5F00DEF819 /* LeagueRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueRouter.swift; sourceTree = "<group>"; };
 		3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueRouting.swift; sourceTree = "<group>"; };
 		3AC8B20824AE75CC00DEF819 /* UserRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRank.swift; sourceTree = "<group>"; };
+		3AC8B20D24AFC2EC00DEF819 /* SpectatorAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorAssembler.swift; sourceTree = "<group>"; };
 		3AD12D3C2460657F00DDB6E1 /* Champion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Champion.swift; sourceTree = "<group>"; };
 		3AD12D3E2460666200DDB6E1 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		3AE82CF124A2997A00B7A417 /* SaveSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSummoner.swift; sourceTree = "<group>"; };
@@ -289,10 +291,11 @@
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				3AC8B1F924ABDD8000DEF819 /* Loading */,
+				3AC8B20A24AFC1C500DEF819 /* Spectator */,
 				3AB9452924A8E75200B06936 /* League */,
 				3A83110F24A7752200D6552D /* Status */,
 				3AAA3226246849E200100FF8 /* Spells */,
+				3AC8B1F924ABDD8000DEF819 /* Loading */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -464,7 +467,6 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3AC6ED1424969C1300F8B733 /* SpectatorController */,
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A8790DE2483D46100499C5E /* InfoViewController */,
 				3A8790DD2483D39100499C5E /* ChampionsViewController */,
@@ -570,13 +572,13 @@
 			isa = PBXGroup;
 			children = (
 				3AB9452C24A8EA9A00B06936 /* LeagueAssembler.swift */,
+				3AC8B20824AE75CC00DEF819 /* UserRank.swift */,
 				3AB9452B24A8EA2000B06936 /* View */,
 				3AC8B1FC24ACC9FC00DEF819 /* Interactor */,
 				3AC8B1F224AA869900DEF819 /* Presenter */,
 				3AC8B20324ACCDFF00DEF819 /* Router */,
 				3AC8B1ED24A9244800DEF819 /* LeagueTableHander */,
 				3AB9452A24A8E9F000B06936 /* Cells */,
-				3AC8B20824AE75CC00DEF819 /* UserRank.swift */,
 			);
 			path = League;
 			sourceTree = "<group>";
@@ -608,17 +610,6 @@
 				3AE82CF324A6903500B7A417 /* ContainerController.xib */,
 			);
 			path = SideMenu;
-			sourceTree = "<group>";
-		};
-		3AC6ED1424969C1300F8B733 /* SpectatorController */ = {
-			isa = PBXGroup;
-			children = (
-				3AC6ED1524969C5600F8B733 /* SpectatorController.swift */,
-				3AC6ED1624969C5600F8B733 /* SpectatorController.xib */,
-				3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */,
-				3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */,
-			);
-			path = SpectatorController;
 			sourceTree = "<group>";
 		};
 		3AC8B1ED24A9244800DEF819 /* LeagueTableHander */ = {
@@ -665,6 +656,34 @@
 				3AC8B20624ACCEA500DEF819 /* LeagueRouting.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		3AC8B20A24AFC1C500DEF819 /* Spectator */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B20D24AFC2EC00DEF819 /* SpectatorAssembler.swift */,
+				3AC8B20C24AFC25A00DEF819 /* View */,
+				3AC8B20B24AFC24100DEF819 /* Cells */,
+			);
+			path = Spectator;
+			sourceTree = "<group>";
+		};
+		3AC8B20B24AFC24100DEF819 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6ED1F249D3E1300F8B733 /* SpectatorCell.swift */,
+				3AC6ED20249D3E1300F8B733 /* SpectatorCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3AC8B20C24AFC25A00DEF819 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3AC6ED1524969C5600F8B733 /* SpectatorController.swift */,
+				3AC6ED1624969C5600F8B733 /* SpectatorController.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {
@@ -965,6 +984,7 @@
 				3AC8B1EF24A925C600DEF819 /* LeagueTableHandler.swift in Sources */,
 				3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */,
 				3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */,
+				3AC8B20E24AFC2EC00DEF819 /* SpectatorAssembler.swift in Sources */,
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */,
 				3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */,

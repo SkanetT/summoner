@@ -197,9 +197,9 @@ class SummonerViewController: SpinnerController {
     
     @objc
     func spectatorPresent() {
-        guard spectatorData != nil else { return }
-        let vc = SpectatorController()
-        vc.spectatorDate = spectatorData
+        guard let spectatorData = self.spectatorData else { return }
+        let vc = SpectatorAssembler.createModule(spectatorData)
+//        vc.spectatorDate = spectatorData
         navigationController?.pushViewController(vc, animated: true)
     }
     
