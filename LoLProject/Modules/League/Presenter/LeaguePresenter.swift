@@ -31,6 +31,7 @@ class LeaguePresenter: LeaguePresenterInput {
             self?.interactor.attemptToReconnect(summonerName: entry.summonerName)
         })
        }
+    
     func didSegmentChange(_ segmentIndex: Int) {
         interactor.fetchNewTier(UserRank.init(rawValue: segmentIndex)?.title ?? "I")
     }

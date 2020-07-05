@@ -10,8 +10,6 @@ import Foundation
 
 class LeagueInteractor: LeagueInteractorInput {
    
-    
-    
     var rankData: RankData
     private weak var output: LeagueInteractorOutput?
     

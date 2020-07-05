@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class ChampionsViewController: SpinnerController {
+class ChampionsListController: UIViewController {
     
     var allChampion = try! Realm().objects(Champion.self)
     
@@ -19,6 +19,8 @@ class ChampionsViewController: SpinnerController {
     }
     
     var champList: [ChampionItem] = []
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     
@@ -35,6 +37,8 @@ class ChampionsViewController: SpinnerController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
        customiseNavigatorBar()
         championsItems()
@@ -53,17 +57,15 @@ class ChampionsViewController: SpinnerController {
      
     
     
-    
-    
 }
 
-extension ChampionsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension ChampionsListController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return champList.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! ChampionsViewControllerCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "champions", for: indexPath) as! ChampionsListCell
         cell.nameLabel.text = champList[indexPath.row].name
         
         cell.championImage.downloadSD(type: .championIcon(id: champList[indexPath.row].id))
@@ -76,6 +78,7 @@ extension ChampionsViewController: UICollectionViewDataSource, UICollectionViewD
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.allowsSelection = false
         NetworkAPI.shared.fetchFullInfoChampion(id: champList[indexPath.row].id) {[weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let champion):
                 DispatchQueue.main.async {
@@ -83,18 +86,16 @@ extension ChampionsViewController: UICollectionViewDataSource, UICollectionViewD
 
                     let champController = ChampionInfoController()
                     champController.championData = champion
-                    champController.id = self!.champList[indexPath.row].id
+                    champController.id = self.champList[indexPath.row].id
                     
-                    self?.navigationController?.pushViewController(champController, animated: true)
+                    self.navigationController?.pushViewController(champController, animated: true)
                 }
             case .failure(let error):
                 print("\(error) for  champions")
             }
         }
         
-        
     }
-    
 }
 
 

@@ -122,8 +122,9 @@ class ContainerController: UIViewController {
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
         case .champions:
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(identifier: "championList2")
+
+            
+            let vc = ChampionsListAssembler.createModule()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         case .spells:

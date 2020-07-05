@@ -11,7 +11,6 @@ import Foundation
 struct SelectedChampion {
     let name, title, lore: String
     
-//    var newSkills: [NewSkil] = []
     let passiveName, passiveImage, passiveDescription: String
     let qName, qImage, qDescription, qTooltip: String
     let wName, wImage, wDescription: String
@@ -25,14 +24,6 @@ struct SelectedChampion {
         lore = item.value.lore
         
         skins = item.value.skins
-        
-//        for i in 0...4 {
-//            if i == 0 {
-//                newSkills.append(.init(name: item.value.passive.name, description: item.value.passive.description, image: item.value.passive.image.full))
-//            } else {
-//                newSkills.append(.init(name: item.value.spells[i-1].name, description: item.value.spells[i-1].description, image: item.value.spells[i-1].image.full))
-//            }
-//        }
         
         passiveName = item.value.passive.name
         passiveImage = item.value.passive.image.full
@@ -51,16 +42,6 @@ struct SelectedChampion {
         rImage = item.value.spells[3].image.full
         rDescription = item.value.spells[3].description
     }
-//    struct Skin {
-//        let name: String
-//        let id: Int
-//    }
-//    
-}
 
-struct NewSkil {
-    let name: String
-    let description: String
-    let image: String
 }
 

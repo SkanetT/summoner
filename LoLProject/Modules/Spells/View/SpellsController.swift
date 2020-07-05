@@ -25,14 +25,7 @@ class SpellsController: SpinnerController {
         presenter?.attach(self)
         tableViewHandler?.attach(tableView)
         presenter?.viewDidLoad()
-        
-        customiseNavigatorBar()
-        tableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
-        
-    }
-
-
-    func customiseNavigatorBar() {
+                
         title = "Spells"
         
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -41,8 +34,10 @@ class SpellsController: SpinnerController {
         navigationController?.navigationBar.titleTextAttributes = titleColor
         
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitSpells))
+        tableView.register(UINib(nibName: "SummonerSpellCell", bundle: nil), forCellReuseIdentifier: "summonerSpell")
         
     }
+
     
 }
 

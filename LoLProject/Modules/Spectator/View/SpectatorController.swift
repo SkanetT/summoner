@@ -10,7 +10,12 @@ import UIKit
 
 class SpectatorController: UIViewController {
     
-    var spectatorDate: SpectatorDate?
+    //    var spectatorDate: SpectatorDate?
+    var presenter: SpectatorPresenterInput?
+    
+    var collectionHandler1: SpectatorCollectionHandlerProtocol?
+    var collectionHandler2: SpectatorCollectionHandlerProtocol?
+    
     
     @IBOutlet weak var collection1: UICollectionView!
     @IBOutlet weak var collection2: UICollectionView!
@@ -19,39 +24,14 @@ class SpectatorController: UIViewController {
     @IBOutlet weak var banStack1: UIStackView!
     @IBOutlet weak var banStack2: UIStackView!
     
-    
-    lazy var coll1 : CollectionViewDelegate = {
-        let data = spectatorDate?.participants.filter{ $0.teamId == 100 }
-        return .init(data: data ?? [], delegate:  self)
-    }()
-    
-    lazy var coll2 : CollectionViewDelegate = {
-        let data = spectatorDate?.participants.filter{ $0.teamId == 200 }
-        return .init(data: data ?? [], delegate: self)
-    }()
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = spectatorDate?.gameQueueConfigId?.description.typeIdtoGameType()
+        collectionHandler1?.attach(collection1)
+        collectionHandler2?.attach(collection2)
         
-        collection1.register(UINib(nibName: "SpectatorCell", bundle: nil), forCellWithReuseIdentifier: "spectatorCell")
-        
-        collection1.dataSource = coll1
-        collection1.delegate = coll1
-        collection1.reloadData()
-        collection2.register(UINib(nibName: "SpectatorCell", bundle: nil), forCellWithReuseIdentifier: "spectatorCell")
-        collection2.dataSource = coll2
-        collection2.delegate = coll2
-        collection2.reloadData()
-        
-        setupBanStackViews()
-    }
-    
-    
-    func setupBanStackViews() {
+        presenter?.attach(self)
+        presenter?.viewDidLoad()
         
         collection1.clipsToBounds = true
         collection1.layer.cornerRadius = 10
@@ -59,18 +39,9 @@ class SpectatorController: UIViewController {
         collection2.clipsToBounds = true
         collection2.layer.cornerRadius = 10
         
-        noBanesLabel.isHidden = true
         noBanesLabel.clipsToBounds = true
         noBanesLabel.layer.cornerRadius = 10
         
-        guard let spectatorDate = spectatorDate else {
-            noBanesLabel.isHidden = false
-            return
-        }
-        guard !spectatorDate.bannedChampions.isEmpty else {
-            noBanesLabel.isHidden = false
-            return
-        }
         banStack1.distribution = .fillEqually
         banStack1.alignment = .center
         banStack1.spacing = 2
@@ -78,6 +49,13 @@ class SpectatorController: UIViewController {
         banStack2.distribution = .fillEqually
         banStack2.alignment = .center
         banStack2.spacing = 2
+    }
+}
+
+extension SpectatorController: SpectatorPresenterOutput {
+    func matchHasBans(_ bans: [BannedChampion]) {
+        guard bans.count == 10 else { return }
+        noBanesLabel.isHidden = true
         
         for i in 0...4 {
             
@@ -90,8 +68,8 @@ class SpectatorController: UIViewController {
             image.translatesAutoresizingMaskIntoConstraints = false
             image.widthAnchor.constraint(equalTo: image.heightAnchor).isActive = true
             
-            if let championId = RealmManager.fetchChampionIdfromKey(spectatorDate.bannedChampions[i].championId.description) {
-                    image.downloadSD(type: .championIcon(id: championId))
+            if let championId = RealmManager.fetchChampionIdfromKey(bans[i].championId.description) {
+                image.downloadSD(type: .championIcon(id: championId))
             }
             
             banStack1.addArrangedSubview(image)
@@ -105,87 +83,35 @@ class SpectatorController: UIViewController {
             image.clipsToBounds = true
             image.layer.cornerRadius = 5
             
-            if let championId = RealmManager.fetchChampionIdfromKey(spectatorDate.bannedChampions[i].championId.description) {
-                    image.downloadSD(type: .championIcon(id: championId))
+            if let championId = RealmManager.fetchChampionIdfromKey(bans[i].championId.description) {
+                image.downloadSD(type: .championIcon(id: championId))
             }
             
             banStack2.addArrangedSubview(image)
         }
     }
+    
+    func noBansInMatch() {
+        noBanesLabel.isHidden = false
+    }
+    
+    func setActionForCell(_ userSelect: ((String) -> ())?) {
+        collectionHandler1?.setAction(userSelect: userSelect)
+        collectionHandler2?.setAction(userSelect: userSelect)
+        
+    }
+    
+    func didReciveTitle(_ title: String?) {
+        self.title = title
+    }
+    
+    func didReceiveDataForFirstTeam(_ data: [ParticipantSpectator]) {
+        collectionHandler1?.updateData(participantSpectator: data)
+    }
+    
+    func didReceiveDataForSecondTeam(_ data: [ParticipantSpectator]) {
+        collectionHandler2?.updateData(participantSpectator: data)
+    }
+    
 }
-
-extension SpectatorController: SpectatorDelegate {
-    func dissmissAll() {        
-        dismiss(animated: false, completion: nil)
-    }
-    
-    
-}
-
-class CollectionViewDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var participantSpectators = [ParticipantSpectator]()
-    weak var delegate: SpectatorDelegate?
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return participantSpectators.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "spectatorCell", for: indexPath) as? SpectatorCell {
-            
-            
-            cell.setData(data: participantSpectators[indexPath.row])
-            
-            return cell
-        } else {
-            return .init()
-        }
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let size = collectionView.visibleSize
-        
-        
-        return CGSize(width: size.width * 0.75, height: size.height - 16)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return }
-        
-        let server = foundSummoner.region
-        
-        if participantSpectators[indexPath.row].summonerId != foundSummoner.id {
-            
-            let request = SummonerRequest(summonerName: participantSpectators[indexPath.row].summonerName, server: server)
-            NetworkAPI.shared.dataTask(request: request) {[weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case.success(let summonerData):
-                    DispatchQueue.main.async {
-                        
-                        RealmManager.reWriteFoundSummoner(summonerData)
-                        self.delegate?.dissmissAll()
-                    }
-                    
-                case.failure(let error):
-                    print(error)
-                }
-            }
-            
-        }
-        
-    }
-    
-    
-    init(data: [ParticipantSpectator], delegate: SpectatorDelegate ) {
-        self.delegate = delegate
-        self.participantSpectators = data
-        
-    }
-}
-
-
 

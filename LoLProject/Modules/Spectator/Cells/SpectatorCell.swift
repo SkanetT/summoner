@@ -53,7 +53,7 @@ class SpectatorCell: UICollectionViewCell {
         }
         
         if let spell2Id = RealmManager.fetchSpellIdfromKey(data.spell2Id.description) {
-             summonerSpell1.downloadSD(type: .spellIcon(id: spell2Id))
+             summonerSpell2.downloadSD(type: .spellIcon(id: spell2Id))
         }
         
     }

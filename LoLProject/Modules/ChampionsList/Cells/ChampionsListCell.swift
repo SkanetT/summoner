@@ -10,7 +10,7 @@ import UIKit
 
 
 
-class ChampionsViewControllerCell: UICollectionViewCell {
+class ChampionsListCell: UICollectionViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
         

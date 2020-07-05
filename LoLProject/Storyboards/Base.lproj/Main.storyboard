@@ -119,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="290" y="-539"/>
         </scene>
-        <!--Champions View Controller-->
+        <!--Champions List Controller-->
         <scene sceneID="7hz-dm-Vtv">
             <objects>
-                <collectionViewController storyboardIdentifier="championList" id="0k0-Md-l8m" customClass="ChampionsViewController" customModule="LoLProject" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="championList" id="0k0-Md-l8m" customClass="ChampionsListController" customModule="LoLProject" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tHl-Un-ht1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +134,7 @@
                             <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="champions" id="lea-og-QTp" customClass="ChampionsViewControllerCell" customModule="LoLProject" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="champions" id="lea-og-QTp" customClass="ChampionsListCell" customModule="LoLProject" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="100" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zu7-1M-JYu">
@@ -183,6 +183,9 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="Tcr-AN-pag"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="tHl-Un-ht1" id="ZUn-wi-pdM"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HbT-2g-mtw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

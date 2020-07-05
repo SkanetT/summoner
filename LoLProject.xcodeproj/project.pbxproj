@@ -10,8 +10,6 @@
 		3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD524A6A73C00488F32 /* SpellModel.swift */; };
 		3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */; };
 		3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */; };
-		3A57BD702485959600769F41 /* CellForInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A57BD6E2485959600769F41 /* CellForInfoView.swift */; };
-		3A57BD712485959600769F41 /* CellForInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A57BD6F2485959600769F41 /* CellForInfoView.xib */; };
 		3A58E5142485A95700287CA7 /* LeagueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A58E5122485A95700287CA7 /* LeagueController.swift */; };
 		3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A58E5132485A95700287CA7 /* LeagueController.xib */; };
 		3A5AE7432464876400E80092 /* LeagueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5AE7422464876300E80092 /* LeagueData.swift */; };
@@ -23,11 +21,20 @@
 		3A5C3499249164830044AB6D /* StatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3498249164830044AB6D /* StatusController.swift */; };
 		3A5C349B249167550044AB6D /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349A249167550044AB6D /* StatusCell.swift */; };
 		3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349C2491758B0044AB6D /* StatusData.swift */; };
-		3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366F82460B75E004C76D0 /* InfoViewController.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerViewController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
 		3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */; };
+		3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BEB24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift */; };
+		3A689BEE24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BED24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift */; };
+		3A689BF124B0E8EC00CBEC7A /* SpectatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BF024B0E8EC00CBEC7A /* SpectatorPresenter.swift */; };
+		3A689BF324B0E93700CBEC7A /* SpectatorPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BF224B0E93700CBEC7A /* SpectatorPresenterInput.swift */; };
+		3A689BF524B0E94700CBEC7A /* SpectatorPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BF424B0E94700CBEC7A /* SpectatorPresenterOutput.swift */; };
+		3A689BF824B10E5400CBEC7A /* SpectatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BF724B10E5400CBEC7A /* SpectatorInteractor.swift */; };
+		3A689BFA24B10EAA00CBEC7A /* SpectatorInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BF924B10EAA00CBEC7A /* SpectatorInteractorInput.swift */; };
+		3A689BFC24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BFB24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift */; };
+		3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BFE24B20D1500CBEC7A /* SpectatorRouter.swift */; };
+		3A689C0124B20D3200CBEC7A /* SpectatorRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689C0024B20D3200CBEC7A /* SpectatorRouting.swift */; };
 		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
 		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
 		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
@@ -45,9 +52,9 @@
 		3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DF24549419005801A8 /* Assets.xcassets */; };
 		3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6E124549419005801A8 /* LaunchScreen.storyboard */; };
 		3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6EE24549BA1005801A8 /* Default-568h@2x.png */; };
-		3A8CB7192454D0FB005801A8 /* ChampionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7182454D0FB005801A8 /* ChampionsViewController.swift */; };
+		3A8CB7192454D0FB005801A8 /* ChampionsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7182454D0FB005801A8 /* ChampionsListController.swift */; };
 		3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB71A2454DCE5005801A8 /* ChampionsAndVersionsData.swift */; };
-		3A8CB71F24550767005801A8 /* ChampionsViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB71E24550767005801A8 /* ChampionsViewControllerCell.swift */; };
+		3A8CB71F24550767005801A8 /* ChampionsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB71E24550767005801A8 /* ChampionsListCell.swift */; };
 		3A8CB7232455FE61005801A8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7222455FE61005801A8 /* Errors.swift */; };
 		3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */; };
 		3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */; };
@@ -55,6 +62,7 @@
 		3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */; };
 		3A8CB7A4245E2FF1005801A8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A3245E2FF1005801A8 /* String.swift */; };
 		3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB7A5245E3037005801A8 /* ImageView.swift */; };
+		3A9E513F24AFCD0E0096102C /* ChampionsListAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9E513E24AFCD0E0096102C /* ChampionsListAssembler.swift */; };
 		3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F8569246084C70090BBAF /* SummonerData.swift */; };
 		3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F856C246086F80090BBAF /* GlobalConstants.swift */; };
 		3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA4D119245F313600B05437 /* SkillCell.swift */; };
@@ -135,8 +143,6 @@
 		3A14CCD524A6A73C00488F32 /* SpellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellModel.swift; sourceTree = "<group>"; };
 		3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsPresenterInput.swift; sourceTree = "<group>"; };
 		3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsPresenterOutput.swift; sourceTree = "<group>"; };
-		3A57BD6E2485959600769F41 /* CellForInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForInfoView.swift; sourceTree = "<group>"; };
-		3A57BD6F2485959600769F41 /* CellForInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellForInfoView.xib; sourceTree = "<group>"; };
 		3A58E5122485A95700287CA7 /* LeagueController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueController.swift; sourceTree = "<group>"; };
 		3A58E5132485A95700287CA7 /* LeagueController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueController.xib; sourceTree = "<group>"; };
 		3A5AE7422464876300E80092 /* LeagueData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueData.swift; sourceTree = "<group>"; };
@@ -148,11 +154,20 @@
 		3A5C3498249164830044AB6D /* StatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusController.swift; sourceTree = "<group>"; };
 		3A5C349A249167550044AB6D /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		3A5C349C2491758B0044AB6D /* StatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusData.swift; sourceTree = "<group>"; };
-		3A6366F82460B75E004C76D0 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerViewController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
 		3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedChampionsData.swift; sourceTree = "<group>"; };
+		3A689BEB24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorCollectionHandler.swift; sourceTree = "<group>"; };
+		3A689BED24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorCollectionHandlerProtocol.swift; sourceTree = "<group>"; };
+		3A689BF024B0E8EC00CBEC7A /* SpectatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorPresenter.swift; sourceTree = "<group>"; };
+		3A689BF224B0E93700CBEC7A /* SpectatorPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorPresenterInput.swift; sourceTree = "<group>"; };
+		3A689BF424B0E94700CBEC7A /* SpectatorPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorPresenterOutput.swift; sourceTree = "<group>"; };
+		3A689BF724B10E5400CBEC7A /* SpectatorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorInteractor.swift; sourceTree = "<group>"; };
+		3A689BF924B10EAA00CBEC7A /* SpectatorInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorInteractorInput.swift; sourceTree = "<group>"; };
+		3A689BFB24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorInteractorOutput.swift; sourceTree = "<group>"; };
+		3A689BFE24B20D1500CBEC7A /* SpectatorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorRouter.swift; sourceTree = "<group>"; };
+		3A689C0024B20D3200CBEC7A /* SpectatorRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorRouting.swift; sourceTree = "<group>"; };
 		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
 		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
 		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
@@ -172,9 +187,9 @@
 		3A8CB6E224549419005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8CB6E424549419005801A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8CB6EE24549BA1005801A8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3A8CB7182454D0FB005801A8 /* ChampionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsViewController.swift; sourceTree = "<group>"; };
+		3A8CB7182454D0FB005801A8 /* ChampionsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListController.swift; sourceTree = "<group>"; };
 		3A8CB71A2454DCE5005801A8 /* ChampionsAndVersionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsAndVersionsData.swift; sourceTree = "<group>"; };
-		3A8CB71E24550767005801A8 /* ChampionsViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsViewControllerCell.swift; sourceTree = "<group>"; };
+		3A8CB71E24550767005801A8 /* ChampionsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListCell.swift; sourceTree = "<group>"; };
 		3A8CB7222455FE61005801A8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoController.swift; sourceTree = "<group>"; };
 		3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChampionInfoController.xib; sourceTree = "<group>"; };
@@ -182,6 +197,7 @@
 		3A8CB75B245CA1A3005801A8 /* SelectChampion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChampion.swift; sourceTree = "<group>"; };
 		3A8CB7A3245E2FF1005801A8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		3A8CB7A5245E3037005801A8 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		3A9E513E24AFCD0E0096102C /* ChampionsListAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListAssembler.swift; sourceTree = "<group>"; };
 		3A9F8569246084C70090BBAF /* SummonerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerData.swift; sourceTree = "<group>"; };
 		3A9F856C246086F80090BBAF /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		3AA4D119245F313600B05437 /* SkillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillCell.swift; sourceTree = "<group>"; };
@@ -291,6 +307,7 @@
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3A9E513B24AFCC1E0096102C /* ChampionsList */,
 				3AC8B20A24AFC1C500DEF819 /* Spectator */,
 				3AB9452924A8E75200B06936 /* League */,
 				3A83110F24A7752200D6552D /* Status */,
@@ -326,6 +343,51 @@
 				3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */,
 			);
 			path = SummonerViewController;
+			sourceTree = "<group>";
+		};
+		3A689BE924AFCF9B00CBEC7A /* ChampionsListCollectionHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChampionsListCollectionHandler;
+			sourceTree = "<group>";
+		};
+		3A689BEA24B0DDD900CBEC7A /* SpectatorCollectionHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3A689BEB24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift */,
+				3A689BED24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift */,
+			);
+			path = SpectatorCollectionHandler;
+			sourceTree = "<group>";
+		};
+		3A689BEF24B0E70500CBEC7A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3A689BF024B0E8EC00CBEC7A /* SpectatorPresenter.swift */,
+				3A689BF224B0E93700CBEC7A /* SpectatorPresenterInput.swift */,
+				3A689BF424B0E94700CBEC7A /* SpectatorPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3A689BF624B10DF500CBEC7A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3A689BF724B10E5400CBEC7A /* SpectatorInteractor.swift */,
+				3A689BF924B10EAA00CBEC7A /* SpectatorInteractorInput.swift */,
+				3A689BFB24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3A689BFD24B20CE200CBEC7A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3A689BFE24B20D1500CBEC7A /* SpectatorRouter.swift */,
+				3A689C0024B20D3200CBEC7A /* SpectatorRouting.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		3A83110F24A7752200D6552D /* Status */ = {
@@ -365,25 +427,6 @@
 				3A5C3498249164830044AB6D /* StatusController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3A8790DD2483D39100499C5E /* ChampionsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A8CB71E24550767005801A8 /* ChampionsViewControllerCell.swift */,
-				3A8CB7182454D0FB005801A8 /* ChampionsViewController.swift */,
-			);
-			path = ChampionsViewController;
-			sourceTree = "<group>";
-		};
-		3A8790DE2483D46100499C5E /* InfoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A6366F82460B75E004C76D0 /* InfoViewController.swift */,
-				3A57BD6E2485959600769F41 /* CellForInfoView.swift */,
-				3A57BD6F2485959600769F41 /* CellForInfoView.xib */,
-			);
-			path = InfoViewController;
 			sourceTree = "<group>";
 		};
 		3A8CB6CA24549417005801A8 = {
@@ -468,8 +511,6 @@
 			isa = PBXGroup;
 			children = (
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
-				3A8790DE2483D46100499C5E /* InfoViewController */,
-				3A8790DD2483D39100499C5E /* ChampionsViewController */,
 				3A6366FA2460C726004C76D0 /* SummonerViewController */,
 				3A8CB730245C258A005801A8 /* LoginController */,
 				3A8CB72B245A16A2005801A8 /* ChampionInfoController */,
@@ -509,6 +550,33 @@
 				3AC6ED1D249AB6BF00F8B733 /* View.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A9E513B24AFCC1E0096102C /* ChampionsList */ = {
+			isa = PBXGroup;
+			children = (
+				3A9E513E24AFCD0E0096102C /* ChampionsListAssembler.swift */,
+				3A9E513D24AFCC750096102C /* View */,
+				3A689BE924AFCF9B00CBEC7A /* ChampionsListCollectionHandler */,
+				3A9E513C24AFCC550096102C /* Cells */,
+			);
+			path = ChampionsList;
+			sourceTree = "<group>";
+		};
+		3A9E513C24AFCC550096102C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3A8CB71E24550767005801A8 /* ChampionsListCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3A9E513D24AFCC750096102C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A8CB7182454D0FB005801A8 /* ChampionsListController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3A9F856B246086C80090BBAF /* Utilis */ = {
@@ -577,7 +645,7 @@
 				3AC8B1FC24ACC9FC00DEF819 /* Interactor */,
 				3AC8B1F224AA869900DEF819 /* Presenter */,
 				3AC8B20324ACCDFF00DEF819 /* Router */,
-				3AC8B1ED24A9244800DEF819 /* LeagueTableHander */,
+				3AC8B1ED24A9244800DEF819 /* LeagueTableHandler */,
 				3AB9452A24A8E9F000B06936 /* Cells */,
 			);
 			path = League;
@@ -612,13 +680,13 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
-		3AC8B1ED24A9244800DEF819 /* LeagueTableHander */ = {
+		3AC8B1ED24A9244800DEF819 /* LeagueTableHandler */ = {
 			isa = PBXGroup;
 			children = (
 				3AC8B1EE24A925C600DEF819 /* LeagueTableHandler.swift */,
 				3AC8B1F024A9267800DEF819 /* LeagueTableHandlerProtocol.swift */,
 			);
-			path = LeagueTableHander;
+			path = LeagueTableHandler;
 			sourceTree = "<group>";
 		};
 		3AC8B1F224AA869900DEF819 /* Presenter */ = {
@@ -663,6 +731,10 @@
 			children = (
 				3AC8B20D24AFC2EC00DEF819 /* SpectatorAssembler.swift */,
 				3AC8B20C24AFC25A00DEF819 /* View */,
+				3A689BF624B10DF500CBEC7A /* Interactor */,
+				3A689BEF24B0E70500CBEC7A /* Presenter */,
+				3A689BFD24B20CE200CBEC7A /* Router */,
+				3A689BEA24B0DDD900CBEC7A /* SpectatorCollectionHandler */,
 				3AC8B20B24AFC24100DEF819 /* Cells */,
 			);
 			path = Spectator;
@@ -826,7 +898,6 @@
 			files = (
 				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
 				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
-				3A57BD712485959600769F41 /* CellForInfoView.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */,
@@ -896,14 +967,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A8CB7192454D0FB005801A8 /* ChampionsViewController.swift in Sources */,
+				3A8CB7192454D0FB005801A8 /* ChampionsListController.swift in Sources */,
 				3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */,
 				3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */,
 				3AC26807248C2D0E009C3D18 /* MenuOption.swift in Sources */,
 				3A8CB7A4245E2FF1005801A8 /* String.swift in Sources */,
 				3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */,
 				3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */,
-				3A8CB71F24550767005801A8 /* ChampionsViewControllerCell.swift in Sources */,
+				3A8CB71F24550767005801A8 /* ChampionsListCell.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3AE82CFB24A6980700B7A417 /* SpellsAssembler.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
@@ -914,6 +985,7 @@
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
 				3AB9451824A7826800B06936 /* StatusPresenterInput.swift in Sources */,
 				3AAA3260246F3CAA00100FF8 /* MostPlayedView.swift in Sources */,
+				3A689BFA24B10EAA00CBEC7A /* SpectatorInteractorInput.swift in Sources */,
 				3A83111424A77AA000D6552D /* StatusRouter.swift in Sources */,
 				3AB9452324A798E200B06936 /* StatusInteractorOutput.swift in Sources */,
 				3AC8B20024ACCACC00DEF819 /* LeagueInteractorInput.swift in Sources */,
@@ -934,17 +1006,21 @@
 				3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */,
 				3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */,
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
+				3A689BEE24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
 				3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */,
+				3A689BF824B10E5400CBEC7A /* SpectatorInteractor.swift in Sources */,
+				3A689BF524B0E94700CBEC7A /* SpectatorPresenterOutput.swift in Sources */,
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
+				3A9E513F24AFCD0E0096102C /* ChampionsListAssembler.swift in Sources */,
 				3AC2680B248C2EAC009C3D18 /* MenuOptionCell.swift in Sources */,
 				3AC267FC248840D7009C3D18 /* LeagueCell.swift in Sources */,
 				3A8CB7232455FE61005801A8 /* Errors.swift in Sources */,
 				3A5BB736247F3450002417B4 /* MatchModel.swift in Sources */,
-				3A57BD702485959600769F41 /* CellForInfoView.swift in Sources */,
 				3A8790E72483FFCC00499C5E /* CellForHeaderForChampion.swift in Sources */,
+				3A689BF124B0E8EC00CBEC7A /* SpectatorPresenter.swift in Sources */,
 				3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */,
 				3AE82CF924A6943C00B7A417 /* RealmManager.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,
@@ -957,13 +1033,13 @@
 				3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
+				3A689C0124B20D3200CBEC7A /* SpectatorRouting.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */,
 				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
 				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
-				3A6366F92460B75E004C76D0 /* InfoViewController.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,
 				3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
@@ -971,14 +1047,18 @@
 				3A8790E22483E52300499C5E /* HeaderForChampion.swift in Sources */,
 				3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */,
 				3AAA32302468878900100FF8 /* MatchHistory.swift in Sources */,
+				3A689BFC24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift in Sources */,
 				3AB9452D24A8EA9A00B06936 /* LeagueAssembler.swift in Sources */,
 				3AC8B1FB24ABDDA100DEF819 /* LoadingAssembler.swift in Sources */,
 				3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */,
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
+				3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */,
 				3AE82D0824A6A2FF00B7A417 /* SpellsPresenter.swift in Sources */,
 				3AE82D0024A698BD00B7A417 /* SpellsRouter.swift in Sources */,
 				3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */,
+				3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */,
+				3A689BF324B0E93700CBEC7A /* SpectatorPresenterInput.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,
 				3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */,
 				3AC8B1EF24A925C600DEF819 /* LeagueTableHandler.swift in Sources */,

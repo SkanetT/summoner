@@ -9,20 +9,17 @@
 import UIKit
 
 class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
-    func setAction(userSelect: ((Entry) -> ())?) {
-        userSelectSomething = userSelect
-    }
-    
-    
-    var userSelectSomething: ((Entry) -> ())?
-    
+   
     private weak var tableView: UITableView?
     let foundSummoner = RealmManager.fetchFoundSummoner()
 
     var currectTier: [Entry] = []
     
+    var userSelectSomething: ((Entry) -> ())?
+
     func attach(_ tableView: UITableView) {
         self.tableView = tableView
+        tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -30,7 +27,12 @@ class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
     func updateData(tier: [Entry]) {
         self.currectTier = tier
         tableView?.reloadData()
+        tableView?.scrollToRow(at: [0, 0], at: .top, animated: false)
     }
+    
+    func setAction(userSelect: ((Entry) -> ())?) {
+           userSelectSomething = userSelect
+       }
 }
 
 extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {

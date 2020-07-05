@@ -42,8 +42,6 @@ class LeagueController: UIViewController {
 //        }
         
        
-        tableView.register(UINib(nibName: "LeagueCell", bundle: nil), forCellReuseIdentifier: "leagueCell")
-        tableView.remembersLastFocusedIndexPath = true
         tableView.allowsSelection = true
         tableView.clipsToBounds = true
         tableView.layer.cornerRadius = 10
