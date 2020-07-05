@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="newListCell" id="gTV-IL-0wX" customClass="ChampionsListCell" customModule="LoLProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IXq-za-qOb">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="BFz-qr-OB5"/>
+                            <constraint firstAttribute="width" constant="100" id="K1X-bQ-Rac"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="081-KF-gfq">
+                        <rect key="frame" x="0.0" y="108" width="100" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="081-KF-gfq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1kg-xy-j8Z"/>
+                <constraint firstItem="081-KF-gfq" firstAttribute="top" secondItem="IXq-za-qOb" secondAttribute="bottom" constant="8" id="3ad-Hc-fCL"/>
+                <constraint firstItem="IXq-za-qOb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7LN-ep-9Lz"/>
+                <constraint firstAttribute="bottom" secondItem="081-KF-gfq" secondAttribute="bottom" id="Qe0-2O-Udz"/>
+                <constraint firstItem="IXq-za-qOb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UOh-5a-kQT"/>
+                <constraint firstAttribute="trailing" secondItem="081-KF-gfq" secondAttribute="trailing" id="mBX-qU-EEd"/>
+                <constraint firstAttribute="trailing" secondItem="IXq-za-qOb" secondAttribute="trailing" id="v8G-ey-bgG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="championImage" destination="IXq-za-qOb" id="nBh-E5-VSD"/>
+                <outlet property="nameLabel" destination="081-KF-gfq" id="Qjm-HQ-Smp"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
+        </collectionViewCell>
+    </objects>
+</document>

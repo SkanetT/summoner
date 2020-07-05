@@ -10,7 +10,6 @@ import Foundation
 
 class SpectatorPresenter: SpectatorPresenterInput {
     
-    
     private weak var viewController: SpectatorPresenterOutput?
     let interactor: SpectatorInteractorInput
     let router: SpectatorRouting

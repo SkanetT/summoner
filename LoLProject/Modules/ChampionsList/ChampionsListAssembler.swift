@@ -10,8 +10,13 @@ import UIKit
 
 class ChampionsListAssembler {
     static func createModule() -> UIViewController {
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = sb.instantiateViewController(identifier: "championList2")
+        let viewController = ChampionsListController()
+        let collectionHandler = ChampionsListCollectionHandler()
+        let interactor = ChampionsListInteractor()
+        let router = ChampionsListRouter(viewController)
+        let presenter = ChampionsListPresenter(interactor, router)
+        viewController.presenter = presenter
+        viewController.collectionHandler = collectionHandler
         
         
         return viewController

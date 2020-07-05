@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -119,78 +118,6 @@
             </objects>
             <point key="canvasLocation" x="290" y="-539"/>
         </scene>
-        <!--Champions List Controller-->
-        <scene sceneID="7hz-dm-Vtv">
-            <objects>
-                <collectionViewController storyboardIdentifier="championList" id="0k0-Md-l8m" customClass="ChampionsListController" customModule="LoLProject" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tHl-Un-ht1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yh4-kg-hRY">
-                            <size key="itemSize" width="100" height="120"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="champions" id="lea-og-QTp" customClass="ChampionsListCell" customModule="LoLProject" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="100" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Zu7-1M-JYu">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Champion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.45000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="S7D-ZU-nYc">
-                                            <rect key="frame" x="0.0" y="110" width="100" height="20"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="JZh-BZ-rzd"/>
-                                                <constraint firstAttribute="height" constant="20" id="NTe-f7-d2W"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="19"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lro-0d-nqS">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="106"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="100" id="993-im-EJH"/>
-                                                <constraint firstAttribute="width" constant="100" id="bI1-Md-Mx5"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="S7D-ZU-nYc" firstAttribute="leading" secondItem="Zu7-1M-JYu" secondAttribute="leading" id="40M-hz-Xsg"/>
-                                        <constraint firstAttribute="bottom" secondItem="S7D-ZU-nYc" secondAttribute="bottom" id="BFc-JR-dEQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="lro-0d-nqS" secondAttribute="trailing" id="N7Q-mI-5VN"/>
-                                        <constraint firstItem="lro-0d-nqS" firstAttribute="leading" secondItem="Zu7-1M-JYu" secondAttribute="leading" id="dyZ-SA-XYu"/>
-                                        <constraint firstAttribute="trailing" secondItem="S7D-ZU-nYc" secondAttribute="trailing" id="lA3-0l-11g"/>
-                                        <constraint firstItem="lro-0d-nqS" firstAttribute="top" secondItem="Zu7-1M-JYu" secondAttribute="top" id="nUg-ZW-E6Q"/>
-                                        <constraint firstItem="S7D-ZU-nYc" firstAttribute="top" secondItem="lro-0d-nqS" secondAttribute="bottom" constant="4" id="zDo-ZX-Zpk"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="100" height="130"/>
-                                <connections>
-                                    <outlet property="championImage" destination="lro-0d-nqS" id="guq-5Q-S5z"/>
-                                    <outlet property="nameLabel" destination="S7D-ZU-nYc" id="bCa-EO-rLQ"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="0k0-Md-l8m" id="tSa-m0-zLl"/>
-                            <outlet property="delegate" destination="0k0-Md-l8m" id="wld-5g-IXp"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="Tcr-AN-pag"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="collectionView" destination="tHl-Un-ht1" id="ZUn-wi-pdM"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HbT-2g-mtw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="263.768115942029" y="264.50892857142856"/>
-        </scene>
         <!--Container Controller-->
         <scene sceneID="ZtO-T2-jCd">
             <objects>
@@ -205,24 +132,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9W-9r-7iC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-645" y="-539"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ij0-RW-aod">
-            <objects>
-                <navigationController storyboardIdentifier="championList2" automaticallyAdjustsScrollViewInsets="NO" id="8AV-3K-gRj" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CKa-zZ-GI4">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="0k0-Md-l8m" kind="relationship" relationship="rootViewController" id="3eX-iT-Kfl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pNa-OW-GEq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-646.37681159420299" y="264.50892857142856"/>
         </scene>
     </scenes>
     <resources>

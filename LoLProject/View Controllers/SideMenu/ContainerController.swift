@@ -123,10 +123,11 @@ class ContainerController: UIViewController {
         switch menuOption {
         case .champions:
 
-            
             let vc = ChampionsListAssembler.createModule()
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            let nc = UINavigationController(rootViewController: vc)
+
+            nc.modalPresentationStyle = .fullScreen
+            present(nc, animated: true)
         case .spells:
             let vc = SpellsAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)

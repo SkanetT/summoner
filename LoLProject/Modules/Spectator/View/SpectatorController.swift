@@ -10,12 +10,10 @@ import UIKit
 
 class SpectatorController: UIViewController {
     
-    //    var spectatorDate: SpectatorDate?
     var presenter: SpectatorPresenterInput?
     
     var collectionHandler1: SpectatorCollectionHandlerProtocol?
     var collectionHandler2: SpectatorCollectionHandlerProtocol?
-    
     
     @IBOutlet weak var collection1: UICollectionView!
     @IBOutlet weak var collection2: UICollectionView!

@@ -13,32 +13,17 @@ class HeaderForChampion: XibBasedView {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    
-    
     var skins: [Skin] = []
     var id: String = ""
     var name: String = ""
     var title: String = ""
     
-    //    override func awakeFromNib() {
-    //           super.awakeFromNib()
-    //
-    //        collectionView.delegate = self
-    //        collectionView.dataSource = self
-    //        collectionView.register(UINib(nibName: "CellForHeaderForChampion", bundle: nil), forCellWithReuseIdentifier: "skins")
-    
-    //   collectionView.register(UINib(nibName: "CellForHeaderForChampion", bundle: nil), forCellReuseIdentifier: "skins")
-    
-    //       }
-    //
     override init(frame: CGRect) {
         super.init(frame: frame)
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        
         pageControl.isHidden = true
-        
         
         collectionView.register(UINib(nibName: "CellForHeaderForChampion", bundle: nil), forCellWithReuseIdentifier: "skins")
         
