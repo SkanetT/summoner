@@ -91,6 +91,17 @@
 		3AB778D724B25A940022D1EB /* DataForFullInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778D624B25A940022D1EB /* DataForFullInfo.swift */; };
 		3AB778DA24B25DED0022D1EB /* ChampionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778D924B25DED0022D1EB /* ChampionsListRouter.swift */; };
 		3AB778DC24B25E130022D1EB /* ChampionsListRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778DB24B25E130022D1EB /* ChampionsListRouting.swift */; };
+		3AB778E124B270630022D1EB /* ChampionInfoAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778E024B270630022D1EB /* ChampionInfoAssembler.swift */; };
+		3AB778E424B2835A0022D1EB /* ChampionInfoTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778E324B2835A0022D1EB /* ChampionInfoTableHandler.swift */; };
+		3AB778E624B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778E524B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift */; };
+		3AB778E924B28F650022D1EB /* ChampionInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778E824B28F650022D1EB /* ChampionInfoPresenter.swift */; };
+		3AB778EB24B28FF10022D1EB /* ChampionInfoPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778EA24B28FF10022D1EB /* ChampionInfoPresenterInput.swift */; };
+		3AB778ED24B290240022D1EB /* ChampionInfoPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778EC24B290240022D1EB /* ChampionInfoPresenterOutput.swift */; };
+		3AB778F024B3A6090022D1EB /* ChampionInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778EF24B3A6090022D1EB /* ChampionInfoInteractor.swift */; };
+		3AB778F224B3A7390022D1EB /* ChampionInfoInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778F124B3A7390022D1EB /* ChampionInfoInteractorInput.swift */; };
+		3AB778F424B3A7650022D1EB /* ChampionInfoInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778F324B3A7650022D1EB /* ChampionInfoInteractorOutput.swift */; };
+		3AB778F724B3AC9D0022D1EB /* ChampionInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778F624B3AC9D0022D1EB /* ChampionInfoRouter.swift */; };
+		3AB778F924B3ACC90022D1EB /* ChampionInfoRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB778F824B3ACC90022D1EB /* ChampionInfoRouting.swift */; };
 		3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451524A77F5300B06936 /* StatusPresenter.swift */; };
 		3AB9451824A7826800B06936 /* StatusPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451724A7826800B06936 /* StatusPresenterInput.swift */; };
 		3AB9451A24A7829600B06936 /* StatusPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB9451924A7829600B06936 /* StatusPresenterOutput.swift */; };
@@ -240,6 +251,17 @@
 		3AB778D624B25A940022D1EB /* DataForFullInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataForFullInfo.swift; sourceTree = "<group>"; };
 		3AB778D924B25DED0022D1EB /* ChampionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListRouter.swift; sourceTree = "<group>"; };
 		3AB778DB24B25E130022D1EB /* ChampionsListRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListRouting.swift; sourceTree = "<group>"; };
+		3AB778E024B270630022D1EB /* ChampionInfoAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoAssembler.swift; sourceTree = "<group>"; };
+		3AB778E324B2835A0022D1EB /* ChampionInfoTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoTableHandler.swift; sourceTree = "<group>"; };
+		3AB778E524B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoTableHandlerProtocol.swift; sourceTree = "<group>"; };
+		3AB778E824B28F650022D1EB /* ChampionInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoPresenter.swift; sourceTree = "<group>"; };
+		3AB778EA24B28FF10022D1EB /* ChampionInfoPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoPresenterInput.swift; sourceTree = "<group>"; };
+		3AB778EC24B290240022D1EB /* ChampionInfoPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoPresenterOutput.swift; sourceTree = "<group>"; };
+		3AB778EF24B3A6090022D1EB /* ChampionInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoInteractor.swift; sourceTree = "<group>"; };
+		3AB778F124B3A7390022D1EB /* ChampionInfoInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoInteractorInput.swift; sourceTree = "<group>"; };
+		3AB778F324B3A7650022D1EB /* ChampionInfoInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoInteractorOutput.swift; sourceTree = "<group>"; };
+		3AB778F624B3AC9D0022D1EB /* ChampionInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoRouter.swift; sourceTree = "<group>"; };
+		3AB778F824B3ACC90022D1EB /* ChampionInfoRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionInfoRouting.swift; sourceTree = "<group>"; };
 		3AB9451524A77F5300B06936 /* StatusPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenter.swift; sourceTree = "<group>"; };
 		3AB9451724A7826800B06936 /* StatusPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenterInput.swift; sourceTree = "<group>"; };
 		3AB9451924A7829600B06936 /* StatusPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPresenterOutput.swift; sourceTree = "<group>"; };
@@ -335,6 +357,7 @@
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3AB778DD24B26FD30022D1EB /* ChampionInfo */,
 				3A9E513B24AFCC1E0096102C /* ChampionsList */,
 				3AC8B20A24AFC1C500DEF819 /* Spectator */,
 				3AB9452924A8E75200B06936 /* League */,
@@ -552,25 +575,8 @@
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A6366FA2460C726004C76D0 /* SummonerViewController */,
 				3A8CB730245C258A005801A8 /* LoginController */,
-				3A8CB72B245A16A2005801A8 /* ChampionInfoController */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		3A8CB72B245A16A2005801A8 /* ChampionInfoController */ = {
-			isa = PBXGroup;
-			children = (
-				3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */,
-				3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */,
-				3AA4D119245F313600B05437 /* SkillCell.swift */,
-				3AA4D11A245F313700B05437 /* SkillCell.xib */,
-				3A8790DF2483D9BC00499C5E /* FooterForChampion.swift */,
-				3A8790E12483E52300499C5E /* HeaderForChampion.swift */,
-				3A8790E32483E54800499C5E /* HeaderForChampion.xib */,
-				3A8790E52483FFCC00499C5E /* CellForHeaderForChampion.swift */,
-				3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */,
-			);
-			path = ChampionInfoController;
 			sourceTree = "<group>";
 		};
 		3A8CB730245C258A005801A8 /* LoginController */ = {
@@ -677,6 +683,81 @@
 			children = (
 				3AB778D924B25DED0022D1EB /* ChampionsListRouter.swift */,
 				3AB778DB24B25E130022D1EB /* ChampionsListRouting.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3AB778DD24B26FD30022D1EB /* ChampionInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3AB778E024B270630022D1EB /* ChampionInfoAssembler.swift */,
+				3AB778DE24B26FF70022D1EB /* View */,
+				3AB778EE24B3A3FC0022D1EB /* Interactor */,
+				3AB778E724B28BC50022D1EB /* Presenter */,
+				3AB778F524B3AC4A0022D1EB /* Router */,
+				3AB778E224B282790022D1EB /* TableHandler */,
+				3AB778DF24B270060022D1EB /* Cells */,
+			);
+			path = ChampionInfo;
+			sourceTree = "<group>";
+		};
+		3AB778DE24B26FF70022D1EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A8CB72C245A16E7005801A8 /* ChampionInfoController.swift */,
+				3A8CB72D245A16E7005801A8 /* ChampionInfoController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3AB778DF24B270060022D1EB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3AA4D119245F313600B05437 /* SkillCell.swift */,
+				3AA4D11A245F313700B05437 /* SkillCell.xib */,
+				3A8790DF2483D9BC00499C5E /* FooterForChampion.swift */,
+				3A8790E12483E52300499C5E /* HeaderForChampion.swift */,
+				3A8790E32483E54800499C5E /* HeaderForChampion.xib */,
+				3A8790E52483FFCC00499C5E /* CellForHeaderForChampion.swift */,
+				3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3AB778E224B282790022D1EB /* TableHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3AB778E324B2835A0022D1EB /* ChampionInfoTableHandler.swift */,
+				3AB778E524B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift */,
+			);
+			path = TableHandler;
+			sourceTree = "<group>";
+		};
+		3AB778E724B28BC50022D1EB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3AB778E824B28F650022D1EB /* ChampionInfoPresenter.swift */,
+				3AB778EA24B28FF10022D1EB /* ChampionInfoPresenterInput.swift */,
+				3AB778EC24B290240022D1EB /* ChampionInfoPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3AB778EE24B3A3FC0022D1EB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3AB778EF24B3A6090022D1EB /* ChampionInfoInteractor.swift */,
+				3AB778F124B3A7390022D1EB /* ChampionInfoInteractorInput.swift */,
+				3AB778F324B3A7650022D1EB /* ChampionInfoInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3AB778F524B3AC4A0022D1EB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3AB778F624B3AC9D0022D1EB /* ChampionInfoRouter.swift */,
+				3AB778F824B3ACC90022D1EB /* ChampionInfoRouting.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -1043,6 +1124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB778ED24B290240022D1EB /* ChampionInfoPresenterOutput.swift in Sources */,
 				3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */,
 				3AB778DC24B25E130022D1EB /* ChampionsListRouting.swift in Sources */,
 				3AB778CC24B249910022D1EB /* ChampionsListPresenterInput.swift in Sources */,
@@ -1057,6 +1139,8 @@
 				3AB778CA24B2497B0022D1EB /* ChampionsListPresenter.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3AB778D324B250B50022D1EB /* ChampionsListInterctorInput.swift in Sources */,
+				3AB778E424B2835A0022D1EB /* ChampionInfoTableHandler.swift in Sources */,
+				3AB778F024B3A6090022D1EB /* ChampionInfoInteractor.swift in Sources */,
 				3A689C0424B2201900CBEC7A /* ChampionsListController.swift in Sources */,
 				3AB9452624A7A4F800B06936 /* StatusTableHandler.swift in Sources */,
 				3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */,
@@ -1079,17 +1163,21 @@
 				3AB778D724B25A940022D1EB /* DataForFullInfo.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,
 				3AC26809248C2DFA009C3D18 /* Protocols.swift in Sources */,
+				3AB778F724B3AC9D0022D1EB /* ChampionInfoRouter.swift in Sources */,
 				3AB9451A24A7829600B06936 /* StatusPresenterOutput.swift in Sources */,
 				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
 				3A5C3499249164830044AB6D /* StatusController.swift in Sources */,
+				3AB778F424B3A7650022D1EB /* ChampionInfoInteractorOutput.swift in Sources */,
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
 				3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */,
 				3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */,
 				3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */,
+				3AB778E624B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift in Sources */,
 				3AB778CE24B249A60022D1EB /* ChampionsListPresenterOutput.swift in Sources */,
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
 				3A689BEE24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
+				3AB778E924B28F650022D1EB /* ChampionInfoPresenter.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
 				3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */,
 				3A689BF824B10E5400CBEC7A /* SpectatorInteractor.swift in Sources */,
@@ -1110,6 +1198,7 @@
 				3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
 				3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */,
+				3AB778E124B270630022D1EB /* ChampionInfoAssembler.swift in Sources */,
 				3AC8B1F124A9267800DEF819 /* LeagueTableHandlerProtocol.swift in Sources */,
 				3AB9451F24A7979600B06936 /* StatusInteractor.swift in Sources */,
 				3AE82D0224A698CB00B7A417 /* SpellsRouting.swift in Sources */,
@@ -1134,14 +1223,17 @@
 				3A689BFC24B10EEE00CBEC7A /* SpectatorInteractorOutput.swift in Sources */,
 				3AB9452D24A8EA9A00B06936 /* LeagueAssembler.swift in Sources */,
 				3AC8B1FB24ABDDA100DEF819 /* LoadingAssembler.swift in Sources */,
+				3AB778EB24B28FF10022D1EB /* ChampionInfoPresenterInput.swift in Sources */,
 				3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */,
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A689C0B24B2370A00CBEC7A /* ChampionsListCollectionHandler.swift in Sources */,
 				3AB778D524B250CA0022D1EB /* ChampionsListInterctorOutput.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
+				3AB778F924B3ACC90022D1EB /* ChampionInfoRouting.swift in Sources */,
 				3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */,
 				3AE82D0824A6A2FF00B7A417 /* SpellsPresenter.swift in Sources */,
 				3AE82D0024A698BD00B7A417 /* SpellsRouter.swift in Sources */,
+				3AB778F224B3A7390022D1EB /* ChampionInfoInteractorInput.swift in Sources */,
 				3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */,
 				3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */,
 				3A689BF324B0E93700CBEC7A /* SpectatorPresenterInput.swift in Sources */,

@@ -23,9 +23,7 @@ class SpellsCell: UITableViewCell {
     
     }
     
-    
-    
-    
+
     func setTitles(name: String, desc: String) {
         self.skillName.text = name
         

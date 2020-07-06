@@ -22,11 +22,10 @@ class ChampionsListRouter: ChampionsListRouting {
     
     func goToChampionInfo(_ champion: DataForFullInfo) {
         DispatchQueue.main.async {
-            let champController = ChampionInfoController()
-            champController.championData = champion.data
-            champController.id = champion.id
             
-            self.viewController?.navigationController?.pushViewController(champController, animated: true)
+            let vc = ChampionInfoAssembler.createModule(data: champion.data, id: champion.id)
+            
+            self.viewController?.navigationController?.pushViewController(vc, animated: true)
             
         }
         

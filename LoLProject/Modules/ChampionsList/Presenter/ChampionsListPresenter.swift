@@ -10,8 +10,6 @@ import Foundation
 
 class ChampionsListPresenter: ChampionsListPresenterInput {
     
-    
-    
     private weak var viewController: ChampionsListPresenterOutput?
     let interactor: ChampionsListInteractorInput
     let router: ChampionsListRouting
