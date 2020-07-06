@@ -17,6 +17,3 @@ protocol BaseRequestProtocol  {
     var urlRequest: URLRequest? { get }
 }
 
-protocol SpectatorDelegate: class {
-    func dissmissAll()
-}

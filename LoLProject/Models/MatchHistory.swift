@@ -18,11 +18,6 @@ struct Match: Codable {
     let timestamp: Int
 }
 
-struct ExpandableMathHistory {
-    var isExpanded = false
-    let match: Match
-}
-
 
 class MatchHistoryRequest: BaseRequest<MatchHistory> {
     

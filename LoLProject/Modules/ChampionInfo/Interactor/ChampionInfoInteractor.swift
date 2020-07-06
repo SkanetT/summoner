@@ -10,8 +10,6 @@ import Foundation
 
 class ChampionInfoInteractor: ChampionInfoInteractorInput {
     
-    
-    
     var championData: SelectedChampion?
     var id: String?
     

@@ -29,7 +29,6 @@ struct MatchModel {
         
         summonerInMatch.matchType = match.queueId.description.typeIdtoGameType()
         
-        
         summonerInMatch.date = { () -> String in
             let realTime = round(Double(match.gameCreation/1000))
             let date = Date(timeIntervalSince1970: realTime)

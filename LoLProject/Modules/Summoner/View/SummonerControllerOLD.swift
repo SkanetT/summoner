@@ -1,14 +1,14 @@
 //
-//  SummonerViewController.swift
+//  SummonerControllerOLD.swift
 //  LoLProject
 //
-//  Created by Антон on 05.05.2020.
+//  Created by Антон on 06.07.2020.
 //  Copyright © 2020 Антон. All rights reserved.
 //
 
 import UIKit
 
-class SummonerViewController: SpinnerController {
+class SummonerControllerOLD: SpinnerController {
     
     @IBOutlet weak var mostPlayed: UIView!
     @IBOutlet weak var topWallpaper: UIView!
@@ -26,7 +26,6 @@ class SummonerViewController: SpinnerController {
     weak var delegate: LoginControllerDelegate?
     
     let header = RankView()
-    let footer = MoreFooterView()
     
     var matchsArray: [ExpandableMathHistory] = []
     
@@ -38,12 +37,7 @@ class SummonerViewController: SpinnerController {
     var topWallpapperIndex = 0
     
     var spectatorData: SpectatorDate?
-    
-    @objc private func refresh(sender: UIRefreshControl){
-        dismiss(animated: true)
-        sender.endRefreshing()
-    }
-    
+        
     
     @objc func handleMenu(){
         delegate?.handleMenuToggle(forMenuOption: nil)
@@ -199,7 +193,6 @@ class SummonerViewController: SpinnerController {
     func spectatorPresent() {
         guard let spectatorData = self.spectatorData else { return }
         let vc = SpectatorAssembler.createModule(spectatorData)
-//        vc.spectatorDate = spectatorData
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -282,10 +275,9 @@ class SummonerViewController: SpinnerController {
             }
         }
     }
-    
 }
 
-extension SummonerViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+extension SummonerControllerOLD: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchsArray[section].isExpanded ? 2 : 1
     }

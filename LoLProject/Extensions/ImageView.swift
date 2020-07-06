@@ -51,9 +51,6 @@ extension UIImageView {
         self.sd_setImage(with: type.url, placeholderImage: #imageLiteral(resourceName: "Bronze"))
         
     }
-    
-    
-    
 }
 
 enum ImageType {

@@ -17,8 +17,6 @@ class ChampionInfoAssembler {
         interactor.championData = data
         interactor.id = id
         let presenter = ChampionInfoPresenter(interactor, router)
-       // viewController.championData = data
-      //  viewController.id = id
         viewController.tableHandler = tableHandler
         viewController.presenter = presenter
         

@@ -55,8 +55,12 @@ class ContainerController: UIViewController {
     }
     
     func configureSummonerController() {
-        let vc = SummonerViewController()
-        vc.delegate = self
+        
+         let vc = SummonerAssembler.createModule(delegate: self)
+        
+//        let vc = SummonerController()
+//        vc.delegate = self
+        
         centerContoller = UINavigationController(rootViewController: vc)
         
         centerContoller.view.frame = self.view.frame

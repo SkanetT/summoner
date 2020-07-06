@@ -23,9 +23,6 @@ class RankView: UIView {
     let wallpaper = UIView()
     let wallpaper2 = UIView()
 
-    
-    
-    
     var tapHandler: ( (String)->() )?
     var leagueIdSolo: String = "0"
     var leagueIdFlex: String = "0"
@@ -59,18 +56,6 @@ class RankView: UIView {
         wallpaper.clipsToBounds = true
         wallpaper.layer.cornerRadius = 10
         wallpaper.layer.borderWidth = 2
-        
-//        wallpaper2.backgroundColor = .lightGray
-//        wallpaper2.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(wallpaper2)
-//
-//        wallpaper2.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        wallpaper2.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        wallpaper2.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        wallpaper2.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
-//        wallpaper2.clipsToBounds = true
-//        wallpaper2.layer.cornerRadius = 10
-//        wallpaper2.layer.borderWidth = 2
         
         separator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(separator)
@@ -177,17 +162,6 @@ class RankView: UIView {
         soloWr.centerXAnchor.constraint(equalTo: soloImage.centerXAnchor, constant: 0).isActive = true
         soloWr.widthAnchor.constraint(equalToConstant: 90).isActive = true
         soloWr.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        
-     //   bringSubviewToFront(wallpaper2)
-
-        
-//        bottom.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(bottom)
-//        bottom.backgroundColor = .darkGray
-//        bottom.topAnchor.constraint(equalTo: soloWr.bottomAnchor, constant: 8).isActive = true
-//        bottom.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//        bottom.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//        bottom.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
     }
     

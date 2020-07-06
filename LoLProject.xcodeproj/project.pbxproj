@@ -21,8 +21,8 @@
 		3A5C3499249164830044AB6D /* StatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3498249164830044AB6D /* StatusController.swift */; };
 		3A5C349B249167550044AB6D /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349A249167550044AB6D /* StatusCell.swift */; };
 		3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349C2491758B0044AB6D /* StatusData.swift */; };
-		3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerViewController.swift */; };
-		3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerViewController.xib */; };
+		3A6366FD2460C769004C76D0 /* SummonerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerController.swift */; };
+		3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
 		3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */; };
 		3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689BEB24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift */; };
@@ -42,6 +42,17 @@
 		3A689C0B24B2370A00CBEC7A /* ChampionsListCollectionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689C0A24B2370A00CBEC7A /* ChampionsListCollectionHandler.swift */; };
 		3A689C0D24B2374300CBEC7A /* ChampionsListCollectionHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689C0C24B2374300CBEC7A /* ChampionsListCollectionHandlerProtocol.swift */; };
 		3A689C0F24B2390000CBEC7A /* ChampionListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A689C0E24B2390000CBEC7A /* ChampionListItem.swift */; };
+		3A7DD0C124B3B64600E17331 /* SummonerAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0C024B3B64600E17331 /* SummonerAssembler.swift */; };
+		3A7DD0C424B3B8DF00E17331 /* ExpandableMathHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0C324B3B8DF00E17331 /* ExpandableMathHistory.swift */; };
+		3A7DD0C624B3BB8000E17331 /* SummonerControllerOLD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0C524B3BB8000E17331 /* SummonerControllerOLD.swift */; };
+		3A7DD0C924B3C04100E17331 /* SummonerTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0C824B3C04100E17331 /* SummonerTableHandler.swift */; };
+		3A7DD0CB24B3C05800E17331 /* SummonerTableHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0CA24B3C05800E17331 /* SummonerTableHandlerProtocol.swift */; };
+		3A7DD0CE24B3C76C00E17331 /* SummonerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0CD24B3C76C00E17331 /* SummonerPresenter.swift */; };
+		3A7DD0D024B3C95A00E17331 /* SummonerPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0CF24B3C95A00E17331 /* SummonerPresenterInput.swift */; };
+		3A7DD0D224B3C98600E17331 /* SummonerPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D124B3C98600E17331 /* SummonerPresenterOutput.swift */; };
+		3A7DD0D524B3CDEA00E17331 /* SummonerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D424B3CDEA00E17331 /* SummonerInteractor.swift */; };
+		3A7DD0D724B3CE2900E17331 /* SummonerInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D624B3CE2900E17331 /* SummonerInteractorInput.swift */; };
+		3A7DD0D924B3CEA500E17331 /* SummonerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */; };
 		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
 		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
 		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
@@ -155,7 +166,6 @@
 		3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE82D0924A6A59500B7A417 /* SpellTableHandler.swift */; };
 		3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */; };
 		3AFED4E224700A1000D8AA40 /* NoMostPlayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */; };
-		3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */; };
 		3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */; };
 		3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */; };
 		3AFED4EA2477153300D8AA40 /* FullInfoMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */; };
@@ -179,8 +189,8 @@
 		3A5C3498249164830044AB6D /* StatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusController.swift; sourceTree = "<group>"; };
 		3A5C349A249167550044AB6D /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		3A5C349C2491758B0044AB6D /* StatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusData.swift; sourceTree = "<group>"; };
-		3A6366FB2460C769004C76D0 /* SummonerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerViewController.swift; sourceTree = "<group>"; };
-		3A6366FC2460C769004C76D0 /* SummonerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerViewController.xib; sourceTree = "<group>"; };
+		3A6366FB2460C769004C76D0 /* SummonerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerController.swift; sourceTree = "<group>"; };
+		3A6366FC2460C769004C76D0 /* SummonerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
 		3A6367012462049C004C76D0 /* MostPlayedChampionsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPlayedChampionsData.swift; sourceTree = "<group>"; };
 		3A689BEB24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorCollectionHandler.swift; sourceTree = "<group>"; };
@@ -200,6 +210,17 @@
 		3A689C0A24B2370A00CBEC7A /* ChampionsListCollectionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListCollectionHandler.swift; sourceTree = "<group>"; };
 		3A689C0C24B2374300CBEC7A /* ChampionsListCollectionHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionsListCollectionHandlerProtocol.swift; sourceTree = "<group>"; };
 		3A689C0E24B2390000CBEC7A /* ChampionListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChampionListItem.swift; sourceTree = "<group>"; };
+		3A7DD0C024B3B64600E17331 /* SummonerAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerAssembler.swift; sourceTree = "<group>"; };
+		3A7DD0C324B3B8DF00E17331 /* ExpandableMathHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableMathHistory.swift; sourceTree = "<group>"; };
+		3A7DD0C524B3BB8000E17331 /* SummonerControllerOLD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerControllerOLD.swift; sourceTree = "<group>"; };
+		3A7DD0C824B3C04100E17331 /* SummonerTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerTableHandler.swift; sourceTree = "<group>"; };
+		3A7DD0CA24B3C05800E17331 /* SummonerTableHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerTableHandlerProtocol.swift; sourceTree = "<group>"; };
+		3A7DD0CD24B3C76C00E17331 /* SummonerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerPresenter.swift; sourceTree = "<group>"; };
+		3A7DD0CF24B3C95A00E17331 /* SummonerPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerPresenterInput.swift; sourceTree = "<group>"; };
+		3A7DD0D124B3C98600E17331 /* SummonerPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerPresenterOutput.swift; sourceTree = "<group>"; };
+		3A7DD0D424B3CDEA00E17331 /* SummonerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractor.swift; sourceTree = "<group>"; };
+		3A7DD0D624B3CE2900E17331 /* SummonerInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorInput.swift; sourceTree = "<group>"; };
+		3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorOutput.swift; sourceTree = "<group>"; };
 		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
 		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
 		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
@@ -315,7 +336,6 @@
 		3AE82D0924A6A59500B7A417 /* SpellTableHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellTableHandler.swift; sourceTree = "<group>"; };
 		3AFED4DF246F5E5700D8AA40 /* BaseXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXibView.swift; sourceTree = "<group>"; };
 		3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMostPlayedView.swift; sourceTree = "<group>"; };
-		3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreFooterView.swift; sourceTree = "<group>"; };
 		3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoCell.swift; sourceTree = "<group>"; };
 		3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreInfoCell.xib; sourceTree = "<group>"; };
 		3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoMatch.swift; sourceTree = "<group>"; };
@@ -357,6 +377,7 @@
 		3A14CCD724A6AE4F00488F32 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				3AB778FA24B3B1CC0022D1EB /* Summoner */,
 				3AB778DD24B26FD30022D1EB /* ChampionInfo */,
 				3A9E513B24AFCC1E0096102C /* ChampionsList */,
 				3AC8B20A24AFC1C500DEF819 /* Spectator */,
@@ -375,25 +396,6 @@
 				3AB9451B24A78C4200B06936 /* SpellTableHandlerProtocol.swift */,
 			);
 			path = TableHandler;
-			sourceTree = "<group>";
-		};
-		3A6366FA2460C726004C76D0 /* SummonerViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3A6366FB2460C769004C76D0 /* SummonerViewController.swift */,
-				3A6366FC2460C769004C76D0 /* SummonerViewController.xib */,
-				3AAA3259246A0A9700100FF8 /* MatchHistoryCell.swift */,
-				3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */,
-				3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */,
-				3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */,
-				3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */,
-				3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */,
-				3AAA325D246DE81700100FF8 /* RankView.swift */,
-				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
-				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
-				3AFED4E32471CDBD00D8AA40 /* MoreFooterView.swift */,
-			);
-			path = SummonerViewController;
 			sourceTree = "<group>";
 		};
 		3A689BE924AFCF9B00CBEC7A /* CollectionHandler */ = {
@@ -450,6 +452,44 @@
 				3AB778D624B25A940022D1EB /* DataForFullInfo.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		3A7DD0C224B3B8A900E17331 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0C324B3B8DF00E17331 /* ExpandableMathHistory.swift */,
+				3A5BB735247F3450002417B4 /* MatchModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		3A7DD0C724B3BFFE00E17331 /* TableHandler */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0C824B3C04100E17331 /* SummonerTableHandler.swift */,
+				3A7DD0CA24B3C05800E17331 /* SummonerTableHandlerProtocol.swift */,
+			);
+			path = TableHandler;
+			sourceTree = "<group>";
+		};
+		3A7DD0CC24B3C55600E17331 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0CD24B3C76C00E17331 /* SummonerPresenter.swift */,
+				3A7DD0CF24B3C95A00E17331 /* SummonerPresenterInput.swift */,
+				3A7DD0D124B3C98600E17331 /* SummonerPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3A7DD0D324B3CDAD00E17331 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0D424B3CDEA00E17331 /* SummonerInteractor.swift */,
+				3A7DD0D624B3CE2900E17331 /* SummonerInteractorInput.swift */,
+				3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3A83110F24A7752200D6552D /* Status */ = {
@@ -518,6 +558,7 @@
 				3AD12D3B2460655700DDB6E1 /* Realms */,
 				3A8CB7A1245E2F63005801A8 /* Extensions */,
 				3A14CCD724A6AE4F00488F32 /* Modules */,
+				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A8CB6EB24549B37005801A8 /* Storyboards */,
 				3A8CB6EC24549B5B005801A8 /* Models */,
 				3A8CB6ED24549B75005801A8 /* View Controllers */,
@@ -561,7 +602,6 @@
 				3A5AE74824675D8200E80092 /* SummonerSpellsData.swift */,
 				3AAA322F2468878900100FF8 /* MatchHistory.swift */,
 				3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */,
-				3A5BB735247F3450002417B4 /* MatchModel.swift */,
 				3AC26806248C2D0E009C3D18 /* MenuOption.swift */,
 				3A5C349C2491758B0044AB6D /* StatusData.swift */,
 				3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */,
@@ -572,8 +612,6 @@
 		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3AC26805248C2CAA009C3D18 /* SideMenu */,
-				3A6366FA2460C726004C76D0 /* SummonerViewController */,
 				3A8CB730245C258A005801A8 /* LoginController */,
 			);
 			path = "View Controllers";
@@ -760,6 +798,46 @@
 				3AB778F824B3ACC90022D1EB /* ChampionInfoRouting.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		3AB778FA24B3B1CC0022D1EB /* Summoner */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0C024B3B64600E17331 /* SummonerAssembler.swift */,
+				3AB778FB24B3B2080022D1EB /* View */,
+				3A7DD0D324B3CDAD00E17331 /* Interactor */,
+				3A7DD0CC24B3C55600E17331 /* Presenter */,
+				3A7DD0C224B3B8A900E17331 /* Entity */,
+				3A7DD0C724B3BFFE00E17331 /* TableHandler */,
+				3AB778FC24B3B3280022D1EB /* Cells */,
+			);
+			path = Summoner;
+			sourceTree = "<group>";
+		};
+		3AB778FB24B3B2080022D1EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A6366FB2460C769004C76D0 /* SummonerController.swift */,
+				3A6366FC2460C769004C76D0 /* SummonerController.xib */,
+				3AAA325F246F3CA900100FF8 /* MostPlayedView.swift */,
+				3AFED4E124700A1000D8AA40 /* NoMostPlayedView.swift */,
+				3A7DD0C524B3BB8000E17331 /* SummonerControllerOLD.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3AB778FC24B3B3280022D1EB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3AAA3259246A0A9700100FF8 /* MatchHistoryCell.swift */,
+				3AAA325A246A0A9700100FF8 /* MatchHistoryCell.xib */,
+				3AFED4E524747ABE00D8AA40 /* MoreInfoCell.swift */,
+				3AFED4E624747ABE00D8AA40 /* MoreInfoCell.xib */,
+				3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */,
+				3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */,
+				3AAA325D246DE81700100FF8 /* RankView.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3AB9451424A77F2B00B06936 /* Presenter */ = {
@@ -1064,7 +1142,7 @@
 				3AAA322A24684A1100100FF8 /* SpellsController.xib in Resources */,
 				3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */,
 				3A689C0924B224C700CBEC7A /* ChampionsListCell.xib in Resources */,
-				3A6366FE2460C769004C76D0 /* SummonerViewController.xib in Resources */,
+				3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */,
 				3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */,
 				3AC6ED22249D3E1300F8B733 /* SpectatorCell.xib in Resources */,
 				3A8CB72F245A16E8005801A8 /* ChampionInfoController.xib in Resources */,
@@ -1131,7 +1209,9 @@
 				3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */,
 				3AC26807248C2D0E009C3D18 /* MenuOption.swift in Sources */,
 				3A8CB7A4245E2FF1005801A8 /* String.swift in Sources */,
-				3A6366FD2460C769004C76D0 /* SummonerViewController.swift in Sources */,
+				3A6366FD2460C769004C76D0 /* SummonerController.swift in Sources */,
+				3A7DD0CE24B3C76C00E17331 /* SummonerPresenter.swift in Sources */,
+				3A7DD0D724B3CE2900E17331 /* SummonerInteractorInput.swift in Sources */,
 				3A689C0F24B2390000CBEC7A /* ChampionListItem.swift in Sources */,
 				3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
@@ -1157,6 +1237,7 @@
 				3AC8B20224ACCB8600DEF819 /* LeagueInteractorOutput.swift in Sources */,
 				3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */,
 				3A8CB71B2454DCE5005801A8 /* ChampionsAndVersionsData.swift in Sources */,
+				3A7DD0C424B3B8DF00E17331 /* ExpandableMathHistory.swift in Sources */,
 				3AB9452824A7A52B00B06936 /* StatusTableHandlerProtocol.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
@@ -1166,16 +1247,19 @@
 				3AB778F724B3AC9D0022D1EB /* ChampionInfoRouter.swift in Sources */,
 				3AB9451A24A7829600B06936 /* StatusPresenterOutput.swift in Sources */,
 				3A8790DC2483173300499C5E /* Reachability.swift in Sources */,
+				3A7DD0C624B3BB8000E17331 /* SummonerControllerOLD.swift in Sources */,
 				3A5C3499249164830044AB6D /* StatusController.swift in Sources */,
 				3AB778F424B3A7650022D1EB /* ChampionInfoInteractorOutput.swift in Sources */,
 				3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */,
 				3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */,
 				3AC6ED1E249AB6BF00F8B733 /* View.swift in Sources */,
+				3A7DD0C924B3C04100E17331 /* SummonerTableHandler.swift in Sources */,
 				3AC8B20924AE75CD00DEF819 /* UserRank.swift in Sources */,
 				3AB778E624B283950022D1EB /* ChampionInfoTableHandlerProtocol.swift in Sources */,
 				3AB778CE24B249A60022D1EB /* ChampionsListPresenterOutput.swift in Sources */,
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
 				3A689BEE24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift in Sources */,
+				3A7DD0C124B3B64600E17331 /* SummonerAssembler.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AB778E924B28F650022D1EB /* ChampionInfoPresenter.swift in Sources */,
 				3AD12D3F2460666200DDB6E1 /* Version.swift in Sources */,
@@ -1184,6 +1268,7 @@
 				3A689C0824B224C700CBEC7A /* ChampionsListCell.swift in Sources */,
 				3A689BF524B0E94700CBEC7A /* SpectatorPresenterOutput.swift in Sources */,
 				3AFED4EC247A8BDB00D8AA40 /* ParticipantInfo.swift in Sources */,
+				3A7DD0D924B3CEA500E17331 /* SummonerInteractorOutput.swift in Sources */,
 				3A5AE74B2467620C00E80092 /* SummonerSpell.swift in Sources */,
 				3A9E513F24AFCD0E0096102C /* ChampionsListAssembler.swift in Sources */,
 				3AC2680B248C2EAC009C3D18 /* MenuOptionCell.swift in Sources */,
@@ -1192,11 +1277,13 @@
 				3A5BB736247F3450002417B4 /* MatchModel.swift in Sources */,
 				3A8790E72483FFCC00499C5E /* CellForHeaderForChampion.swift in Sources */,
 				3A689BF124B0E8EC00CBEC7A /* SpectatorPresenter.swift in Sources */,
+				3A7DD0D024B3C95A00E17331 /* SummonerPresenterInput.swift in Sources */,
 				3AE82CF224A2997A00B7A417 /* SaveSummoner.swift in Sources */,
 				3AE82CF924A6943C00B7A417 /* RealmManager.swift in Sources */,
 				3AAA322D24684F7000100FF8 /* SummonerSpellCell.swift in Sources */,
 				3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
+				3A7DD0D224B3C98600E17331 /* SummonerPresenterOutput.swift in Sources */,
 				3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */,
 				3AB778E124B270630022D1EB /* ChampionInfoAssembler.swift in Sources */,
 				3AC8B1F124A9267800DEF819 /* LeagueTableHandlerProtocol.swift in Sources */,
@@ -1204,12 +1291,14 @@
 				3AE82D0224A698CB00B7A417 /* SpellsRouting.swift in Sources */,
 				3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */,
 				3A5AE7452466125A00E80092 /* ItemsData.swift in Sources */,
+				3A7DD0CB24B3C05800E17331 /* SummonerTableHandlerProtocol.swift in Sources */,
 				3A689C0D24B2374300CBEC7A /* ChampionsListCollectionHandlerProtocol.swift in Sources */,
 				3A5C349B249167550044AB6D /* StatusCell.swift in Sources */,
 				3A689C0124B20D3200CBEC7A /* SpectatorRouting.swift in Sources */,
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */,
 				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
+				3A7DD0D524B3CDEA00E17331 /* SummonerInteractor.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
 				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
@@ -1251,7 +1340,6 @@
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
 				3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */,
-				3AFED4E42471CDBD00D8AA40 /* MoreFooterView.swift in Sources */,
 				3A83111624A77ABA00D6552D /* StatusRouting.swift in Sources */,
 				3AC8B20724ACCEA500DEF819 /* LeagueRouting.swift in Sources */,
 				3AB9452124A798B500B06936 /* StatusInteractorInput.swift in Sources */,

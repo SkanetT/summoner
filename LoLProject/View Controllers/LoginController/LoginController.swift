@@ -14,7 +14,6 @@ class LoginController: SpinnerController {
     @IBOutlet weak var tfToPicker: NSLayoutConstraint!
     @IBOutlet weak var searchToPicker: NSLayoutConstraint!
     
-    
     let realm = try! Realm()
     let foundSummoner = try! Realm().objects(FoundSummoner.self)
     
@@ -32,7 +31,6 @@ class LoginController: SpinnerController {
     
     weak var delegate: LoginControllerDelegate?
     
-    
     let servers = GlobalConstants.shared.servers
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -49,11 +47,6 @@ class LoginController: SpinnerController {
             present(summ, animated: false)
             
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //    navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @objc func handleMenu(){
@@ -200,10 +193,9 @@ class LoginController: SpinnerController {
             guard let self = self else { return }
             switch result {
             case .success(let summonerData):
-                
-                RealmManager.loginSummoner(summonerData: summonerData, region: region)
-
                 DispatchQueue.main.async {
+                    RealmManager.loginSummoner(summonerData: summonerData, region: region)
+
                     self.summonerNameTF.text? = ""
                     self.searchButton.alpha = 0.5
                     self.searchButton.isEnabled = false
