@@ -10,11 +10,11 @@ import Foundation
 
 class SpectatorInteractor: SpectatorInteractorInput {
     
-    var spectatorDate: SpectatorDate
+    var spectatorDate: SpectatorData
     
     private weak var output: SpectatorInteractorOutput?
     
-    init(_ data: SpectatorDate) {
+    init(_ data: SpectatorData) {
         self.spectatorDate = data
     }
     

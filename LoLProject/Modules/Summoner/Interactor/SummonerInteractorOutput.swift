@@ -11,4 +11,8 @@ import Foundation
 protocol SummonerInteractorOutput: class {
     func successMostPlayedChampions(_ data: MostPlayedChampionsData)
     func failureMostPlayedChampions(_ error: APIErrors)
+    func successSpectatorData(_ data: SpectatorData)
+    func failureSpectatorData(_ error: APIErrors)
+
+    func didReceiveSaveAndFoundSummoner(_ saveSummoner: SaveSummoner, _ foundSummoner: FoundSummoner)
 }

@@ -36,7 +36,7 @@ class SummonerControllerOLD: SpinnerController {
     
     var topWallpapperIndex = 0
     
-    var spectatorData: SpectatorDate?
+    var spectatorData: SpectatorData?
         
     
     @objc func handleMenu(){

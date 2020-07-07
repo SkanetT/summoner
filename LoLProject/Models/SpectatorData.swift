@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SpectatorDate: Codable {
+struct SpectatorData: Codable {
     let gameId: Int
     let gameQueueConfigId: Int?
     let participants: [ParticipantSpectator]
@@ -31,7 +31,7 @@ struct BannedChampion: Codable {
 }
 
 
-class SpectatorRequest: BaseRequest<SpectatorDate> {
+class SpectatorRequest: BaseRequest<SpectatorData> {
     
     private let summonerId: String
     private let region: String

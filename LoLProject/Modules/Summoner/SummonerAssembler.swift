@@ -11,9 +11,10 @@ import UIKit
 class SummonerAssembler {
     static func createModule(delegate: LoginControllerDelegate) -> UIViewController {
         let viewController = SummonerController()
+        let router = SummonerRouter(viewController)
         let interactor = SummonerInteractor()
         viewController.delegate = delegate
-        let presenter = SummonerPresenter(interactor)
+        let presenter = SummonerPresenter(interactor, router)
         viewController.presenter = presenter
 
         return viewController

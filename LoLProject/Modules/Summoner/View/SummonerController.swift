@@ -39,7 +39,7 @@ class SummonerController: SpinnerController {
     
     //   var topWallpapperIndex = 0
     
-    var spectatorData: SpectatorDate?
+  //  var spectatorData: SpectatorData?
     
     
     @objc func handleMenu(){
@@ -55,19 +55,14 @@ class SummonerController: SpinnerController {
         presenter?.attach(self)
         presenter?.viewDidLoad()
         
-        fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
+        //  fetcSpectator(summonerId: foundSummoner.id, server: foundSummoner.region)
         setupUI()
-        configureSaveBitton()
-        tableViewConfiguration()
         
-        title = "\(foundSummoner.name) (\(foundSummoner.region))"
-        lvlLabel.text = "Lvl: \(foundSummoner.summonerLevel) "
-        
-        summonerIconImage.downloadSD(type: .profileIcon(id: foundSummoner.profileIconId.description))
+        tableView.allowsSelection = false
+        tableView.showsVerticalScrollIndicator = false
         
         fetchMatchHistory(summonerName: foundSummoner.name, summonerId: foundSummoner.id, accountId: foundSummoner.accountId, server: foundSummoner.region)
         
-        //  fetchMostPlayedChampions(summonerId: foundSummoner.id, server: foundSummoner.region)
     }
     
     func fetchMatchHistory(summonerName: String, summonerId: String, accountId: String, server: String) {
@@ -92,54 +87,6 @@ class SummonerController: SpinnerController {
         //        }
     }
     
-    func fetchMostPlayedChampions(summonerId: String, server: String) {
-        let mostPlayedChampionsRequest = MostPlayedChampionsRequest.init(summonerId: summonerId, server: server)
-        
-        NetworkAPI.shared.dataTask(request: mostPlayedChampionsRequest) {[weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.success(let mostPlayedChampions):
-                
-                if mostPlayedChampions.count >= 3 {
-                    DispatchQueue.main.async {
-                        
-                        self.indicator.isHidden = true
-                        self.indicator.stopAnimating()
-                        let mostView = MostPlayedView()
-                        mostView.setData(mostPlayedChampions: mostPlayedChampions)
-                        self.mostPlayed.addSubview(mostView)
-                        mostView.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
-                        mostView.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
-                        mostView.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
-                        mostView.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        let noData = NoMostPlayedView()
-                        self.indicator.isHidden = true
-                        self.indicator.stopAnimating()
-                        self.mostPlayed.addSubview(noData)
-                        noData.leadingAnchor.constraint(equalTo: self.mostPlayed.leadingAnchor).isActive = true
-                        noData.trailingAnchor.constraint(equalTo: self.mostPlayed.trailingAnchor).isActive = true
-                        noData.topAnchor.constraint(equalTo: self.mostPlayed.topAnchor).isActive = true
-                        noData.bottomAnchor.constraint(equalTo: self.mostPlayed.bottomAnchor).isActive = true
-                    }
-                }
-            case.failure:
-                print("No most Played")
-            }
-        }
-    }
-    
-    func tableViewConfiguration() {
-        //   tableView.delegate = self
-        //   tableView.dataSource = self
-        tableView.allowsSelection = false
-        tableView.showsVerticalScrollIndicator = false
-        
-        tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
-        tableView.register(UINib(nibName: "MoreInfoCell", bundle: nil), forCellReuseIdentifier: "moreInfo")
-    }
     
     func setupUI() {
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -187,21 +134,9 @@ class SummonerController: SpinnerController {
     }
     
     
-    func configureSaveBitton() {
-        guard let foundSummoner = foundSummoner, let saveSummoner = saveSummoner else { return }
-        if foundSummoner.id == saveSummoner.id {
-            saveButton.isHidden = true
-        } else {
-            saveButton.isHidden = false
-        }
-        
-    }
-    
     @objc
     func spectatorPresent() {
-        guard let spectatorData = self.spectatorData else { return }
-        let vc = SpectatorAssembler.createModule(spectatorData)
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.spectatorDidTap()
     }
     
     
@@ -235,57 +170,96 @@ class SummonerController: SpinnerController {
     
     
     
-    func fetcSpectator(summonerId: String, server: String) {
-        let spectatorRequest = SpectatorRequest.init(summonerId: summonerId, server: server)
-        
-        
-        NetworkAPI.shared.dataTask(request: spectatorRequest) {[weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case.success(let spectatorDate):
-                
-                
-                self.spectatorData = spectatorDate
-                DispatchQueue.main.async {
-                    
-                    self.statusLabel.flash()
-                    
-                    
-                    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.spectatorPresent))
-                    
-                    self.statusLabel.addGestureRecognizer(gesture)
-                    self.statusLabel.isUserInteractionEnabled = true
-                    
-                    self.statusLabel.backgroundColor = .green
-                    
-                    self.statusLabel.text = "Online"
-                }
-                
-                
-            case.failure(let error):
-                switch error {
-                case.noData:
-                    DispatchQueue.main.async {
-                        self.statusLabel.backgroundColor = .red
-                        self.statusLabel.text = "Offline"
-                    }
-                case .statusCode(_):
-                    print(error)
-                case .network:
-                    print(error)
-                case .parsing:
-                    print(error)
-                case .unknown:
-                    print(error)
-                case .noInternet:
-                    print(error)
-                }
-            }
-        }
-    }
+//    func fetcSpectator(summonerId: String, server: String) {
+//        let spectatorRequest = SpectatorRequest.init(summonerId: summonerId, server: server)
+//
+//
+//        NetworkAPI.shared.dataTask(request: spectatorRequest) {[weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case.success(let spectatorDate):
+//
+//
+//              //  self.spectatorData = spectatorDate
+//                DispatchQueue.main.async {
+//
+//                    self.statusLabel.flash()
+//
+//
+//                    let gesture = UITapGestureRecognizer(target: self, action: #selector(self.spectatorPresent))
+//
+//                    self.statusLabel.addGestureRecognizer(gesture)
+//                    self.statusLabel.isUserInteractionEnabled = true
+//
+//                    self.statusLabel.backgroundColor = .green
+//
+//                    self.statusLabel.text = "Online"
+//                }
+//
+//
+//            case.failure(let error):
+//                switch error {
+//                case.noData:
+//                    DispatchQueue.main.async {
+//                        self.statusLabel.backgroundColor = .red
+//                        self.statusLabel.text = "Offline"
+//                    }
+//                case .statusCode(_):
+//                    print(error)
+//                case .network:
+//                    print(error)
+//                case .parsing:
+//                    print(error)
+//                case .unknown:
+//                    print(error)
+//                case .noInternet:
+//                    print(error)
+//                }
+//            }
+//        }
+//    }
 }
 
 extension SummonerController: SummonerPresenterOutput {
+    func summonerOnline() {
+        DispatchQueue.main.async {
+            
+            self.statusLabel.flash()
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.spectatorPresent))
+            
+            self.statusLabel.addGestureRecognizer(gesture)
+            self.statusLabel.isUserInteractionEnabled = true
+            
+            self.statusLabel.backgroundColor = .green
+            
+            self.statusLabel.text = "Online"
+        }
+    }
+    
+    func summomerOffline() {
+        DispatchQueue.main.async {
+            self.statusLabel.backgroundColor = .red
+            self.statusLabel.text = "Offline"
+        }
+    }
+    
+    func isSaveSummoner(_ isSaveSummoner: Bool) {
+        if isSaveSummoner {
+            saveButton.isHidden = true
+        } else {
+            saveButton.isHidden = false
+        }
+    }
+    
+    func didReceiveDataForSummoner(_ name: String, _ region: String, _ level: String, _ profileId: String) {
+        title = "\(name) (\(region))"
+        lvlLabel.text = "Lvl: \(level) "
+        
+        summonerIconImage.downloadSD(type: .profileIcon(id: profileId))
+        
+    }
+    
     func didReceiveMostPlayedView(_ data: MostPlayedChampionsData) {
         
         DispatchQueue.main.async {

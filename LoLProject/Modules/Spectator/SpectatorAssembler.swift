@@ -9,7 +9,7 @@
 import UIKit
 
 class SpectatorAssembler {
-    static func createModule(_ spectatorData: SpectatorDate) -> UIViewController {
+    static func createModule(_ spectatorData: SpectatorData) -> UIViewController {
         let viewController = SpectatorController()
         let collectionHandler1 = SpectatorCollectionHandler()
         let collectionHandler2 = SpectatorCollectionHandler()

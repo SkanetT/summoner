@@ -53,6 +53,8 @@
 		3A7DD0D524B3CDEA00E17331 /* SummonerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D424B3CDEA00E17331 /* SummonerInteractor.swift */; };
 		3A7DD0D724B3CE2900E17331 /* SummonerInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D624B3CE2900E17331 /* SummonerInteractorInput.swift */; };
 		3A7DD0D924B3CEA500E17331 /* SummonerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */; };
+		3A7DD0DC24B4FFEA00E17331 /* SummonerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */; };
+		3A7DD0DE24B5006F00E17331 /* SummonerRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */; };
 		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
 		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
 		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
@@ -132,7 +134,7 @@
 		3AC2680D248C2F64009C3D18 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2680C248C2F64009C3D18 /* MenuController.swift */; };
 		3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC2680E248C2FFB009C3D18 /* ContainerController.swift */; };
 		3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC26810248EBE94009C3D18 /* BaseRequest.swift */; };
-		3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */; };
+		3AC6ED1324966D9500F8B733 /* SpectatorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1224966D9500F8B733 /* SpectatorData.swift */; };
 		3AC6ED1724969C5600F8B733 /* SpectatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1524969C5600F8B733 /* SpectatorController.swift */; };
 		3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1624969C5600F8B733 /* SpectatorController.xib */; };
 		3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */; };
@@ -221,6 +223,8 @@
 		3A7DD0D424B3CDEA00E17331 /* SummonerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractor.swift; sourceTree = "<group>"; };
 		3A7DD0D624B3CE2900E17331 /* SummonerInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorInput.swift; sourceTree = "<group>"; };
 		3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorOutput.swift; sourceTree = "<group>"; };
+		3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouter.swift; sourceTree = "<group>"; };
+		3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouting.swift; sourceTree = "<group>"; };
 		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
 		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
 		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
@@ -302,7 +306,7 @@
 		3AC2680C248C2F64009C3D18 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		3AC2680E248C2FFB009C3D18 /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		3AC26810248EBE94009C3D18 /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
-		3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorDate.swift; sourceTree = "<group>"; };
+		3AC6ED1224966D9500F8B733 /* SpectatorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorData.swift; sourceTree = "<group>"; };
 		3AC6ED1524969C5600F8B733 /* SpectatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectatorController.swift; sourceTree = "<group>"; };
 		3AC6ED1624969C5600F8B733 /* SpectatorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpectatorController.xib; sourceTree = "<group>"; };
 		3AC6ED1B2499597B00F8B733 /* SpinnerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerController.swift; sourceTree = "<group>"; };
@@ -492,6 +496,15 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		3A7DD0DA24B4FF3A00E17331 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */,
+				3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		3A83110F24A7752200D6552D /* Status */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,7 +617,7 @@
 				3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */,
 				3AC26806248C2D0E009C3D18 /* MenuOption.swift */,
 				3A5C349C2491758B0044AB6D /* StatusData.swift */,
-				3AC6ED1224966D9500F8B733 /* SpectatorDate.swift */,
+				3AC6ED1224966D9500F8B733 /* SpectatorData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -808,6 +821,7 @@
 				3A7DD0D324B3CDAD00E17331 /* Interactor */,
 				3A7DD0CC24B3C55600E17331 /* Presenter */,
 				3A7DD0C224B3B8A900E17331 /* Entity */,
+				3A7DD0DA24B4FF3A00E17331 /* Router */,
 				3A7DD0C724B3BFFE00E17331 /* TableHandler */,
 				3AB778FC24B3B3280022D1EB /* Cells */,
 			);
@@ -1205,6 +1219,7 @@
 				3AB778ED24B290240022D1EB /* ChampionInfoPresenterOutput.swift in Sources */,
 				3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */,
 				3AB778DC24B25E130022D1EB /* ChampionsListRouting.swift in Sources */,
+				3A7DD0DE24B5006F00E17331 /* SummonerRouting.swift in Sources */,
 				3AB778CC24B249910022D1EB /* ChampionsListPresenterInput.swift in Sources */,
 				3AD12D3D2460657F00DDB6E1 /* Champion.swift in Sources */,
 				3AC26807248C2D0E009C3D18 /* MenuOption.swift in Sources */,
@@ -1240,6 +1255,7 @@
 				3A7DD0C424B3B8DF00E17331 /* ExpandableMathHistory.swift in Sources */,
 				3AB9452824A7A52B00B06936 /* StatusTableHandlerProtocol.swift in Sources */,
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
+				3A7DD0DC24B4FFEA00E17331 /* SummonerRouter.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
 				3AB778D724B25A940022D1EB /* DataForFullInfo.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,
@@ -1301,7 +1317,7 @@
 				3A7DD0D524B3CDEA00E17331 /* SummonerInteractor.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
-				3AC6ED1324966D9500F8B733 /* SpectatorDate.swift in Sources */,
+				3AC6ED1324966D9500F8B733 /* SpectatorData.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,
 				3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
