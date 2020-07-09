@@ -29,16 +29,69 @@ class SummonerPresenter: SummonerPresenterInput {
         interactor.fetchSaveAndFoundSummoners()
         interactor.fetchMostPlayedChampions()
         interactor.fetchSpectatorData()
+        interactor.fetchMatchHistory()
+        interactor.fetchLeagueData()
+        viewController?.scrollingDown({[weak self] () in
+            self?.interactor.fetchMatchs()
+            
+        })
+        viewController?.leagueTaped() {[weak self] leagueId in
+            self?.interactor.fetchRankData(leagueId)
+        }
         
     }
     
     func spectatorDidTap() {
-        
+        interactor.giveSpectatorData()
     }
 }
 
 extension SummonerPresenter: SummonerInteractorOutput {
-    func successSpectatorData(_ data: SpectatorData) {
+    func successRank(_ data: RankData) {
+        router.rankPresent(data)
+    }
+    
+    func failureRank(_ error: APIErrors) {
+        router.showError(error)
+    }
+    
+    func successLeague(_ data: LeagueData) {
+        viewController?.didReceiveLeague(data)
+    }
+    
+    func failureLeague(_ error: APIErrors) {
+        router.showError(error)
+    }
+    
+    func successRelogin() {
+        router.dismiss()
+    }
+    
+    func failureRelogin(_ error: APIErrors) {
+        router.showError(error)
+    }
+    
+    func didReceiveUpdateForTable(_ matchModel: [MatchModel]) {
+        viewController?.dataForTable(matchModel)
+    }
+    
+    func didReceiveDataForTable(matchsArray: [ExpandableMathHistory], matchModel: [MatchModel]) {
+        viewController?.firstDataForTable(matchsArray: matchsArray, matchModel: matchModel)
+    }
+    
+    func successMatchHistory() {
+        interactor.fetchMatchs()
+    }
+    
+    func failureMatchHistory(_ error: APIErrors) {
+        router.showError(error)
+    }
+    
+    func didReceiveDataForSpectator(_ data: SpectatorData) {
+        router.spectatorPresent(data)
+    }
+    
+    func successSpectatorData() {
         viewController?.summonerOnline()
 
     }

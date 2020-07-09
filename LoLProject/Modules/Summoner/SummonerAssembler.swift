@@ -11,12 +11,14 @@ import UIKit
 class SummonerAssembler {
     static func createModule(delegate: LoginControllerDelegate) -> UIViewController {
         let viewController = SummonerController()
+        let tableHandler = SummonerTableHandler()
         let router = SummonerRouter(viewController)
         let interactor = SummonerInteractor()
         viewController.delegate = delegate
         let presenter = SummonerPresenter(interactor, router)
         viewController.presenter = presenter
-
+        viewController.tableHandler = tableHandler
+        
         return viewController
     }
 }

@@ -22,11 +22,11 @@ class RankView: UIView {
     let bottom = UIView()
     let wallpaper = UIView()
     let wallpaper2 = UIView()
-
+    
     var tapHandler: ( (String)->() )?
     var leagueIdSolo: String = "0"
     var leagueIdFlex: String = "0"
-
+    
     
     @objc func tappedOnSoloLeague() {
         tapHandler?(leagueIdSolo)
@@ -167,9 +167,8 @@ class RankView: UIView {
     
     func setData(leagueData: LeagueData) {
         
-        
         if let flexRankData = leagueData.first(where: {$0.queueType == "RANKED_FLEX_SR"}) {
-           
+            
             leagueIdFlex = flexRankData.leagueId
             
             DispatchQueue.main.async {
@@ -194,9 +193,9 @@ class RankView: UIView {
             }
         }
         if let soloRankData = leagueData.first(where: {$0.queueType == "RANKED_SOLO_5x5"}) {
-           
+            
             leagueIdSolo = soloRankData.leagueId
-
+            
             
             DispatchQueue.main.async {
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnSoloLeague))
@@ -204,8 +203,6 @@ class RankView: UIView {
                 self.soloImage.isUserInteractionEnabled = true
                 
             }
-            
-
             
             let wrSolo :Double
             wrSolo = Double(soloRankData.wins) / (Double(soloRankData.wins) + Double(soloRankData.losses)) * 100

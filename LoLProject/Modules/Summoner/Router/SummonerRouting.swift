@@ -12,4 +12,5 @@ protocol SummonerRouting {
     func dismiss()
     func showError(_ error: APIErrors )
     func spectatorPresent(_ data: SpectatorData)
+    func rankPresent(_ data: RankData)
 }

@@ -12,5 +12,12 @@ protocol SummonerInteractorInput: class {
     func attach(_ output: SummonerInteractorOutput)
     func fetchSaveAndFoundSummoners()
     func fetchMostPlayedChampions()
+    func fetchLeagueData()
     func fetchSpectatorData()
+    func fetchMatchHistory()
+    func fetchMatchs()
+    func reloadMatch(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int, summonerName: String, summonerId: String)
+    func giveSpectatorData()
+    func relogin(name: String)
+    func fetchRankData(_ leagueId: String)
 }

@@ -29,4 +29,10 @@ class SummonerRouter: SummonerRouting {
             self.viewController?.navigationController?.pushViewController(vc, animated: true)
         }
     }
+    func rankPresent(_ data: RankData) {
+        DispatchQueue.main.async {
+            let leagueVC = LeagueAssembler.createModule(data)
+            self.viewController?.navigationController?.pushViewController(leagueVC, animated: true)
+        }
+    }
 }
