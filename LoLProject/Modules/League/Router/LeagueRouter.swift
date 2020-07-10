@@ -19,4 +19,8 @@ class LeagueRouter: LeagueRouting {
     func dismiss() {
         viewController?.dismiss(animated: true, completion: nil)
     }
+    
+    func showError(_ error: APIErrors) {
+        viewController?.showErrorMessage(error)
+    }
 }

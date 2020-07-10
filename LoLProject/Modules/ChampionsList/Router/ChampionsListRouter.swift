@@ -20,6 +20,10 @@ class ChampionsListRouter: ChampionsListRouting {
         viewController?.dismiss(animated: true)
     }
     
+    func showError(_ error: APIErrors) {
+        viewController?.showErrorMessage(error)
+    }
+    
     func goToChampionInfo(_ champion: DataForFullInfo) {
         DispatchQueue.main.async {
             

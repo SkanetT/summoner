@@ -36,9 +36,6 @@ class MenuController: UIViewController {
             botPlace.isHidden = false
             setDataToBot()
         }
-        
-        
-        
     }
     
     func configureMenu(){

@@ -42,7 +42,6 @@ class SummonerInteractor: SummonerInteractorInput {
             case.failure(let error):
                 self.output?.failureLeague(error)
             }
-            
         }
     }
     
@@ -79,7 +78,6 @@ class SummonerInteractor: SummonerInteractorInput {
                 self?.output?.failureMostPlayedChampions(error)
             }
         }
-        
     }
     
     func fetchMatchHistory() {
@@ -109,9 +107,6 @@ class SummonerInteractor: SummonerInteractorInput {
             case.success(let rankData):
                 DispatchQueue.main.async {
                     self?.output?.successRank(rankData)
-                    
-                 //   let leagueVC = LeagueAssembler.createModule(rankData)
-                    //   self?.navigationController?.pushViewController(leagueVC, animated: true)
                 }
             case .failure(let error):
                 self?.output?.failureRank(error)
@@ -126,7 +121,6 @@ class SummonerInteractor: SummonerInteractorInput {
         let id = foundSummoner.id
         let server = foundSummoner.region
         let disGroup = DispatchGroup()
-        var failsMatchs = 0
         
         let decValue = matchsArray.count - matchModel.count < 7 ? matchsArray.count - matchModel.count - 1 : 7
         guard decValue > 1 else { return }
@@ -150,10 +144,7 @@ class SummonerInteractor: SummonerInteractorInput {
                         })
                         self.matchModel.append(match)
                     }
-                case.failure(let erorr):
-                    print("####",erorr)
-                    print("Fail section \(i) for match \(self.matchsArray[i].match.gameId)")
-                    failsMatchs += 1
+                case.failure:
                     self.reloadMatch(disGroup: disGroup, matchId: self.matchsArray[i].match.gameId, region: server, summonerName: name, summonerId: id)
                 }
             }
@@ -164,11 +155,7 @@ class SummonerInteractor: SummonerInteractorInput {
             self.matchModel.sort { (lhs, rhs) -> Bool in
                 return lhs.summonerInMatch.dateCreation > rhs.summonerInMatch.dateCreation
             }
-            if failsMatchs != 0 {
-                print (" 💡💡💡💡💡💡 Fails ⚰️ \(failsMatchs) ⚰️ 💡💡💡💡💡💡 ")
-            } else {
-                print("🌈🌈🌈🌈🌈🌈 All matchs good 🌈🌈🌈🌈🌈🌈")
-            }
+            
             if self.isFirstTimeLoad {
                 self.isFirstTimeLoad = false
                 self.output?.didReceiveDataForTable(matchsArray: self.matchsArray, matchModel: self.matchModel)
@@ -180,7 +167,6 @@ class SummonerInteractor: SummonerInteractorInput {
     
     func reloadMatch(disGroup: DispatchGroup, matchId: Int,region: String, reply: Int = 0, summonerName: String, summonerId: String) {
         guard reply < 4 else {
-            print("not reload 🧻")
             disGroup.leave()
             return
         }
@@ -190,7 +176,6 @@ class SummonerInteractor: SummonerInteractorInput {
             switch result {
             case.success(let fullMatchHistory):
                 self.dataQueue.sync(flags:.barrier) {
-                    print("reload 🩸")
                     disGroup.leave()
                     let match: MatchModel = .init(match: fullMatchHistory, summonerName: summonerName, summonerId: summonerId, handler: {[weak self] str in
                         self?.relogin(name: str)

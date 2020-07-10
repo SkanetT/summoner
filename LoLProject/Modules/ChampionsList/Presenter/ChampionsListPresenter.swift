@@ -49,7 +49,7 @@ extension ChampionsListPresenter: ChampionsListInteractorOutput {
     func championInfoFailure(_ error: APIErrors) {
         viewController?.championInfoLoadComlete()
 
-        print(error)
+        router.showError(error)
     }
     
     func didReceiveData(_ data: [ChampionListItem]) {

@@ -59,7 +59,7 @@ extension SpectatorPresenter: SpectatorInteractorOutput {
     }
     
     func reconnectFailure(_ error: APIErrors) {
-        print(error)
+        router.showError(error)
     }
     
 }

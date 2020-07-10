@@ -58,9 +58,6 @@ class ContainerController: UIViewController {
         
          let vc = SummonerAssembler.createModule(delegate: self)
         
-//        let vc = SummonerController()
-//        vc.delegate = self
-        
         centerContoller = UINavigationController(rootViewController: vc)
         
         centerContoller.view.frame = self.view.frame
@@ -72,13 +69,9 @@ class ContainerController: UIViewController {
     func configureMenuController() {
         if menuController == nil {
             menuController = MenuController()
-            
-            
             menuController.delegate = self
             
             view.insertSubview(menuController.view, at: 0)
-            
-            
             
             addChild(menuController)
             menuController.didMove(toParent: self)
@@ -90,16 +83,11 @@ class ContainerController: UIViewController {
         
         if shouldExpand {
             
-            
             UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                
-                
                 self.view.frame.size.height -= 80
                 self.view.frame.origin.y += 40
                 
                 self.centerContoller.view.frame.origin.x  = self.centerContoller.view.frame.width - 80
-                
-                
                 
             }, completion: nil)
             
@@ -126,10 +114,8 @@ class ContainerController: UIViewController {
     func didSelectMenuOption(menuOption: MenuOption) {
         switch menuOption {
         case .champions:
-
             let vc = ChampionsListAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)
-
             nc.modalPresentationStyle = .fullScreen
             present(nc, animated: true)
         case .spells:
@@ -140,9 +126,7 @@ class ContainerController: UIViewController {
         case .serversStatus:
             let vc = StatusAssembler.createModule()
             let nc = UINavigationController(rootViewController: vc)
-            
             nc.modalPresentationStyle = .fullScreen
-            
             present(nc, animated: true)
         case .news:
             if let url = URL(string: GlobalConstants.shared.newsUrlString) {
@@ -157,68 +141,32 @@ class ContainerController: UIViewController {
     func logOut() {
         let ac = UIAlertController(title: "Log Out", message: "Are you sure?", preferredStyle: .alert)
         let logOut = UIAlertAction(title: "Log Out", style: .default) {[weak self] _ in
-            
-            let realm = try! Realm()
-            let foundSummoner = try! Realm().objects(FoundSummoner.self)
-            let saveSummoner = try! Realm().objects(SaveSummoner.self)
-            try! realm.write {
-                realm.delete(foundSummoner)
-                realm.delete(saveSummoner)
-            }
-            
+            RealmManager.deleteSummoner()
             self?.dismiss(animated: true, completion: nil)
-            
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
         ac.addAction(logOut)
         ac.addAction(cancel)
         present(ac, animated: true)
-        
-        
     }
     
     @objc
     func swap() {
-        let foundSummoner = try! Realm().objects(FoundSummoner.self)
-        let saveSummoner = try! Realm().objects(SaveSummoner.self)
-        guard let actualFoundSummoner = foundSummoner.first, let actualSaveSummoner = saveSummoner.first else { return }
-        if actualFoundSummoner.id == actualSaveSummoner.id {
+        guard let foundSummoner = RealmManager.fetchFoundSummoner(), let saveSummoner = RealmManager.fetchSaveSummoner() else { return }
+        if foundSummoner.id == saveSummoner.id {
             dismiss(animated: true, completion: nil)
         } else {
-            let realm = try! Realm()
-            let region = actualSaveSummoner.region
-            let request = SummonerRequest(summonerName: actualSaveSummoner.name, server: actualSaveSummoner.region)
+            let request = SummonerRequest(summonerName: saveSummoner.name, server: saveSummoner.region)
             NetworkAPI.shared.dataTask(request: request) {[weak self] result in
                 switch result {
                 case .success( let summonerData):
-                    let newFoundSummoner = FoundSummoner()
-                    newFoundSummoner.name = summonerData.name
-                    newFoundSummoner.id = summonerData.id
-                    newFoundSummoner.accountId = summonerData.accountId
-                    newFoundSummoner.puuid = summonerData.puuid
-                    newFoundSummoner.profileIconId = summonerData.profileIconId
-                    newFoundSummoner.summonerLevel = summonerData.summonerLevel
-                    newFoundSummoner.region = region
-                    
-                    let newSaveSummoner = SaveSummoner()
-                    newSaveSummoner.name = summonerData.name
-                    newSaveSummoner.id = summonerData.id
-                    newSaveSummoner.profileIconId = summonerData.profileIconId
-                    newSaveSummoner.region = region
-                    
-                    DispatchQueue.main.async {
-                        try! realm.write {
-                                realm.delete(actualFoundSummoner)
-                                realm.delete(actualSaveSummoner)
-                                
-                                realm.add(newFoundSummoner)
-                                realm.add(newSaveSummoner)
-                        }
+
+                     DispatchQueue.main.async {
+                        RealmManager.swapSummoners(summonerData)
                         self?.dismiss(animated: true, completion: nil)
                     }
                 case.failure( let error):
-                    print(error)
+                    self?.showErrorMessage(error)
                 }
             }
         }

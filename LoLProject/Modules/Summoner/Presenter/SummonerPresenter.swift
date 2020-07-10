@@ -41,6 +41,10 @@ class SummonerPresenter: SummonerPresenterInput {
         
     }
     
+    func sideMenuTap() {
+        router.sideMenu()
+    }
+    
     func spectatorDidTap() {
         interactor.giveSpectatorData()
     }

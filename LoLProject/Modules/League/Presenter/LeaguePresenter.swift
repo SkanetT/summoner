@@ -48,7 +48,7 @@ extension LeaguePresenter: LeagueInteractorOutput {
     }
     
     func reconnectFailure(_ error: APIErrors) {
-        print(error)
+        router.showError(error)
     }
     
     func didReciveNewTier(_ tier: [Entry]) {

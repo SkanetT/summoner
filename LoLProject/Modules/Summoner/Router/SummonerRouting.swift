@@ -10,6 +10,7 @@ import UIKit
 
 protocol SummonerRouting {
     func dismiss()
+    func sideMenu()
     func showError(_ error: APIErrors )
     func spectatorPresent(_ data: SpectatorData)
     func rankPresent(_ data: RankData)

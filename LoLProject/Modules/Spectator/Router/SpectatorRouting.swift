@@ -10,5 +10,6 @@ import Foundation
 
 protocol SpectatorRouting {
     func dismiss()
+    func showError(_ error: APIErrors )
 
 }

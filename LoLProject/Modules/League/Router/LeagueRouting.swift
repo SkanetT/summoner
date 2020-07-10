@@ -10,5 +10,5 @@ import Foundation
 
 protocol LeagueRouting {
     func dismiss()
-
+    func showError(_ error: APIErrors )
 }

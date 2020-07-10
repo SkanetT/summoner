@@ -82,7 +82,6 @@ class LoginController: SpinnerController {
         }
         updateCurrentVersion()
         
-        
         let realm = try! Realm()
         let version = try! Realm().objects(Version.self)
         if let lastVersion = version.first?.lastVesion {
@@ -123,9 +122,6 @@ class LoginController: SpinnerController {
             updateCurrentVersion()
             
         }
-        
-        
-        
         
     }
     

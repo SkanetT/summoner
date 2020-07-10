@@ -52,6 +52,43 @@ class RealmManager {
         }
     }
     
+    static func deleteSummoner() {
+        guard let foundSummoner = RealmManager.fetchFoundSummoner(), let saveSummoner = RealmManager.fetchSaveSummoner() else { return }
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(foundSummoner)
+            realm.delete(saveSummoner)
+        }
+    }
+    
+    static func swapSummoners(_ summonerData: SummonerData) {
+        guard let foundSummoner = RealmManager.fetchFoundSummoner(), let saveSummoner = RealmManager.fetchSaveSummoner() else { return }
+        let realm = try! Realm()
+        let newFoundSummoner = FoundSummoner()
+        newFoundSummoner.name = summonerData.name
+        newFoundSummoner.id = summonerData.id
+        newFoundSummoner.accountId = summonerData.accountId
+        newFoundSummoner.puuid = summonerData.puuid
+        newFoundSummoner.profileIconId = summonerData.profileIconId
+        newFoundSummoner.summonerLevel = summonerData.summonerLevel
+        newFoundSummoner.region = saveSummoner.region
+        
+        let newSaveSummoner = SaveSummoner()
+        newSaveSummoner.name = summonerData.name
+        newSaveSummoner.id = summonerData.id
+        newSaveSummoner.profileIconId = summonerData.profileIconId
+        newSaveSummoner.region = saveSummoner.region
+        
+        try! realm.write {
+            realm.delete(foundSummoner)
+            realm.delete(saveSummoner)
+            
+            realm.add(newFoundSummoner)
+            realm.add(newSaveSummoner)
+        }
+        
+    }
+    
     static func reWriteFoundSummoner(_ summonerData: SummonerData) {
         guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return }
         

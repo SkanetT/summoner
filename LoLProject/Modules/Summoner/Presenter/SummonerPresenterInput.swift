@@ -12,4 +12,5 @@ protocol SummonerPresenterInput: class {
     func attach(_ viewController: SummonerPresenterOutput)
     func viewDidLoad()
     func spectatorDidTap()
+    func sideMenuTap()
 }

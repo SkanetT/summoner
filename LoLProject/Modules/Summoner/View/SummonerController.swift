@@ -20,18 +20,15 @@ class SummonerController: SpinnerController {
     @IBOutlet weak var summonerTopButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
-    
-    weak var delegate: LoginControllerDelegate?
-    
+        
     var presenter: SummonerPresenterInput?
     var tableHandler: SummonerTableHandlerProtocol?
     
     let foundSummoner = RealmManager.fetchFoundSummoner()
     let saveSummoner = RealmManager.fetchSaveSummoner()
     
-    
     @objc func handleMenu(){
-        delegate?.handleMenuToggle(forMenuOption: nil)
+        presenter?.sideMenuTap()
     }
     
     override func viewDidLoad() {
@@ -125,8 +122,6 @@ class SummonerController: SpinnerController {
             ac.addAction(ok)
             ac.addAction(cancel)
             present(ac, animated: true)
-            
-            
         }
     }
     

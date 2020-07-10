@@ -11,12 +11,18 @@ import UIKit
 class SummonerRouter: SummonerRouting {
     
     private weak var viewController: UIViewController?
+    weak var delegate: LoginControllerDelegate?
+
     
     init(_ viewController: UIViewController) {
         self.viewController = viewController
     }    
     func dismiss() {
         viewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func sideMenu() {
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
     
     func showError(_ error: APIErrors) {
