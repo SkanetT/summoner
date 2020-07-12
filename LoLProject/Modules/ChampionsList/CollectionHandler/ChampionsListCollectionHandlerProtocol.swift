@@ -11,6 +11,8 @@ import UIKit
 protocol ChampionsListCollectionHandlerProtocol {
     func attach(_ collectionView: UICollectionView)
     func setData(_ data: [ChampionListItem])
+    func searchReload(_ search: String)
+
     func setAction(userSelect: ((String) -> ())?)
 
 }

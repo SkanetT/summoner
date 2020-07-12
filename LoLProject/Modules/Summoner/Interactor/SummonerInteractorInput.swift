@@ -11,6 +11,8 @@ import Foundation
 protocol SummonerInteractorInput: class {
     func attach(_ output: SummonerInteractorOutput)
     func fetchSaveAndFoundSummoners()
+    func fetchSaveAndFoundSummonerNames()
+    func rewriteSave()
     func fetchMostPlayedChampions()
     func fetchLeagueData()
     func fetchSpectatorData()

@@ -135,6 +135,15 @@ class RealmManager {
         }
     }
     
+    static func fetchChampionfromKey(_ key: String) -> Champion? {
+        let champions = try! Realm().objects(Champion.self)
+        if let champion = champions.first(where: {$0.key == key}) {
+            return champion
+        } else {
+            return nil
+        }
+    }
+    
     static func fetchSpellIdfromKey(_ key: String) -> String? {
         let spells = try! Realm().objects(SummonerSpell.self)
         if let spell = spells.first(where: {$0.key == key}) {

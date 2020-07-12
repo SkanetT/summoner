@@ -46,7 +46,7 @@ class NetworkAPI {
     }
     
     func fetchCurrentChampionsList(completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion.json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/champion.json"
         
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
@@ -63,7 +63,7 @@ class NetworkAPI {
     }
     
     func fetchCurrentItemsList( completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/item.json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/item.json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -79,7 +79,7 @@ class NetworkAPI {
     }
     
     func fetchCurrentSpellsList( completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/summoner.json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/summoner.json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -111,7 +111,7 @@ class NetworkAPI {
     }
     
     func fetchFullInfoChampion(id: String, completion: @escaping (Result<SelectedChampion, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.11.1/data/en_US/champion/\(id).json"
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/champion/\(id).json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in

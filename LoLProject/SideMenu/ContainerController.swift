@@ -20,8 +20,6 @@ class ContainerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         if isLogin {
             configureLoginController()
         } else {
@@ -107,7 +105,6 @@ class ContainerController: UIViewController {
                 
             })
         }
-        
         //  animateStatusBar()
     }
     

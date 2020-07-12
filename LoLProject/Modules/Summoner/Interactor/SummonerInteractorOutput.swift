@@ -17,6 +17,7 @@ protocol SummonerInteractorOutput: class {
     func didReceiveDataForSpectator(_ data: SpectatorData)
     func failureSpectatorData(_ error: APIErrors)
     func didReceiveSaveAndFoundSummoner(_ saveSummoner: SaveSummoner, _ foundSummoner: FoundSummoner)
+    func didReceiveSaveAndFoundSummonerNames(_ saveName: String, _ foundName: String)
     func successMatchHistory()
     func failureMatchHistory(_ error: APIErrors)
     func didReceiveDataForTable(matchsArray: [ExpandableMathHistory], matchModel: [MatchModel])
@@ -25,4 +26,5 @@ protocol SummonerInteractorOutput: class {
     func failureRelogin(_ error: APIErrors)
     func successRank(_ data: RankData)
     func failureRank(_ error: APIErrors)
+    func successRewrite()
 }

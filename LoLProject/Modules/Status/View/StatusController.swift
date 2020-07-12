@@ -26,7 +26,6 @@ class StatusController: UIViewController {
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exit))
         tableView.register(StatusCell.self, forCellReuseIdentifier: "status")
 
-        
     }
     
     @objc
@@ -59,7 +58,6 @@ class StatusController: UIViewController {
         tableView.rowHeight = 60
     }
 }
-
 
 extension StatusController: StatusPresenterOutput {
     func didReciveServerList(servers: [String]) {

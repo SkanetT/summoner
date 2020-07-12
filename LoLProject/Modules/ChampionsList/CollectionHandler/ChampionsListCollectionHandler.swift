@@ -14,7 +14,9 @@ class ChampionsListCollectionHandler: NSObject, ChampionsListCollectionHandlerPr
     
     var championsListArray: [ChampionListItem] = []
     var userSelectCell: ((String) -> ())?
-
+    var filteredChampionsListArray: [ChampionListItem] = []
+    var isFilter = false
+    
     func attach(_ collectionView: UICollectionView) {
         self.collectionView = collectionView
         collectionView.register(UINib(nibName: "ChampionsListCell", bundle: nil), forCellWithReuseIdentifier: "newListCell")
@@ -27,6 +29,17 @@ class ChampionsListCollectionHandler: NSObject, ChampionsListCollectionHandlerPr
         collectionView?.reloadData()
     }
     
+    func searchReload(_ search: String) {
+        guard search != "" else {
+            isFilter = false
+            collectionView?.reloadData()
+            return
+        }
+        filteredChampionsListArray = championsListArray.filter( {$0.name.lowercased().contains(search.lowercased())} )
+        isFilter = true
+        collectionView?.reloadData()
+    }
+    
     func setAction(userSelect: ((String) -> ())?) {
         self.userSelectCell = userSelect
     }
@@ -34,20 +47,33 @@ class ChampionsListCollectionHandler: NSObject, ChampionsListCollectionHandlerPr
 
 extension ChampionsListCollectionHandler: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return championsListArray.count
+        if isFilter {
+            return filteredChampionsListArray.count
+        } else {
+            return championsListArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newListCell", for: indexPath) as! ChampionsListCell
-        cell.nameLabel.text = championsListArray[indexPath.row].name
         
-        cell.championImage.downloadSD(type: .championIcon(id: championsListArray[indexPath.row].id))
-        
+        if isFilter {
+            cell.nameLabel.text = filteredChampionsListArray[indexPath.row].name
+            cell.championImage.downloadSD(type: .championIcon(id: filteredChampionsListArray[indexPath.row].id))
+            
+        } else {
+            cell.nameLabel.text = championsListArray[indexPath.row].name
+            cell.championImage.downloadSD(type: .championIcon(id: championsListArray[indexPath.row].id))
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        userSelectCell?(championsListArray[indexPath.row].id)
+        if isFilter {
+            userSelectCell?(filteredChampionsListArray[indexPath.row].id)
+        } else {
+            userSelectCell?(championsListArray[indexPath.row].id)
+        }
     }
 }

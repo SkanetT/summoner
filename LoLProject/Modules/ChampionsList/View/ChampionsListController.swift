@@ -7,14 +7,17 @@
 //
 
 import UIKit
-//import RealmSwift
 
 class ChampionsListController: SpinnerController {
     
     var presenter: ChampionsListPresenterInput?
     
     var collectionHandler: ChampionsListCollectionHandlerProtocol?
+    var searchHandler: ChampionsListSearchHandlerProtocol?
     
+    
+    let searchController = UISearchController(searchResultsController: nil)
+
     @IBOutlet weak var collectionView: UICollectionView!
  
     @objc func exitChampions() {
@@ -29,12 +32,22 @@ class ChampionsListController: SpinnerController {
         presenter?.viewDidLoad()
         title = "Champions"
         
+        searchHandler?.setSearch(search: {[weak self] str in
+            self?.collectionHandler?.searchReload(str)
+        })
+        
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+       // navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = titleColor
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
- 
+        searchHandler?.attach(searchController)
+        definesPresentationContext = true
+
     }
 }
 

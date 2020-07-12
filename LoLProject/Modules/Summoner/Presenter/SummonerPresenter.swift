@@ -39,10 +39,18 @@ class SummonerPresenter: SummonerPresenterInput {
             self?.interactor.fetchRankData(leagueId)
         }
         
+        router.setSave() { [weak self] () in
+            self?.interactor.rewriteSave()
+        }
+        
     }
     
     func sideMenuTap() {
         router.sideMenu()
+    }
+    
+    func saveTap() {
+        interactor.fetchSaveAndFoundSummonerNames()
     }
     
     func spectatorDidTap() {
@@ -51,6 +59,14 @@ class SummonerPresenter: SummonerPresenterInput {
 }
 
 extension SummonerPresenter: SummonerInteractorOutput {
+    func successRewrite() {
+        router.dismiss()
+    }
+    
+    func didReceiveSaveAndFoundSummonerNames(_ saveName: String, _ foundName: String) {
+        router.saveSummoner(save: saveName, found: foundName)
+    }
+    
     func successRank(_ data: RankData) {
         router.rankPresent(data)
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class SpellsController: SpinnerController {
     
@@ -30,6 +29,8 @@ class SpellsController: SpinnerController {
         
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = titleColor
         

@@ -94,19 +94,16 @@ class LoginController: SpinnerController {
                             try! realm.write {
                                 realm.deleteAll()
                             }
-                            //diente
                             self?.getVersionRealm() // disleave
-                            //disenter
                             self?.getChampionsListRealm() // dislo
                             self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
-                            
                         }
                         
                     }
-                case.failure:
-                    print("error")
+                case.failure(let error):
+                    self?.showErrorMessage(error)
                 }
             }
         } else {
@@ -116,7 +113,6 @@ class LoginController: SpinnerController {
                 self.getItemsListRealm()
                 self.getSpellsListRealm()
                 self.updateCurrentVersion()
-                
                 
             }
             updateCurrentVersion()
@@ -136,12 +132,9 @@ class LoginController: SpinnerController {
         }
     }
     
-    
     @IBAction func regionDidTap(_ sender: UIButton) {
         
         pickerAlpha = !pickerAlpha
-        
-        
         
         if pickerAlpha == true {
             UIView.animate(withDuration: 0.4) {
@@ -158,11 +151,8 @@ class LoginController: SpinnerController {
                 self.view.layoutIfNeeded()
                 
             }
-            
-            //  picker.isHidden.toggle()
         }
     }
-    
     
     @IBAction func searchDidTapped(_ sender: UIButton) {
         
@@ -180,7 +170,6 @@ class LoginController: SpinnerController {
         guard let summonerName = summonerNameTF.text else { return }
         
         guard let region = serverLabel.text?.serverNameToRegion() else { return }
-        
         
         let summonerRequest = SummonerRequest.init(summonerName: summonerName
             , server: region)

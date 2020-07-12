@@ -11,6 +11,9 @@ import UIKit
 protocol SummonerRouting {
     func dismiss()
     func sideMenu()
+    func saveSummoner(save: String, found: String)
+    func setSave(_ save: (() -> ())?)
+
     func showError(_ error: APIErrors )
     func spectatorPresent(_ data: SpectatorData)
     func rankPresent(_ data: RankData)

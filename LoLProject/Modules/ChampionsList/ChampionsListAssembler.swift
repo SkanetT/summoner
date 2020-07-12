@@ -12,12 +12,13 @@ class ChampionsListAssembler {
     static func createModule() -> UIViewController {
         let viewController = ChampionsListController()
         let collectionHandler = ChampionsListCollectionHandler()
+        let searchHandler = ChampionsListSearchHandler()
         let interactor = ChampionsListInteractor()
         let router = ChampionsListRouter(viewController)
         let presenter = ChampionsListPresenter(interactor, router)
         viewController.presenter = presenter
         viewController.collectionHandler = collectionHandler
-        
+        viewController.searchHandler = searchHandler
         
         return viewController
     }

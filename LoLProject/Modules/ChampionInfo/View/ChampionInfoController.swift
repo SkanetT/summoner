@@ -25,6 +25,8 @@ class ChampionInfoController: UIViewController {
         tableView.showsVerticalScrollIndicator = false        
         tableView.allowsSelection = false
         
+        navigationController?.navigationBar.prefersLargeTitles = false
+
         navigationItem.rightBarButtonItem = .init(barButtonSystemItem: .close, target: self, action: #selector(exitChampions))
     }
     

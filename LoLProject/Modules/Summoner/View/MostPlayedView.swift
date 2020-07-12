@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class MostPlayedView: UIView {
     
@@ -133,26 +132,26 @@ class MostPlayedView: UIView {
     }
     
     func setData(mostPlayedChampions: MostPlayedChampionsData) {
-        let champions = try! Realm().objects(Champion.self)
-        if let firstChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[0].championId)"}), let secondChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[1].championId)"}), let thidChampion = champions.first(where: {$0.key == "\(mostPlayedChampions[2].championId)"}) {
-            self.firstMostPlayedChampionNameLvl.text = "\(firstChampion.name) \(mostPlayedChampions[0].championLevel) lvl"
-            self.firstMostPlayedChampionPts.text = "\(mostPlayedChampions[0].championPoints) pts"
-            
-            self.firstMostPlayedChampionImage.downloadSD(type: .championIcon(id: firstChampion.id))
-           
-            
-            self.secondMostPlayedChampionNameLvl.text = "\(secondChampion.name) \(mostPlayedChampions[1].championLevel) lvl"
-            self.secondMostPlayedChampionPts.text = "\(mostPlayedChampions[1].championPoints) pts"
-            
-            self.secondMostPlayedChampionImage.downloadSD(type: .championIcon(id: secondChampion.id))
-           
-            
-            self.thidMostPlayedChampionNameLvl.text = "\(thidChampion.name) \(mostPlayedChampions[2].championLevel) lvl"
-            self.thidMostPlayedChampionPts.text = "\(mostPlayedChampions[2].championPoints) pts"
-            
-            self.thidMostPlayedChampionImage.downloadSD(type: .championIcon(id: thidChampion.id))
+        guard let firstChampion = RealmManager.fetchChampionfromKey(mostPlayedChampions[0].championId.description), let secondChampion = RealmManager.fetchChampionfromKey(mostPlayedChampions[1].championId.description), let thidChampion = RealmManager.fetchChampionfromKey(mostPlayedChampions[2].championId.description) else { return }
         
-        }
+        self.firstMostPlayedChampionNameLvl.text = "\(firstChampion.name) \(mostPlayedChampions[0].championLevel) lvl"
+        self.firstMostPlayedChampionPts.text = "\(mostPlayedChampions[0].championPoints) pts"
+        
+        self.firstMostPlayedChampionImage.downloadSD(type: .championIcon(id: firstChampion.id))
+        
+        
+        self.secondMostPlayedChampionNameLvl.text = "\(secondChampion.name) \(mostPlayedChampions[1].championLevel) lvl"
+        self.secondMostPlayedChampionPts.text = "\(mostPlayedChampions[1].championPoints) pts"
+        
+        self.secondMostPlayedChampionImage.downloadSD(type: .championIcon(id: secondChampion.id))
+        
+        
+        self.thidMostPlayedChampionNameLvl.text = "\(thidChampion.name) \(mostPlayedChampions[2].championLevel) lvl"
+        self.thidMostPlayedChampionPts.text = "\(mostPlayedChampions[2].championPoints) pts"
+        
+        self.thidMostPlayedChampionImage.downloadSD(type: .championIcon(id: thidChampion.id))
+        
+        //        }
     }
 }
 

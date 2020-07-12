@@ -24,9 +24,6 @@ class SummonerController: SpinnerController {
     var presenter: SummonerPresenterInput?
     var tableHandler: SummonerTableHandlerProtocol?
     
-    let foundSummoner = RealmManager.fetchFoundSummoner()
-    let saveSummoner = RealmManager.fetchSaveSummoner()
-    
     @objc func handleMenu(){
         presenter?.sideMenuTap()
     }
@@ -109,20 +106,7 @@ class SummonerController: SpinnerController {
     
     
     @IBAction func saveSummoner(_ sender: Any ) {
-        guard let foundSummoner = foundSummoner, let saveSummoner = saveSummoner else { return }
-        if foundSummoner.id != saveSummoner.id {
-            let ac = UIAlertController(title: "\(foundSummoner.name) will save", message: "\(saveSummoner.name) will delete", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "Ok", style: .default) {[weak self]_ in
-                
-                RealmManager.reWriteSaveSummoner()
-                self?.dismiss(animated: true, completion: nil)
-            }
-            
-            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            ac.addAction(ok)
-            ac.addAction(cancel)
-            present(ac, animated: true)
-        }
+        presenter?.saveTap()
     }
     
     @IBAction func showTop(_ sender: Any) {

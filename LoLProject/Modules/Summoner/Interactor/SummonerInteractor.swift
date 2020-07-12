@@ -30,6 +30,16 @@ class SummonerInteractor: SummonerInteractorInput {
         output?.didReceiveSaveAndFoundSummoner(saveSummoner, foundSummoner)
     }
     
+    func fetchSaveAndFoundSummonerNames() {
+        guard let saveSummoner = saveSummoner, let foundSummoner = foundSummoner else { return }
+        output?.didReceiveSaveAndFoundSummonerNames(saveSummoner.name, foundSummoner.name)
+    }
+    
+    func rewriteSave() {
+        RealmManager.reWriteSaveSummoner()
+        output?.successRewrite()
+    }
+    
     func fetchLeagueData() {
         guard let foundSummoner = RealmManager.fetchFoundSummoner() else { return }
         let leagueRequest = LeagueRequest.init(summonerId: foundSummoner.id, server: foundSummoner.region)
