@@ -30,17 +30,14 @@ class SummonerRouter: SummonerRouting {
     }
     
     func saveSummoner(save: String, found: String) {
-        
         let ac = UIAlertController(title: "\(found) will save", message: "\(save) will delete", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default) {[weak self]_ in
             self?.saveTapHandler?()
         }
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         ac.addAction(ok)
         ac.addAction(cancel)
         viewController?.present(ac, animated: true)
-        
     }
     
     func showError(_ error: APIErrors) {

@@ -24,7 +24,6 @@ class FooterForChampion: UIView {
     
     private func setup() {
         backgroundColor = .darkGray
-      //  translatesAutoresizingMaskIntoConstraints = false
 
         loreTitle.text = "Lore"
         loreTitle.textAlignment = .center
@@ -35,7 +34,6 @@ class FooterForChampion: UIView {
         loreTitle.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         loreTitle.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         loreTitle.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
         
         lore.text = ""
         lore.textAlignment = .center
@@ -60,5 +58,4 @@ class FooterForChampion: UIView {
             self.lore.text = lore
         }
     }
-    
 }

@@ -16,7 +16,12 @@ class SummonerSpellCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        spellImage.clipsToBounds = true
+        spellImage.layer.cornerRadius = 8
+        spellImage.layer.borderColor = UIColor.black.cgColor
+        spellImage.layer.borderWidth = 1
+        
     }
 
     

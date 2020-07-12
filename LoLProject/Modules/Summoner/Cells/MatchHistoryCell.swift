@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class MatchHistoryCell: UITableViewCell {
     @IBOutlet var test: UILabel!
@@ -30,17 +29,13 @@ class MatchHistoryCell: UITableViewCell {
     @IBOutlet weak var item3: UIImageView!
     @IBOutlet weak var item4: UIImageView!
     @IBOutlet weak var item5: UIImageView!
-
+    
     @IBOutlet weak var item6: UIImageView!
-
-
+    
     var tapHandler: ( ()->() )?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
-        
         clipsToBounds = true
         layer.borderWidth = 2
         championIcon.clipsToBounds = true
@@ -59,8 +54,9 @@ class MatchHistoryCell: UITableViewCell {
         dateAndTime.layer.borderColor = UIColor.black.cgColor
         
         moreButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -91,7 +87,7 @@ class MatchHistoryCell: UITableViewCell {
         }
         
         dateAndTime.text = "\(summonerInMatch.date) \(summonerInMatch.time) "
-                
+        
         if let championId = RealmManager.fetchChampionIdfromKey(summonerInMatch.championKey) {
             championIcon.downloadSD(type: .championIcon(id: championId))
         }
@@ -101,9 +97,8 @@ class MatchHistoryCell: UITableViewCell {
         }
         
         if let spell2Id = RealmManager.fetchSpellIdfromKey(summonerInMatch.spellKey2) {
-                   spell2.downloadSD(type: .spellIcon(id: spell2Id))
-               }
-        
+            spell2.downloadSD(type: .spellIcon(id: spell2Id))
+        }
         item0.downloadSD(type: .itemIcon(id: summonerInMatch.firstItemId))
         item1.downloadSD(type: .itemIcon(id: summonerInMatch.secondItemId))
         item2.downloadSD(type: .itemIcon(id: summonerInMatch.thirdItemId))
@@ -111,9 +106,7 @@ class MatchHistoryCell: UITableViewCell {
         item4.downloadSD(type: .itemIcon(id: summonerInMatch.fifthItemId))
         item5.downloadSD(type: .itemIcon(id: summonerInMatch.sixthItemId))
         item6.downloadSD(type: .itemIcon(id: summonerInMatch.wardId))
-       
     }
-    
 }
 
 

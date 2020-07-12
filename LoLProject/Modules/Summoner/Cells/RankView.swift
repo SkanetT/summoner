@@ -23,10 +23,11 @@ class RankView: UIView {
     let wallpaper = UIView()
     let wallpaper2 = UIView()
     
+    private let screenWidth = UIScreen.main.bounds.width
+    
     var tapHandler: ( (String)->() )?
     var leagueIdSolo: String = "0"
     var leagueIdFlex: String = "0"
-    
     
     @objc func tappedOnSoloLeague() {
         tapHandler?(leagueIdSolo)
@@ -65,7 +66,6 @@ class RankView: UIView {
         separator.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         separator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         separator.widthAnchor.constraint(equalToConstant: 2).isActive = true
-        
         
         flexName.translatesAutoresizingMaskIntoConstraints = false
         addSubview(flexName)

@@ -125,7 +125,6 @@ class NetworkAPI {
                     }
                     
                 } else {
-                    print("🌐")
                     completion(.failure(.network))
                 }
                 

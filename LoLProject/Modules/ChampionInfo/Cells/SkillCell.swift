@@ -20,7 +20,10 @@ class SpellsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-    
+        skillImage.clipsToBounds = true
+        skillImage.layer.cornerRadius = 8
+        skillImage.layer.borderColor = UIColor.black.cgColor
+        skillImage.layer.borderWidth = 1
     }
     
 

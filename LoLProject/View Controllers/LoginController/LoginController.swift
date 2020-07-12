@@ -185,11 +185,11 @@ class LoginController: SpinnerController {
                     self.searchButton.alpha = 0.5
                     self.searchButton.isEnabled = false
                     
-                    let summ = ContainerController()
-                    summ.isLogin = false
+                    let container = ContainerController()
+                    container.isLogin = false
         
-                    summ.modalPresentationStyle = .fullScreen
-                    self.present(summ, animated: true)
+                    container.modalPresentationStyle = .fullScreen
+                    self.present(container, animated: true)
                 }
                 
                 self.removeSpinner()
@@ -205,17 +205,8 @@ class LoginController: SpinnerController {
                         self.present(ac, animated: true)
                     }
                     
-                case .statusCode(_):
+                case .statusCode(_), .network, .parsing, .unknown ,.noInternet:
                     self.showErrorMessage(error)
-                case .network:
-                    self.showErrorMessage(error)
-                case .parsing:
-                    self.showErrorMessage(error)
-                case .unknown:
-                    self.showErrorMessage(error)
-                case .noInternet:
-                    self.showErrorMessage(error)
-                    
                 }
             }
         }
@@ -252,7 +243,7 @@ class LoginController: SpinnerController {
         }
     }
     
-    private func getItemsListRealm(){
+    private func getItemsListRealm() {
         NetworkAPI.shared.fetchCurrentItemsList() { result in
             switch result {
             case .success(let itemData):
@@ -336,5 +327,4 @@ extension LoginController: UIPickerViewDataSource, UIPickerViewDelegate {
             self.serverLabel.text = self.servers[row]
         }
     }
-    
 }

@@ -19,7 +19,6 @@ class ChampionsListAssembler {
         viewController.presenter = presenter
         viewController.collectionHandler = collectionHandler
         viewController.searchHandler = searchHandler
-        
         return viewController
     }
 }

@@ -15,10 +15,7 @@ class ParticipantInfo: XibBasedView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-    let champions = try! Realm().objects(Champion.self)
-    let spells = try! Realm().objects(SummonerSpell.self)
     
     @IBOutlet weak var participantNameLabel: UILabel!
     @IBOutlet weak var championIcon: UIImageView!
@@ -41,15 +38,20 @@ class ParticipantInfo: XibBasedView {
         
         participantNameLabel.text = member.name
         kda.text = member.kda
-        if let champion = champions.first(where: { $0.key == member.championKey }) {
-            championIcon.downloadSD(type: .championIcon(id: champion.id))
+        
+        if let championId = RealmManager.fetchChampionIdfromKey(member.championKey) {
+            championIcon.downloadSD(type: .championIcon(id: championId))
         }
         
-        if let spell1 = spells.first(where: { $0.key == member.spellKey1 }), let spell2 = spells.first(where: { $0.key == member.spellKey2 }) {
-            firstSpell.downloadSD(type: .spellIcon(id: spell1.id))
-            secondSpell.downloadSD(type: .spellIcon(id: spell2.id))
-            
+        
+        if let spell1id = RealmManager.fetchSpellIdfromKey(member.spellKey1) {
+            firstSpell.downloadSD(type: .spellIcon(id: spell1id))
         }
+        
+        if let spell2id = RealmManager.fetchSpellIdfromKey(member.spellKey2) {
+            secondSpell.downloadSD(type: .spellIcon(id: spell2id))
+        }
+        
         tapHandler = member.tapHandler
         
         item0.downloadSD(type: .itemIcon(id: member.firstItemId))

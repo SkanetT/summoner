@@ -136,11 +136,8 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if indexPath.section >= topWallpapperIndex + 5 || indexPath.section <= topWallpapperIndex - 5   {
-            
             hide?(indexPath.section)
-            
         }
-        
         guard indexPath.section == matchModel.count - 6 else { return }
         upgrade?()
     }

@@ -898,10 +898,10 @@
 			isa = PBXGroup;
 			children = (
 				3AB9452C24A8EA9A00B06936 /* LeagueAssembler.swift */,
-				3AC8B20824AE75CC00DEF819 /* UserRank.swift */,
 				3AB9452B24A8EA2000B06936 /* View */,
 				3AC8B1FC24ACC9FC00DEF819 /* Interactor */,
 				3AC8B1F224AA869900DEF819 /* Presenter */,
+				3ACAB17724BB46C2000E7C86 /* Enity */,
 				3AC8B20324ACCDFF00DEF819 /* Router */,
 				3AC8B1ED24A9244800DEF819 /* TableHandler */,
 				3AB9452A24A8E9F000B06936 /* Cells */,
@@ -1014,6 +1014,14 @@
 				3AC6ED1624969C5600F8B733 /* SpectatorController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3ACAB17724BB46C2000E7C86 /* Enity */ = {
+			isa = PBXGroup;
+			children = (
+				3AC8B20824AE75CC00DEF819 /* UserRank.swift */,
+			);
+			path = Enity;
 			sourceTree = "<group>";
 		};
 		3AD12D3B2460655700DDB6E1 /* Realms */ = {

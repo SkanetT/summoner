@@ -14,7 +14,6 @@ class SummonerPresenter: SummonerPresenterInput {
     let interactor: SummonerInteractorInput
     let router: SummonerRouting
 
-
     init (_ interactor: SummonerInteractorInput, _ router: SummonerRouting) {
         self.interactor = interactor
         self.router = router
@@ -126,7 +125,6 @@ extension SummonerPresenter: SummonerInteractorOutput {
         
     }
     
-    
     func failureSpectatorData(_ error: APIErrors) {
         switch error {
         case.noData:
@@ -136,7 +134,6 @@ extension SummonerPresenter: SummonerInteractorOutput {
         }
     }
 
-    
     func successMostPlayedChampions(_ data: MostPlayedChampionsData) {
         if data.count >= 3 {
             viewController?.didReceiveMostPlayedView(data)
@@ -148,6 +145,4 @@ extension SummonerPresenter: SummonerInteractorOutput {
     func failureMostPlayedChampions(_ error: APIErrors) {
         router.showError(error)
     }
-    
-    
 }
