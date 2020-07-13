@@ -83,6 +83,7 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
         
         let matchForSection = matchModel[indexPath.section]
         
+        
         matchHistoryCell.clipsToBounds = true
         matchHistoryCell.layer.cornerRadius = 6
         moreInfoCell.clipsToBounds = true

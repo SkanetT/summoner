@@ -75,8 +75,8 @@ class RankView: UIView {
         flexName.text = "Flex"
         flexName.textColor = .systemYellow
         flexName.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        flexName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -90).isActive = true
-        flexName.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        flexName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -(screenWidth / 4)).isActive = true
+        flexName.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - 16).isActive = true
         flexName.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         soloName.translatesAutoresizingMaskIntoConstraints = false
@@ -87,8 +87,8 @@ class RankView: UIView {
         soloName.text = "Solo"
         soloName.textColor = .systemYellow
         soloName.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
-        soloName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 90).isActive = true
-        soloName.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        soloName.centerXAnchor.constraint(equalTo: centerXAnchor, constant: (screenWidth / 4)).isActive = true
+        soloName.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - 16).isActive = true
         soloName.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         flexRank.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +102,7 @@ class RankView: UIView {
         flexRank.textColor = .black
         flexRank.topAnchor.constraint(equalTo: flexName.bottomAnchor, constant: 8).isActive = true
         flexRank.centerXAnchor.constraint(equalTo: flexName.centerXAnchor, constant: 0).isActive = true
-        flexRank.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        flexRank.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - 16).isActive = true
         flexRank.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         soloRank.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +116,7 @@ class RankView: UIView {
         soloRank.textColor = .black
         soloRank.topAnchor.constraint(equalTo: soloName.bottomAnchor, constant: 8).isActive = true
         soloRank.centerXAnchor.constraint(equalTo: soloName.centerXAnchor, constant: 0).isActive = true
-        soloRank.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        soloRank.widthAnchor.constraint(equalToConstant: (screenWidth / 2) - 16).isActive = true
         soloRank.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         flexImage.translatesAutoresizingMaskIntoConstraints = false

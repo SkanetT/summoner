@@ -45,7 +45,7 @@ class ChampionsListCollectionHandler: NSObject, ChampionsListCollectionHandlerPr
     }
 }
 
-extension ChampionsListCollectionHandler: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ChampionsListCollectionHandler: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isFilter {
             return filteredChampionsListArray.count
@@ -76,4 +76,11 @@ extension ChampionsListCollectionHandler: UICollectionViewDelegate, UICollection
             userSelectCell?(championsListArray[indexPath.row].id)
         }
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = (screenSize.width / 3) - 18
+        return CGSize(width: screenWidth, height: screenWidth * 1.3)
+    }
+    
 }
