@@ -17,6 +17,7 @@ protocol SummonerPresenterOutput: class {
     func summomerOffline()
     func isSaveSummoner(_ isSaveSummoner: Bool)
     func firstDataForTable(matchsArray: [ExpandableMathHistory], matchModel: [MatchModel])
+    func noDataForTable()
     func dataForTable(_ matchModel: [MatchModel])
     func scrollingDown(_ reload: (() -> ())?)
     func leagueTaped(_ league: ((String) -> ())?)

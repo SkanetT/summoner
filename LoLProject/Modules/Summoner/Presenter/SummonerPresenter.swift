@@ -103,6 +103,7 @@ extension SummonerPresenter: SummonerInteractorOutput {
     }
     
     func failureMatchHistory(_ error: APIErrors) {
+        viewController?.noDataForTable()
         router.showError(error)
     }
     

@@ -134,6 +134,10 @@ extension SummonerController: SummonerPresenterOutput {
         tableHandler?.setUpgrade(reload)
     }
     
+    func noDataForTable() {
+        removeSpinner()
+    }
+    
     func firstDataForTable(matchsArray: [ExpandableMathHistory], matchModel: [MatchModel]) {
         removeSpinner()
         tableHandler?.setStartData(matchsArray: matchsArray, matchModel: matchModel)
