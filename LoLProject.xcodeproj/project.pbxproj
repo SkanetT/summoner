@@ -23,6 +23,14 @@
 		3A5C3499249164830044AB6D /* StatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3498249164830044AB6D /* StatusController.swift */; };
 		3A5C349B249167550044AB6D /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349A249167550044AB6D /* StatusCell.swift */; };
 		3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C349C2491758B0044AB6D /* StatusData.swift */; };
+		3A5E28D624BF91D6009B3009 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28D424BF91D6009B3009 /* LoadingController.swift */; };
+		3A5E28D724BF91D7009B3009 /* LoadingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5E28D524BF91D6009B3009 /* LoadingController.xib */; };
+		3A5E28DA24BF9646009B3009 /* LoadingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28D924BF9646009B3009 /* LoadingPresenter.swift */; };
+		3A5E28DC24BF967A009B3009 /* LoadingPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28DB24BF967A009B3009 /* LoadingPresenterInput.swift */; };
+		3A5E28DE24BF9699009B3009 /* LoadingPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28DD24BF9699009B3009 /* LoadingPresenterOutput.swift */; };
+		3A5E28E124BF98CC009B3009 /* LoadingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E024BF98CC009B3009 /* LoadingInteractor.swift */; };
+		3A5E28E324BF98F1009B3009 /* LoadingInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E224BF98F1009B3009 /* LoadingInteractorInput.swift */; };
+		3A5E28E524BF9913009B3009 /* LoadingInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
@@ -194,6 +202,14 @@
 		3A5C3498249164830044AB6D /* StatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusController.swift; sourceTree = "<group>"; };
 		3A5C349A249167550044AB6D /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		3A5C349C2491758B0044AB6D /* StatusData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusData.swift; sourceTree = "<group>"; };
+		3A5E28D424BF91D6009B3009 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
+		3A5E28D524BF91D6009B3009 /* LoadingController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingController.xib; sourceTree = "<group>"; };
+		3A5E28D924BF9646009B3009 /* LoadingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenter.swift; sourceTree = "<group>"; };
+		3A5E28DB24BF967A009B3009 /* LoadingPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenterInput.swift; sourceTree = "<group>"; };
+		3A5E28DD24BF9699009B3009 /* LoadingPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresenterOutput.swift; sourceTree = "<group>"; };
+		3A5E28E024BF98CC009B3009 /* LoadingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractor.swift; sourceTree = "<group>"; };
+		3A5E28E224BF98F1009B3009 /* LoadingInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractorInput.swift; sourceTree = "<group>"; };
+		3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractorOutput.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
@@ -411,6 +427,35 @@
 				3A42A10424BB115100CFCD59 /* ChampionsListSearchHandlerProtocol.swift */,
 			);
 			path = SearchHandler;
+			sourceTree = "<group>";
+		};
+		3A5E28D324BF8F75009B3009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28D424BF91D6009B3009 /* LoadingController.swift */,
+				3A5E28D524BF91D6009B3009 /* LoadingController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3A5E28D824BF9569009B3009 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28D924BF9646009B3009 /* LoadingPresenter.swift */,
+				3A5E28DB24BF967A009B3009 /* LoadingPresenterInput.swift */,
+				3A5E28DD24BF9699009B3009 /* LoadingPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3A5E28DF24BF988D009B3009 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28E024BF98CC009B3009 /* LoadingInteractor.swift */,
+				3A5E28E224BF98F1009B3009 /* LoadingInteractorInput.swift */,
+				3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3A689BE924AFCF9B00CBEC7A /* CollectionHandler */ = {
@@ -961,6 +1006,9 @@
 			isa = PBXGroup;
 			children = (
 				3AC8B1FA24ABDDA100DEF819 /* LoadingAssembler.swift */,
+				3A5E28D324BF8F75009B3009 /* View */,
+				3A5E28DF24BF988D009B3009 /* Interactor */,
+				3A5E28D824BF9569009B3009 /* Presenter */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -1168,6 +1216,7 @@
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
 				3AA4D11C245F313700B05437 /* SkillCell.xib in Resources */,
 				3A8790E42483E54800499C5E /* HeaderForChampion.xib in Resources */,
+				3A5E28D724BF91D7009B3009 /* LoadingController.xib in Resources */,
 				3AAA325C246A0A9700100FF8 /* MatchHistoryCell.xib in Resources */,
 				3AC6ED1824969C5600F8B733 /* SpectatorController.xib in Resources */,
 				3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */,
@@ -1247,10 +1296,12 @@
 				3A7DD0CE24B3C76C00E17331 /* SummonerPresenter.swift in Sources */,
 				3A7DD0D724B3CE2900E17331 /* SummonerInteractorInput.swift in Sources */,
 				3A689C0F24B2390000CBEC7A /* ChampionListItem.swift in Sources */,
+				3A5E28DE24BF9699009B3009 /* LoadingPresenterOutput.swift in Sources */,
 				3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3AE82CFB24A6980700B7A417 /* SpellsAssembler.swift in Sources */,
 				3AB778CA24B2497B0022D1EB /* ChampionsListPresenter.swift in Sources */,
+				3A5E28E124BF98CC009B3009 /* LoadingInteractor.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
 				3AB778D324B250B50022D1EB /* ChampionsListInterctorInput.swift in Sources */,
 				3AB778E424B2835A0022D1EB /* ChampionInfoTableHandler.swift in Sources */,
@@ -1276,6 +1327,7 @@
 				3AA4D13E246045AF00B05437 /* NetworkAPI.swift in Sources */,
 				3A7DD0DC24B4FFEA00E17331 /* SummonerRouter.swift in Sources */,
 				3A8CB72E245A16E8005801A8 /* ChampionInfoController.swift in Sources */,
+				3A5E28DC24BF967A009B3009 /* LoadingPresenterInput.swift in Sources */,
 				3AB778D724B25A940022D1EB /* DataForFullInfo.swift in Sources */,
 				3A5C349D2491758B0044AB6D /* StatusData.swift in Sources */,
 				3AC26809248C2DFA009C3D18 /* Protocols.swift in Sources */,
@@ -1355,12 +1407,16 @@
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
 				3AB778F924B3ACC90022D1EB /* ChampionInfoRouting.swift in Sources */,
 				3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */,
+				3A5E28D624BF91D6009B3009 /* LoadingController.swift in Sources */,
 				3A42A10524BB115100CFCD59 /* ChampionsListSearchHandlerProtocol.swift in Sources */,
 				3AE82D0824A6A2FF00B7A417 /* SpellsPresenter.swift in Sources */,
 				3AE82D0024A698BD00B7A417 /* SpellsRouter.swift in Sources */,
 				3AB778F224B3A7390022D1EB /* ChampionInfoInteractorInput.swift in Sources */,
+				3A5E28E524BF9913009B3009 /* LoadingInteractorOutput.swift in Sources */,
+				3A5E28E324BF98F1009B3009 /* LoadingInteractorInput.swift in Sources */,
 				3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */,
 				3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */,
+				3A5E28DA24BF9646009B3009 /* LoadingPresenter.swift in Sources */,
 				3A689BF324B0E93700CBEC7A /* SpectatorPresenterInput.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,
 				3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */,

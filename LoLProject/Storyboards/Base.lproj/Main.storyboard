@@ -36,10 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Summoner name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yii-6v-MZ5">
-                                <rect key="frame" x="107" y="377" width="200" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="iHq-4e-gRf"/>
-                                </constraints>
+                                <rect key="frame" x="100" y="377" width="214" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -47,13 +44,13 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rfb-yq-Mr9">
-                                <rect key="frame" x="120" y="340" width="174" height="21.5"/>
+                                <rect key="frame" x="114" y="340" width="186" height="21.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2G-ax-9rw">
-                                <rect key="frame" x="107" y="419" width="200" height="40"/>
+                                <rect key="frame" x="101" y="419" width="212" height="40"/>
                                 <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OJf-GH-Mxx"/>
@@ -88,7 +85,9 @@
                             <constraint firstItem="T2G-ax-9rw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I80-iF-VPO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BcY-cm-IxU" secondAttribute="trailing" constant="16" id="JbR-5c-nqn"/>
                             <constraint firstItem="yii-6v-MZ5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mr8-9h-0cl"/>
+                            <constraint firstItem="yii-6v-MZ5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="RkE-Bm-uRh"/>
                             <constraint firstItem="AeF-rZ-paa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="SI1-o3-Q7F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yii-6v-MZ5" secondAttribute="trailing" constant="100" id="UZA-Uw-KuM"/>
                             <constraint firstItem="T2G-ax-9rw" firstAttribute="width" secondItem="yii-6v-MZ5" secondAttribute="width" multiplier="0.87" constant="26" id="WBY-Vs-wrR"/>
                             <constraint firstItem="yii-6v-MZ5" firstAttribute="top" secondItem="rfb-yq-Mr9" secondAttribute="bottom" constant="15.5" id="aBU-JM-3AM"/>
                             <constraint firstItem="BcY-cm-IxU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ay7-5j-dEK"/>

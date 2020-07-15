@@ -10,8 +10,8 @@ import UIKit
 
 class AppRouter {
     static func initViewController() -> UIViewController {
-        let nvc = ContainerController()
-        
+       let nvc = ContainerController()
+//        let nvc = LoadingAssembler.createModule()
         
 //        UIApplication.shared.keyWindow?.rootViewController =
 //        let vc = LoadingAssembler.createModuler { (vc) in

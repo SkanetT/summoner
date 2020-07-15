@@ -9,13 +9,22 @@
 import UIKit
 
 class LoadingAssembler {
-    static func createModuler(complition: @escaping (InititalControllerList) -> ()) -> UIViewController {
-        let vc = UIViewController()
-        return vc
-    }
+    //    static func createModuler(complition: @escaping (InititalControllerList) -> ()) -> UIViewController {
+    //        let vc = UIViewController()
+    //        return vc
     
-    enum InititalControllerList {
-        case login
-        case summoner
+    static func createModule() -> UIViewController {
+        let viewController = LoadingController()
+        let interactor = LoadingInteractor()
+        let presenter = LoadingPresenter(interactor)
+        viewController.presenter = presenter
+        
+        return viewController
     }
 }
+
+//    enum InititalControllerList {
+//        case login
+//        case summoner
+//    }
+

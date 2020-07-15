@@ -28,7 +28,8 @@ class ChampionsListInteractor: ChampionsListInteractorInput {
     }
     
     func fetchChampionInfo(_ id: String) {
-        NetworkAPI.shared.fetchFullInfoChampion(id: id) {[weak self] result in
+        guard let version = RealmManager.fetchLastVersion() else { return }
+        NetworkAPI.shared.fetchFullInfoChampion(id: id, version: version) {[weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let championData):
