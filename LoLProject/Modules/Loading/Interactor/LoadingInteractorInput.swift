@@ -11,4 +11,7 @@ import Foundation
 protocol LoadingInteractorInput: class {
     func attach(_ output: LoadingInteractorOutput)
     func checkLastVersion()
+    func getVersionRealm(_ lastVersion: String)
+    func getChampionsListRealm(group: DispatchGroup)
+    func getSpellsListRealm(group: DispatchGroup)
 }

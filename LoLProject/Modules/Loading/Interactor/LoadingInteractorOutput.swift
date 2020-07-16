@@ -10,4 +10,5 @@ import Foundation
 
 protocol LoadingInteractorOutput: class {
     func loadingDone()
+    func loadingNotDone(_ error: APIErrors)
 }

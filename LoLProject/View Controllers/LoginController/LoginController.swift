@@ -87,7 +87,7 @@ class LoginController: SpinnerController {
         if let lastVersion = version.first?.lastVesion {
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
                 switch result {
-                    
+
                 case .success(let version):
                     if version != lastVersion {
                         DispatchQueue.main.async {
@@ -96,11 +96,11 @@ class LoginController: SpinnerController {
                             }
                             self?.getVersionRealm() // disleave
                             self?.getChampionsListRealm() // dislo
-                            self?.getItemsListRealm()
+                         //   self?.getItemsListRealm()
                             self?.getSpellsListRealm()
                             self?.updateCurrentVersion()
                         }
-                        
+
                     }
                 case.failure(let error):
                     self?.showErrorMessage(error)
@@ -110,13 +110,13 @@ class LoginController: SpinnerController {
             DispatchQueue.main.async {
                 self.getVersionRealm()
                 self.getChampionsListRealm()
-                self.getItemsListRealm()
+            //    self.getItemsListRealm()
                 self.getSpellsListRealm()
                 self.updateCurrentVersion()
-                
+
             }
             updateCurrentVersion()
-            
+
         }
         
     }
@@ -243,28 +243,28 @@ class LoginController: SpinnerController {
         }
     }
     
-    private func getItemsListRealm() {
-        NetworkAPI.shared.fetchCurrentItemsList() { result in
-            switch result {
-            case .success(let itemData):
-                let realm = try! Realm()
-                for item in itemData.data {
-                    let lolItem = Item()
-                    lolItem.id = item.key
-                    lolItem.name = item.value.name
-                    lolItem.colloq = item.value.colloq
-                    lolItem.itemDescription = item.value.description
-                    lolItem.plaintext = item.value.plaintext
-                    try! realm.write {
-                        realm.add(lolItem)
-                    }
-                }
-                
-            case.failure(let error):
-                print(error)
-            }
-        }
-    }
+//    private func getItemsListRealm() {
+//        NetworkAPI.shared.fetchCurrentItemsList() { result in
+//            switch result {
+//            case .success(let itemData):
+//                let realm = try! Realm()
+//                for item in itemData.data {
+//                    let lolItem = Item()
+//                    lolItem.id = item.key
+//                    lolItem.name = item.value.name
+//                    lolItem.colloq = item.value.colloq
+//                    lolItem.itemDescription = item.value.description
+//                    lolItem.plaintext = item.value.plaintext
+//                    try! realm.write {
+//                        realm.add(lolItem)
+//                    }
+//                }
+//                
+//            case.failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
     
     private func getSpellsListRealm() {
         NetworkAPI.shared.fetchCurrentSpellsList() { result in

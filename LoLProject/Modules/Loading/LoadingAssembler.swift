@@ -15,8 +15,9 @@ class LoadingAssembler {
     
     static func createModule() -> UIViewController {
         let viewController = LoadingController()
+        let router = LoadingRouter(viewController)
         let interactor = LoadingInteractor()
-        let presenter = LoadingPresenter(interactor)
+        let presenter = LoadingPresenter(interactor, router)
         viewController.presenter = presenter
         
         return viewController

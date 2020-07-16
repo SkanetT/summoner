@@ -31,6 +31,8 @@
 		3A5E28E124BF98CC009B3009 /* LoadingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E024BF98CC009B3009 /* LoadingInteractor.swift */; };
 		3A5E28E324BF98F1009B3009 /* LoadingInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E224BF98F1009B3009 /* LoadingInteractorInput.swift */; };
 		3A5E28E524BF9913009B3009 /* LoadingInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */; };
+		3A5E28E824C0DF5A009B3009 /* LoadingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E724C0DF5A009B3009 /* LoadingRouter.swift */; };
+		3A5E28EA24C0DF87009B3009 /* LoadingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
@@ -210,6 +212,8 @@
 		3A5E28E024BF98CC009B3009 /* LoadingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractor.swift; sourceTree = "<group>"; };
 		3A5E28E224BF98F1009B3009 /* LoadingInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractorInput.swift; sourceTree = "<group>"; };
 		3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractorOutput.swift; sourceTree = "<group>"; };
+		3A5E28E724C0DF5A009B3009 /* LoadingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRouter.swift; sourceTree = "<group>"; };
+		3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRouting.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
@@ -456,6 +460,15 @@
 				3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		3A5E28E624C0DEEE009B3009 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28E724C0DF5A009B3009 /* LoadingRouter.swift */,
+				3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		3A689BE924AFCF9B00CBEC7A /* CollectionHandler */ = {
@@ -1009,6 +1022,7 @@
 				3A5E28D324BF8F75009B3009 /* View */,
 				3A5E28DF24BF988D009B3009 /* Interactor */,
 				3A5E28D824BF9569009B3009 /* Presenter */,
+				3A5E28E624C0DEEE009B3009 /* Router */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -1345,6 +1359,7 @@
 				3AB778CE24B249A60022D1EB /* ChampionsListPresenterOutput.swift in Sources */,
 				3AE82CF624A6938000B7A417 /* AppRouter.swift in Sources */,
 				3A689BEE24B0DF8600CBEC7A /* SpectatorCollectionHandlerProtocol.swift in Sources */,
+				3A5E28EA24C0DF87009B3009 /* LoadingRouting.swift in Sources */,
 				3A7DD0C124B3B64600E17331 /* SummonerAssembler.swift in Sources */,
 				3AC267F92488346C009C3D18 /* RankData.swift in Sources */,
 				3AB778E924B28F650022D1EB /* ChampionInfoPresenter.swift in Sources */,
@@ -1423,6 +1438,7 @@
 				3AC8B1EF24A925C600DEF819 /* LeagueTableHandler.swift in Sources */,
 				3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */,
 				3AB778D124B250090022D1EB /* ChampionsListInterctor.swift in Sources */,
+				3A5E28E824C0DF5A009B3009 /* LoadingRouter.swift in Sources */,
 				3AB778DA24B25DED0022D1EB /* ChampionsListRouter.swift in Sources */,
 				3AA4D11B245F313700B05437 /* SkillCell.swift in Sources */,
 				3AC8B20E24AFC2EC00DEF819 /* SpectatorAssembler.swift in Sources */,

@@ -12,11 +12,13 @@ class LoadingPresenter: LoadingPresenterInput {
     
     private weak var viewController: LoadingPresenterOutput?
     let interactor: LoadingInteractorInput
+    let router: LoadingRouting
+
 
     
-    init (_ interactor:LoadingInteractorInput) {
+    init (_ interactor: LoadingInteractorInput, _ router: LoadingRouting) {
         self.interactor  = interactor
-        
+        self.router = router
     }
     
     func attach(_ viewController: LoadingPresenterOutput) {
@@ -34,8 +36,11 @@ class LoadingPresenter: LoadingPresenterInput {
 
 extension LoadingPresenter: LoadingInteractorOutput {
     func loadingDone() {
-        print("ok")
+        router.windowContainer()
     }
     
+    func loadingNotDone(_ error: APIErrors) {
+        router.showError(error)
+    }
     
 }
