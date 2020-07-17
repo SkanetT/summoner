@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A2F645C695841F315956FA0 /* Pods_LoLProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B6E57C70874C8671C50FD3 /* Pods_LoLProject.framework */; };
 		3A14CCD624A6A73C00488F32 /* SpellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD524A6A73C00488F32 /* SpellModel.swift */; };
 		3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCD824A770FE00488F32 /* SpellsPresenterInput.swift */; };
 		3A14CCDB24A7712600488F32 /* SpellsPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A14CCDA24A7712600488F32 /* SpellsPresenterOutput.swift */; };
@@ -366,6 +367,9 @@
 		3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoMatch.swift; sourceTree = "<group>"; };
 		3AFED4EB247A8BDB00D8AA40 /* ParticipantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantInfo.swift; sourceTree = "<group>"; };
 		3AFED4ED247A8C0700D8AA40 /* ParticipantInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParticipantInfo.xib; sourceTree = "<group>"; };
+		72B6E57C70874C8671C50FD3 /* Pods_LoLProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoLProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A478ED240207919582D852 /* Pods-LoLProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.release.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.release.xcconfig"; sourceTree = "<group>"; };
+		A2C851F6D9FF29ED27EFAD31 /* Pods-LoLProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoLProject.debug.xcconfig"; path = "Target Support Files/Pods-LoLProject/Pods-LoLProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +377,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A2F645C695841F315956FA0 /* Pods_LoLProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +612,7 @@
 				3A8CB6D524549417005801A8 /* LoLProject */,
 				3A8CB6D424549417005801A8 /* Products */,
 				42A3B2DD9188F0E32D5B9CA9 /* Pods */,
+				E1F8D91BAAEC5E109C79497F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1144,8 +1150,18 @@
 		42A3B2DD9188F0E32D5B9CA9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				A2C851F6D9FF29ED27EFAD31 /* Pods-LoLProject.debug.xcconfig */,
+				73A478ED240207919582D852 /* Pods-LoLProject.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E1F8D91BAAEC5E109C79497F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72B6E57C70874C8671C50FD3 /* Pods_LoLProject.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1155,9 +1171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A8CB6E724549419005801A8 /* Build configuration list for PBXNativeTarget "LoLProject" */;
 			buildPhases = (
+				6A814B5206107233E973F105 /* [CP] Check Pods Manifest.lock */,
 				3A8CB6CF24549417005801A8 /* Sources */,
 				3A8CB6D024549417005801A8 /* Frameworks */,
 				3A8CB6D124549417005801A8 /* Resources */,
+				D2D89E40032D04E45DBE3725 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1232,6 +1250,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A814B5206107233E973F105 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoLProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2D89E40032D04E45DBE3725 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoLProject/Pods-LoLProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoLProject/Pods-LoLProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoLProject/Pods-LoLProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A8CB6CF24549417005801A8 /* Sources */ = {
@@ -1534,6 +1594,7 @@
 		};
 		3A8CB6E824549419005801A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2C851F6D9FF29ED27EFAD31 /* Pods-LoLProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1553,6 +1614,7 @@
 		};
 		3A8CB6E924549419005801A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73A478ED240207919582D852 /* Pods-LoLProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
