@@ -20,15 +20,15 @@ class LoadingInteractor: LoadingInteractorInput {
         self.output = output
     }
     
+    let group = DispatchGroup()
+    
     func checkLastVersion() {
         let version = RealmManager.fetchLastVersion()
-        let group = DispatchGroup()
-        let realm = try! Realm()
         
-        group.enter()
+        let realm = try! Realm()
         if version != nil {
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-                group.leave()
+                
                 guard let self = self else { return }
                 switch result {
                 case .success(let lastVersion):
@@ -40,19 +40,17 @@ class LoadingInteractor: LoadingInteractorInput {
                                 realm.deleteAll()
                             }
                             self.getVersionRealm(lastVersion)
+                            self.getChampionsListRealm(version: lastVersion, group: self.group)
+                            self.getSpellsListRealm(version: lastVersion    , group: self.group)
                         }
-                        self.getChampionsListRealm(group: group)
-                        self.getSpellsListRealm(group: group)
                     }
                 case.failure(let error):
                     self.output?.loadingNotDone(error)
                 }
-                
             }
         } else {
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-                group.leave()
-
+                
                 guard let self = self else { return }
                 switch result {
                 case .success(let lastVersion):
@@ -64,10 +62,9 @@ class LoadingInteractor: LoadingInteractorInput {
                                 realm.deleteAll()
                             }
                             self.getVersionRealm(lastVersion)
-
+                            self.getChampionsListRealm(version: lastVersion, group: self.group)
+                            self.getSpellsListRealm(version: lastVersion, group: self.group)
                         }
-                        self.getChampionsListRealm(group: group)
-                        self.getSpellsListRealm(group: group)
                     }
                 case.failure(let error):
                     self.output?.loadingNotDone(error)
@@ -88,9 +85,6 @@ class LoadingInteractor: LoadingInteractorInput {
         
     }
     
-    
-    
-    
     func getVersionRealm(_ lastVersion: String) {
         let realm = try! Realm()
         let version = Version()
@@ -100,9 +94,9 @@ class LoadingInteractor: LoadingInteractorInput {
         }
     }
     
-    func getChampionsListRealm(group: DispatchGroup) {
+    func getChampionsListRealm(version: String, group: DispatchGroup) {
         group.enter()
-        NetworkAPI.shared.fetchCurrentChampionsList() {[weak self] result in
+        NetworkAPI.shared.fetchCurrentChampionsList(version: version) {[weak self] result in
             switch result {
             case .success(let championData):
                 let realm = try! Realm()
@@ -123,24 +117,22 @@ class LoadingInteractor: LoadingInteractorInput {
         }
     }
     
-    func getSpellsListRealm(group: DispatchGroup) {
+    func getSpellsListRealm(version: String, group: DispatchGroup) {
         group.enter()
         NetworkAPI.shared.fetchCurrentSpellsList() {[weak self] result in
             switch result {
             case.success(let spellsData):
                 let realm = try! Realm()
-                for item in spellsData.data {
+                let items = spellsData.data.filter{$0.key != "SummonerSnowURFSnowball_Mark"}
+                items.forEach { item in
                     let spell = SummonerSpell()
-                    if item.key != "SummonerSnowURFSnowball_Mark"
-                    {
-                        spell.id = item.key
-                        spell.name = item.value.name
-                        spell.key = item.value.key
-                        spell.spellDescription = item.value.description
-                        spell.tooltip = item.value.tooltip
-                        try! realm.write {
-                            realm.add(spell)
-                        }
+                    spell.id = item.key
+                    spell.name = item.value.name
+                    spell.key = item.value.key
+                    spell.spellDescription = item.value.description
+                    spell.tooltip = item.value.tooltip
+                    try! realm.write {
+                        realm.add(spell)
                     }
                 }
                 group.leave()
@@ -150,30 +142,6 @@ class LoadingInteractor: LoadingInteractorInput {
             }
         }
     }
-    
-//    private func getItemsListRealm() {
-//        NetworkAPI.shared.fetchCurrentItemsList() { result in
-//            switch result {
-//            case .success(let itemData):
-//                let realm = try! Realm()
-//                for item in itemData.data {
-//                    let lolItem = Item()
-//                    lolItem.id = item.key
-//                    lolItem.name = item.value.name
-//                    lolItem.colloq = item.value.colloq
-//                    lolItem.itemDescription = item.value.description
-//                    lolItem.plaintext = item.value.plaintext
-//                    try! realm.write {
-//                        realm.add(lolItem)
-//                    }
-//                }
-//                
-//            case.failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
 }
 
 

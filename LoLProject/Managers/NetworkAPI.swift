@@ -45,8 +45,8 @@ class NetworkAPI {
         }.resume()
     }
     
-    func fetchCurrentChampionsList(completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/champion.json"
+    func fetchCurrentChampionsList(version: String, completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/champion.json"
         
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)

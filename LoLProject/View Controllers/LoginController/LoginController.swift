@@ -79,45 +79,12 @@ class LoginController: SpinnerController {
         
         DispatchQueue.main.async {
             self.serverLabel.text = self.servers.first
+            if let lastVersion = RealmManager.fetchLastVersion() {
+                self.verLabel.text = lastVersion
+            }
         }
-        updateCurrentVersion()
+     //   updateCurrentVersion()
         
-        let realm = try! Realm()
-        let version = try! Realm().objects(Version.self)
-        if let lastVersion = version.first?.lastVesion {
-            NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-                switch result {
-
-                case .success(let version):
-                    if version != lastVersion {
-                        DispatchQueue.main.async {
-                            try! realm.write {
-                                realm.deleteAll()
-                            }
-                            self?.getVersionRealm() // disleave
-                            self?.getChampionsListRealm() // dislo
-                         //   self?.getItemsListRealm()
-                            self?.getSpellsListRealm()
-                            self?.updateCurrentVersion()
-                        }
-
-                    }
-                case.failure(let error):
-                    self?.showErrorMessage(error)
-                }
-            }
-        } else {
-            DispatchQueue.main.async {
-                self.getVersionRealm()
-                self.getChampionsListRealm()
-            //    self.getItemsListRealm()
-                self.getSpellsListRealm()
-                self.updateCurrentVersion()
-
-            }
-            updateCurrentVersion()
-
-        }
         
     }
     
@@ -208,102 +175,6 @@ class LoginController: SpinnerController {
                 case .statusCode(_), .network, .parsing, .unknown ,.noInternet:
                     self.showErrorMessage(error)
                 }
-            }
-        }
-    }
-    
-    private func updateCurrentVersion() {
-        
-        let versions = try! Realm().objects(Version.self)
-        if let versin = versions.first {
-            DispatchQueue.main.async {
-                self.verLabel.text = versin.lastVesion
-            }
-        }
-    }
-    
-    private func getChampionsListRealm(){
-        NetworkAPI.shared.fetchCurrentChampionsList() { result in
-            switch result {
-            case .success(let championData):
-                let realm = try! Realm()
-                for item in championData.data {
-                    let champion = Champion()
-                    champion.id = item.key
-                    champion.name = item.value.name
-                    champion.key = item.value.key
-                    try! realm.write {
-                        realm.add(champion)
-                    }
-                }
-                
-            case.failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-//    private func getItemsListRealm() {
-//        NetworkAPI.shared.fetchCurrentItemsList() { result in
-//            switch result {
-//            case .success(let itemData):
-//                let realm = try! Realm()
-//                for item in itemData.data {
-//                    let lolItem = Item()
-//                    lolItem.id = item.key
-//                    lolItem.name = item.value.name
-//                    lolItem.colloq = item.value.colloq
-//                    lolItem.itemDescription = item.value.description
-//                    lolItem.plaintext = item.value.plaintext
-//                    try! realm.write {
-//                        realm.add(lolItem)
-//                    }
-//                }
-//                
-//            case.failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
-    private func getSpellsListRealm() {
-        NetworkAPI.shared.fetchCurrentSpellsList() { result in
-            switch result {
-            case.success(let spellsData):
-                let realm = try! Realm()
-                for item in spellsData.data {
-                    let spell = SummonerSpell()
-                    
-                    if item.key != "SummonerSnowURFSnowball_Mark"
-                    {
-                        spell.id = item.key
-                        spell.name = item.value.name
-                        spell.key = item.value.key
-                        spell.spellDescription = item.value.description
-                        spell.tooltip = item.value.tooltip
-                        try! realm.write {
-                            realm.add(spell)
-                        }
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    private  func getVersionRealm() {
-        NetworkAPI.shared.fetchCurrentVersion() { result in
-            switch result {
-            case .success(let lastVersion):
-                let realm = try! Realm()
-                let version = Version()
-                version.lastVesion = lastVersion
-                try! realm.write {
-                    realm.add(version)
-                }
-            case .failure(let error):
-                print(error)
             }
         }
     }

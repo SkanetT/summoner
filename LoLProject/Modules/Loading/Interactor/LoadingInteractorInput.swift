@@ -12,6 +12,6 @@ protocol LoadingInteractorInput: class {
     func attach(_ output: LoadingInteractorOutput)
     func checkLastVersion()
     func getVersionRealm(_ lastVersion: String)
-    func getChampionsListRealm(group: DispatchGroup)
-    func getSpellsListRealm(group: DispatchGroup)
+    func getChampionsListRealm(version: String, group: DispatchGroup)
+    func getSpellsListRealm(version: String, group: DispatchGroup)
 }

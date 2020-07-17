@@ -10,22 +10,9 @@ import UIKit
 
 class AppRouter {
     static func initViewController() -> UIViewController {
-       let nvc = ContainerController()
-//        let nvc = LoadingAssembler.createModule()
+
+        let nvc = LoadingAssembler.createModule()
         
-//        UIApplication.shared.keyWindow?.rootViewController =
-//        let vc = LoadingAssembler.createModuler { (vc) in
-//            switch vc {
-//
-//            }
-//        }
-        //
-        
-//        if isLogin {
-//            configureLoginController()
-//        } else {
-//            configureSummonerController()
-//        }
         return nvc
     }
 }
