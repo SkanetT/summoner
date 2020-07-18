@@ -62,8 +62,8 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchCurrentItemsList( completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/item.json"
+    func fetchCurrentItemsList(version: String, completion: @escaping (Result<ItemsData, APIErrors>) -> () ) {
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/item.json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in
@@ -78,8 +78,8 @@ class NetworkAPI {
         task.resume()
     }
     
-    func fetchCurrentSpellsList( completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
-        let urlString = "https://ddragon.leagueoflegends.com/cdn/10.14.1/data/en_US/summoner.json"
+    func fetchCurrentSpellsList(version: String, completion: @escaping (Result<SummonerSpellsData, APIErrors>) -> () ) {
+        let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/summoner.json"
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in

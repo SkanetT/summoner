@@ -41,9 +41,11 @@ class ContainerController: UIViewController {
     
     func configureLoginController() {
         
-        let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(identifier: "login") as! LoginController
-        vc.delegate = self
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(identifier: "login") as! LoginControllerOld
+//        vc.delegate = self
+        let vc = LoginAssembler.createModule(delegate: self)
+        
         centerContoller = UINavigationController(rootViewController: vc)
         
         centerContoller.view.frame = self.view.frame

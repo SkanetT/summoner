@@ -24,31 +24,9 @@ class LoadingInteractor: LoadingInteractorInput {
     
     func checkLastVersion() {
         let version = RealmManager.fetchLastVersion()
-        
+        group.enter()
         let realm = try! Realm()
         if version != nil {
-            NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
-                
-                guard let self = self else { return }
-                switch result {
-                case .success(let lastVersion):
-                    if version == lastVersion {
-                        self.output?.loadingDone()
-                    } else {
-                        DispatchQueue.main.async {
-                            try! realm.write {
-                                realm.deleteAll()
-                            }
-                            self.getVersionRealm(lastVersion)
-                            self.getChampionsListRealm(version: lastVersion, group: self.group)
-                            self.getSpellsListRealm(version: lastVersion    , group: self.group)
-                        }
-                    }
-                case.failure(let error):
-                    self.output?.loadingNotDone(error)
-                }
-            }
-        } else {
             NetworkAPI.shared.fetchCurrentVersion() {[weak self] result in
                 
                 guard let self = self else { return }
@@ -69,7 +47,27 @@ class LoadingInteractor: LoadingInteractorInput {
                 case.failure(let error):
                     self.output?.loadingNotDone(error)
                 }
-                
+                self.group.leave()
+            }
+        } else {
+            NetworkAPI.shared.fetchCurrentVersion() { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let lastVersion):
+                    
+                    DispatchQueue.main.async {
+                        try! realm.write {
+                            realm.deleteAll()
+                        }
+                        self.getVersionRealm(lastVersion)
+                        self.getChampionsListRealm(version: lastVersion, group: self.group)
+                        self.getSpellsListRealm(version: lastVersion, group: self.group)
+                    }
+                    
+                case.failure(let error):
+                    self.output?.loadingNotDone(error)
+                }
+                self.group.leave()
             }
         }
         
@@ -119,7 +117,7 @@ class LoadingInteractor: LoadingInteractorInput {
     
     func getSpellsListRealm(version: String, group: DispatchGroup) {
         group.enter()
-        NetworkAPI.shared.fetchCurrentSpellsList() {[weak self] result in
+        NetworkAPI.shared.fetchCurrentSpellsList(version: version) {[weak self] result in
             switch result {
             case.success(let spellsData):
                 let realm = try! Realm()

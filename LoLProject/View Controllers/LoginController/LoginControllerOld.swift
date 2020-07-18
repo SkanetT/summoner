@@ -9,8 +9,8 @@
 import UIKit
 import RealmSwift
 
-class LoginController: SpinnerController {
-        
+class LoginControllerOld: SpinnerController {
+    
     @IBOutlet weak var tfToPicker: NSLayoutConstraint!
     @IBOutlet weak var searchToPicker: NSLayoutConstraint!
     
@@ -53,6 +53,9 @@ class LoginController: SpinnerController {
         delegate?.handleMenuToggle(forMenuOption: nil)
     }
     func configureNavigationBar() {
+        let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = titleColor
+        title = "Login"
         navigationController?.navigationBar.barTintColor = .darkGray
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.barTintColor = .black
@@ -83,7 +86,7 @@ class LoginController: SpinnerController {
                 self.verLabel.text = lastVersion
             }
         }
-     //   updateCurrentVersion()
+        //   updateCurrentVersion()
         
         
     }
@@ -147,14 +150,14 @@ class LoginController: SpinnerController {
             case .success(let summonerData):
                 DispatchQueue.main.async {
                     RealmManager.loginSummoner(summonerData: summonerData, region: region)
-
+                    
                     self.summonerNameTF.text? = ""
                     self.searchButton.alpha = 0.5
                     self.searchButton.isEnabled = false
                     
                     let container = ContainerController()
                     container.isLogin = false
-        
+                    
                     container.modalPresentationStyle = .fullScreen
                     self.present(container, animated: true)
                 }
@@ -180,7 +183,7 @@ class LoginController: SpinnerController {
     }
 }
 
-extension LoginController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension LoginControllerOld: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
     }

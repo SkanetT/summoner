@@ -34,6 +34,17 @@
 		3A5E28E524BF9913009B3009 /* LoadingInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */; };
 		3A5E28E824C0DF5A009B3009 /* LoadingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E724C0DF5A009B3009 /* LoadingRouter.swift */; };
 		3A5E28EA24C0DF87009B3009 /* LoadingRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */; };
+		3A5E28EF24C33F55009B3009 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28ED24C33F55009B3009 /* LoginController.swift */; };
+		3A5E28F024C33F55009B3009 /* LoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5E28EE24C33F55009B3009 /* LoginController.xib */; };
+		3A5E28F224C33FB5009B3009 /* LoginAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28F124C33FB5009B3009 /* LoginAssembler.swift */; };
+		3A5E28F524C345A6009B3009 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28F424C345A6009B3009 /* LoginPresenter.swift */; };
+		3A5E28F724C345D6009B3009 /* LoginPresenterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28F624C345D6009B3009 /* LoginPresenterInput.swift */; };
+		3A5E28F924C34609009B3009 /* LoginPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28F824C34609009B3009 /* LoginPresenterOutput.swift */; };
+		3A5E28FC24C349FD009B3009 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28FB24C349FD009B3009 /* LoginRouter.swift */; };
+		3A5E28FE24C34A34009B3009 /* LoginRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E28FD24C34A34009B3009 /* LoginRouting.swift */; };
+		3A5E290124C38598009B3009 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E290024C38598009B3009 /* LoginInteractor.swift */; };
+		3A5E290324C385F6009B3009 /* LoginInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E290224C385F6009B3009 /* LoginInteractorInput.swift */; };
+		3A5E290524C38635009B3009 /* LoginInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5E290424C38635009B3009 /* LoginInteractorOutput.swift */; };
 		3A6366FD2460C769004C76D0 /* SummonerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FB2460C769004C76D0 /* SummonerController.swift */; };
 		3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6366FC2460C769004C76D0 /* SummonerController.xib */; };
 		3A6367002461DDB2004C76D0 /* FoundSummoner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */; };
@@ -67,6 +78,8 @@
 		3A7DD0D924B3CEA500E17331 /* SummonerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */; };
 		3A7DD0DC24B4FFEA00E17331 /* SummonerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */; };
 		3A7DD0DE24B5006F00E17331 /* SummonerRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */; };
+		3A81487A24C3BAEA00EFFC55 /* PopPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */; };
+		3A81487B24C3BAEA00EFFC55 /* PopPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */; };
 		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
 		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
 		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
@@ -79,7 +92,7 @@
 		3A8790E72483FFCC00499C5E /* CellForHeaderForChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790E52483FFCC00499C5E /* CellForHeaderForChampion.swift */; };
 		3A8790E82483FFCC00499C5E /* CellForHeaderForChampion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */; };
 		3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D624549417005801A8 /* AppDelegate.swift */; };
-		3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* LoginController.swift */; };
+		3A8CB6DB24549417005801A8 /* LoginControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */; };
 		3A8CB6DE24549417005801A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DC24549417005801A8 /* Main.storyboard */; };
 		3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DF24549419005801A8 /* Assets.xcassets */; };
 		3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6E124549419005801A8 /* LaunchScreen.storyboard */; };
@@ -214,6 +227,17 @@
 		3A5E28E424BF9913009B3009 /* LoadingInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingInteractorOutput.swift; sourceTree = "<group>"; };
 		3A5E28E724C0DF5A009B3009 /* LoadingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRouter.swift; sourceTree = "<group>"; };
 		3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingRouting.swift; sourceTree = "<group>"; };
+		3A5E28ED24C33F55009B3009 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		3A5E28EE24C33F55009B3009 /* LoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginController.xib; sourceTree = "<group>"; };
+		3A5E28F124C33FB5009B3009 /* LoginAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssembler.swift; sourceTree = "<group>"; };
+		3A5E28F424C345A6009B3009 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		3A5E28F624C345D6009B3009 /* LoginPresenterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterInput.swift; sourceTree = "<group>"; };
+		3A5E28F824C34609009B3009 /* LoginPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterOutput.swift; sourceTree = "<group>"; };
+		3A5E28FB24C349FD009B3009 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		3A5E28FD24C34A34009B3009 /* LoginRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouting.swift; sourceTree = "<group>"; };
+		3A5E290024C38598009B3009 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		3A5E290224C385F6009B3009 /* LoginInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorInput.swift; sourceTree = "<group>"; };
+		3A5E290424C38635009B3009 /* LoginInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorOutput.swift; sourceTree = "<group>"; };
 		3A6366FB2460C769004C76D0 /* SummonerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerController.swift; sourceTree = "<group>"; };
 		3A6366FC2460C769004C76D0 /* SummonerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummonerController.xib; sourceTree = "<group>"; };
 		3A6366FF2461DDB2004C76D0 /* FoundSummoner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundSummoner.swift; sourceTree = "<group>"; };
@@ -247,6 +271,8 @@
 		3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorOutput.swift; sourceTree = "<group>"; };
 		3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouter.swift; sourceTree = "<group>"; };
 		3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouting.swift; sourceTree = "<group>"; };
+		3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPickerController.swift; sourceTree = "<group>"; };
+		3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopPickerController.xib; sourceTree = "<group>"; };
 		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
 		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
 		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
@@ -260,7 +286,7 @@
 		3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellForHeaderForChampion.xib; sourceTree = "<group>"; };
 		3A8CB6D324549417005801A8 /* LoLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CB6D624549417005801A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A8CB6DA24549417005801A8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerOld.swift; sourceTree = "<group>"; };
 		3A8CB6DD24549417005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A8CB6DF24549419005801A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8CB6E224549419005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -402,6 +428,7 @@
 				3AB9452924A8E75200B06936 /* League */,
 				3A83110F24A7752200D6552D /* Status */,
 				3AAA3226246849E200100FF8 /* Spells */,
+				3A5E28EB24C33E27009B3009 /* Login */,
 				3AC8B1F924ABDD8000DEF819 /* Loading */,
 			);
 			path = Modules;
@@ -461,6 +488,57 @@
 				3A5E28E924C0DF87009B3009 /* LoadingRouting.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		3A5E28EB24C33E27009B3009 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28F124C33FB5009B3009 /* LoginAssembler.swift */,
+				3A5E28EC24C33EA2009B3009 /* View */,
+				3A5E28FF24C38541009B3009 /* Interactor */,
+				3A5E28F324C3429A009B3009 /* Presenter */,
+				3A5E28FA24C34965009B3009 /* Router */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3A5E28EC24C33EA2009B3009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28ED24C33F55009B3009 /* LoginController.swift */,
+				3A5E28EE24C33F55009B3009 /* LoginController.xib */,
+				3A81487724C3BA9200EFFC55 /* Pop */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3A5E28F324C3429A009B3009 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28F424C345A6009B3009 /* LoginPresenter.swift */,
+				3A5E28F624C345D6009B3009 /* LoginPresenterInput.swift */,
+				3A5E28F824C34609009B3009 /* LoginPresenterOutput.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3A5E28FA24C34965009B3009 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E28FB24C349FD009B3009 /* LoginRouter.swift */,
+				3A5E28FD24C34A34009B3009 /* LoginRouting.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		3A5E28FF24C38541009B3009 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				3A5E290024C38598009B3009 /* LoginInteractor.swift */,
+				3A5E290224C385F6009B3009 /* LoginInteractorInput.swift */,
+				3A5E290424C38635009B3009 /* LoginInteractorOutput.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		3A689BE924AFCF9B00CBEC7A /* CollectionHandler */ = {
@@ -564,6 +642,15 @@
 				3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		3A81487724C3BA9200EFFC55 /* Pop */ = {
+			isa = PBXGroup;
+			children = (
+				3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */,
+				3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */,
+			);
+			path = Pop;
 			sourceTree = "<group>";
 		};
 		3A83110F24A7752200D6552D /* Status */ = {
@@ -694,7 +781,7 @@
 		3A8CB730245C258A005801A8 /* LoginController */ = {
 			isa = PBXGroup;
 			children = (
-				3A8CB6DA24549417005801A8 /* LoginController.swift */,
+				3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */,
 			);
 			path = LoginController;
 			sourceTree = "<group>";
@@ -1225,6 +1312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
+				3A81487B24C3BAEA00EFFC55 /* PopPickerController.xib in Resources */,
 				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
@@ -1236,6 +1324,7 @@
 				3AC267FD248840D7009C3D18 /* LeagueCell.xib in Resources */,
 				3A8CB6EF24549BA1005801A8 /* Default-568h@2x.png in Resources */,
 				3AAA322A24684A1100100FF8 /* SpellsController.xib in Resources */,
+				3A5E28F024C33F55009B3009 /* LoginController.xib in Resources */,
 				3A58E5152485A95700287CA7 /* LeagueController.xib in Resources */,
 				3A689C0924B224C700CBEC7A /* ChampionsListCell.xib in Resources */,
 				3A6366FE2460C769004C76D0 /* SummonerController.xib in Resources */,
@@ -1314,6 +1403,7 @@
 				3AC8B1F824AA88E700DEF819 /* LeaguePresenterOutput.swift in Sources */,
 				3A8CB756245C7E14005801A8 /* SelectedChampionData.swift in Sources */,
 				3AE82CFB24A6980700B7A417 /* SpellsAssembler.swift in Sources */,
+				3A5E290524C38635009B3009 /* LoginInteractorOutput.swift in Sources */,
 				3AB778CA24B2497B0022D1EB /* ChampionsListPresenter.swift in Sources */,
 				3A5E28E124BF98CC009B3009 /* LoadingInteractor.swift in Sources */,
 				3A9F856D246086F80090BBAF /* GlobalConstants.swift in Sources */,
@@ -1322,7 +1412,7 @@
 				3AB778F024B3A6090022D1EB /* ChampionInfoInteractor.swift in Sources */,
 				3A689C0424B2201900CBEC7A /* ChampionsListController.swift in Sources */,
 				3AB9452624A7A4F800B06936 /* StatusTableHandler.swift in Sources */,
-				3A8CB6DB24549417005801A8 /* LoginController.swift in Sources */,
+				3A8CB6DB24549417005801A8 /* LoginControllerOld.swift in Sources */,
 				3AB9451C24A78C4200B06936 /* SpellTableHandlerProtocol.swift in Sources */,
 				3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
@@ -1332,6 +1422,7 @@
 				3A83111424A77AA000D6552D /* StatusRouter.swift in Sources */,
 				3AB9452324A798E200B06936 /* StatusInteractorOutput.swift in Sources */,
 				3AC8B20024ACCACC00DEF819 /* LeagueInteractorInput.swift in Sources */,
+				3A5E28FE24C34A34009B3009 /* LoginRouting.swift in Sources */,
 				3AE82D0524A699A900B7A417 /* SpellsInteractor.swift in Sources */,
 				3AC8B20224ACCB8600DEF819 /* LeagueInteractorOutput.swift in Sources */,
 				3A14CCD924A770FE00488F32 /* SpellsPresenterInput.swift in Sources */,
@@ -1386,9 +1477,11 @@
 				3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */,
 				3AAA325B246A0A9700100FF8 /* MatchHistoryCell.swift in Sources */,
 				3A7DD0D224B3C98600E17331 /* SummonerPresenterOutput.swift in Sources */,
+				3A5E28F724C345D6009B3009 /* LoginPresenterInput.swift in Sources */,
 				3AC6ED21249D3E1300F8B733 /* SpectatorCell.swift in Sources */,
 				3AB778E124B270630022D1EB /* ChampionInfoAssembler.swift in Sources */,
 				3AC8B1F124A9267800DEF819 /* LeagueTableHandlerProtocol.swift in Sources */,
+				3A5E290324C385F6009B3009 /* LoginInteractorInput.swift in Sources */,
 				3AB9451F24A7979600B06936 /* StatusInteractor.swift in Sources */,
 				3AE82D0224A698CB00B7A417 /* SpellsRouting.swift in Sources */,
 				3AC8B1F624AA886B00DEF819 /* LeaguePresenterInput.swift in Sources */,
@@ -1400,11 +1493,13 @@
 				3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */,
 				3AC8B20524ACCE5F00DEF819 /* LeagueRouter.swift in Sources */,
 				3AC6ED1C2499597B00F8B733 /* SpinnerController.swift in Sources */,
+				3A5E28F224C33FB5009B3009 /* LoginAssembler.swift in Sources */,
 				3A7DD0D524B3CDEA00E17331 /* SummonerInteractor.swift in Sources */,
 				3A5AE7432464876400E80092 /* LeagueData.swift in Sources */,
 				3AC8B1F424AA878E00DEF819 /* LeaguePresenter.swift in Sources */,
 				3AC6ED1324966D9500F8B733 /* SpectatorData.swift in Sources */,
 				3AC2680F248C2FFB009C3D18 /* ContainerController.swift in Sources */,
+				3A5E28F524C345A6009B3009 /* LoginPresenter.swift in Sources */,
 				3A8790E02483D9BC00499C5E /* FooterForChampion.swift in Sources */,
 				3A8CB75C245CA1A3005801A8 /* SelectChampion.swift in Sources */,
 				3A58E5142485A95700287CA7 /* LeagueController.swift in Sources */,
@@ -1419,9 +1514,11 @@
 				3A5AE7472466FA1200E80092 /* Item.swift in Sources */,
 				3A689C0B24B2370A00CBEC7A /* ChampionsListCollectionHandler.swift in Sources */,
 				3AB778D524B250CA0022D1EB /* ChampionsListInterctorOutput.swift in Sources */,
+				3A5E28FC24C349FD009B3009 /* LoginRouter.swift in Sources */,
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
 				3AB778F924B3ACC90022D1EB /* ChampionInfoRouting.swift in Sources */,
 				3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */,
+				3A81487A24C3BAEA00EFFC55 /* PopPickerController.swift in Sources */,
 				3A5E28D624BF91D6009B3009 /* LoadingController.swift in Sources */,
 				3A42A10524BB115100CFCD59 /* ChampionsListSearchHandlerProtocol.swift in Sources */,
 				3AE82D0824A6A2FF00B7A417 /* SpellsPresenter.swift in Sources */,
@@ -1431,6 +1528,7 @@
 				3A5E28E324BF98F1009B3009 /* LoadingInteractorInput.swift in Sources */,
 				3AE82D0A24A6A59500B7A417 /* SpellTableHandler.swift in Sources */,
 				3A689BEC24B0DF7600CBEC7A /* SpectatorCollectionHandler.swift in Sources */,
+				3A5E28EF24C33F55009B3009 /* LoginController.swift in Sources */,
 				3A5E28DA24BF9646009B3009 /* LoadingPresenter.swift in Sources */,
 				3A689BF324B0E93700CBEC7A /* SpectatorPresenterInput.swift in Sources */,
 				3A5AE74924675D8200E80092 /* SummonerSpellsData.swift in Sources */,
@@ -1445,8 +1543,10 @@
 				3A9F856A246084C70090BBAF /* SummonerData.swift in Sources */,
 				3AC26811248EBE95009C3D18 /* BaseRequest.swift in Sources */,
 				3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */,
+				3A5E28F924C34609009B3009 /* LoginPresenterOutput.swift in Sources */,
 				3AAA325E246DE81700100FF8 /* RankView.swift in Sources */,
 				3AFED4E724747ABE00D8AA40 /* MoreInfoCell.swift in Sources */,
+				3A5E290124C38598009B3009 /* LoginInteractor.swift in Sources */,
 				3AB9451624A77F5300B06936 /* StatusPresenter.swift in Sources */,
 				3A83111624A77ABA00D6552D /* StatusRouting.swift in Sources */,
 				3AC8B20724ACCEA500DEF819 /* LeagueRouting.swift in Sources */,

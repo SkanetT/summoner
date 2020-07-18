@@ -40,7 +40,7 @@ extension UIImageView {
     func downloadSD(type: ImageType)
     {
         
-        self.sd_imageIndicator = SDWebImageActivityIndicator.whiteLarge
+        self.sd_imageIndicator = SDWebImageActivityIndicator.white
         
         self.sd_setImage(with: type.url)
     }
