@@ -10,8 +10,13 @@ import UIKit
 
 class LoginRouter: LoginRouting {
     
+    
+   
+    
     private weak var viewController: UIViewController?
     weak var delegate: LoginControllerDelegate?
+    
+    var serverChange: ((String) -> ())?
     
     init(_ viewController: UIViewController) {
         self.viewController = viewController
@@ -52,6 +57,21 @@ class LoginRouter: LoginRouting {
     }
     
     func showPicker() {
+       let vc = PickerController()
+        vc.modalPresentationStyle = .custom
         
+        vc.setServer() {[weak self] server in
+            self?.serverChange?(server)
+            
+        }
+        
+        viewController?.present(vc, animated: true)
     }
+    
+    func serverDidChange(_ server: ((String) -> ())?) {
+        self.serverChange = server
+    }
+    
 }
+
+

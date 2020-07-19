@@ -78,8 +78,7 @@
 		3A7DD0D924B3CEA500E17331 /* SummonerInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */; };
 		3A7DD0DC24B4FFEA00E17331 /* SummonerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */; };
 		3A7DD0DE24B5006F00E17331 /* SummonerRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */; };
-		3A81487A24C3BAEA00EFFC55 /* PopPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */; };
-		3A81487B24C3BAEA00EFFC55 /* PopPickerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */; };
+		3A81487D24C460B200EFFC55 /* PickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81487C24C460B200EFFC55 /* PickerController.swift */; };
 		3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */; };
 		3A83110E24A772BD00D6552D /* SpeellsnteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */; };
 		3A83111124A7756800D6552D /* StatusAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83111024A7756800D6552D /* StatusAssembler.swift */; };
@@ -92,7 +91,6 @@
 		3A8790E72483FFCC00499C5E /* CellForHeaderForChampion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8790E52483FFCC00499C5E /* CellForHeaderForChampion.swift */; };
 		3A8790E82483FFCC00499C5E /* CellForHeaderForChampion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */; };
 		3A8CB6D724549417005801A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6D624549417005801A8 /* AppDelegate.swift */; };
-		3A8CB6DB24549417005801A8 /* LoginControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */; };
 		3A8CB6DE24549417005801A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DC24549417005801A8 /* Main.storyboard */; };
 		3A8CB6E024549419005801A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6DF24549419005801A8 /* Assets.xcassets */; };
 		3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8CB6E124549419005801A8 /* LaunchScreen.storyboard */; };
@@ -271,8 +269,7 @@
 		3A7DD0D824B3CEA500E17331 /* SummonerInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInteractorOutput.swift; sourceTree = "<group>"; };
 		3A7DD0DB24B4FFEA00E17331 /* SummonerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouter.swift; sourceTree = "<group>"; };
 		3A7DD0DD24B5006F00E17331 /* SummonerRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerRouting.swift; sourceTree = "<group>"; };
-		3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPickerController.swift; sourceTree = "<group>"; };
-		3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopPickerController.xib; sourceTree = "<group>"; };
+		3A81487C24C460B200EFFC55 /* PickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerController.swift; sourceTree = "<group>"; };
 		3A83110B24A7729E00D6552D /* SpellsInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellsInteractorInput.swift; sourceTree = "<group>"; };
 		3A83110D24A772BD00D6552D /* SpeellsnteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeellsnteractorOutput.swift; sourceTree = "<group>"; };
 		3A83111024A7756800D6552D /* StatusAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAssembler.swift; sourceTree = "<group>"; };
@@ -286,7 +283,6 @@
 		3A8790E62483FFCC00499C5E /* CellForHeaderForChampion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellForHeaderForChampion.xib; sourceTree = "<group>"; };
 		3A8CB6D324549417005801A8 /* LoLProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoLProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8CB6D624549417005801A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerOld.swift; sourceTree = "<group>"; };
 		3A8CB6DD24549417005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A8CB6DF24549419005801A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8CB6E224549419005801A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -507,7 +503,7 @@
 			children = (
 				3A5E28ED24C33F55009B3009 /* LoginController.swift */,
 				3A5E28EE24C33F55009B3009 /* LoginController.xib */,
-				3A81487724C3BA9200EFFC55 /* Pop */,
+				3A81487C24C460B200EFFC55 /* PickerController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -644,15 +640,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		3A81487724C3BA9200EFFC55 /* Pop */ = {
-			isa = PBXGroup;
-			children = (
-				3A81487824C3BAEA00EFFC55 /* PopPickerController.swift */,
-				3A81487924C3BAEA00EFFC55 /* PopPickerController.xib */,
-			);
-			path = Pop;
-			sourceTree = "<group>";
-		};
 		3A83110F24A7752200D6552D /* Status */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,7 +709,6 @@
 				3AC26805248C2CAA009C3D18 /* SideMenu */,
 				3A8CB6EB24549B37005801A8 /* Storyboards */,
 				3A8CB6EC24549B5B005801A8 /* Models */,
-				3A8CB6ED24549B75005801A8 /* View Controllers */,
 				3A8CB6EA24549A75005801A8 /* Supporting Files */,
 			);
 			path = LoLProject;
@@ -763,27 +749,10 @@
 				3A5AE74824675D8200E80092 /* SummonerSpellsData.swift */,
 				3AAA322F2468878900100FF8 /* MatchHistory.swift */,
 				3AFED4E92477153300D8AA40 /* FullInfoMatch.swift */,
-				3AC26806248C2D0E009C3D18 /* MenuOption.swift */,
 				3A5C349C2491758B0044AB6D /* StatusData.swift */,
 				3AC6ED1224966D9500F8B733 /* SpectatorData.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3A8CB6ED24549B75005801A8 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				3A8CB730245C258A005801A8 /* LoginController */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		3A8CB730245C258A005801A8 /* LoginController */ = {
-			isa = PBXGroup;
-			children = (
-				3A8CB6DA24549417005801A8 /* LoginControllerOld.swift */,
-			);
-			path = LoginController;
 			sourceTree = "<group>";
 		};
 		3A8CB7A1245E2F63005801A8 /* Extensions */ = {
@@ -1071,6 +1040,7 @@
 				3AC2680C248C2F64009C3D18 /* MenuController.swift */,
 				3AC2680E248C2FFB009C3D18 /* ContainerController.swift */,
 				3AE82CF324A6903500B7A417 /* ContainerController.xib */,
+				3AC26806248C2D0E009C3D18 /* MenuOption.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -1312,7 +1282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFED4E824747ABE00D8AA40 /* MoreInfoCell.xib in Resources */,
-				3A81487B24C3BAEA00EFFC55 /* PopPickerController.xib in Resources */,
 				3AFED4EE247A8C0700D8AA40 /* ParticipantInfo.xib in Resources */,
 				3A8CB6E324549419005801A8 /* LaunchScreen.storyboard in Resources */,
 				3AAA322E24684F7000100FF8 /* SummonerSpellCell.xib in Resources */,
@@ -1389,6 +1358,7 @@
 			files = (
 				3AB778ED24B290240022D1EB /* ChampionInfoPresenterOutput.swift in Sources */,
 				3AFED4E0246F5E5700D8AA40 /* BaseXibView.swift in Sources */,
+				3A81487D24C460B200EFFC55 /* PickerController.swift in Sources */,
 				3AB778DC24B25E130022D1EB /* ChampionsListRouting.swift in Sources */,
 				3A7DD0DE24B5006F00E17331 /* SummonerRouting.swift in Sources */,
 				3AB778CC24B249910022D1EB /* ChampionsListPresenterInput.swift in Sources */,
@@ -1412,7 +1382,6 @@
 				3AB778F024B3A6090022D1EB /* ChampionInfoInteractor.swift in Sources */,
 				3A689C0424B2201900CBEC7A /* ChampionsListController.swift in Sources */,
 				3AB9452624A7A4F800B06936 /* StatusTableHandler.swift in Sources */,
-				3A8CB6DB24549417005801A8 /* LoginControllerOld.swift in Sources */,
 				3AB9451C24A78C4200B06936 /* SpellTableHandlerProtocol.swift in Sources */,
 				3A83110C24A7729E00D6552D /* SpellsInteractorInput.swift in Sources */,
 				3A6367022462049C004C76D0 /* MostPlayedChampionsData.swift in Sources */,
@@ -1518,7 +1487,6 @@
 				3A8CB7A6245E3037005801A8 /* ImageView.swift in Sources */,
 				3AB778F924B3ACC90022D1EB /* ChampionInfoRouting.swift in Sources */,
 				3A689BFF24B20D1500CBEC7A /* SpectatorRouter.swift in Sources */,
-				3A81487A24C3BAEA00EFFC55 /* PopPickerController.swift in Sources */,
 				3A5E28D624BF91D6009B3009 /* LoadingController.swift in Sources */,
 				3A42A10524BB115100CFCD59 /* ChampionsListSearchHandlerProtocol.swift in Sources */,
 				3AE82D0824A6A2FF00B7A417 /* SpellsPresenter.swift in Sources */,

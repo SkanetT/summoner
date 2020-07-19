@@ -136,7 +136,7 @@ class MenuController: UIViewController {
         
     }
     
-    func setDataToBot() {
+   private func setDataToBot() {
         guard !saveSummoner.isEmpty else { return }
         guard let summoner = saveSummoner.first, let found = foundSummoner.first else { return }
         saveSummonerIcon.downloadSD(type: .profileIcon(id: summoner.profileIconId.description))

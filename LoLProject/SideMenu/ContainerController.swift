@@ -40,10 +40,6 @@ class ContainerController: UIViewController {
     }
     
     func configureLoginController() {
-        
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = sb.instantiateViewController(identifier: "login") as! LoginControllerOld
-//        vc.delegate = self
         let vc = LoginAssembler.createModule(delegate: self)
         
         centerContoller = UINavigationController(rootViewController: vc)
@@ -55,7 +51,6 @@ class ContainerController: UIViewController {
     }
     
     func configureSummonerController() {
-        
          let vc = SummonerAssembler.createModule(delegate: self)
         
         centerContoller = UINavigationController(rootViewController: vc)

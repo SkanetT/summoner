@@ -13,6 +13,7 @@ class LoginController: UIViewController {
     @IBOutlet weak var summonerNameTextField: UITextField!
     @IBOutlet weak var serverLabel: UILabel!
     @IBOutlet weak var serverChange: UIButton!
+    @IBOutlet weak var versionLabel: UILabel!
     
     var presenter: LoginPresenterInput?
     
@@ -33,7 +34,6 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         summonerNameTextField.delegate = self
-        
         presenter?.attach(self)
         
         let titleColor = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -43,38 +43,45 @@ class LoginController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.barTintColor = .black
         
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .plain, target: self, action: #selector(handleMenu))
         navigationItem.leftBarButtonItem?.tintColor = .white
         
         serverChange.clipsToBounds = true
         serverChange.layer.cornerRadius = 8
+        serverChange.layer.borderColor = UIColor.white.cgColor
+        serverChange.layer.borderWidth = 1
         
         summonerNameTextField.clipsToBounds = true
         summonerNameTextField.layer.cornerRadius = 8
-        serverLabel.text = "Europe West"
         
+        if let firstServer = GlobalConstants.shared.servers.first {
+            serverLabel.text = firstServer
+        }
+        if let lastVersion = RealmManager.fetchLastVersion() {
+            versionLabel.text = "Version: \(lastVersion)"
+        }
     }
     
     @objc func handleMenu(){
         presenter?.sideMenuTap()
     }
-    
 }
 
 extension LoginController: LoginPresenterOutput {
-    
+    func newServerReceive(_ server: String) {
+        DispatchQueue.main.async {
+            self.serverLabel.text = server
+        }
+    }
 }
 
 extension LoginController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-         view.endEditing(true)
+        view.endEditing(true)
         if let summonerName = summonerNameTextField.text, let region = serverLabel.text {
             presenter?.didInputName(summonerName, region)
             summonerNameTextField.text = ""
-        } 
-        
-        
+        }
         return true
     }
 }

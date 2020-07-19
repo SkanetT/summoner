@@ -10,8 +10,7 @@ class GlobalConstants {
     
     static let shared = GlobalConstants()
     
-    let apiKey = "RGAPI-a2a6f351-8ea3-4423-afc8-870fe3999ffc" /* key for long time 111*/
-    
+    let apiKey = "RGAPI-451d8d66-410e-4137-8699-0db4eb05ff94" /* key for long time 111*/
     
     let servers = ["Europe West", "Europe Nordic & East", "Brazil", "Latin America North", "Latin America South", "North America", "Oceania", "Russia", "Turkey", "Japan", "Republic of Korea"]
     

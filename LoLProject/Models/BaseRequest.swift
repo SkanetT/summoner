@@ -19,7 +19,6 @@ class BaseRequest<T: Decodable>: BaseRequestProtocol {
         return ""
     }
     
-    
     var urlRequest: URLRequest? {
         var comp = URLComponents()
         comp.scheme = "https"

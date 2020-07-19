@@ -15,4 +15,5 @@ protocol LoginRouting {
     func showNoSummoner(_ name: String)
     func showError(_ error: APIErrors )
     func showPicker()
+    func serverDidChange(_ server: ((String) -> ())?)
 }

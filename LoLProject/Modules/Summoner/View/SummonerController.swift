@@ -60,7 +60,7 @@ class SummonerController: SpinnerController {
         summonerTopButton.isHidden = true
         summonerTopButton.clipsToBounds = true
         summonerTopButton.layer.cornerRadius = 35
-        summonerTopButton.layer.borderColor = UIColor.black.cgColor
+        summonerTopButton.layer.borderColor = UIColor.white.cgColor
         summonerTopButton.layer.borderWidth = 1.5
         summonerTopButton.layer.shadowColor = UIColor.black.cgColor
         summonerTopButton.layer.masksToBounds = false
@@ -69,7 +69,7 @@ class SummonerController: SpinnerController {
         
         saveButton.clipsToBounds = true
         saveButton.layer.cornerRadius = 35
-        saveButton.layer.borderColor = UIColor.black.cgColor
+        saveButton.layer.borderColor = UIColor.white.cgColor
         saveButton.layer.borderWidth = 1.5
         saveButton.layer.shadowColor = UIColor.black.cgColor
         saveButton.layer.masksToBounds = false

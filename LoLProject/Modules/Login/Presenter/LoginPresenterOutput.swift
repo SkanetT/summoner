@@ -9,5 +9,5 @@
 import Foundation
 
 protocol LoginPresenterOutput: class {
-    
+    func newServerReceive(_ server: String)
 }

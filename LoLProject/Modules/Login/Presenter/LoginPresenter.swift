@@ -27,6 +27,10 @@ class LoginPresenter: LoginPresenterInput {
     }
     func viewWillAppear() {
         interactor.checkSummoner()
+        router.serverDidChange() {[weak self] server in
+            self?.viewController?.newServerReceive(server)
+            
+        }
     }
     
     func sideMenuTap() {

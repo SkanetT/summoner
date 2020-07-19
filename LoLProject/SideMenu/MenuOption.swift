@@ -11,7 +11,6 @@ import UIKit
 enum MenuOption: Int {
     
     case champions
-//    case items
     case spells
     case serversStatus
     case news
@@ -28,9 +27,9 @@ enum MenuOption: Int {
     var image: UIImage {
         switch self {
         case .champions: return UIImage(systemName: "person") ?? UIImage()
-        case .spells: return UIImage(systemName: "circle.grid.3x3") ?? UIImage()
-        case .serversStatus: return UIImage(systemName: "info") ?? UIImage()
-        case .news: return UIImage(systemName: "book") ?? UIImage()
+        case .spells: return UIImage(systemName: "rectangle.grid.1x2") ?? UIImage()
+        case .serversStatus: return UIImage(systemName: "antenna.radiowaves.left.and.right") ?? UIImage()
+        case .news: return UIImage(systemName: "doc.richtext") ?? UIImage()
         }
     }
     
