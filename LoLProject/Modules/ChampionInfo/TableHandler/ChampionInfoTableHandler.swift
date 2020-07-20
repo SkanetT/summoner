@@ -41,6 +41,8 @@ extension ChampionInfoTableHandler: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "skill", for: indexPath) as! SpellsCell
         guard let championData = championData else { return cell }
         
+    
+        
         switch indexPath.row {
             
         case 0:

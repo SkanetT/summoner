@@ -16,6 +16,7 @@ class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
     var currectTier: [Entry] = []
     
     var userSelectSomething: ((Entry) -> ())?
+    var scroll: (() -> ())?
 
     func attach(_ tableView: UITableView) {
         self.tableView = tableView
@@ -33,6 +34,10 @@ class LeagueTableHandler: NSObject, LeagueTableHandlerProtocol {
     func setAction(userSelect: ((Entry) -> ())?) {
            userSelectSomething = userSelect
        }
+    
+    func setScroll(scroll: (() -> ())?) {
+        self.scroll = scroll
+    }
 }
 
 extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
@@ -79,6 +84,10 @@ extension LeagueTableHandler: UITableViewDelegate, UITableViewDataSource {
                 
         userSelectSomething?(currectTier[indexPath.row - 1])
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scroll?()
     }
     
 }

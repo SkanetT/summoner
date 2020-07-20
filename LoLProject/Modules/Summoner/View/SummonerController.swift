@@ -89,6 +89,10 @@ class SummonerController: SpinnerController {
         statusLabel.layer.backgroundColor = UIColor.black.cgColor
         statusLabel.layer.borderWidth = 1.5
         
+        lvlLabel.layer.cornerRadius = 4
+        lvlLabel.layer.borderColor = UIColor.white.cgColor
+        lvlLabel.layer.borderWidth = 1.25
+        
         indicator.isHidden = false
         indicator.startAnimating()
         navigationController?.navigationBar.barTintColor = .black

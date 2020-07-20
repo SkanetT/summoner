@@ -59,7 +59,7 @@ extension SpectatorController: SpectatorPresenterOutput {
             
             let image = UIImageView()
             image.contentMode = .scaleAspectFit
-            image.backgroundColor = .lightGray
+//            image.backgroundColor = .lightGray
             image.clipsToBounds = true
             image.layer.cornerRadius = 5
             
@@ -77,7 +77,7 @@ extension SpectatorController: SpectatorPresenterOutput {
             
             let image = UIImageView()
             image.contentMode = .scaleAspectFit
-            image.backgroundColor = .lightGray
+//            image.backgroundColor = .lightGray
             image.clipsToBounds = true
             image.layer.cornerRadius = 5
             

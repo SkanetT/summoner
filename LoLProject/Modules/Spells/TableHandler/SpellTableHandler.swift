@@ -36,6 +36,7 @@ extension SpellTableHandler: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "summonerSpell", for: indexPath) as! SummonerSpellCell
+        cell.selectionStyle = .none
         cell.nameLabel.text = spellList[indexPath.row].spellName
         cell.descriptionLabel.text = spellList[indexPath.row].spellDesc
         cell.spellImage.downloadSD(type: .spellIcon(id: spellList[indexPath.row].spellImgId))

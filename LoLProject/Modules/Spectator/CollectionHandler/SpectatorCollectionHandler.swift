@@ -45,6 +45,9 @@ extension SpectatorCollectionHandler: UICollectionViewDelegate, UICollectionView
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "spectatorCell", for: indexPath) as? SpectatorCell {
             
             cell.setData(data: participantSpectators[indexPath.row])
+            cell.layer.borderWidth = 1.5
+            cell.layer.borderColor = UIColor.black.cgColor
+            
             
             return cell
         } else {
@@ -59,7 +62,7 @@ extension SpectatorCollectionHandler: UICollectionViewDelegate, UICollectionView
         let size = collectionView.visibleSize
         
         
-        return CGSize(width: size.width * 0.75, height: size.height - 16)
+        return CGSize(width: size.width * 0.8, height: size.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

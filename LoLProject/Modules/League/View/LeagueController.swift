@@ -37,16 +37,23 @@ class LeagueController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = titleColor
         
         
-//        if rankData.tier == "GRANDMASTER" || rankData.tier == "MASTER" || rankData.tier == "CHALLENGER" {
-//            segmentedControl.isHidden = true
-//        }
+        //        if rankData.tier == "GRANDMASTER" || rankData.tier == "MASTER" || rankData.tier == "CHALLENGER" {
+        //            segmentedControl.isHidden = true
+        //        }
         
-       
+        
         tableView.allowsSelection = true
         tableView.clipsToBounds = true
-        tableView.layer.cornerRadius = 10
+        tableView.layer.cornerRadius = 8
         
-
+        tableHandler?.setScroll() {[weak self] () in
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self?.leagueImage.isHidden = true
+            })
+            
+        }
+        
     }
     
     @objc
