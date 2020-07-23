@@ -66,7 +66,6 @@ struct Player: Codable {
     let summonerName: String
     let accountId, summonerId: String?
     let profileIcon: Int?
-
 }
 
 class FullInfoMatchRequest: BaseRequest<FullInfoMatch> {

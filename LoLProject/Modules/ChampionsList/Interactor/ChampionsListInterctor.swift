@@ -39,5 +39,5 @@ class ChampionsListInteractor: ChampionsListInteractorInput {
                 self.output?.championInfoFailure(error)
             }
         }
-}
+    }
 }

@@ -28,7 +28,6 @@ class NetworkAPI {
                 completion(.failure(.unknown))
                 return
             }
-            
             switch responseCode.statusCode {
             case 200...300:
                 if let data = data, let res = try? JSONDecoder().decode(Request.response.self, from: data) {
@@ -47,7 +46,6 @@ class NetworkAPI {
     
     func fetchCurrentChampionsList(version: String, completion: @escaping (Result<ChampionsData, APIErrors>) -> () ) {
         let urlString = "https://ddragon.leagueoflegends.com/cdn/\(version)/data/en_US/champion.json"
-        
         guard let url = URL(string: urlString) else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) { data, response, rerror in

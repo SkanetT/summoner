@@ -22,8 +22,6 @@ struct Entry: Codable {
     let wins, losses: Int
     let veteran, inactive, freshBlood, hotStreak: Bool
     let miniSeries: MiniSeries?
-
-    
 }
 
 struct MiniSeries: Codable {

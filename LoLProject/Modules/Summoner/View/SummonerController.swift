@@ -183,11 +183,9 @@ extension SummonerController: SummonerPresenterOutput {
         lvlLabel.text = "Lvl: \(level) "
         
         summonerIconImage.downloadSD(type: .profileIcon(id: profileId))
-        
     }
     
     func didReceiveMostPlayedView(_ data: MostPlayedChampionsData) {
-        
         DispatchQueue.main.async {
             self.indicator.isHidden = true
             self.indicator.stopAnimating()
@@ -202,7 +200,6 @@ extension SummonerController: SummonerPresenterOutput {
     }
     
     func didReceiveNoMostPlayedView() {
-        
         DispatchQueue.main.async {
             
             let noData = NoMostPlayedView()

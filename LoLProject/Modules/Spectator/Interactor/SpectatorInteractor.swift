@@ -36,7 +36,6 @@ class SpectatorInteractor: SpectatorInteractorInput {
     
     func attemptToReconnect(summonerName: String) {
         guard let server = RealmManager.fetchFoundSummoner()?.region else { return }
-        
         let request = SummonerRequest(summonerName: summonerName, server: server)
         
         NetworkAPI.shared.dataTask(request: request) {[weak self] result in
@@ -45,13 +44,10 @@ class SpectatorInteractor: SpectatorInteractorInput {
                 DispatchQueue.main.async {
                     RealmManager.reWriteFoundSummoner(summonerData)
                     self?.output?.reconnectSuccess()
-                    
                 }
-                
             case.failure(let error):
                 self?.output?.reconnectFailure(error)
             }
         }
     }
-    
 }

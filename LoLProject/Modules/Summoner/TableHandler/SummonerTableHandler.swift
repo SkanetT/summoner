@@ -21,8 +21,6 @@ class SummonerTableHandler: NSObject, SummonerTableHandlerProtocol {
     var hide: ((Int) -> ())?
     var league: ((String) -> ())?
 
-
-    
     func attach(_ tableView: UITableView) {
         self.tableView = tableView
         tableView.register(UINib(nibName: "MatchHistoryCell", bundle: nil), forCellReuseIdentifier: "mach")
@@ -95,8 +93,6 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
             
             moreInfoCell.setDataForEnvironment(summonerIdInGame: matchForSection.summonerInMatch.idInMatch, win: matchForSection.summonerInMatch.win)
             moreInfoCell.setDataForParticipants(members: matchForSection.members.self)
-            
-            
         }
         
         if indexPath.row == 0 {
@@ -106,7 +102,6 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
                     self.matchsArray[indexPath.section].isExpanded.toggle()
                     self.tableView?.reloadData()
                 }
-                
             }
             return matchHistoryCell
         } else {
@@ -120,7 +115,6 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
             
             header.tapHandler = {[weak self] value in
                 self?.league?(value)
-                
             }
             return header
         } else { return nil }

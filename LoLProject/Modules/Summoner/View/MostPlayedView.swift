@@ -110,7 +110,6 @@ class MostPlayedView: UIView {
         thidMostPlayedChampionImage.layer.borderColor = UIColor.white.cgColor
         thidMostPlayedChampionImage.layer.borderWidth = 1.2
         
-        
         thidMostPlayedChampionNameLvl.translatesAutoresizingMaskIntoConstraints = false
         addSubview(thidMostPlayedChampionNameLvl)
         thidMostPlayedChampionNameLvl.contentMode = .left
@@ -128,7 +127,6 @@ class MostPlayedView: UIView {
         thidMostPlayedChampionPts.bottomAnchor.constraint(equalTo: thidMostPlayedChampionImage.bottomAnchor).isActive = true
         thidMostPlayedChampionPts.leadingAnchor.constraint(equalTo: thidMostPlayedChampionNameLvl.leadingAnchor).isActive = true
         thidMostPlayedChampionPts.heightAnchor.constraint(equalToConstant: 16).isActive = true
-        
     }
     
     func setData(mostPlayedChampions: MostPlayedChampionsData) {
@@ -150,8 +148,6 @@ class MostPlayedView: UIView {
         self.thidMostPlayedChampionPts.text = "\(mostPlayedChampions[2].championPoints) pts"
         
         self.thidMostPlayedChampionImage.downloadSD(type: .championIcon(id: thidChampion.id))
-        
-        //        }
     }
 }
 

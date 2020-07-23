@@ -12,5 +12,4 @@ protocol ChampionsListInteractorInput: class {
     func attach(_ output: ChampionsListInteractorOutput)
     func fecthData()
     func fetchChampionInfo(_ id: String)
-
 }

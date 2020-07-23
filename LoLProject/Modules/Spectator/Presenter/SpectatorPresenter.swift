@@ -19,7 +19,6 @@ class SpectatorPresenter: SpectatorPresenterInput {
         self.router = router
     }
     
-    
     func attach(_ viewController: SpectatorPresenterOutput) {
         self.viewController = viewController
         interactor.attach(self)
@@ -32,7 +31,6 @@ class SpectatorPresenter: SpectatorPresenterInput {
             self?.interactor.attemptToReconnect(summonerName: summonerName)
         }
     }
-    
 }
 
 extension SpectatorPresenter: SpectatorInteractorOutput {
@@ -42,7 +40,6 @@ extension SpectatorPresenter: SpectatorInteractorOutput {
         } else {
             viewController?.matchHasBans(bans)
         }
-        
     }
     
     func didReceiveGameQueueConfigId(_ gameQueueConfigId: Int?) {
@@ -61,5 +58,4 @@ extension SpectatorPresenter: SpectatorInteractorOutput {
     func reconnectFailure(_ error: APIErrors) {
         router.showError(error)
     }
-    
 }

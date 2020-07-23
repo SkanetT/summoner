@@ -136,7 +136,6 @@ class SummonerInteractor: SummonerInteractorInput {
         guard decValue > 1 else { return }
         
         for i in matchModel.count...(matchModel.count + decValue) {
-            
             disGroup.enter()
             
             let fullInfoMatch = FullInfoMatchRequest.init(matchId: String(self.matchsArray[i].match.gameId), server: server)

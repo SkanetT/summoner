@@ -14,5 +14,4 @@ protocol SpectatorInteractorInput: class {
     func fetchDataForTitle()
     func fetchBans()
     func attemptToReconnect(summonerName: String)
-
 }

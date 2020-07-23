@@ -26,7 +26,6 @@ struct MatchModel {
         
         version = match.gameVersion
         
-        
         summonerInMatch.matchType = match.queueId.description.typeIdtoGameType()
         
         summonerInMatch.date = { () -> String in
@@ -73,8 +72,6 @@ struct MatchModel {
         for id in 1...match.participantIdentities.count {
             if let member = match.participants.first(where: { $0.participantId == id }), let memberIdentities = match.participantIdentities.first(where: { $0.participantId == id }) {
                 
-                
-                
                 var memberData = Member()
                 memberData.tapHandler = self.handler
                 memberData.name = memberIdentities.player.summonerName
@@ -91,13 +88,9 @@ struct MatchModel {
                 memberData.sixthItemId = String(member.stats.item5)
                 
                 members.append(memberData)
-                
             }
         }
-        
-        
     }
-    
 }
     
 

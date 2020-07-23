@@ -19,7 +19,6 @@ struct ItemDatum: Codable {
     let into: [String]?
     let maps: [String: Bool]
     let from: [String]?
-
 }
 
 struct Gold: Codable {
