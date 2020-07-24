@@ -15,6 +15,56 @@ class ParticipantInfo: XibBasedView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        championIcon.clipsToBounds = true
+        championIcon.layer.cornerRadius = 10
+        championIcon.layer.borderWidth = 1
+        championIcon.layer.borderColor = UIColor.white.cgColor
+        
+        firstSpell.clipsToBounds = true
+        firstSpell.layer.cornerRadius = 4
+        firstSpell.layer.borderWidth = 1
+        firstSpell.layer.borderColor = UIColor.black.cgColor
+        
+        secondSpell.clipsToBounds = true
+        secondSpell.layer.cornerRadius = 4
+        secondSpell.layer.borderWidth = 1
+        secondSpell.layer.borderColor = UIColor.black.cgColor
+        
+        item0.clipsToBounds = true
+        item0.layer.cornerRadius = 4
+        item0.layer.borderWidth = 1
+        item0.layer.borderColor = UIColor.white.cgColor
+        
+        item1.clipsToBounds = true
+        item1.layer.cornerRadius = 4
+        item1.layer.borderWidth = 1
+        item1.layer.borderColor = UIColor.white.cgColor
+        
+        item2.clipsToBounds = true
+        item2.layer.cornerRadius = 4
+        item2.layer.borderWidth = 1
+        item2.layer.borderColor = UIColor.white.cgColor
+        
+        item3.clipsToBounds = true
+        item3.layer.cornerRadius = 4
+        item3.layer.borderWidth = 1
+        item3.layer.borderColor = UIColor.white.cgColor
+        
+        item4.clipsToBounds = true
+        item4.layer.cornerRadius = 4
+        item4.layer.borderWidth = 1
+        item4.layer.borderColor = UIColor.white.cgColor
+        
+        item5.clipsToBounds = true
+        item5.layer.cornerRadius = 4
+        item5.layer.borderWidth = 1
+        item5.layer.borderColor = UIColor.white.cgColor
+        
+        item6.clipsToBounds = true
+        item6.layer.cornerRadius = 4
+        item6.layer.borderWidth = 1
+        item6.layer.borderColor = UIColor.white.cgColor
     }
     
     @IBOutlet weak var participantNameLabel: UILabel!

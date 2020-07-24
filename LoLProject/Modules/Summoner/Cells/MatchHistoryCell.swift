@@ -55,6 +55,51 @@ class MatchHistoryCell: UITableViewCell {
         
         moreButton.addTarget(self, action: #selector(didTapExpand), for: .touchUpInside)
         
+        spell1.clipsToBounds = true
+        spell1.layer.cornerRadius = 7
+        spell1.layer.borderWidth = 1
+        spell1.layer.borderColor = UIColor.black.cgColor
+        
+        spell2.clipsToBounds = true
+        spell2.layer.cornerRadius = 7
+        spell2.layer.borderWidth = 1
+        spell2.layer.borderColor = UIColor.black.cgColor
+        
+        item0.clipsToBounds = true
+        item0.layer.cornerRadius = 7
+        item0.layer.borderWidth = 1
+        item0.layer.borderColor = UIColor.white.cgColor
+        
+        item1.clipsToBounds = true
+        item1.layer.cornerRadius = 7
+        item1.layer.borderWidth = 1
+        item1.layer.borderColor = UIColor.white.cgColor
+        
+        item2.clipsToBounds = true
+        item2.layer.cornerRadius = 7
+        item2.layer.borderWidth = 1
+        item2.layer.borderColor = UIColor.white.cgColor
+        
+        item3.clipsToBounds = true
+        item3.layer.cornerRadius = 7
+        item3.layer.borderWidth = 1
+        item3.layer.borderColor = UIColor.white.cgColor
+        
+        item4.clipsToBounds = true
+        item4.layer.cornerRadius = 7
+        item4.layer.borderWidth = 1
+        item4.layer.borderColor = UIColor.white.cgColor
+        
+        item5.clipsToBounds = true
+        item5.layer.cornerRadius = 7
+        item5.layer.borderWidth = 1
+        item5.layer.borderColor = UIColor.white.cgColor
+        
+        item6.clipsToBounds = true
+        item6.layer.cornerRadius = 7
+        item6.layer.borderWidth = 1
+        item6.layer.borderColor = UIColor.white.cgColor
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
