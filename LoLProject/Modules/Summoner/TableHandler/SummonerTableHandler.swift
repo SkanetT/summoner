@@ -97,6 +97,8 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
         
         if indexPath.row == 0 {
             DispatchQueue.main.async {
+                let size = UIScreen.main.bounds.height
+              tableView.rowHeight = size / 3
                 matchHistoryCell.tapHandler = { [weak self]  in
                     guard let self = self else { return }
                     self.matchsArray[indexPath.section].isExpanded.toggle()
@@ -105,6 +107,7 @@ extension SummonerTableHandler: UITableViewDelegate, UITableViewDataSource, UISc
             }
             return matchHistoryCell
         } else {
+           tableView.rowHeight = 812
             return moreInfoCell
         }
     }

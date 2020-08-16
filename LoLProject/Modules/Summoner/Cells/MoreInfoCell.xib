@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfo" rowHeight="828" id="KGk-i7-Jjw" customClass="MoreInfoCell" customModule="LoLProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="828"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreInfo" rowHeight="812" id="KGk-i7-Jjw" customClass="MoreInfoCell" customModule="LoLProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="812"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="828"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="812"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3H-sP-IIm">
@@ -134,7 +134,7 @@
                     <constraint firstAttribute="trailing" secondItem="zax-LB-7xK" secondAttribute="trailing" id="Ek2-BL-LxG"/>
                     <constraint firstItem="ejd-ED-Z1L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F3h-xJ-zw9"/>
                     <constraint firstItem="7vp-Jv-lHE" firstAttribute="top" secondItem="pQH-7K-OSL" secondAttribute="bottom" constant="8" id="Fi1-hl-zCb"/>
-                    <constraint firstAttribute="bottom" secondItem="TbV-Sh-3Q9" secondAttribute="bottom" constant="16" id="FlL-ng-MU9"/>
+                    <constraint firstAttribute="bottom" secondItem="TbV-Sh-3Q9" secondAttribute="bottom" id="FlL-ng-MU9"/>
                     <constraint firstItem="slv-QX-9O4" firstAttribute="top" secondItem="bif-79-hKb" secondAttribute="bottom" constant="8" id="NNp-IP-nHZ"/>
                     <constraint firstItem="EzV-9S-2GR" firstAttribute="top" secondItem="wKr-Vd-Wf2" secondAttribute="bottom" id="Nss-iE-11v"/>
                     <constraint firstAttribute="trailing" secondItem="PVT-6O-2IC" secondAttribute="trailing" id="RUg-5j-eaT"/>
@@ -179,7 +179,7 @@
                 <outlet property="team2" destination="b3H-sP-IIm" id="oI9-ke-JUo"/>
                 <outlet property="team2Win" destination="EzV-9S-2GR" id="pEW-PK-dSz"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="345.53571428571428"/>
+            <point key="canvasLocation" x="137.68115942028987" y="340.17857142857139"/>
         </tableViewCell>
     </objects>
 </document>
