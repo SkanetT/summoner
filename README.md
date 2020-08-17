@@ -1,4 +1,6 @@
 # summoner
 
-Из за "особенностей" Riot API для получения истории матчей просиходит сразу множество запросов.
-При быстром скроле истории могут возникать ошибки. Пока не получен API ключ с большим лимитом запросов в 1 сек, этого не избежать :( 
+You can login, watch your match history, leagues and match online.
+Also, you can watch heroes and skins, spells and online servers status.
+
+90% of functional is ready, but UI design not ready yet.
